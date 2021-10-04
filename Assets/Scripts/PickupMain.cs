@@ -34,12 +34,12 @@ public class PickupMain : MonoBehaviour
 
     void Update()
     {
-        //Testing code start
+        ///Testing code start
         if (Input.GetKeyDown(KeyCode.E) && allowPickup)
         {
             pickedUpPowerup();
         }
-        //Testing code end
+        ///Testing code end
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,7 +54,6 @@ public class PickupMain : MonoBehaviour
     {
         switch (type)
         {
-
             case PickupType.Health:
                 //Debug.Log("picked up health");
                 text.powerupText = HealthPowerupText;
@@ -76,7 +75,7 @@ public class PickupMain : MonoBehaviour
         text.uiObject.SetActive(true);
         text.active = true;
         model.enabled = false;
-        yield return new WaitForSeconds(4.5f);
+        yield return new WaitForSeconds(text.showTextDuration + 0.1f);
         Destroy(model);
         Destroy(gameObject);
     }

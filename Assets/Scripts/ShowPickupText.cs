@@ -8,6 +8,9 @@ public class ShowPickupText : MonoBehaviour
     public GameObject uiObject;
     public bool active = false;
 
+    [SerializeField]
+    public float showTextDuration = 4;
+
     public string powerupText;
     private Text UIText;
 
@@ -28,7 +31,7 @@ public class ShowPickupText : MonoBehaviour
 
     IEnumerator ShowText()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(showTextDuration);
         uiObject.SetActive(false);
         active = false;
     }
