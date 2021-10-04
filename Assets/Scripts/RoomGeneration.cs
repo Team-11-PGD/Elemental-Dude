@@ -1,31 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.SceneManagement;
-using System.Linq;
 
-public class RoomGeneration
+static public class RoomGeneration
 {
-    enum ElementType
+    /// <summary>
+    /// A list of all active elements in the level
+    /// </summary>
+    public static List<ElementMain.ElementType> CurrentElements { get; private set; } = new List<ElementMain.ElementType>();
+
+    static List<ElementMain.ElementType> availableElements = new List<ElementMain.ElementType>();
+
+    /// <summary>
+    /// Reset element list
+    /// </summary>
+    static void RefillAvailableElements()
     {
-        Water,
-        Fire,
-        Air,
-        Earth
+        availableElements = new List<ElementMain.ElementType>
+        {
+             ElementMain.ElementType.Water,
+             ElementMain.ElementType.Fire,
+             ElementMain.ElementType.Air,
+             ElementMain.ElementType.Earth
+        };
     }
 
-    ElementType type;
-
-    private Dictionary<ElementType, bool> UsedElements = new Dictionary<ElementType, bool>
-    { 
-        { ElementType.Water, true}
-    };
-
-    public void LoadNextRoom()
+    /// <summary>
+    /// Load next room with new random elements
+    /// </summary>
+    /// <param name="amountOfElements"> Amount of elements to load next room with </param>
+    public static void LoadNextRoom(int amountOfElements)
     {
-        int rand = UnityEngine.Random.Range(0, (int)Enum.GetValues(typeof(ElementType)).Cast<ElementType>().Max());
+        // Refill element list for next rounds.
+        if (availableElements.Count <= 0)
+        {
+            RefillAvailableElements();
+        }
 
-        type = (ElementType)rand;
+        string message = "Load biom with";
+
+        CurrentElements.Clear();
+
+        // Get random elements
+        for (int i = 0; i < amountOfElements; i++)
+        {
+            // If to many elements were asked for break loop
+            if (availableElements.Count < amountOfElements - i) break;
+
+            int rand = Random.Range(0, availableElements.Count);
+            ElementMain.ElementType element = availableElements[rand];
+
+            CurrentElements.Add(element);
+            message += " " + element;
+
+            // Remove element from options
+            availableElements.RemoveAt(rand);
+        }
+
+        Debug.Log(message + " element");
+
     }
 }
