@@ -6,33 +6,33 @@ using UnityEngine.UI;
 public class ShowPickupText : MonoBehaviour
 {
     public GameObject uiObject;
-    public bool active = false;
+    [HideInInspector]
+    public string powerupText;
 
     [SerializeField]
-    public float showTextDuration = 4;
+    private float showTextDuration = 4;
 
-    public string powerupText;
     private Text UIText;
 
-    void Start()
+    private void Start()
     {
+        if (uiObject == null) uiObject = GameObject.Find("PickupText"); // O(n)
         uiObject.SetActive(false);
         UIText = uiObject.GetComponent<Text>();
     }
 
-    void Update()
+    private void Update()
     {
         UIText.text = powerupText;
-        if (active)
+        if (uiObject.activeInHierarchy)
         {
-            StartCoroutine("ShowText");
+            StartCoroutine(ShowText());
         }
     }
 
-    IEnumerator ShowText()
+    private IEnumerator ShowText()
     {
         yield return new WaitForSeconds(showTextDuration);
         uiObject.SetActive(false);
-        active = false;
     }
 }
