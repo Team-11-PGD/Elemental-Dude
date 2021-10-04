@@ -399,8 +399,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -140.6, y: -151.8}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -76.020935, y: -151.8}
+  m_SizeDelta: {x: 289.1581, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1870570476
 MonoBehaviour:
@@ -435,7 +435,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PickupText
+  m_Text: Text
 --- !u!222 &1870570477
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -554,6 +554,14 @@ PrefabInstance:
     - target: {fileID: 8618477386730529060, guid: 7febb85f14a19014dafd45fed93c7b85, type: 3}
       propertyPath: m_Name
       value: Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 8618477386730529060, guid: 7febb85f14a19014dafd45fed93c7b85, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8618477386730529062, guid: 7febb85f14a19014dafd45fed93c7b85, type: 3}
+      propertyPath: type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8618477386730529063, guid: 7febb85f14a19014dafd45fed93c7b85, type: 3}
       propertyPath: uiObject

@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickupMain : MonoBehaviour
 {
     public PickupType type = PickupType.Health;
-    public ShowPickupText text;
-    public MeshRenderer model;
+    private ShowPickupText text;
+    private MeshRenderer model;
+    private HealthPickupFunctionality healthFunc;
+    private ShootingSpeedPickupFunctionality shootSpeedFunc;
+
+    [SerializeField]
+    public string HealthPowerupText = "You picked up health.";
+    [SerializeField]
+    public string ShootingSpeedPowerupText = "You picked up extra shooting speed.";
 
     private bool allowPickup = true;
 
@@ -20,6 +28,8 @@ public class PickupMain : MonoBehaviour
     {
         text = GetComponent<ShowPickupText>();
         model = GetComponent<MeshRenderer>();
+        healthFunc = GetComponent<HealthPickupFunctionality>();
+        shootSpeedFunc = GetComponent<ShootingSpeedPickupFunctionality>();
     }
 
     void Update()
@@ -47,13 +57,15 @@ public class PickupMain : MonoBehaviour
 
             case PickupType.Health:
                 //Debug.Log("picked up health");
+                text.powerupText = HealthPowerupText;
                 StartCoroutine("removePickupAndActivateText");
-                //Call for health functionality code
+                healthFunc.AddHealth();
                 return;
             case PickupType.ShootingSpeed:
                 //Debug.Log("picked up shooting speed");
+                text.powerupText = ShootingSpeedPowerupText;
                 StartCoroutine("removePickupAndActivateText");
-                //Call for shooting speed functionality code
+                shootSpeedFunc.IncreaseShootingSpeed();
                 return;
         }
     }

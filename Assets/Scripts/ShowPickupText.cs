@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShowPickupText : MonoBehaviour
 {
     public GameObject uiObject;
     public bool active = false;
 
-    // Start is called before the first frame update
+    public string powerupText;
+    private Text UIText;
+
     void Start()
     {
         uiObject.SetActive(false);
+        UIText = uiObject.GetComponent<Text>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        UIText.text = powerupText;
         if (active)
         {
             StartCoroutine("ShowText");
