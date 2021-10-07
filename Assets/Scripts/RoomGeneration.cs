@@ -38,7 +38,7 @@ static public class RoomGeneration
             RefillAvailableElements();
         }
 
-        string message = "Load biom with";
+        string message = "Load biome with";
 
         CurrentElements.Clear();
 
@@ -46,7 +46,7 @@ static public class RoomGeneration
         for (int i = 0; i < amountOfElements; i++)
         {
             // If to many elements were asked for break loop
-            if (availableElements.Count < amountOfElements - i) break;
+            if (availableElements.Count <= 0) break;
 
             int rand = Random.Range(0, availableElements.Count);
             ElementMain.ElementType element = availableElements[rand];
