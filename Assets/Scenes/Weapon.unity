@@ -123,63 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &91597086
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.267
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.053
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8600321062039574619, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-      propertyPath: m_Name
-      value: Bullet
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
 --- !u!1 &97416734
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +250,7 @@ RectTransform:
   m_GameObject: {fileID: 119057913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.48757, y: 0.48757, z: 0.48757}
   m_Children: []
   m_Father: {fileID: 97416738}
   m_RootOrder: 0
@@ -812,6 +755,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1153038422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1153038424}
+  - component: {fileID: 1153038423}
+  m_Layer: 0
+  m_Name: WeaponHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1153038423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153038422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 911bc098b92057f4c9e80713d4f16f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnBulletPos: {fileID: 387611496}
+  bulletPrefab: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
+  playerCam: {fileID: 187026090}
+  bulletAmount: 0
+  maxBullets: 0
+  reloadTime: 0
+  timeToFire: 0
+  fireInterval: 0
+  canFire: 1
+--- !u!4 &1153038424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153038422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1250418, y: 3.3867967, z: 10.157398}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480423197
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,14 +850,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1480423197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 911bc098b92057f4c9e80713d4f16f68, type: 3}
+  m_Script: {fileID: 11500000, guid: bef60d2ffe917bf4cb6facd5ea26eca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletAmount: 0
-  reloadTime: 0
   spawnBulletPos: {fileID: 387611496}
   bulletPrefab: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
   playerCam: {fileID: 187026090}
+  bulletAmount: 30
+  maxBullets: 30
+  reloadTime: 3
+  timeToFire: 0
+  fireInterval: 0.4
+  canFire: 1
 --- !u!23 &1480423200
 MeshRenderer:
   m_ObjectHideFlags: 0
