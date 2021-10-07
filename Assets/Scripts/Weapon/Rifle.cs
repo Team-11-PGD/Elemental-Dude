@@ -16,12 +16,6 @@ public class Rifle : Weapon
     void Update()
     {
         //Debug.Log(bulletAmount);
-        if (Input.GetButton("Fire1") && Time.time >= timeToFire && canFire)
-        {
-            timeToFire = Time.time + fireInterval;
-            Shoot();
-        }
-
-
+       
     }
 }

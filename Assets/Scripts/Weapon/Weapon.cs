@@ -4,18 +4,29 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public WeaponTypes weaponType;
+
     public Transform spawnBulletPos;
     public Transform bulletPrefab;
     public Camera playerCam;
 
     public int bulletAmount;
     public int maxBullets;
-    public int reloadTime;
+    public float reloadTime;
     public float timeToFire;
     public float fireInterval;
-    public bool canFire = true;
-
+    
+    private bool canFire = true;
+    private bool isReloading;
+    private float reloadEndTime;
     private Vector3 aimPoint;
+
+	public enum WeaponTypes
+    { 
+        Rifle,
+        Shotgun,
+        RPG
+    }
 
     void Start()
     {
@@ -25,21 +36,45 @@ public class Weapon : MonoBehaviour
     {
         Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * 50, Color.green);
 
-        if (Input.GetKeyDown(KeyCode.R) && !canFire)
+        if (Input.GetButton("Fire1") && Time.time >= timeToFire && canFire)
         {
-            Debug.Log("bigballs");
+            timeToFire = Time.time + fireInterval;
+            Shoot();
         }
+
+        if (Input.GetKeyDown(KeyCode.R) && !canFire && !isReloading)
+        {
+            Reload();
+        }
+
+        if(isReloading && Time.time >= reloadEndTime)
+		{
+            canFire = true;
+            isReloading = false;
+            bulletAmount = maxBullets;
+
+            Debug.Log("Done reloading!");
+		}
     }
 
     public virtual void Shoot()
     {
         if (bulletAmount <= 0)
         {
+            Debug.Log("PRESS R TO RELOAD");
             canFire = false;
+            return;
         }
         else
         {
             bulletAmount -= 1;
+
+            //this is pure for debug purposes
+            if(bulletAmount <= 0)
+			{
+                canFire = false;
+                Debug.Log("PRESS R TO RELOAD");
+            }
         }
 
         RaycastHit hit;
@@ -54,6 +89,7 @@ public class Weapon : MonoBehaviour
 
     public virtual void Reload()
 	{
-        Debug.Log("PRESS R TO RELOAD");
+        isReloading = true;
+        reloadEndTime = Time.time + reloadTime;
 	}
 }
