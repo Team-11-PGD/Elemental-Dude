@@ -19,17 +19,19 @@ public class MovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //2d movement
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
+        //camera movement
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
         //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
         transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
 
         if (direction.magnitude >= 0.1f)
         {
-
+            //sprinting
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -40,6 +42,7 @@ public class MovementScript : MonoBehaviour
                 controller.Move(moveDirection * speed * Time.deltaTime);
             }
         }
+        //jumping
         if (controller.isGrounded && velocity.y < 0)
         {
             velocity.y = 0;
