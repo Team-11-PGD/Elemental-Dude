@@ -7,6 +7,7 @@ public class MovementScript : MonoBehaviour
     public CharacterController controller;
     public Transform cam;
 
+    // TODO: [SerializeField] is a thing
     public float speed = 5f;
     public float sprintSpeed = 10f;
     public float gravity = -9.81f;
@@ -26,6 +27,8 @@ public class MovementScript : MonoBehaviour
 
         //camera movement
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+
+        // TODO: Not needed code can be removed
         //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
         transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
 
@@ -50,15 +53,12 @@ public class MovementScript : MonoBehaviour
 
         if (Input.GetButton("Jump") && controller.isGrounded)
         {
+            // TODO: Make own bool to stop jumping the next frame. isGrounded is active for to long which causes different jump heights
             Debug.Log("yo");
             velocity.y += Mathf.Sqrt(jumpHeight * 3f * -gravity) * Time.deltaTime;
         }
         velocity.y += gravity * Time.deltaTime * Time.deltaTime;
 
-
-
-
         controller.Move(velocity);
-
     }
 }
