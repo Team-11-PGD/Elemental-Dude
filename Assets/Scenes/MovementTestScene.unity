@@ -364,7 +364,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234370950}
-  m_LocalRotation: {x: 0.14725298, y: 0.000000023438075, z: -0.0000000019942794, w: 0.9890989}
+  m_LocalRotation: {x: 0.14725296, y: -0.000000018484245, z: 0.0000000027317921, w: 0.9890989}
   m_LocalPosition: {x: 11.02, y: 8.562998, z: -27.08059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -471,7 +471,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595590914}
-  m_LocalRotation: {x: 0.16019435, y: 0.000000016984178, z: -0.0000000027563662, w: 0.9870855}
+  m_LocalRotation: {x: 0.16019434, y: -0.00000001698416, z: 0.0000000027563636, w: 0.9870855}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -516,6 +516,7 @@ MonoBehaviour:
   sprintSpeed: 10
   jumpSpeed: 7
   gravityMultiplier: 1
+  jumpGracePeroid: 0.2
   cam: {fileID: 234370953}
 --- !u!143 &626719789
 CharacterController:
@@ -753,7 +754,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819718502}
-  m_LocalRotation: {x: 0.14221326, y: 0.000000019041787, z: -0.0000000027358007, w: 0.98983604}
+  m_LocalRotation: {x: 0.14221326, y: -0.00000001904179, z: 0.0000000027358014, w: 0.98983604}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

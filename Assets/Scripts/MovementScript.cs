@@ -12,7 +12,12 @@ public class MovementScript : MonoBehaviour
     private float jumpSpeed;
     [SerializeField]
     private float gravityMultiplier = 1; //to adjust gravity and make it feel good
+    [SerializeField]
+    private float jumpGracePeroid;
+
     private float ySpeed;
+    private float? lastGroundedTime;
+    private float? jumpButtonPressedTime;
 
     private CharacterController controller;
     [SerializeField]
@@ -50,12 +55,23 @@ public class MovementScript : MonoBehaviour
 
         //jumping
         ySpeed += gravityMultiplier * Physics.gravity.y * Time.deltaTime;
-        if (controller.isGrounded) 
+        if (controller.isGrounded)
+        {
+            lastGroundedTime = Time.time;
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpButtonPressedTime = Time.time;
+        }
+
+        if (Time.time - lastGroundedTime <= jumpGracePeroid) 
         {
             ySpeed = -0.5f;
-            if (Input.GetButtonDown("Jump"))
+            if (Time.time - jumpButtonPressedTime <= jumpGracePeroid)
             {
                 ySpeed = jumpSpeed;
+                jumpButtonPressedTime = null;
+                lastGroundedTime = null;
             }
         }
         Vector3 velocity = movementDirection * magnitude;
