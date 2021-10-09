@@ -4,61 +4,64 @@ using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
-    public CharacterController controller;
-    public Transform cam;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float sprintSpeed;
+    [SerializeField]
+    private float jumpSpeed;
+    [SerializeField]
+    private float gravityMultiplier = 1; //to adjust gravity and make it feel good
+    private float ySpeed;
 
-    // TODO: [SerializeField] is a thing
-    public float speed = 5f;
-    public float sprintSpeed = 10f;
-    public float gravity = -9.81f;
-    public float turnTime = 0.1f;
-    public float jumpHeight = 10f;
-    float turnVelocity;
-
-    Vector3 velocity;
+    private CharacterController controller;
+    [SerializeField]
+    private Transform cam;
+    // Start is called before the first frame update
+    void Start()
+    {
+        controller = GetComponent<CharacterController>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        //2d movement
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float veritcalInput = Input.GetAxisRaw("Vertical");
+        float magnitude;
 
-        //camera movement
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+        Vector3 movementDirection = new Vector3(horizontalInput, 0, veritcalInput);
 
-        // TODO: Not needed code can be removed
-        //float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnVelocity, turnTime);
+        //shift for sprinting
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            magnitude = Mathf.Clamp01(movementDirection.magnitude) * sprintSpeed;
+        }else
+        {
+            magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
+        }
+        movementDirection.Normalize();
+
+        //moves character with camera
+        float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
         transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
+        //makes character move in camera direction
+        movementDirection = Quaternion.Euler(0f, targetAngle, 0f)* Vector3.forward;
 
-        if (direction.magnitude >= 0.1f)
-        {
-            //sprinting
-            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                controller.Move(moveDirection * sprintSpeed * Time.deltaTime);
-            }
-            else
-            {
-                controller.Move(moveDirection * speed * Time.deltaTime);
-            }
-        }
         //jumping
-        if (controller.isGrounded && velocity.y < 0)
+        ySpeed += gravityMultiplier * Physics.gravity.y * Time.deltaTime;
+        if (controller.isGrounded) 
         {
-            velocity.y = 0;
+            ySpeed = -0.5f;
+            if (Input.GetButtonDown("Jump"))
+            {
+                ySpeed = jumpSpeed;
+            }
         }
+        Vector3 velocity = movementDirection * magnitude;
+        velocity.y = ySpeed;
 
-        if (Input.GetButton("Jump") && controller.isGrounded)
-        {
-            // TODO: Make own bool to stop jumping the next frame. isGrounded is active for to long which causes different jump heights
-            Debug.Log("yo");
-            velocity.y += Mathf.Sqrt(jumpHeight * 3f * -gravity) * Time.deltaTime;
-        }
-        velocity.y += gravity * Time.deltaTime * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
 
-        controller.Move(velocity);
     }
 }
