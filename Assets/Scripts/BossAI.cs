@@ -9,7 +9,7 @@ public class BossAI : StateMachine
     StateOptions startState = StateOptions.Attacking;
 
     public Dictionary<State, StateOptions> dictionary = new Dictionary<State, StateOptions>();
-
+    public List<List<Tuple<State, StateOptions>>> elementStates = new List<List<Tuple<State, StateOptions>>>();
     public enum StateOptions
     {
         MoveToPlayer,

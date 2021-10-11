@@ -266,7 +266,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19114
+  m_Name: pb_Mesh17024
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -978,8 +978,10 @@ GameObject:
   - component: {fileID: 1411800561}
   - component: {fileID: 1411800565}
   - component: {fileID: 1411800560}
-  - component: {fileID: 1411800559}
   - component: {fileID: 1411800564}
+  - component: {fileID: 1411800568}
+  - component: {fileID: 1411800567}
+  - component: {fileID: 1411800559}
   - component: {fileID: 1411800566}
   m_Layer: 7
   m_Name: Boss-Cube
@@ -1327,13 +1329,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411800558}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af825197021cc54193dd1cfd2813ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1411800567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411800558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99cb13c86f79f1646bb12188178d2410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startState: 1
-  test:
-    m_keys: 0000000001000000
-    m_values: []
+--- !u!114 &1411800568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411800558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c55693a99303244d8c506ad474ff0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1488876025
 GameObject:
   m_ObjectHideFlags: 0

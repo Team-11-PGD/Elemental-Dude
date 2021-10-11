@@ -37,30 +37,59 @@ public class BossAIEditor : Editor
         base.OnInspectorGUI();
         dictionary = bossAI.dictionary;
 
+        foldout = EditorGUILayout.Foldout(foldout, InspectorName(nameof(bossAI.dictionary)));
         try
         {
-            foldout = EditorGUILayout.Foldout(foldout, InspectorName(nameof(bossAI.dictionary)));
             if (foldout)
             {
                 for (int i = 0; i < values.Count; i++)
                 {
                     EditorGUILayout.BeginHorizontal();
                     values[i] = (BossAI.StateOptions)EditorGUILayout.EnumPopup(values[i]);
-                    //EditorGUILayout.PropertyField(null);
                     keys[i] = (State)EditorGUILayout.ObjectField(keys[i], typeof(State), true);
                     EditorGUILayout.EndHorizontal();
                 }
+
 
                 if (GUILayout.Button("Add"))
                 {
                     keys.Add(null);
                     values.Add(0);
                     Debug.Log("added");
-                    //Debug.Log(dictionary.Count);
                 }
             }
+
+            for (int i = 0; i < Enum.GetValues(typeof(ElementMain.ElementType)).Length; i++)
+            {
+                EditorGUILayout.BeginHorizontal();
+                {
+                    GUILayout.Space(15);
+                    if (GUILayout.Button("Add state", GUILayout.Width(80)))
+                    {
+                        bossAI.elementStates.Add(new Tuple<State, BossAI.StateOptions>(null, 0));
+                    }
+                    GUILayout.Label(((ElementMain.ElementType)i).ToString());
+                }
+                EditorGUILayout.EndHorizontal();
+
+                GUILayout.Space(15);
+
+                for (int j = 0; j < bossAI.elementStates.Count; j++)
+                {
+                    Debug.Log(bossAI.elementStates.Count);
+                    EditorGUILayout.BeginHorizontal();
+                    bossAI.elementStates[j] = new Tuple<State, BossAI.StateOptions>(
+                        (State)EditorGUILayout.ObjectField(bossAI.elementStates[j].Item1, typeof(State), true),
+                        (BossAI.StateOptions)EditorGUILayout.EnumPopup(bossAI.elementStates[j].Item2));
+                    EditorGUILayout.EndHorizontal();
+                }
+            }
+
         }
-        catch { }
+        catch (Exception e)
+        {
+            Debug.LogWarning(e);
+        }
 
         ((BossAI)target).dictionary = dictionary;
     }
