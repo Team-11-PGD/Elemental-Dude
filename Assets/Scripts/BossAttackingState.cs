@@ -1,18 +1,27 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttackingState : MonoBehaviour
+public class BossAttackingState: State
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Enter()
     {
-        
+        StartCoroutine(Timer(2));
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Exit() { }
+
+    public void Update()
     {
-        
+        context.transform.Rotate(Vector3.up, 2);
+    }
+
+    IEnumerator Timer(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+
+        // You can transition between states with the TransitionTo method.
+        // This method requires the id of the state.
+        // If you used a enum you will again need to cast this to a int.
+        context.TransitionTo((int)AIExample.StateOptions.EnemyAttacking);
     }
 }

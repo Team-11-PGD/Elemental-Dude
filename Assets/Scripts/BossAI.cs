@@ -8,6 +8,8 @@ public class BossAI : StateMachine
     [SerializeField]
     StateOptions startState = StateOptions.Attacking;
 
+    public Dictionary<State, StateOptions> dictionary = new Dictionary<State, StateOptions>();
+
     public enum StateOptions
     {
         MoveToPlayer,
