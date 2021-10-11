@@ -135,14 +135,14 @@ GameObject:
   - component: {fileID: 28914070}
   - component: {fileID: 28914069}
   - component: {fileID: 28914068}
-  - component: {fileID: 28914067}
   - component: {fileID: 28914066}
+  - component: {fileID: 28914067}
   m_Layer: 6
   m_Name: Player-Capsule
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!143 &28914066
 CharacterController:
@@ -266,7 +266,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-12432
+  m_Name: pb_Mesh19114
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -704,8 +704,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692526543}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.864515, y: 9.505271, z: -5.860571}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 28914071}
@@ -980,6 +980,7 @@ GameObject:
   - component: {fileID: 1411800560}
   - component: {fileID: 1411800559}
   - component: {fileID: 1411800564}
+  - component: {fileID: 1411800566}
   m_Layer: 7
   m_Name: Boss-Cube
   m_TagString: Untagged
@@ -1317,6 +1318,22 @@ MonoBehaviour:
   agent: {fileID: 1411800564}
   noticeRange: 15
   stopRange: 3
+--- !u!114 &1411800566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411800558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99cb13c86f79f1646bb12188178d2410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startState: 1
+  test:
+    m_keys: 0000000001000000
+    m_values: []
 --- !u!1 &1488876025
 GameObject:
   m_ObjectHideFlags: 0
