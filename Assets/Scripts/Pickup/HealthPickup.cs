@@ -9,11 +9,12 @@ public class HealthPickup : PickupMain
     [SerializeField]
     private string healthPowerupText = "You picked up health.";
 
-    protected override void PickedUpPowerup()
+    protected override void PickedUpPickup()
     {
         userHealth = user.GetComponent<Health>();
         text.powerupText = healthPowerupText;
         userHealth.Heal(20);
-        base.PickedUpPowerup();
+
+        StartCoroutine(RemovePickupOnTimer());
     }
 }
