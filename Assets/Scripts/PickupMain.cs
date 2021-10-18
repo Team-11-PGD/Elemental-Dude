@@ -7,6 +7,7 @@ public class PickupMain : MonoBehaviour
 {
     protected ShowPickupText text;
     private MeshRenderer model;
+    protected Collider user;
 
     private bool allowPickup = true;
 
@@ -30,6 +31,7 @@ public class PickupMain : MonoBehaviour
     {
         if ((other.name == "Player") && allowPickup)
         {
+            user = other;
             PickedUpPowerup();
         }
     }
