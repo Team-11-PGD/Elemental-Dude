@@ -8,8 +8,8 @@ public class BossAI : StateMachine
     [SerializeField]
     StateOptions startState = StateOptions.Attacking;
 
-    public Dictionary<State, StateOptions> dictionary = new Dictionary<State, StateOptions>();
-    public List<List<Tuple<State, StateOptions>>> elementStates = new List<List<Tuple<State, StateOptions>>>();
+    public Dictionary<ElementMain.ElementType, List<Tuple<StateOptions, State>>> elementStates = new Dictionary<ElementMain.ElementType, List<Tuple<StateOptions, State>>>();
+
     public enum StateOptions
     {
         MoveToPlayer,
@@ -19,12 +19,22 @@ public class BossAI : StateMachine
 
     protected void Start()
     {
-        states.Add((int)StateOptions.MoveToPlayer, gameObject.AddComponent<BossMoveToPlayerState>());
-        states.Add((int)StateOptions.Attacking, gameObject.AddComponent<ExampleState2>());
-        states.Add((int)StateOptions.Defending, gameObject.AddComponent<ExampleState1>());
+        states = new Dictionary<int, State>();
 
-        // You also need to call the StateMachineSetup method so the statemachine works.
-        // Do this after you've added all the states!
+        // Add all states from assigned inside the inspector
+        foreach (Tuple<StateOptions, State> tuple in elementStates[ElementMain.ElementType.None])
+        {
+            states.Add((int)tuple.Item1, tuple.Item2);
+        }
+
+        foreach (ElementMain.ElementType elementType in RoomGeneration.CurrentElements)
+        {
+            foreach (Tuple<StateOptions, State> tuple in elementStates[elementType])
+            {
+                states.Add((int)tuple.Item1, tuple.Item2);
+            }
+        }
+
         StateMachineSetup((int)startState);
     }
 }

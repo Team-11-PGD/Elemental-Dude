@@ -9,99 +9,86 @@ using UnityEngine;
 [CustomEditor(typeof(BossAI))]
 public class BossAIEditor : Editor
 {
-    Dictionary<State, BossAI.StateOptions> dictionary;
-    List<State> keys;
-    List<BossAI.StateOptions> values;
     bool foldout;
     BossAI bossAI;
-
-    BossAIEditor()
-    {
-        dictionary = new Dictionary<State, BossAI.StateOptions>();
-        keys = new List<State>();
-        values = new List<BossAI.StateOptions>();
-        foreach (State key in dictionary.Keys)
-        {
-            keys.Add(key);
-            values.Add(dictionary[key]);
-        }
-    }
+    const int SPACE_DISTANCE = 15;
+    const int ADD_BUTTON_WIDTH = 80;
 
     private void OnEnable()
     {
+        // Get script reference
         bossAI = target as BossAI;
+
+        // Fill dictionary with all element types
+        for (int i = 0; i < Enum.GetValues(typeof(ElementMain.ElementType)).Length; i++)
+        {
+            if (!bossAI.elementStates.ContainsKey((ElementMain.ElementType)i))
+            {
+                bossAI.elementStates.Add((ElementMain.ElementType)i, new List<Tuple<BossAI.StateOptions, State>>());
+            }
+        }
     }
 
     public override void OnInspectorGUI()
     {
+        // Base GUI drawing
         base.OnInspectorGUI();
-        dictionary = bossAI.dictionary;
 
-        foldout = EditorGUILayout.Foldout(foldout, InspectorName(nameof(bossAI.dictionary)));
+        // Bool that make every state hide
+        foldout = EditorGUILayout.Foldout(foldout, InspectorName(nameof(bossAI.elementStates)));
         try
         {
             if (foldout)
             {
-                for (int i = 0; i < values.Count; i++)
+                // Show per element the assigned states
+                for (int i = 0; i < Enum.GetValues(typeof(ElementMain.ElementType)).Length; i++)
                 {
+                    ElementMain.ElementType currentElement = (ElementMain.ElementType)i;
+
+                    // Add state button
                     EditorGUILayout.BeginHorizontal();
-                    values[i] = (BossAI.StateOptions)EditorGUILayout.EnumPopup(values[i]);
-                    keys[i] = (State)EditorGUILayout.ObjectField(keys[i], typeof(State), true);
-                    EditorGUILayout.EndHorizontal();
-                }
-
-
-                if (GUILayout.Button("Add"))
-                {
-                    keys.Add(null);
-                    values.Add(0);
-                    Debug.Log("added");
-                }
-            }
-
-            for (int i = 0; i < Enum.GetValues(typeof(ElementMain.ElementType)).Length; i++)
-            {
-                EditorGUILayout.BeginHorizontal();
-                {
-                    GUILayout.Space(15);
-                    if (GUILayout.Button("Add state", GUILayout.Width(80)))
                     {
-                        bossAI.elementStates.Add(new Tuple<State, BossAI.StateOptions>(null, 0));
+                        GUILayout.Space(15);
+                        if (GUILayout.Button("Add state", GUILayout.Width(ADD_BUTTON_WIDTH)))
+                        {
+                            bossAI.elementStates[currentElement].Add(new Tuple<BossAI.StateOptions, State>(0, null));
+                        }
+                        GUILayout.Label(currentElement.ToString());
                     }
-                    GUILayout.Label(((ElementMain.ElementType)i).ToString());
-                }
-                EditorGUILayout.EndHorizontal();
-
-                GUILayout.Space(15);
-
-                for (int j = 0; j < bossAI.elementStates.Count; j++)
-                {
-                    Debug.Log(bossAI.elementStates.Count);
-                    EditorGUILayout.BeginHorizontal();
-                    bossAI.elementStates[j] = new Tuple<State, BossAI.StateOptions>(
-                        (State)EditorGUILayout.ObjectField(bossAI.elementStates[j].Item1, typeof(State), true),
-                        (BossAI.StateOptions)EditorGUILayout.EnumPopup(bossAI.elementStates[j].Item2));
                     EditorGUILayout.EndHorizontal();
+
+                    // Items from list
+                    for (int j = bossAI.elementStates[currentElement].Count - 1; j >= 0; j--)
+                    {
+                        EditorGUILayout.BeginHorizontal();
+                        {
+                            GUILayout.Space(15);
+
+                            bossAI.elementStates[currentElement][j] = new Tuple<BossAI.StateOptions, State>(
+                                (BossAI.StateOptions)EditorGUILayout.EnumPopup(bossAI.elementStates[currentElement][j].Item1),
+                                (State)EditorGUILayout.ObjectField(bossAI.elementStates[currentElement][j].Item2, typeof(State), true));
+
+                            if (GUILayout.Button("Remove state"))
+                            {
+                                bossAI.elementStates[currentElement].RemoveAt(j);
+                            }
+                        }
+                        EditorGUILayout.EndHorizontal();
+                    }
+
+                    GUILayout.Space(SPACE_DISTANCE);
                 }
             }
-
         }
         catch (Exception e)
         {
             Debug.LogWarning(e);
         }
-
-        ((BossAI)target).dictionary = dictionary;
     }
 
     string InspectorName(string name)
     {
-        string[] split = Regex.Split(name, @"[A-Z]");
-        name = "";
-        for (int i = 0; i < split.Length; i++)
-        {
-            name += $" {split[i]}";
-        }
-        return name.Substring(0, 2).ToUpper() + name.Substring(2);
+        string titleCase = Regex.Replace(name, "[A-Z]", " $&"); // Add space before each uppercase char
+        return titleCase.Substring(0, 1).ToUpper() + titleCase.Substring(1); // Make first char uppercase
     }
 }
