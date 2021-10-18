@@ -11,9 +11,13 @@ public class EnemyAI : StateMachine
     [Serializable]
     public class MyTuple : Tuple<StateOptions, State>
     {
+        [SerializeField]
+        StateOptions item1;
+        [SerializeField]
+        State item2;
 
-        public StateOptions item1;
-        public State item2;
+        public new StateOptions Item1 { get { return item1; } }
+        public new State Item2 { get { return item2; } }
 
         public MyTuple(StateOptions item1, State item2) : base(item1, item2)
         {
@@ -38,27 +42,27 @@ public class EnemyAI : StateMachine
         states = new Dictionary<int, State>();
 
         // Add all states from assigned inside the inspector
-        foreach (Tuple<StateOptions, State> tuple in standardStates)
+        foreach (MyTuple tuple in standardStates)
         {
             states.Add((int)tuple.Item1, tuple.Item2);
         }
 
-        foreach (Tuple<StateOptions, State> tuple in waterStates)
+        foreach (MyTuple tuple in waterStates)
         {
             states.Add((int)tuple.Item1, tuple.Item2);
         }
 
-        foreach (Tuple<StateOptions, State> tuple in fireStates)
+        foreach (MyTuple tuple in fireStates)
         {
             states.Add((int)tuple.Item1, tuple.Item2);
         }
 
-        foreach (Tuple<StateOptions, State> tuple in airStates)
+        foreach (MyTuple tuple in airStates)
         {
             states.Add((int)tuple.Item1, tuple.Item2);
         }
         
-        foreach (Tuple<StateOptions, State> tuple in earthStates)
+        foreach (MyTuple tuple in earthStates)
         {
             states.Add((int)tuple.Item1, tuple.Item2);
         }

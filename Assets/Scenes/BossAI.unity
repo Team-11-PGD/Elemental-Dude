@@ -266,7 +266,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18510
+  m_Name: pb_Mesh17932
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1346,6 +1346,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startState: 1
+  standardStates:
+  - item1: 0
+    item2: {fileID: 1411800566}
+  - item1: 1
+    item2: {fileID: 1411800568}
+  waterStates: []
+  fireStates: []
+  airStates: []
+  earthStates: []
 --- !u!114 &1411800568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,7 +1404,7 @@ MonoBehaviour:
   agent: {fileID: 1488876027}
   noticeRange: 15
   stopRange: 1.5
-  player: {fileID: 0}
+  player: {fileID: 28914071}
 --- !u!195 &1488876027
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2368,7 +2377,7 @@ MonoBehaviour:
   agent: {fileID: 1810006610}
   noticeRange: 15
   stopRange: 1.5
-  player: {fileID: 0}
+  player: {fileID: 28914071}
 --- !u!195 &1810006610
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2690,7 +2699,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-38604
+  m_Name: pb_Mesh17954
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
