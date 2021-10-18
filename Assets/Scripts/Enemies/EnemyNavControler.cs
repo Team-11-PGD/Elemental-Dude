@@ -6,15 +6,11 @@ using UnityEngine.AI;
 public class EnemyNavControler : MonoBehaviour
 {
     public NavMeshAgent agent;
-    private Transform player;
     public int noticeRange = 15;
     public float stopRange = 1.5f;
-    private void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+    [SerializeField]
+    private Transform player;
 
-    // Update is called once per frame
     void Update()
     {
         if (Vector3.Distance(player.position, transform.position) <= noticeRange && Vector3.Distance(player.position, transform.position) >= stopRange)

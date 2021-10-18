@@ -266,7 +266,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17798
+  m_Name: pb_Mesh18510
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1320,6 +1320,7 @@ MonoBehaviour:
   agent: {fileID: 1411800564}
   noticeRange: 15
   stopRange: 3
+  player: {fileID: 28914071}
 --- !u!114 &1411800566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,6 +1395,7 @@ MonoBehaviour:
   agent: {fileID: 1488876027}
   noticeRange: 15
   stopRange: 1.5
+  player: {fileID: 0}
 --- !u!195 &1488876027
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2366,6 +2368,7 @@ MonoBehaviour:
   agent: {fileID: 1810006610}
   noticeRange: 15
   stopRange: 1.5
+  player: {fileID: 0}
 --- !u!195 &1810006610
 NavMeshAgent:
   m_ObjectHideFlags: 0

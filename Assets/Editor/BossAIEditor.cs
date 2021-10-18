@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 [CustomEditor(typeof(BossAI))]
 public class BossAIEditor : Editor
 {
-    bool foldout;
+    bool foldout = true;
     BossAI bossAI;
     const int SPACE_DISTANCE = 15;
     const int ADD_BUTTON_WIDTH = 80;
@@ -33,6 +34,7 @@ public class BossAIEditor : Editor
     {
         // Base GUI drawing
         base.OnInspectorGUI();
+        EditorGUI.BeginChangeCheck();
 
         // Bool that make every state hide
         foldout = EditorGUILayout.Foldout(foldout, InspectorName(nameof(bossAI.elementStates)));
@@ -83,6 +85,19 @@ public class BossAIEditor : Editor
         catch (Exception e)
         {
             Debug.LogWarning(e);
+        }
+
+        SerializedProperty elementStates = serializedObject.FindProperty(nameof(bossAI.elementStates));
+        elementStates.objectReferenceValue = (UnityEngine.Object)bossAI.elementStates;
+
+        serializedObject.Update();
+
+        if (serializedObject.ApplyModifiedProperties())
+        Debug.Log("Updated");
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         }
     }
 
