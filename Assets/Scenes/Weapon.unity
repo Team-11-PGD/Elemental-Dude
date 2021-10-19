@@ -889,13 +889,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
+  equipedElement: 0
   spawnBulletPos: {fileID: 869298611}
   bulletPrefab: {fileID: 8600321062039574617, guid: b393fb1618d48a74591c0313bd6ae983, type: 3}
   playerCam: {fileID: 187026090}
-  bulletAmount: 2
-  maxBullets: 2
+  bulletAmount: 1
+  maxBullets: 1
   reloadTime: 1
-  timeToFire: 0
   fireInterval: 1
 --- !u!1 &666407588
 GameObject:
@@ -1067,13 +1067,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
+  equipedElement: 0
   spawnBulletPos: {fileID: 387611496}
   bulletPrefab: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
   playerCam: {fileID: 187026090}
   bulletAmount: 30
   maxBullets: 30
   reloadTime: 3
-  timeToFire: 0
   fireInterval: 0.4
 --- !u!23 &1480423200
 MeshRenderer:
@@ -1413,13 +1413,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
+  equipedElement: 0
   spawnBulletPos: {fileID: 510659893}
   bulletPrefab: {fileID: 8600321062039574617, guid: 00d2d262bfb718a4887e28c4058a95bd, type: 3}
   playerCam: {fileID: 187026090}
   bulletAmount: 1
   maxBullets: 1
   reloadTime: 3
-  timeToFire: 0
   fireInterval: 0
 --- !u!1 &2001412679
 GameObject:

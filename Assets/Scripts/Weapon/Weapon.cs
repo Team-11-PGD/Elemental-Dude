@@ -5,6 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public WeaponTypes weaponType;
+    public EquipedElement equipedElement;
 
     public Transform spawnBulletPos;
     public Transform bulletPrefab;
@@ -13,19 +14,31 @@ public class Weapon : MonoBehaviour
     public int bulletAmount;
     public int maxBullets;
     public float reloadTime;
-    public float timeToFire;
     public float fireInterval;
-    
+    public float maxBulletSpread = 0.02f;
+    public float bulletSpeed = 40;
+
     private bool canFire = true;
     private bool isReloading;
+    private float timeToFire;
     private float reloadEndTime;
     private Vector3 aimPoint;
+
 
 	public enum WeaponTypes
     { 
         Rifle,
         Shotgun,
         RPG
+    }
+
+    public enum EquipedElement
+	{
+        None,
+        Water,
+        Fire,
+        Air,
+        Earth
     }
 
     void Start()
@@ -57,7 +70,33 @@ public class Weapon : MonoBehaviour
 		}
     }
 
-    public virtual void Shoot()
+    public void ElementalWeapon(EquipedElement equipedElement)
+	{
+        switch (equipedElement)
+        {
+            case EquipedElement.None:
+                
+                break;
+
+            case EquipedElement.Water:
+                
+                break;
+
+            case EquipedElement.Fire:
+                
+                break;
+
+            case EquipedElement.Air:
+               
+                break;
+
+            case EquipedElement.Earth:
+                
+                break;
+        }
+    }
+
+    public void Shoot()
     {
         if (bulletAmount <= 0)
         {
@@ -68,8 +107,7 @@ public class Weapon : MonoBehaviour
         else
         {
             bulletAmount -= 1;
-
-            //this is pure for debug purposes
+ 
             if(bulletAmount <= 0)
 			{
                 canFire = false;
@@ -83,8 +121,21 @@ public class Weapon : MonoBehaviour
             //Debug.Log(hit.transform.name);
             aimPoint = hit.point;
         }
-        Vector3 aimDir = (aimPoint - spawnBulletPos.position).normalized;
-        Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
+        Vector3 aimDir = (aimPoint - spawnBulletPos.position).normalized; 
+
+        if (weaponType == WeaponTypes.Shotgun)
+        {
+            for (int i = 0; i < 6; i++)
+			{
+				Transform bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
+                bullet.GetComponent<BulletProjectice>().SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread),Random.Range(-maxBulletSpread, maxBulletSpread),Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
+            }
+        }
+        else
+        {
+            Transform bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            bullet.GetComponent<BulletProjectice>().SetVelocity(bullet.forward * bulletSpeed);
+        }
     }
 
     public virtual void Reload()

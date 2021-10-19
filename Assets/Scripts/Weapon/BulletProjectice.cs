@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletProjectice : MonoBehaviour
 {
     private Rigidbody rb;
-    public float speed = 40;
 
     private void Awake()
     {
@@ -14,11 +13,19 @@ public class BulletProjectice : MonoBehaviour
 
 	private void Start()
 	{
-        rb.velocity = transform.forward * speed;
+       
 	}
 
 	private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (other.gameObject.tag != "Bullet")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+	internal void SetVelocity(Vector3 forward)
+	{
+        rb.velocity = forward;
     }
 }

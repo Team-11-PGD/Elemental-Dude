@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1854659547300713574}
   - component: {fileID: 2139144223512651285}
   m_Layer: 0
-  m_Name: SGBullet
-  m_TagString: Untagged
+  m_Name: RPGBullet
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8600321062039574619}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 13, y: 13, z: 10.4}
   m_Children:
   - {fileID: 8600321062549566494}
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e479c1a4f2f4944a6744d6650fe901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 6
 --- !u!1 &8600321062549566495
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5002f39c02f509a40aec40d3585c688d, type: 2}
+  - {fileID: 2100000, guid: 5579feaf5ce02c549b8154dc88365086, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
