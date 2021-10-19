@@ -54,7 +54,7 @@ class EnemyAI : StateMachine
 
     void Update()
     {
-        if (enemyHealth.HpPercentage <= fleeHealthPercentage)
+        if (enemyHealth.HpPercentage <= fleeHealthPercentage && (CurrentStateId != (int)StateOptions.Flee && CurrentStateId != (int)StateOptions.Heal))
         {
             TransitionTo((int)StateOptions.Flee);
         }
