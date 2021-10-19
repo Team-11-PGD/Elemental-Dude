@@ -5,7 +5,10 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float maxHp;
+
+    [HideInInspector]
     public float currentHp;
+    public float HpPercentage { get { return currentHp / maxHp; } }
 
     private void Start()
     {
@@ -23,10 +26,12 @@ public class Health : MonoBehaviour
     public void Hit(float damageAmt)
     {
         currentHp -= damageAmt;
+        Debug.Log($"{gameObject.name} has {currentHp}");
 
         if (currentHp <= 0)
         {
             //death
+            Debug.Log("Dead");
         }
 
     }
