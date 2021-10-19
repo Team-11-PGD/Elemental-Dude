@@ -21,16 +21,17 @@ public class ShowPickupText : MonoBehaviour
         UIText = uiObject.GetComponent<Text>();
     }
 
-    private void Update()
+    public void StartText(bool useTimer = true)
     {
+        uiObject.SetActive(true);
         UIText.text = powerupText;
-        if (uiObject.activeInHierarchy)
+        if (useTimer)
         {
-            StartCoroutine(ShowText());
+            StartCoroutine(TextDisableTimer());
         }
     }
 
-    private IEnumerator ShowText()
+    private IEnumerator TextDisableTimer()
     {
         yield return new WaitForSeconds(showTextDuration);
         uiObject.SetActive(false);

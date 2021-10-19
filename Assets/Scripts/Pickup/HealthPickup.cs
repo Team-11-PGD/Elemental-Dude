@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class HealthPickup : PickupMain
 {
-    ///example code
-    //public Player player;
+    private Health userHealth;
+
     [SerializeField]
     private string healthPowerupText = "You picked up health.";
 
-    private void AddHealth()
+    protected override void PickedUpPickup()
     {
-        ///example code
-        //player.healthAmount += 50;
-    }
-
-    protected override void PickedUpPowerup()
-    {
+        userHealth = user.GetComponent<Health>();
         text.powerupText = healthPowerupText;
-        AddHealth();
+        userHealth.Heal(20);
 
-        base.PickedUpPowerup();
+        StartCoroutine(RemovePickupOnTimer());
     }
 }

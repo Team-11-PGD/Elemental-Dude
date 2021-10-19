@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class PickupMain : MonoBehaviour
 {
     protected ShowPickupText text;
-    private MeshRenderer model;
+    protected MeshRenderer model;
+    protected Collider user;
 
-    private bool allowPickup = true;
+    protected bool allowPickup = true;
 
     private void Start()
     {
@@ -19,30 +20,28 @@ public class PickupMain : MonoBehaviour
     private void Update()
     {
         ///Testing code start
-        if (Input.GetKeyDown(KeyCode.E) && allowPickup)
+        /*if (Input.GetKeyDown(KeyCode.E) && allowPickup)
         {
             PickedUpPowerup();
-        }
+        }*/
         ///Testing code end
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if ((other.name == "Player") && allowPickup)
         {
-            PickedUpPowerup();
+            user = other;
+            PickedUpPickup();
         }
     }
 
-    protected virtual void PickedUpPowerup()
-    {
-        StartCoroutine(RemovePickup());
-    }
+    protected virtual void PickedUpPickup(){}
 
-    private IEnumerator RemovePickup()
+    protected IEnumerator RemovePickupOnTimer()
     {
         allowPickup = false;
-        text.uiObject.SetActive(true);
+        text.StartText();
         model.enabled = false;
 
         yield return new WaitUntil(() => !text.isActiveAndEnabled);
