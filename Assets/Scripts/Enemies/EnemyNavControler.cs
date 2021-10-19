@@ -38,7 +38,7 @@ public class EnemyNavControler : MonoBehaviour
 
     public void Flee()
     {
-        if(currentRange < fleeRange)
+        if (currentRange < fleeRange)
         {
             agent.SetDestination(fleePos);
         }

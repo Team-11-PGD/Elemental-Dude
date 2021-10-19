@@ -10,8 +10,6 @@ public class EnemyMeleeAttackState : State
     [SerializeField]
     Health playerHealth;
     [SerializeField]
-    NavMeshAgent navMeshAgent;
-    [SerializeField]
     float meleeDistance = 2;
     [SerializeField]
     float attackChargeTime = 1.5f;
@@ -20,20 +18,25 @@ public class EnemyMeleeAttackState : State
 
     public override void Enter()
     {
-        StartCoroutine(AttackTimer());
+        StartCoroutine(Attack());
     }
 
     public override void Exit() { }
 
-    IEnumerator AttackTimer()
+    IEnumerator Attack()
     {
         // Play charge animation
-        navMeshAgent.Warp(transform.position + Vector3.up * 5);// Tmp feedback
+        Debug.Log("start attack animation");
 
         yield return new WaitForSecondsRealtime(attackChargeTime);
         if (Vector3.Distance(player.position, transform.position) <= meleeDistance)
         {
             playerHealth.Hit(damage);
+            StartCoroutine(Attack());
+        }
+        else
+        {
+            context.TransitionTo((int)EnemyAI.StateOptions.MoveToPlayer);
         }
     }
 }

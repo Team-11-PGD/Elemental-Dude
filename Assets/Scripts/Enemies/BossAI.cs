@@ -8,13 +8,33 @@ public class BossAI : StateMachine
     [SerializeField]
     List<StateTuple> standardStates, waterStates, fireStates, airStates, earthStates;
 
-    public new enum StateOptions
+    public enum StateOptions
     {
         MoveToPlayer,
         Attacking,
         Defending
     }
 
+    [SerializeField]
+    protected StateOptions startState;
+
+    [Serializable]
+    protected class StateTuple : Tuple<StateOptions, State>
+    {
+        [SerializeField]
+        StateOptions item1;
+        [SerializeField]
+        State item2;
+
+        public new StateOptions Item1 { get { return item1; } }
+        public new State Item2 { get { return item2; } }
+
+        public StateTuple(StateOptions item1, State item2) : base(item1, item2)
+        {
+            this.item1 = item1;
+            this.item2 = item2;
+        }
+    }
 
     protected void Start()
     {

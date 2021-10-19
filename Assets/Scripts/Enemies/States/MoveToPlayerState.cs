@@ -4,11 +4,12 @@ using UnityEngine.AI;
 
 public class MoveToPlayerState : State
 {
-    public NavMeshAgent agent;
-    public int noticeRange = 15;
-    public float stopRange = 1.5f;
     [SerializeField]
-    private Transform player;
+    NavMeshAgent agent;
+    [SerializeField]
+    float stopRange = 1.5f;
+    [SerializeField]
+    Transform player;
 
     public override void Enter() { }
 
@@ -16,10 +17,7 @@ public class MoveToPlayerState : State
 
     void Update()
     {
-        if (Vector3.Distance(player.position, transform.position) <= noticeRange && Vector3.Distance(player.position, transform.position) >= stopRange)
-        {
-            agent.SetDestination(player.position);
-        }
+        agent.SetDestination(player.position);
         if (Vector3.Distance(player.position, transform.position) <= stopRange)
         {
             agent.SetDestination(transform.position);
