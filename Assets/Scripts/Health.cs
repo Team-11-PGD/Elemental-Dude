@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public float maxHp;
 
+    [HideInInspector]
     public float currentHp;
     public float HpPercentage { get { return currentHp / maxHp; } }
 
