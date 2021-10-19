@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class BulletProjectice : MonoBehaviour
 {
+    [SerializeField]
     private Rigidbody rb;
+    int damage = 1;
 
-    private void Awake()
+    private void OnCollisionEnter(Collision collision)
     {
-        rb = GetComponent<Rigidbody>();
+        if (collision.transform.tag == "Enemy")
+        {
+            collision.transform.GetComponent<Health>().Hit(damage);
+            Destroy(gameObject);
+        }
     }
 
-	private void Start()
-	{
-       
-	}
-
-	private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Bullet")
         {
