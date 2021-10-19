@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class UIManager : MonoBehaviour
 {
+    public bool gameIsPaused = false;
 
-    public static bool GameIsPaused = false;
-    string CurrentScene;
+    void Start()
+    {
+        SceneManager.activeSceneChanged += SceneChanged;
+    }
+
     public void PlayGame()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -19,56 +22,65 @@ public class UIManager : MonoBehaviour
 
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
-
     }
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-    public void GoToPauseMenu()
+
+    void SceneChanged(Scene oldScene, Scene newScene)
     {
-
-
-        SceneManager.LoadScene("PauseMenu");
-        GameIsPaused = true;
-    }
-
-    public void Pause()
-    {
-        /*
-            pause everything
-        */
-
-        // loads the pausemenu scene
-
-        GoToPauseMenu();
-    }
-    public void Resume()
-    {
-        //loads currently the gamescene 
-        SceneManager.LoadScene("GameScene");
-
-
-        GameIsPaused = false;
-    }
-    void Update()
-    {
-        CurrentScene = SceneManager.GetActiveScene().name;
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (newScene.name == "GameScene")
         {
-            if (GameIsPaused)
-            {
-                //resume
-                Resume();
-            }
-            else if (CurrentScene == "GameScene")
-            {
-                //pause
-                Pause();
-            }
+            ResumeGame();
+        }
+    }
 
+    GameObject pauseMenu;
+
+    void ResumeGame()
+    {
+        if (gameIsPaused)
+        {
+            SwitchPause();
+        }
+    }
+
+    void PauseGame()
+    {
+        if (!gameIsPaused)
+        {
+            SwitchPause();
+        }
+    }
+
+    public void SwitchPause()
+    {
+        if (pauseMenu == null)
+        {
+            GameObject[] gameObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+            foreach (GameObject gameObject in gameObjects)
+            {
+                if (gameObject.name == "PauseMenu")
+                {
+                    pauseMenu = gameObject;
+                    break;
+                }
+            }
         }
 
+        gameIsPaused = !gameIsPaused;
+
+        pauseMenu?.SetActive(gameIsPaused);
+        Time.timeScale = gameIsPaused ? 0 : 1;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "GameScene")
+        {
+            SwitchPause();
+        }
     }
 
 }
