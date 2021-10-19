@@ -266,7 +266,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17932
+  m_Name: pb_Mesh17036
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -807,7 +807,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-107936
+  m_Name: pb_Mesh17086
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -979,7 +979,6 @@ GameObject:
   - component: {fileID: 1411800559}
   - component: {fileID: 1411800560}
   - component: {fileID: 1411800564}
-  - component: {fileID: 1411800565}
   - component: {fileID: 1411800568}
   - component: {fileID: 1411800566}
   - component: {fileID: 1411800567}
@@ -1305,22 +1304,6 @@ NavMeshAgent:
   m_BaseOffset: 1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1411800565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411800558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67f4cc7f688b18248b10b74c0ffdefee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 1411800564}
-  noticeRange: 15
-  stopRange: 3
-  player: {fileID: 28914071}
 --- !u!114 &1411800566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1333,6 +1316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af825197021cc54193dd1cfd2813ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 1411800564}
+  noticeRange: 15
+  stopRange: 1.5
+  player: {fileID: 28914071}
 --- !u!114 &1411800567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,7 +1332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cb13c86f79f1646bb12188178d2410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startState: 1
+  startState: 0
   standardStates:
   - item1: 0
     item2: {fileID: 1411800566}
@@ -1381,6 +1368,7 @@ GameObject:
   - component: {fileID: 1488876029}
   - component: {fileID: 1488876028}
   - component: {fileID: 1488876027}
+  - component: {fileID: 1488876033}
   - component: {fileID: 1488876026}
   m_Layer: 7
   m_Name: Test-Cube
@@ -1398,7 +1386,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1488876025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67f4cc7f688b18248b10b74c0ffdefee, type: 3}
+  m_Script: {fileID: 11500000, guid: 9af825197021cc54193dd1cfd2813ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1488876027}
@@ -1720,6 +1708,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1488876033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488876025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55071ddda75bc1b46bd6d8d6edbd8fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startState: 0
+  inspectorStates:
+  - item1: 0
+    item2: {fileID: 1488876026}
 --- !u!1 &1721397598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,6 +2358,7 @@ GameObject:
   - component: {fileID: 1810006612}
   - component: {fileID: 1810006611}
   - component: {fileID: 1810006610}
+  - component: {fileID: 1810006616}
   - component: {fileID: 1810006609}
   m_Layer: 7
   m_Name: Test-Cube (1)
@@ -2371,7 +2376,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1810006608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67f4cc7f688b18248b10b74c0ffdefee, type: 3}
+  m_Script: {fileID: 11500000, guid: 9af825197021cc54193dd1cfd2813ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1810006610}
@@ -2693,13 +2698,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1810006616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810006608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55071ddda75bc1b46bd6d8d6edbd8fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startState: 0
+  inspectorStates:
+  - item1: 0
+    item2: {fileID: 1810006609}
 --- !u!43 &1964875701
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17954
+  m_Name: pb_Mesh17058
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
