@@ -5,25 +5,27 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public WeaponTypes weaponType;
-    public EquipedElement equipedElement;
-
-    public Transform spawnBulletPos;
-    public Transform bulletPrefab;
     public Camera playerCam;
 
-    public int bulletAmount;
+    [Header("Bullet")]
+    public Transform spawnBulletPos;
+    public Transform bulletPrefab;
+    public int curBulletAmount;
     public int maxBullets;
-    public float reloadTime;
-    public float fireInterval;
     public float maxBulletSpread = 0.02f;
     public float bulletSpeed = 40;
 
+    [Header("Timers")]
+    public float reloadTime;
+    public float fireInterval;
+   
     private bool canFire = true;
     private bool isReloading;
     private float timeToFire;
     private float reloadEndTime;
     private Vector3 aimPoint;
 
+    private ElementMain elementMain;
 
 	public enum WeaponTypes
     { 
@@ -32,17 +34,9 @@ public class Weapon : MonoBehaviour
         RPG
     }
 
-    public enum EquipedElement
-	{
-        None,
-        Water,
-        Fire,
-        Air,
-        Earth
-    }
-
     void Start()
     {
+        elementMain = GetComponent<ElementMain>();
     }
 
     void Update()
@@ -60,45 +54,45 @@ public class Weapon : MonoBehaviour
             Reload();
         }
 
-        if(isReloading && Time.time >= reloadEndTime)
+        if (isReloading && Time.time >= reloadEndTime)
 		{
             canFire = true;
             isReloading = false;
-            bulletAmount = maxBullets;
+            curBulletAmount = maxBullets;
 
             Debug.Log("Done reloading!");
 		}
     }
 
-    public void ElementalWeapon(EquipedElement equipedElement)
+    public void ElementWeaponChange()
 	{
-        switch (equipedElement)
+        switch (elementMain.currentType)
         {
-            case EquipedElement.None:
-                
+            case ElementMain.ElementType.None:
+                Debug.Log("I am a None element now");
                 break;
 
-            case EquipedElement.Water:
-                
+            case ElementMain.ElementType.Water:
+                Debug.Log("I am a Water element now");
                 break;
 
-            case EquipedElement.Fire:
-                
+            case ElementMain.ElementType.Fire:
+                Debug.Log("I am a Fire element now");
                 break;
 
-            case EquipedElement.Air:
-               
+            case ElementMain.ElementType.Air:
+                Debug.Log("I am an Air element now");
                 break;
 
-            case EquipedElement.Earth:
-                
+            case ElementMain.ElementType.Earth:
+                Debug.Log("I am an Earth element now");
                 break;
         }
     }
 
     public void Shoot()
     {
-        if (bulletAmount <= 0)
+        if (curBulletAmount <= 0)
         {
             Debug.Log("PRESS R TO RELOAD");
             canFire = false;
@@ -106,9 +100,9 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            bulletAmount -= 1;
+            curBulletAmount -= 1;
  
-            if(bulletAmount <= 0)
+            if(curBulletAmount <= 0)
 			{
                 canFire = false;
                 Debug.Log("PRESS R TO RELOAD");
