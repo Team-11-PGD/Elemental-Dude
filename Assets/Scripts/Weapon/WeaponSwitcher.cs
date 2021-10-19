@@ -7,7 +7,7 @@ public class WeaponSwitcher : MonoBehaviour
     public Weapon[] weapons;
     public Weapon.WeaponTypes startWeapon;
 
-    private Weapon.WeaponTypes curWeapon;
+    public Weapon.WeaponTypes curWeapon;
 
     void Start()
     {

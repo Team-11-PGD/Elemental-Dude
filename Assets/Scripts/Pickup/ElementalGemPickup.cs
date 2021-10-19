@@ -10,7 +10,7 @@ public class ElementalGemPickup : PickupMain
     [SerializeField]
     private string PickupText;
 
-    private Weapon userWeapon;
+    private WeaponSwitcher userWeapon;
 
     private bool inPickup = false;
     private bool confirmMenuOpen = false;
@@ -26,7 +26,6 @@ public class ElementalGemPickup : PickupMain
         if ((other.name == "Player") && allowPickup)
         {
             user = other;
-            userWeapon = user.GetComponent<Weapon>();
             inPickup = true;
             ShowGemText();
         }
@@ -52,8 +51,8 @@ public class ElementalGemPickup : PickupMain
         allowPickup = false;
         confirmMenuOpen = true;
 
-        PickupText = $"Are you sure you want to equip {element.type} to your current weapon? Press F to equip.";
-        //Switch "current weapon" to the name of the current weapon. Can't do it now because i have the old weapon scripts.
+        userWeapon = user.GetComponent<WeaponSwitcher>();
+        PickupText = $"Are you sure you want to equip {element.type} to your {userWeapon.curWeapon} ? Press F to equip.";
         text.powerupText = PickupText;
 
         text.StartText(false);
@@ -65,8 +64,7 @@ public class ElementalGemPickup : PickupMain
 
         //equip {element.type} to {current weapon}
 
-        PickupText = $"You equiped {element.type} to your current weapon.";
-        //Switch "current weapon" to the name of the current weapon. Can't do it now because i have the old weapon scripts.
+        PickupText = $"You equiped {element.type} to your {userWeapon.curWeapon}.";
         text.powerupText = PickupText;
 
         StartCoroutine(RemovePickupOnTimer());
