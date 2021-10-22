@@ -6,15 +6,35 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public bool gameIsPaused = false;
+    GameObject pauseMenu;
 
     void Start()
     {
         SceneManager.activeSceneChanged += SceneChanged;
-        if (SceneManager.GetActiveScene().name == "GameScene")
+        SetMouseState(SceneManager.GetActiveScene().name != "GameScene");
+        FindPauseMenu();
+    }
+
+    void FindPauseMenu()
+    {
+        if (pauseMenu == null)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            GameObject[] gameObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+            foreach (GameObject gameObject in gameObjects)
+            {
+                if (gameObject.name == "PauseMenu")
+                {
+                    pauseMenu = gameObject;
+                    break;
+                }
+            }
         }
+    }
+
+    void SetMouseState(bool value)
+    {
+        Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = value;
     }
 
     public void PlayGame()
@@ -35,20 +55,12 @@ public class UIManager : MonoBehaviour
 
     void SceneChanged(Scene oldScene, Scene newScene)
     {
+        FindPauseMenu();
         if (newScene.name == "GameScene")
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
             ResumeGame();
         }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
     }
-
-    GameObject pauseMenu;
 
     public void ResumeGame()
     {
@@ -66,22 +78,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SwitchPause()
+    void SwitchPause()
     {
-        if (pauseMenu == null)
-        {
-            GameObject[] gameObjects = Resources.FindObjectsOfTypeAll<GameObject>();
-            foreach (GameObject gameObject in gameObjects)
-            {
-                if (gameObject.name == "PauseMenu")
-                {
-                    pauseMenu = gameObject;
-                    break;
-                }
-            }
-        }
-
         gameIsPaused = !gameIsPaused;
+        SetMouseState(gameIsPaused);
 
         pauseMenu?.SetActive(gameIsPaused);
         Time.timeScale = gameIsPaused ? 0 : 1;
