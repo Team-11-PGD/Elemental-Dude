@@ -38,7 +38,7 @@ public class UIManager : MonoBehaviour
 
     GameObject pauseMenu;
 
-    void ResumeGame()
+    public void ResumeGame()
     {
         if (gameIsPaused)
         {
@@ -46,7 +46,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
         if (!gameIsPaused)
         {
