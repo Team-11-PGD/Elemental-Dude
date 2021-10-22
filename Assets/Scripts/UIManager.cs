@@ -10,11 +10,15 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         SceneManager.activeSceneChanged += SceneChanged;
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void PlayGame()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene("GameScene");
     }
     public void QuitGame()
@@ -25,6 +29,7 @@ public class UIManager : MonoBehaviour
     }
     public void GoToMainMenu()
     {
+
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -32,7 +37,14 @@ public class UIManager : MonoBehaviour
     {
         if (newScene.name == "GameScene")
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             ResumeGame();
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
