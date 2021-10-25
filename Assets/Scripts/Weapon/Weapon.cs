@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     public WeaponTypes weaponType;
     public Camera playerCam;
+    public LayerMask rayMask;
 
     [Header("Bullet")]
     public Transform spawnBulletPos;
@@ -37,6 +38,7 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         elementMain = GetComponent<ElementMain>();
+        curBulletAmount = maxBullets;
     }
 
     void Update()
@@ -64,9 +66,9 @@ public class Weapon : MonoBehaviour
 		}
     }
 
-    public void ElementWeaponChange()
+    public void SetWeaponElement(ElementMain.ElementType elementType)
 	{
-        switch (elementMain.currentType)
+        switch (elementType)
         {
             case ElementMain.ElementType.None:
                 Debug.Log("I am a None element now");

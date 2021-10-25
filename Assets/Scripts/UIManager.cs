@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         SceneManager.activeSceneChanged += SceneChanged;
-        SetMouseState(SceneManager.GetActiveScene().name != "GameScene");
+        SetMouseState(SceneManager.GetActiveScene().name != "Weapons");
         FindPauseMenu();
     }
 
@@ -49,7 +49,6 @@ public class UIManager : MonoBehaviour
     }
     public void GoToMainMenu()
     {
-
         SceneManager.LoadScene("MainMenu");
     }
 
