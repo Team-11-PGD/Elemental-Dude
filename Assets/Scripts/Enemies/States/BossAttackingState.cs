@@ -11,7 +11,7 @@ public class BossAttackingState: State
     [SerializeField]
     float meleeDistance = 2;
     [SerializeField]
-    float attackChargeTime = 1.5f;
+    float attackChargeTime = 0.5f;
     [SerializeField]
     float damage = 1f;
     public GameObject fireSlam;
@@ -45,6 +45,7 @@ public class BossAttackingState: State
         if (Vector3.Distance(player.position, transform.position) <= meleeDistance)
         {           
             Instantiate(fireSlam, boss.position, boss.rotation);
+            playerHealth.Hit(damage);
             StartCoroutine(BossAttack());
         }
         else
