@@ -12,6 +12,7 @@ public class BulletProjectice : MonoBehaviour
     {
         if (collision.transform.tag == "Enemy")
         {
+            Debug.Log("Hit");
             collision.transform.GetComponent<Health>().Hit(damage);
             Destroy(gameObject);
         }

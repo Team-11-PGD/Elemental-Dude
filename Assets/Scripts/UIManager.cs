@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public bool gameIsPaused = false;
     GameObject pauseMenu;
+    [SerializeField]
+    Health player;
+    [SerializeField]
+    Slider playerHpBar;
 
     void Start()
     {
         SceneManager.activeSceneChanged += SceneChanged;
         SetMouseState(SceneManager.GetActiveScene().name != "GameScene");
         FindPauseMenu();
+        playerHpBar.maxValue = player.maxHp;
+        playerHpBar.value = player.currentHp;
     }
 
     void FindPauseMenu()
@@ -92,6 +99,14 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "GameScene")
         {
             SwitchPause();
+        }
+
+        //Hp Bar functionality
+        playerHpBar.value = player.currentHp;
+
+        if (player.currentHp <= 0)
+        {
+            //GameOver
         }
     }
 
