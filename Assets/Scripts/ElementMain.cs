@@ -7,16 +7,17 @@ public class ElementMain : MonoBehaviour
 {
 	[HideInInspector]
 	public float DamagePercentage = 1.5f;
-	public ElementType type = ElementType.None;
+	public ElementType currentType = ElementType.None;
 
-	public Dictionary<ElementType, Color> ElementColor = new Dictionary<ElementType, Color>
+	//Do we still need this now?
+	/*public Dictionary<ElementType, Color> ElementColor = new Dictionary<ElementType, Color>
 	{
 		{ ElementType.None, Color.white},
 		{ ElementType.Water, Color.blue},
 		{ ElementType.Fire, new Color(1, 0.4f, 0)},
 		{ ElementType.Air, Color.grey},
 		{ ElementType.Earth, new Color(0.59f, 0.38f, 0.21f)}
-	};
+	};*/
 
 	public enum ElementType
 	{

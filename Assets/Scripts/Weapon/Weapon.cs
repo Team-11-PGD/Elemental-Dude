@@ -5,25 +5,29 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public WeaponTypes weaponType;
-    public EquipedElement equipedElement;
 
-    public Transform spawnBulletPos;
-    public Transform bulletPrefab;
+    //Needed for outdated movement
     public Camera playerCam;
 
-    public int bulletAmount;
+    [Header("Bullet")]
+    public Transform spawnBulletPos;
+    public Transform bulletPrefab;
+    public int curBulletAmount;
     public int maxBullets;
-    public float reloadTime;
-    public float fireInterval;
     public float maxBulletSpread = 0.02f;
     public float bulletSpeed = 40;
 
+    [Header("Timers")]
+    public float reloadTime;
+    public float fireInterval;
+   
     private bool canFire = true;
     private bool isReloading;
     private float timeToFire;
     private float reloadEndTime;
     private Vector3 aimPoint;
 
+    private ElementMain elementMain;
 
 	public enum WeaponTypes
     { 
@@ -32,17 +36,9 @@ public class Weapon : MonoBehaviour
         RPG
     }
 
-    public enum EquipedElement
-	{
-        None,
-        Water,
-        Fire,
-        Air,
-        Earth
-    }
-
     void Start()
     {
+        elementMain = GetComponent<ElementMain>();
     }
 
     void Update()
@@ -55,63 +51,65 @@ public class Weapon : MonoBehaviour
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && !canFire && !isReloading)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             Reload();
         }
 
-        if(isReloading && Time.time >= reloadEndTime)
+        if (isReloading && Time.time >= reloadEndTime)
 		{
             canFire = true;
             isReloading = false;
-            bulletAmount = maxBullets;
+            curBulletAmount = maxBullets;
 
             Debug.Log("Done reloading!");
 		}
     }
 
-    public void ElementalWeapon(EquipedElement equipedElement)
+    public void ElementWeaponChange()
 	{
-        switch (equipedElement)
+        switch (elementMain.currentType)
         {
-            case EquipedElement.None:
-                
+            case ElementMain.ElementType.None:
+                Debug.Log("I am a None element now");
                 break;
 
-            case EquipedElement.Water:
-                
+            case ElementMain.ElementType.Water:
+                Debug.Log("I am a Water element now");
                 break;
 
-            case EquipedElement.Fire:
-                
+            case ElementMain.ElementType.Fire:
+                Debug.Log("I am a Fire element now");
                 break;
 
-            case EquipedElement.Air:
-               
+            case ElementMain.ElementType.Air:
+                Debug.Log("I am an Air element now");
                 break;
 
-            case EquipedElement.Earth:
-                
+            case ElementMain.ElementType.Earth:
+                Debug.Log("I am an Earth element now");
                 break;
         }
     }
 
     public void Shoot()
     {
-        if (bulletAmount <= 0)
+        if (curBulletAmount <= 0)
         {
-            Debug.Log("PRESS R TO RELOAD");
+            Reload();
+            Debug.Log("Reloading...");
             canFire = false;
             return;
         }
         else
         {
-            bulletAmount -= 1;
+            curBulletAmount -= 1;
  
-            if(bulletAmount <= 0)
+            if(curBulletAmount <= 0)
 			{
+                Reload();
+                Debug.Log("Reloading...");
                 canFire = false;
-                Debug.Log("PRESS R TO RELOAD");
             }
         }
 
@@ -121,20 +119,23 @@ public class Weapon : MonoBehaviour
             //Debug.Log(hit.transform.name);
             aimPoint = hit.point;
         }
-        Vector3 aimDir = (aimPoint - spawnBulletPos.position).normalized; 
+        Vector3 aimDir = (aimPoint - spawnBulletPos.position).normalized;
 
+        Transform bullet;
         if (weaponType == WeaponTypes.Shotgun)
         {
             for (int i = 0; i < 6; i++)
 			{
-				Transform bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
-                bullet.GetComponent<BulletProjectice>().SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread),Random.Range(-maxBulletSpread, maxBulletSpread),Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
+				bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
+                bullet.GetComponent<BulletProjectice>().SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
+                bullet.GetComponent<BulletProjectice>().SetElementType(elementMain.currentType);
             }
         }
         else
         {
-            Transform bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
             bullet.GetComponent<BulletProjectice>().SetVelocity(bullet.forward * bulletSpeed);
+            bullet.GetComponent<BulletProjectice>().SetElementType(elementMain.currentType);
         }
     }
 

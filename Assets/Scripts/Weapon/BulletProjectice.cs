@@ -5,19 +5,23 @@ using UnityEngine;
 public class BulletProjectice : MonoBehaviour
 {
     [SerializeField]
-    private Rigidbody rb;
-    int damage = 1;
+    private float damageAmount = 5;
 
-    private void OnCollisionEnter(Collision collision)
+    private Rigidbody rb;
+
+    private ElementMain.ElementType elementType;
+
+    private void Awake()
     {
-        if (collision.transform.tag == "Enemy")
-        {
-            collision.transform.GetComponent<Health>().Hit(damage);
-            Destroy(gameObject);
-        }
+        rb = GetComponent<Rigidbody>();
     }
 
-    private void OnTriggerEnter(Collider other)
+	private void Start()
+	{
+       
+	}
+
+	private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Bullet")
         {
@@ -28,5 +32,10 @@ public class BulletProjectice : MonoBehaviour
 	internal void SetVelocity(Vector3 forward)
 	{
         rb.velocity = forward;
+    }
+
+    internal void SetElementType(ElementMain.ElementType type)
+    {
+        elementType = type;
     }
 }
