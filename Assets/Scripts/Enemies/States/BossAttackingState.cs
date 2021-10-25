@@ -3,9 +3,30 @@ using UnityEngine;
 
 public class BossAttackingState: State
 {
+
+    [SerializeField]
+    Transform player;
+    [SerializeField]
+    Health playerHealth;
+    [SerializeField]
+    float meleeDistance = 2;
+    [SerializeField]
+    float attackChargeTime = 1.5f;
+    [SerializeField]
+    float damage = 1f;
+    public GameObject fireSlam;
+    public Transform boss;
+    public enum bossAttacks
+    {
+        fireBreath,
+        fireSlam,
+        fireballRain,
+        lavaStream
+    }
+
     public override void Enter()
     {
-        StartCoroutine(Timer(2));
+        StartCoroutine(BossAttack());
     }
 
     public override void Exit() { }
@@ -15,13 +36,30 @@ public class BossAttackingState: State
         context.transform.Rotate(Vector3.up, 2);
     }
 
-    IEnumerator Timer(float time)
+    IEnumerator BossAttack()
     {
-        yield return new WaitForSecondsRealtime(time);
+        // Play charge animation
+        Debug.Log("start bossattack animation");
 
-        // You can transition between states with the TransitionTo method.
-        // This method requires the id of the state.
-        // If you used a enum you will again need to cast this to a int.
-        context.TransitionTo((int)AIExample.StateOptions.EnemyAttacking);
+        yield return new WaitForSecondsRealtime(attackChargeTime);
+        if (Vector3.Distance(player.position, transform.position) <= meleeDistance)
+        {           
+            Instantiate(fireSlam, boss.position, boss.rotation);
+            StartCoroutine(BossAttack());
+        }
+        else
+        {
+            context.TransitionTo((int)BossAI.StateOptions.MoveToPlayer);
+        }
     }
+
+    /*    IEnumerator Timer(float time)
+        {
+            yield return new WaitForSecondsRealtime(time);
+
+            // You can transition between states with the TransitionTo method.
+            // This method requires the id of the state.
+            // If you used a enum you will again need to cast this to a int.
+            context.TransitionTo((int)AIExample.StateOptions.EnemyAttacking);
+        }*/
 }
