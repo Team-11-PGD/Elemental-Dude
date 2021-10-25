@@ -41,7 +41,7 @@ public class ElementalGemPickup : PickupMain
 
     private void ShowGemText()
     {
-        PickupText = $"Press E to use {element.type} gem.";
+        PickupText = $"Press E to use {element.currentType} gem.";
         text.powerupText = PickupText;
         text.StartText(false);
     }
@@ -52,7 +52,7 @@ public class ElementalGemPickup : PickupMain
         confirmMenuOpen = true;
 
         userWeapon = user.GetComponent<WeaponSwitcher>();
-        PickupText = $"Are you sure you want to equip {element.type} to your {userWeapon.curWeapon} ? Press F to equip.";
+        PickupText = $"Are you sure you want to equip {element.currentType} to your {userWeapon.curWeapon} ? Press F to equip.";
         text.powerupText = PickupText;
 
         text.StartText(false);
@@ -64,7 +64,7 @@ public class ElementalGemPickup : PickupMain
 
         //equip {element.type} to {current weapon}
 
-        PickupText = $"You equiped {element.type} to your {userWeapon.curWeapon}.";
+        PickupText = $"You equiped {element.currentType} to your {userWeapon.curWeapon}.";
         text.powerupText = PickupText;
 
         StartCoroutine(RemovePickupOnTimer());

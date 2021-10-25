@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletProjectice : MonoBehaviour
+public class BulletProjectile : MonoBehaviour
 {
     [SerializeField]
     private float damageAmount = 5;

@@ -5,8 +5,6 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public WeaponTypes weaponType;
-
-    //Needed for outdated movement
     public Camera playerCam;
 
     [Header("Bullet")]
@@ -127,15 +125,15 @@ public class Weapon : MonoBehaviour
             for (int i = 0; i < 6; i++)
 			{
 				bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
-                bullet.GetComponent<BulletProjectice>().SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
-                bullet.GetComponent<BulletProjectice>().SetElementType(elementMain.currentType);
+                bullet.GetComponent<BulletProjectile>().SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
+                bullet.GetComponent<BulletProjectile>().SetElementType(elementMain.currentType);
             }
         }
         else
         {
             bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
-            bullet.GetComponent<BulletProjectice>().SetVelocity(bullet.forward * bulletSpeed);
-            bullet.GetComponent<BulletProjectice>().SetElementType(elementMain.currentType);
+            bullet.GetComponent<BulletProjectile>().SetVelocity(bullet.forward * bulletSpeed);
+            bullet.GetComponent<BulletProjectile>().SetElementType(elementMain.currentType);
         }
     }
 
