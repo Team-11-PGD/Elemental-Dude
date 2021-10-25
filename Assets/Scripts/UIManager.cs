@@ -3,15 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class UIManager : MonoBehaviour
 {
+    public bool gameIsPaused = false;
+    GameObject pauseMenu;
 
-    public static bool GameIsPaused = false;
-    string CurrentScene;
+    void Start()
+    {
+        SceneManager.activeSceneChanged += SceneChanged;
+        SetMouseState(SceneManager.GetActiveScene().name != "GameScene");
+        FindPauseMenu();
+    }
+
+    void FindPauseMenu()
+    {
+        if (pauseMenu == null)
+        {
+            GameObject[] gameObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+            foreach (GameObject gameObject in gameObjects)
+            {
+                if (gameObject.name == "PauseMenu")
+                {
+                    pauseMenu = gameObject;
+                    break;
+                }
+            }
+        }
+    }
+
+    void SetMouseState(bool value)
+    {
+        Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = value;
+    }
+
     public void PlayGame()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene("GameScene");
     }
     public void QuitGame()
@@ -19,56 +46,53 @@ public class UIManager : MonoBehaviour
 
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
-
     }
     public void GoToMainMenu()
     {
+
         SceneManager.LoadScene("MainMenu");
     }
-    public void GoToPauseMenu()
+
+    void SceneChanged(Scene oldScene, Scene newScene)
     {
-
-
-        SceneManager.LoadScene("PauseMenu");
-        GameIsPaused = true;
+        FindPauseMenu();
+        if (newScene.name == "GameScene")
+        {
+            ResumeGame();
+        }
     }
 
-    public void Pause()
+    public void ResumeGame()
     {
-        /*
-            pause everything
-        */
-
-        // loads the pausemenu scene
-
-        GoToPauseMenu();
+        if (gameIsPaused)
+        {
+            SwitchPause();
+        }
     }
-    public void Resume()
+
+    public void PauseGame()
     {
-        //loads currently the gamescene 
-        SceneManager.LoadScene("GameScene");
-
-
-        GameIsPaused = false;
+        if (!gameIsPaused)
+        {
+            SwitchPause();
+        }
     }
+
+    void SwitchPause()
+    {
+        gameIsPaused = !gameIsPaused;
+        SetMouseState(gameIsPaused);
+
+        pauseMenu?.SetActive(gameIsPaused);
+        Time.timeScale = gameIsPaused ? 0 : 1;
+    }
+
     void Update()
     {
-        CurrentScene = SceneManager.GetActiveScene().name;
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "GameScene")
         {
-            if (GameIsPaused)
-            {
-                //resume
-                Resume();
-            }
-            else if (CurrentScene == "GameScene")
-            {
-                //pause
-                Pause();
-            }
-
+            SwitchPause();
         }
-
     }
 
 }
