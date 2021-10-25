@@ -44,7 +44,7 @@ public class PickupMain : MonoBehaviour
         text.StartText();
         model.enabled = false;
 
-        yield return new WaitUntil(() => !text.isActiveAndEnabled);
+        yield return new WaitUntil(() => !text.uiObject.activeInHierarchy);
 
         Destroy(model);
         Destroy(gameObject);

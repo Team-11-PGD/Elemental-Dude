@@ -23,8 +23,12 @@ public class ElementalGemPickup : PickupMain
 
     protected override void OnTriggerEnter(Collider other)
     {
-        if ((other.name == "Player") && allowPickup)
+        
+
+        if ((other.gameObject.tag == "Player") && allowPickup)
         {
+            Debug.Log("enter");
+
             user = other;
             inPickup = true;
             ShowGemText();
@@ -33,6 +37,7 @@ public class ElementalGemPickup : PickupMain
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("exit");
         inPickup = false;
         allowPickup = true;
         confirmMenuOpen = false;
@@ -62,11 +67,19 @@ public class ElementalGemPickup : PickupMain
     {
         confirmMenuOpen = false;
 
-        //equip {element.type} to {current weapon}
+        if (userWeapon.GetWeapon(userWeapon.curWeapon).elementMain.currentType == ElementMain.ElementType.None) //do switch
+        {
+            userWeapon.GetWeapon(userWeapon.curWeapon).SetWeaponElement(element.currentType);
+            PickupText = $"You equiped {element.currentType} to your {userWeapon.curWeapon}.";
+            text.powerupText = PickupText;
 
-        PickupText = $"You equiped {element.currentType} to your {userWeapon.curWeapon}.";
-        text.powerupText = PickupText;
-
-        StartCoroutine(RemovePickupOnTimer());
+            StartCoroutine(RemovePickupOnTimer());
+        }
+        else //dont switch
+        {
+            PickupText = $"You already have {userWeapon.GetWeapon(userWeapon.curWeapon).elementMain.currentType} on your {userWeapon.curWeapon}.";
+            text.powerupText = PickupText;
+            text.StartText();
+        }
     }
 }

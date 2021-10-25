@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour
     private float reloadEndTime;
     private Vector3 aimPoint;
 
-    private ElementMain elementMain;
+    public ElementMain elementMain;
 
 	public enum WeaponTypes
     { 
@@ -64,27 +64,32 @@ public class Weapon : MonoBehaviour
 		}
     }
 
-    public void ElementWeaponChange()
+    public void SetWeaponElement(ElementMain.ElementType elementType)
 	{
-        switch (elementMain.currentType)
+        switch (elementType)
         {
             case ElementMain.ElementType.None:
+                elementMain.currentType = ElementMain.ElementType.None;
                 Debug.Log("I am a None element now");
                 break;
 
             case ElementMain.ElementType.Water:
+                elementMain.currentType = ElementMain.ElementType.Water;
                 Debug.Log("I am a Water element now");
                 break;
 
             case ElementMain.ElementType.Fire:
+                elementMain.currentType = ElementMain.ElementType.Fire;
                 Debug.Log("I am a Fire element now");
                 break;
 
             case ElementMain.ElementType.Air:
+                elementMain.currentType = ElementMain.ElementType.Air;
                 Debug.Log("I am an Air element now");
                 break;
 
             case ElementMain.ElementType.Earth:
+                elementMain.currentType = ElementMain.ElementType.Earth;
                 Debug.Log("I am an Earth element now");
                 break;
         }
