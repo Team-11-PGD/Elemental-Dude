@@ -5,6 +5,7 @@ using System;
 
 public class ElementMain : MonoBehaviour
 {
+	[HideInInspector]
 	public float DamagePercentage = 1.5f;
 	public ElementType type = ElementType.None;
 
