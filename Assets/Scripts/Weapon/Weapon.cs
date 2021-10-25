@@ -5,6 +5,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public WeaponTypes weaponType;
+
+    //Needed for outdated movement
     public Camera playerCam;
 
     [Header("Bullet")]
@@ -49,7 +51,7 @@ public class Weapon : MonoBehaviour
             Shoot();
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && !canFire && !isReloading)
+        if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
             Reload();
         }
@@ -94,7 +96,8 @@ public class Weapon : MonoBehaviour
     {
         if (curBulletAmount <= 0)
         {
-            Debug.Log("PRESS R TO RELOAD");
+            Reload();
+            Debug.Log("Reloading...");
             canFire = false;
             return;
         }
@@ -104,8 +107,9 @@ public class Weapon : MonoBehaviour
  
             if(curBulletAmount <= 0)
 			{
+                Reload();
+                Debug.Log("Reloading...");
                 canFire = false;
-                Debug.Log("PRESS R TO RELOAD");
             }
         }
 
@@ -115,20 +119,23 @@ public class Weapon : MonoBehaviour
             //Debug.Log(hit.transform.name);
             aimPoint = hit.point;
         }
-        Vector3 aimDir = (aimPoint - spawnBulletPos.position).normalized; 
+        Vector3 aimDir = (aimPoint - spawnBulletPos.position).normalized;
 
+        Transform bullet;
         if (weaponType == WeaponTypes.Shotgun)
         {
             for (int i = 0; i < 6; i++)
 			{
-				Transform bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
-                bullet.GetComponent<BulletProjectice>().SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread),Random.Range(-maxBulletSpread, maxBulletSpread),Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
+				bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
+                bullet.GetComponent<BulletProjectice>().SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
+                bullet.GetComponent<BulletProjectice>().SetElementType(elementMain.currentType);
             }
         }
         else
         {
-            Transform bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
             bullet.GetComponent<BulletProjectice>().SetVelocity(bullet.forward * bulletSpeed);
+            bullet.GetComponent<BulletProjectice>().SetElementType(elementMain.currentType);
         }
     }
 

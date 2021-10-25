@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class BulletProjectice : MonoBehaviour
 {
+    [SerializeField]
+    private float damageAmount = 5;
+
     private Rigidbody rb;
+
+    private ElementMain.ElementType elementType;
 
     private void Awake()
     {
@@ -27,5 +32,10 @@ public class BulletProjectice : MonoBehaviour
 	internal void SetVelocity(Vector3 forward)
 	{
         rb.velocity = forward;
+    }
+
+    internal void SetElementType(ElementMain.ElementType type)
+    {
+        elementType = type;
     }
 }

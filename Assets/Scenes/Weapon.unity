@@ -805,6 +805,7 @@ GameObject:
   - component: {fileID: 516116062}
   - component: {fileID: 516116061}
   - component: {fileID: 516116063}
+  - component: {fileID: 516116064}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -889,14 +890,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
-  equipedElement: 0
+  playerCam: {fileID: 187026090}
   spawnBulletPos: {fileID: 869298611}
   bulletPrefab: {fileID: 8600321062039574617, guid: b393fb1618d48a74591c0313bd6ae983, type: 3}
-  playerCam: {fileID: 187026090}
-  bulletAmount: 1
+  curBulletAmount: 1
   maxBullets: 1
+  maxBulletSpread: 0.02
+  bulletSpeed: 40
   reloadTime: 1
   fireInterval: 1
+--- !u!114 &516116064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516116059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec63d62cba19714683f397e86d7c05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagePercentage: 1.5
+  currentType: 0
 --- !u!1 &666407588
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,6 +1048,7 @@ GameObject:
   - component: {fileID: 1480423201}
   - component: {fileID: 1480423200}
   - component: {fileID: 1480423199}
+  - component: {fileID: 1480423202}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -1067,12 +1084,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
-  equipedElement: 0
+  playerCam: {fileID: 187026090}
   spawnBulletPos: {fileID: 387611496}
   bulletPrefab: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
-  playerCam: {fileID: 187026090}
-  bulletAmount: 30
+  curBulletAmount: 30
   maxBullets: 30
+  maxBulletSpread: 0.02
+  bulletSpeed: 40
   reloadTime: 3
   fireInterval: 0.4
 --- !u!23 &1480423200
@@ -1124,6 +1142,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480423197}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1480423202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480423197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec63d62cba19714683f397e86d7c05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagePercentage: 1.5
+  currentType: 0
 --- !u!1 &1494493713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,6 +1361,7 @@ GameObject:
   - component: {fileID: 1935641377}
   - component: {fileID: 1935641376}
   - component: {fileID: 1935641378}
+  - component: {fileID: 1935641379}
   m_Layer: 0
   m_Name: RPG
   m_TagString: Untagged
@@ -1413,14 +1446,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
-  equipedElement: 0
+  playerCam: {fileID: 187026090}
   spawnBulletPos: {fileID: 510659893}
   bulletPrefab: {fileID: 8600321062039574617, guid: 00d2d262bfb718a4887e28c4058a95bd, type: 3}
-  playerCam: {fileID: 187026090}
-  bulletAmount: 1
+  curBulletAmount: 1
   maxBullets: 1
+  maxBulletSpread: 0.02
+  bulletSpeed: 40
   reloadTime: 3
   fireInterval: 0
+--- !u!114 &1935641379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935641374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec63d62cba19714683f397e86d7c05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagePercentage: 1.5
+  currentType: 0
 --- !u!1 &2001412679
 GameObject:
   m_ObjectHideFlags: 0
