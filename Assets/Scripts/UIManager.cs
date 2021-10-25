@@ -6,55 +6,16 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public bool gameIsPaused = false;
+    GameObject pauseMenu;
 
     void Start()
     {
         SceneManager.activeSceneChanged += SceneChanged;
+        SetMouseState(SceneManager.GetActiveScene().name != "GameScene");
+        FindPauseMenu();
     }
 
-    public void PlayGame()
-    {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadScene("GameScene");
-    }
-    public void QuitGame()
-    {
-
-        Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
-    }
-    public void GoToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    void SceneChanged(Scene oldScene, Scene newScene)
-    {
-        if (newScene.name == "GameScene")
-        {
-            ResumeGame();
-        }
-    }
-
-    GameObject pauseMenu;
-
-    void ResumeGame()
-    {
-        if (gameIsPaused)
-        {
-            SwitchPause();
-        }
-    }
-
-    void PauseGame()
-    {
-        if (!gameIsPaused)
-        {
-            SwitchPause();
-        }
-    }
-
-    public void SwitchPause()
+    void FindPauseMenu()
     {
         if (pauseMenu == null)
         {
@@ -68,8 +29,59 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+    }
 
+    void SetMouseState(bool value)
+    {
+        Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = value;
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+    public void QuitGame()
+    {
+
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
+    public void GoToMainMenu()
+    {
+
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    void SceneChanged(Scene oldScene, Scene newScene)
+    {
+        FindPauseMenu();
+        if (newScene.name == "GameScene")
+        {
+            ResumeGame();
+        }
+    }
+
+    public void ResumeGame()
+    {
+        if (gameIsPaused)
+        {
+            SwitchPause();
+        }
+    }
+
+    public void PauseGame()
+    {
+        if (!gameIsPaused)
+        {
+            SwitchPause();
+        }
+    }
+
+    void SwitchPause()
+    {
         gameIsPaused = !gameIsPaused;
+        SetMouseState(gameIsPaused);
 
         pauseMenu?.SetActive(gameIsPaused);
         Time.timeScale = gameIsPaused ? 0 : 1;

@@ -16,11 +16,11 @@ public class ShootingSpeedPickup : PickupMain
         //player.shootingSpeed += 0.1f;
     }
 
-    protected override void PickedUpPowerup()
+    protected override void PickedUpPickup()
     {
         text.powerupText = shootingSpeedPowerupText;
         IncreaseShootingSpeed();
 
-        base.PickedUpPowerup();
+        StartCoroutine(RemovePickupOnTimer());
     }
 }
