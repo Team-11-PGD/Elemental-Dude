@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
     public void Hit(float damageAmt)
     {
         currentHp -= damageAmt;
-        Debug.Log($"{gameObject.name} has {currentHp}");
+        Debug.Log($"{gameObject.name} has {currentHp} hp");
 
         if (currentHp <= 0)
         {

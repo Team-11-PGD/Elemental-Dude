@@ -5,11 +5,14 @@ using UnityEngine;
 public class BulletProjectile : MonoBehaviour
 {
     [SerializeField]
-    private float damageAmount = 5;
+    private float damageAmount = 10;
 
     private Rigidbody rb;
+    private float dmgPercentage;
 
     private ElementMain.ElementType elementType;
+    private ElementMain OtherElementMain;
+    private Health OtherHealth;
 
     private void Awake()
     {
@@ -27,7 +30,20 @@ public class BulletProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            OtherElementMain = other.gameObject.GetComponent<ElementMain>();
+            OtherHealth = other.gameObject.GetComponent<Health>();
+            DamageHandler();
+        }
     }
+
+    public void DamageHandler()
+	{
+        dmgPercentage = OtherElementMain.ElementDmgPercentage(OtherElementMain.currentType, elementType);
+        OtherHealth.Hit(damageAmount * dmgPercentage);
+	}
 
 	internal void SetVelocity(Vector3 forward)
 	{

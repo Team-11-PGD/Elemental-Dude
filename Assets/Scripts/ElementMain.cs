@@ -6,7 +6,9 @@ using System;
 public class ElementMain : MonoBehaviour
 {
 	[HideInInspector]
-	public float DamagePercentage = 1.5f;
+	public float advantageElemPercentage = 1.5f;
+	[HideInInspector]
+	public float disadvantageElemPercentage = 0.5f;
 	public ElementType currentType = ElementType.None;
 
 	//Do we still need this now?
@@ -35,28 +37,44 @@ public class ElementMain : MonoBehaviour
 			case ElementType.Water:
 				if (otherElement == ElementType.Fire)
 				{
-					return DamagePercentage;
+					return advantageElemPercentage;
+				}
+				else if(otherElement == ElementType.Earth)
+				{
+					return disadvantageElemPercentage;
 				}
 				break;
 
 			case ElementType.Fire:
 				if (otherElement == ElementType.Air)
 				{
-					return DamagePercentage;
+					return advantageElemPercentage;
+				}
+				else if (otherElement == ElementType.Water)
+				{
+					return disadvantageElemPercentage;
 				}
 				break;
 
 			case ElementType.Air:
 				if (otherElement == ElementType.Earth)
 				{
-					return DamagePercentage;
+					return advantageElemPercentage;
+				}
+				else if (otherElement == ElementType.Fire)
+				{
+					return disadvantageElemPercentage;
 				}
 				break;
 
 			case ElementType.Earth:
 				if (otherElement == ElementType.Water)
 				{
-					return DamagePercentage;
+					return advantageElemPercentage;
+				}
+				else if (otherElement == ElementType.Air)
+				{
+					return disadvantageElemPercentage;
 				}
 				break;
 		}

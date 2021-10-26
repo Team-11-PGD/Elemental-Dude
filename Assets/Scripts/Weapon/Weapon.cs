@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     public WeaponTypes weaponType;
     public Camera playerCam;
+    public LayerMask rayMask;
 
     [Header("Bullet")]
     public Transform spawnBulletPos;
@@ -37,6 +38,7 @@ public class Weapon : MonoBehaviour
     void Start()
     {
         elementMain = GetComponent<ElementMain>();
+        curBulletAmount = maxBullets;
     }
 
     void Update()

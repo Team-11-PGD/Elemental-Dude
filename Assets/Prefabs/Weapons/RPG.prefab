@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2664363309930363676}
   - component: {fileID: 2664363309930363677}
   - component: {fileID: 2664363309930363679}
+  - component: {fileID: 7687334907029580273}
   m_Layer: 0
   m_Name: RPG
   m_TagString: Untagged
@@ -126,13 +127,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
-  equipedElement: 0
+  playerCam: {fileID: 0}
   spawnBulletPos: {fileID: 2664363308535266568}
   bulletPrefab: {fileID: 8600321062039574617, guid: 00d2d262bfb718a4887e28c4058a95bd, type: 3}
-  playerCam: {fileID: 0}
-  bulletAmount: 1
+  curBulletAmount: 0
   maxBullets: 1
-  reloadTime: 3
-  fireInterval: 0
   maxBulletSpread: 0.02
   bulletSpeed: 40
+  reloadTime: 3
+  fireInterval: 0
+--- !u!114 &7687334907029580273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664363309930363683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec63d62cba19714683f397e86d7c05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagePercentage: 1.5
+  currentType: 0

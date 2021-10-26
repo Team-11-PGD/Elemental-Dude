@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5727898192722695229}
   - component: {fileID: 5727898192722695230}
   - component: {fileID: 5727898192722695228}
+  - component: {fileID: 6660313812265876682}
   m_Layer: 0
   m_Name: Shotgun
   m_TagString: Untagged
@@ -126,13 +127,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
-  equipedElement: 0
+  playerCam: {fileID: 0}
   spawnBulletPos: {fileID: 5727898192000166864}
   bulletPrefab: {fileID: 8600321062039574617, guid: b393fb1618d48a74591c0313bd6ae983, type: 3}
-  playerCam: {fileID: 0}
-  bulletAmount: 1
+  curBulletAmount: 0
   maxBullets: 1
-  reloadTime: 1
-  fireInterval: 1
   maxBulletSpread: 0.02
   bulletSpeed: 40
+  reloadTime: 1
+  fireInterval: 1
+--- !u!114 &6660313812265876682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5727898192722695224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec63d62cba19714683f397e86d7c05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagePercentage: 1.5
+  currentType: 0
