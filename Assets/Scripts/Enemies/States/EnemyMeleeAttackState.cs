@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMeleeAttackState : State
+public class EnemyMeleeAttackState : EnemyState
 {
-    [SerializeField]
-    Transform player;
-    [SerializeField]
-    Health playerHealth;
     [SerializeField]
     float meleeDistance = 2;
     [SerializeField]
@@ -18,6 +14,7 @@ public class EnemyMeleeAttackState : State
 
     public override void Enter()
     {
+        base.Enter();
         StartCoroutine(Attack());
     }
 
@@ -29,9 +26,9 @@ public class EnemyMeleeAttackState : State
         Debug.Log("start attack animation");
 
         yield return new WaitForSecondsRealtime(attackChargeTime);
-        if (Vector3.Distance(player.position, transform.position) <= meleeDistance)
+        if (Vector3.Distance(enemyAI.playerModel.position, transform.position) <= meleeDistance)
         {
-            playerHealth.Hit(damage);
+            enemyAI.playerHealth.Hit(damage);
             StartCoroutine(Attack());
         }
         else

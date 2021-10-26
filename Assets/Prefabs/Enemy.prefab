@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 3607934715122800389}
   - component: {fileID: 7932866920127611963}
   - component: {fileID: -4841626783498317459}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,6 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55071ddda75bc1b46bd6d8d6edbd8fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerModel: {fileID: 0}
+  playerHealth: {fileID: 0}
   inspectorStates:
   - item1: 0
     item2: {fileID: 8273331589724452290}
@@ -410,8 +412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ad6d29e5c68eb4097f0c9e2aaf0051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  playerHealth: {fileID: 0}
   meleeDistance: 2
   attackChargeTime: 1.5
   damage: 1
@@ -427,7 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b3946a8d8b13e4f81e854af58f22c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   agent: {fileID: 4912808448226590131}
   noticeRange: 15
   patrolingRange: 15
@@ -460,7 +459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c65fc3b2b30924fa9b028e2a79421a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   agent: {fileID: 4912808448226590131}
   fleeRange: 30
 --- !u!114 &-4841626783498317459

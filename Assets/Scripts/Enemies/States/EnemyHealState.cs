@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-class EnemyHealState : State
+class EnemyHealState : EnemyState
 {
     [SerializeField]
     Health enemyHealth;

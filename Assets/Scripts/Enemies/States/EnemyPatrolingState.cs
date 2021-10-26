@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-class EnemyPatrolingState : State
+class EnemyPatrolingState : EnemyState
 {
-    [SerializeField]
-    Transform player;
     [SerializeField]
     NavMeshAgent agent;
     [SerializeField]
@@ -20,6 +18,7 @@ class EnemyPatrolingState : State
 
     public override void Enter()
     {
+        base.Enter();
         normalAgentSpeed = agent.speed;
         agent.speed = 3.5f;
     }
@@ -31,7 +30,7 @@ class EnemyPatrolingState : State
 
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) <= noticeRange || enemyHealth.HpPercentage != 1)
+        if (Vector3.Distance(enemyAI.playerModel.transform.position, transform.position) <= noticeRange || enemyHealth.HpPercentage != 1)
         {
             context.TransitionTo((int)EnemyAI.StateOptions.MoveToPlayer);
         }

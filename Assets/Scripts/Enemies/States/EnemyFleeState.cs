@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-class EnemyFleeState : State
+class EnemyFleeState : EnemyState
 {
-    [SerializeField]
-    Transform player;
     [SerializeField]
     NavMeshAgent agent;
     [SerializeField]
@@ -17,6 +15,7 @@ class EnemyFleeState : State
 
     public override void Enter()
     {
+        base.Enter();
         NewFleeDestination();
         StartCoroutine(CornerTimer());
     }
@@ -25,7 +24,7 @@ class EnemyFleeState : State
 
     void NewFleeDestination()
     {
-        Vector3 dirToPlayer = player.position - transform.position;
+        Vector3 dirToPlayer = enemyAI.playerModel.position - transform.position;
         Vector3 fleePos = transform.position - dirToPlayer;
         agent.SetDestination(fleePos);
     }
@@ -39,7 +38,7 @@ class EnemyFleeState : State
             NewFleeDestination();
         }
 
-        if (Vector3.Distance(player.position, transform.position) >= fleeRange || (agent.velocity == Vector3.zero && cornerCheck))
+        if (Vector3.Distance(enemyAI.playerModel.position, transform.position) >= fleeRange || (agent.velocity == Vector3.zero && cornerCheck))
         {
             context.TransitionTo((int)EnemyAI.StateOptions.Heal);
         }

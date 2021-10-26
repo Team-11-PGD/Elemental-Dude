@@ -2,17 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMoveToPlayerState : State
+public class EnemyMoveToPlayerState : EnemyState
 {
     [SerializeField]
     NavMeshAgent agent;
     [SerializeField]
     float stopRange = 1.5f;
-    EnemyAI enemyAI;
 
     public override void Enter()
     {
-        enemyAI = context as EnemyAI;
+        base.Enter();
     }
 
     public override void Exit() { }

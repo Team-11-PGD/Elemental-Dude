@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-class EnemyAI : StateMachine
+public class EnemyAI : StateMachine
 {
     public enum StateOptions
     {
