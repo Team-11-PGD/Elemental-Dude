@@ -6,12 +6,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
     public bool gameIsPaused = false;
     GameObject pauseMenu;
     [SerializeField]
     Health player;
     [SerializeField]
     Slider playerHpBar;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
 
     void Start()
     {

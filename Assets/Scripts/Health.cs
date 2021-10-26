@@ -35,7 +35,10 @@ public class Health : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            Debug.Log("Dead");
+            else
+            {
+                UIManager.instance.GoToMainMenu();
+            }
         }
 
     }
