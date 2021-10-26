@@ -6,12 +6,17 @@ using UnityEngine;
 public class BossAI : StateMachine
 {
     [SerializeField]
-    List<StateTuple> standardStates, waterStates, fireStates, airStates, earthStates;
+    List<StateTuple> waterStates, fireStates, airStates, earthStates;
+
+    public int activeStateElement = 0;
+    public Transform playerModel;
+    public Health playerHealth;
 
     public enum StateOptions
     {
         MoveToPlayer,
-        Attacking,
+        FireAttacking1,
+        FireAttacking2,
         Defending
     }
 
@@ -40,32 +45,33 @@ public class BossAI : StateMachine
     {
         states = new Dictionary<int, State>();
 
-        // Add all states from assigned inside the inspector
-        foreach (StateTuple tuple in standardStates)
+        switch (activeStateElement)
         {
-            states.Add((int)tuple.Item1, tuple.Item2);
+            case 0:
+                foreach (StateTuple tuple in waterStates)
+                {
+                    states.Add((int)tuple.Item1, tuple.Item2);
+                }
+                break;
+            case 1:
+                foreach (StateTuple tuple in fireStates)
+                {
+                    states.Add((int)tuple.Item1, tuple.Item2);
+                }
+                break;
+            case 2:
+                foreach (StateTuple tuple in airStates)
+                {
+                    states.Add((int)tuple.Item1, tuple.Item2);
+                }
+                break;
+            case 3:
+                foreach (StateTuple tuple in earthStates)
+                {
+                    states.Add((int)tuple.Item1, tuple.Item2);
+                }
+                break;
         }
-
-        foreach (StateTuple tuple in waterStates)
-        {
-            states.Add((int)tuple.Item1, tuple.Item2);
-        }
-
-        foreach (StateTuple tuple in fireStates)
-        {
-            states.Add((int)tuple.Item1, tuple.Item2);
-        }
-
-        foreach (StateTuple tuple in airStates)
-        {
-            states.Add((int)tuple.Item1, tuple.Item2);
-        }
-
-        foreach (StateTuple tuple in earthStates)
-        {
-            states.Add((int)tuple.Item1, tuple.Item2);
-        }
-
 
         StateMachineSetup((int)startState);
     }

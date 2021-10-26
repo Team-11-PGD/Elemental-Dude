@@ -8,20 +8,31 @@ public class MoveToPlayerState : State
     NavMeshAgent agent;
     [SerializeField]
     float stopRange = 1.5f;
-    [SerializeField]
-    Transform player;
+    BossAI bossAI;
 
-    public override void Enter() { }
+    public override void Enter()
+    {
+        bossAI = context as BossAI;
+    }
 
     public override void Exit() { }
 
     void Update()
     {
-        agent.SetDestination(player.position);
-        if (Vector3.Distance(player.position, transform.position) <= stopRange)
+        agent.SetDestination(bossAI.playerModel.position);
+        if (Vector3.Distance(bossAI.playerModel.position, transform.position) <= stopRange)
         {
             agent.SetDestination(transform.position);
-            context.TransitionTo((int)BossAI.StateOptions.Attacking);
+            switch (Random.Range(0, 2))
+            {
+                case 0:
+                    context.TransitionTo((int)BossAI.StateOptions.FireAttacking1);
+                    break;
+                case 1:
+                    context.TransitionTo((int)BossAI.StateOptions.FireAttacking2);
+                    break;
+            }
+
         }
     }
 
