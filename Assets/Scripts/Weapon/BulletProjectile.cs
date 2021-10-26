@@ -11,8 +11,7 @@ public class BulletProjectile : MonoBehaviour
     private float dmgPercentage;
 
     private ElementMain.ElementType elementType;
-    private ElementMain OtherElementMain;
-    private Health OtherHealth;
+    private ElementMain otherElementMain;
 
     private void Awake()
     {
@@ -33,16 +32,15 @@ public class BulletProjectile : MonoBehaviour
 
         if (other.gameObject.tag == "Enemy")
         {
-            OtherElementMain = other.gameObject.GetComponent<ElementMain>();
-            OtherHealth = other.gameObject.GetComponent<Health>();
-            DamageHandler();
+            otherElementMain = other.gameObject.GetComponent<ElementMain>();
+            DamageHandler(other.gameObject.GetComponent<Health>());
         }
     }
 
-    public void DamageHandler()
+    public void DamageHandler(Health otherHealth)
 	{
-        dmgPercentage = OtherElementMain.ElementDmgPercentage(OtherElementMain.currentType, elementType);
-        OtherHealth.Hit(damageAmount * dmgPercentage);
+        dmgPercentage = otherElementMain.ElementDmgPercentage(otherElementMain.currentType, elementType);
+        otherHealth.Hit(damageAmount * dmgPercentage);
 	}
 
 	internal void SetVelocity(Vector3 forward)
