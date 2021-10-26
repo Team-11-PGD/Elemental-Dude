@@ -7,7 +7,6 @@ public class ElementalGemPickup : PickupMain
     [SerializeField]
     private ElementMain element;
 
-    [SerializeField]
     private string PickupText;
 
     private WeaponSwitcher userWeapon;
@@ -56,7 +55,7 @@ public class ElementalGemPickup : PickupMain
         allowPickup = false;
         confirmMenuOpen = true;
 
-        userWeapon = user.GetComponent<WeaponSwitcher>();
+        userWeapon = user.GetComponentInParent<WeaponSwitcher>();
         PickupText = $"Are you sure you want to equip {element.currentType} to your {userWeapon.curWeapon} ? Press F to equip.";
         text.powerupText = PickupText;
 

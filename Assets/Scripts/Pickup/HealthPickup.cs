@@ -11,7 +11,7 @@ public class HealthPickup : PickupMain
 
     protected override void PickedUpPickup()
     {
-        userHealth = user.GetComponent<Health>();
+        userHealth = user.GetComponentInParent<Health>();
         text.powerupText = healthPowerupText;
         userHealth.Heal(20);
 

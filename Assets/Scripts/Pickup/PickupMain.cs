@@ -29,7 +29,7 @@ public class PickupMain : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if ((other.name == "Player") && allowPickup)
+        if ((other.gameObject.tag == "Player") && allowPickup)
         {
             user = other;
             PickedUpPickup();
