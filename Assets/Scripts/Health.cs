@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
 {
     public float maxHp;
 
-    [HideInInspector]
+   // [HideInInspector]
     public float currentHp;
     public float HpPercentage { get { return currentHp / maxHp; } }
 
@@ -31,6 +31,10 @@ public class Health : MonoBehaviour
         if (currentHp <= 0)
         {
             //death
+            if(gameObject.name != "Player")
+            {
+                Destroy(gameObject);
+            }
             Debug.Log("Dead");
         }
 
