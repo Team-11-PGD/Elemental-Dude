@@ -18,8 +18,12 @@ public class UIManager : MonoBehaviour
         SceneManager.activeSceneChanged += SceneChanged;
         SetMouseState(SceneManager.GetActiveScene().name != "Weapons");
         FindPauseMenu();
-        playerHpBar.maxValue = player.maxHp;
-        playerHpBar.value = player.currentHp;
+        // TODO: put this in its own script on the slider
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            playerHpBar.maxValue = player.maxHp;
+            playerHpBar.value = player.currentHp;
+        }
     }
 
     void FindPauseMenu()
@@ -101,11 +105,17 @@ public class UIManager : MonoBehaviour
         }
 
         //Hp Bar functionality
-        playerHpBar.value = player.currentHp;
-
-        if (player.currentHp <= 0)
+        // TODO: put this in its own script on the slider
+        if (SceneManager.GetActiveScene().name == "GameScene")
         {
-            //GameOver
+            playerHpBar.value = player.currentHp;
+
+
+            if (player.currentHp <= 0)
+            {
+                //GameOver
+                GoToMainMenu();
+            }
         }
     }
 

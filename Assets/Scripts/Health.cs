@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
         if (currentHp <= 0)
         {
             //death
-            if(gameObject.name != "Player")
+            if(gameObject.tag != "Player")
             {
                 Destroy(gameObject);
             }

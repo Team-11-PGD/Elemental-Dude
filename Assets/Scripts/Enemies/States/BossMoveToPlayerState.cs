@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MoveToPlayerState : State
+public class BossMoveToPlayerState : State
 {
     [SerializeField]
     NavMeshAgent agent;

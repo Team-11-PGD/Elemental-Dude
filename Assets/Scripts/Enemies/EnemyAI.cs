@@ -13,6 +13,9 @@ class EnemyAI : StateMachine
         Flee
     }
 
+    public Transform playerModel;
+    public Health playerHealth;
+
     [SerializeField]
     List<StateTuple> inspectorStates;
     [SerializeField]

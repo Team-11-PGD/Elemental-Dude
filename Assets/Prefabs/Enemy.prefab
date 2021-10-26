@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4912808448226590131}
   - component: {fileID: 1436399887241011648}
   - component: {fileID: 4912808448226590281}
-  - component: {fileID: 4912808448226590130}
+  - component: {fileID: 8273331589724452290}
   - component: {fileID: 372751384681898225}
   - component: {fileID: 3229697003443597165}
   - component: {fileID: 3607934715122800389}
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inspectorStates:
   - item1: 0
-    item2: {fileID: 4912808448226590130}
+    item2: {fileID: 8273331589724452290}
   - item1: 1
     item2: {fileID: 372751384681898225}
   - item1: 2
@@ -384,7 +384,7 @@ MonoBehaviour:
   enemyHealth: {fileID: 1436399887241011648}
   fleeHealthPercentage: 0.3
   startState: 0
---- !u!114 &4912808448226590130
+--- !u!114 &8273331589724452290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -393,12 +393,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4912808448226590129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af825197021cc54193dd1cfd2813ce7, type: 3}
+  m_Script: {fileID: 11500000, guid: 155391fe471f3304281fe0942b80cc01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 4912808448226590131}
   stopRange: 1.5
-  player: {fileID: 0}
 --- !u!114 &372751384681898225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,5 +475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec63d62cba19714683f397e86d7c05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamagePercentage: 1.5
+  advantageElemPercentage: 1.5
+  disadvantageElemPercentage: 0.5
   currentType: 0
