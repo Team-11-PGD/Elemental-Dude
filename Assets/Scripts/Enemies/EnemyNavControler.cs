@@ -32,7 +32,7 @@ public class EnemyNavControler : MonoBehaviour
     }
     public void Approach()
     {
-        // TODO: SOUND(footsteps & Atack sound)
+        //SOUND: (footsteps & Atack sound)
         agent.speed = 5f;
         agent.SetDestination(player.position);
     }
@@ -41,7 +41,7 @@ public class EnemyNavControler : MonoBehaviour
     {
         if (currentRange < fleeRange)
         {
-            // TODO: SOUND(Footsteps & fleeing sound)
+            //SOUND: (Footsteps & fleeing sound)
             agent.SetDestination(fleePos);
         }
     }
@@ -63,7 +63,7 @@ public class EnemyNavControler : MonoBehaviour
         agent.speed = 3.5f;
         if (agent != null && agent.remainingDistance <= agent.stoppingDistance)
         {
-            // TODO: SOUND(footsteps)
+            //SOUND: (footsteps)
             agent.SetDestination(WanderArea());
         }
     }

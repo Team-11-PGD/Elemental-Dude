@@ -9,7 +9,7 @@ public class DamagingParticle : MonoBehaviour
 
     void OnParticleTrigger()
     {
-        // TODO: SOUND(hit sound)?
+        //SOUND: (hit sound)?
         playerHealth.Hit(damage);
     }
 }

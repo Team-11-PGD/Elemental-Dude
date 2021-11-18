@@ -19,7 +19,7 @@ public class BossAttack : MonoBehaviour
     {
         if (currentState == bossAttacks.fireSlam)
         {
-            // TODO: SOUND(fire slam)
+            //SOUND: (fire slam)
             Instantiate(fireSlam, boss.position, boss.rotation);
         }
     }
