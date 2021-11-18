@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BossMoveToPlayerState), typeof(BossLavaSlamAttack), typeof(BossFlameBreathAttack))]
-[RequireComponent(typeof(BossDefendingFireBallState), typeof(BossDefendingLavaStreamState))]
+[RequireComponent(typeof(BossDefendingFireBallState), typeof(BossDefendingLavaStreamState), typeof(BossMoveToPosition))]
 public class FireBossAI : BossAI
 {
-    [SerializeField]
-    Transform roomCenter;
+    Health shieldHealth;
 
+    [SerializeField]
+    int nextPercentageStep = 33;
+    [SerializeField]
     float nextStatePercentage;
 
     public enum StateOptions
@@ -29,29 +31,53 @@ public class FireBossAI : BossAI
         states.Add((int)StateOptions.MoveToPlayer, GetComponent<BossMoveToPlayerState>());          // 0
         states.Add((int)StateOptions.FireAttacking1, GetComponent<BossLavaSlamAttack>());           // 1
         states.Add((int)StateOptions.FireAttacking2, GetComponent<BossFlameBreathAttack>());        // 2
-        states.Add((int)StateOptions.MoveToCenter, GetComponent<BossFlameBreathAttack>());        // 3
+        states.Add((int)StateOptions.MoveToCenter, GetComponent<BossMoveToPosition>());             // 3
         states.Add((int)StateOptions.Defending1, GetComponent<BossDefendingFireBallState>());       // 4
         states.Add((int)StateOptions.Defendig2, GetComponent<BossDefendingLavaStreamState>());      // 5
 
         StateMachineSetup((int)startState);
     }
 
-    public void NextState()
+    public override void NextState()
+    {
+        switch (CurrentStateId)
+        {
+            case (int)StateOptions.FireAttacking1:
+            case (int)StateOptions.FireAttacking2:
+                if (!SwitchToDefend()) TransitionTo((int)StateOptions.MoveToPlayer);
+                break;
+            case (int)StateOptions.MoveToPlayer:
+                NextAttackState();
+                break;
+            case (int)StateOptions.Defending1:
+            case (int)StateOptions.Defendig2:
+            case (int)StateOptions.MoveToCenter:
+                NextDefendState();
+                break;
+        }
+    }
+
+    public void NextAttackState()
+    {
+        if (!SwitchToDefend()) TransitionTo(Random.Range(1, 3));
+    }
+
+    public bool SwitchToDefend()
     {
         if (health.HpPercentage < nextStatePercentage)
         {
-            TransitionTo(Random.Range(3, 5));
+            nextStatePercentage -= nextPercentageStep;
+            TransitionTo((int)StateOptions.MoveToCenter);
+            return true;
         }
-        else
-        {
-            if (CurrentStateId == (int)StateOptions.MoveToPlayer)
-            {
-                TransitionTo(Random.Range(1, 3));
-            }
-            else
-            {
-                TransitionTo(0);
-            }
-        }
+        return false;
     }
+
+    public void NextDefendState()
+    {
+        if (shieldHealth.HpPercentage > 0) TransitionTo(Random.Range(4, 6));
+        else TransitionTo((int)StateOptions.MoveToPlayer);
+    }
+
+
 }
