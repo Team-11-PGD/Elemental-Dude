@@ -33,6 +33,7 @@ public class PickupMain : MonoBehaviour
         {
             user = other;
             PickedUpPickup();
+            // TODO: SOUND(pick up)
         }
     }
 

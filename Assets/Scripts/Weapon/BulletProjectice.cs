@@ -12,6 +12,7 @@ public class BulletProjectice : MonoBehaviour
     {
         if (collision.transform.tag == "Enemy")
         {
+            // TODO: SOUND(enemy hit)?
             Debug.Log("Hit");
             collision.transform.GetComponent<Health>().Hit(damage);
             Destroy(gameObject);
@@ -22,6 +23,7 @@ public class BulletProjectice : MonoBehaviour
     {
         if (other.gameObject.tag != "Bullet")
         {
+            // TODO: SOUND(inpect sound)?
             Destroy(gameObject);
         }
     }

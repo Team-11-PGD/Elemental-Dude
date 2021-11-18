@@ -47,12 +47,14 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetButton("Fire1") && Time.time >= timeToFire && canFire)
         {
+            // TODO: SOUND(shoot)
             timeToFire = Time.time + fireInterval;
             Shoot();
         }
 
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
+            // TODO: SOUND(reload)
             Reload();
         }
 
@@ -62,6 +64,7 @@ public class Weapon : MonoBehaviour
             isReloading = false;
             curBulletAmount = maxBullets;
 
+            // TODO: SOUND(done reloading sound)
             Debug.Log("Done reloading!");
 		}
     }
@@ -73,26 +76,31 @@ public class Weapon : MonoBehaviour
             case ElementMain.ElementType.None:
                 elementMain.currentType = ElementMain.ElementType.None;
                 Debug.Log("I am a None element now");
+                // TODO: SOUND(no element)
                 break;
 
             case ElementMain.ElementType.Water:
                 elementMain.currentType = ElementMain.ElementType.Water;
                 Debug.Log("I am a Water element now");
+                // TODO: SOUND(Water element)
                 break;
 
             case ElementMain.ElementType.Fire:
                 elementMain.currentType = ElementMain.ElementType.Fire;
                 Debug.Log("I am a Fire element now");
+                // TODO: SOUND(fire element)
                 break;
 
             case ElementMain.ElementType.Air:
                 elementMain.currentType = ElementMain.ElementType.Air;
                 Debug.Log("I am an Air element now");
+                // TODO: SOUND(air element)
                 break;
 
             case ElementMain.ElementType.Earth:
                 elementMain.currentType = ElementMain.ElementType.Earth;
                 Debug.Log("I am an Earth element now");
+                // TODO: SOUND(eart element)
                 break;
         }
     }
@@ -101,6 +109,7 @@ public class Weapon : MonoBehaviour
     {
         if (curBulletAmount <= 0)
         {
+            // TODO: SOUND(reload)
             Reload();
             Debug.Log("Reloading...");
             canFire = false;
@@ -112,6 +121,7 @@ public class Weapon : MonoBehaviour
  
             if(curBulletAmount <= 0)
 			{
+                // TODO: SOUND(reload)
                 Reload();
                 Debug.Log("Reloading...");
                 canFire = false;

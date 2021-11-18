@@ -18,6 +18,7 @@ public class ShootingSpeedPickup : PickupMain
 
     protected override void PickedUpPickup()
     {
+        // TODO: SOUND(pick up sound)
         text.powerupText = shootingSpeedPowerupText;
         IncreaseShootingSpeed();
 

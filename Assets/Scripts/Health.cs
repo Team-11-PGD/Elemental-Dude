@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
         currentHp += healAmt;
         if(currentHp > maxHp)
         {
+            // TODO: SOUND(For the player a healing sound)
             currentHp = maxHp;
         }
     }
@@ -33,10 +34,12 @@ public class Health : MonoBehaviour
             //death
             if(gameObject.tag != "Player")
             {
+                // TODO: SOUND(Enemy death)
                 Destroy(gameObject);
             }
             else
             {
+                // TODO: SOUND(Player death)
                 UIManager.instance.GoToMainMenu();
             }
         }

@@ -26,11 +26,13 @@ public class BulletProjectile : MonoBehaviour
     {
         if (other.gameObject.tag != "Bullet")
         {
+            // TODO: SOUND(inpact sound)?
             Destroy(gameObject);
         }
 
         if (other.gameObject.tag == "Enemy")
         {
+            // TODO: SOUND(enemy hit sound)?
             DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
         }
     }
