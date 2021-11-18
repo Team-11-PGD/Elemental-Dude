@@ -6,6 +6,8 @@ public class EnemyColorController : MonoBehaviour
 {
     [SerializeField]
     ElementMain elementMain;
+    [SerializeField]
+    ColorMaster colorMaster;
     private Renderer rend;
 
     // Start is called before the first frame update
@@ -16,22 +18,22 @@ public class EnemyColorController : MonoBehaviour
         //Fire element
         if (elementMain.currentType == ElementMain.ElementType.Fire)
         {
-            rend.material.color = Color.red;
+            rend.material = colorMaster.ElementFire;
         }
         //Water element
         if (elementMain.currentType == ElementMain.ElementType.Water)
         {
-            rend.material.color = Color.blue;
+            rend.material = colorMaster.ElementWater;
         }
         //Earth element
         if (elementMain.currentType == ElementMain.ElementType.Earth)
         {
-            rend.material.color = Color.gray;
+            rend.material = colorMaster.ElementEarth;
         }
         //Air element
         if (elementMain.currentType == ElementMain.ElementType.Air)
         {
-            rend.material.color = Color.white;
+            rend.material = colorMaster.ElementAir;
         }
     }
 }

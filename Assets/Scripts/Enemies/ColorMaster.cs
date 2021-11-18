@@ -4,18 +4,9 @@ using UnityEngine;
 
 public class ColorMaster : MonoBehaviour
 {
-    public GameObject[] gameObjects;
-    public Material[] material;
-    // Start is called before the first frame update
-    public void GiveColors()
-    {
-        foreach (var obj in gameObjects)
-        {
-            obj.GetComponent<Renderer>().sharedMaterial = material[0];
-            obj.GetComponent<Renderer>().sharedMaterial = material[1];
-            obj.GetComponent<Renderer>().sharedMaterial = material[2];
-            obj.GetComponent<Renderer>().sharedMaterial = material[3];
-        }
-    }
+    public Material ElementFire;
+    public Material ElementWater;
+    public Material ElementAir;
+    public Material ElementEarth;
 }
 
