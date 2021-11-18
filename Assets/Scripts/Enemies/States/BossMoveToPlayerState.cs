@@ -26,10 +26,10 @@ public class BossMoveToPlayerState : State
             switch (Random.Range(0, 2))
             {
                 case 0:
-                    context.TransitionTo((int)BossAI.StateOptions.FireAttacking1);
+                    context.TransitionTo((int)BossAIOld.StateOptions.FireAttacking1);
                     break;
                 case 1:
-                    context.TransitionTo((int)BossAI.StateOptions.FireAttacking2);
+                    context.TransitionTo((int)BossAIOld.StateOptions.FireAttacking2);
                     break;
             }
 

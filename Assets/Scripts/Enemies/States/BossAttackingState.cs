@@ -50,7 +50,7 @@ public class BossAttackingState: State
         }
         else
         {
-            context.TransitionTo((int)BossAI.StateOptions.MoveToPlayer);
+            context.TransitionTo((int)BossAIOld.StateOptions.MoveToPlayer);
         }
     }
 

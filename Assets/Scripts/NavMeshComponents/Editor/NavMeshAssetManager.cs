@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.SceneManagement;
 using UnityEngine.AI;
 using UnityEngine;
+using UnityEditor.Experimental.SceneManagement;
 
 namespace UnityEditor.AI
 {

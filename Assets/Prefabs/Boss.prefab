@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3895526102434882917}
   - component: {fileID: 3895526102434882938}
   - component: {fileID: 3895526102434882942}
-  - component: {fileID: 3895526102434882941}
+  - component: {fileID: 7237728692765012872}
   - component: {fileID: 3895526102434882940}
   - component: {fileID: 1211462544}
   - component: {fileID: 1211462552}
@@ -373,7 +373,7 @@ NavMeshAgent:
   m_BaseOffset: 1.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3895526102434882941
+--- !u!114 &7237728692765012872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,20 +382,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3895526102434882916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cb13c86f79f1646bb12188178d2410, type: 3}
+  m_Script: {fileID: 11500000, guid: e6d03f9f0456d214c83dea6a74f2ff44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterStates: []
-  fireStates:
-  - item1: 0
-    item2: {fileID: 3895526102434882940}
-  - item1: 1
-    item2: {fileID: 1211462544}
-  - item1: 2
-    item2: {fileID: 1211462552}
-  airStates: []
-  earthStates: []
-  activeStateElement: 1
+  activeStateElement: 0
   playerModel: {fileID: 0}
   playerHealth: {fileID: 0}
   startState: 0
@@ -430,7 +420,6 @@ MonoBehaviour:
   smokeTime: 1
   attackTime: 2
   damage: 0.01
-  currentState: 0
 --- !u!114 &1211462552
 MonoBehaviour:
   m_ObjectHideFlags: 0

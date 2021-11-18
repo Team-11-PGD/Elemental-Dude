@@ -286,7 +286,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.75
-      minScalar: 2
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3570,7 +3570,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
     type: 1
     collisionMode: 0
@@ -4784,6 +4784,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0.1
+  playerHealth: {fileID: 0}
+  isTrigger: 1
+  particleSystem: {fileID: 3456227120021450765}
 --- !u!1 &3263454105782360207
 GameObject:
   m_ObjectHideFlags: 0
@@ -8455,7 +8458,7 @@ ParticleSystem:
     quality: 0
     voxelSize: 2
     collisionMessages: 1
-    collidesWithDynamic: 0
+    collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
     enabled: 0
@@ -8466,13 +8469,7 @@ ParticleSystem:
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
-    primitives:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    primitives: []
   SubModule:
     serializedVersion: 2
     enabled: 1
@@ -9503,4 +9500,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoShutDown: 1
-  timer: 2
+  timer: 5
