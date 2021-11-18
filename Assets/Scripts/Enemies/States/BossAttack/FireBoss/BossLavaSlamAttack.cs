@@ -25,13 +25,18 @@ public class BossLavaSlamAttack : State
     IEnumerator ChargeTime()
     {
         Instantiate(slamPrefab, slamPosition.position, context.transform.rotation, context.transform);
+        //SOUND: (slam)
         yield return new WaitForSecondsRealtime(chargeTime);
+        //SOUND: (bubble bubble lava)
         GameObject lavaInstance = Instantiate(lavaPrefab, slamPosition.position, context.transform.rotation);
         DamagingParticle damagingParticle = lavaInstance.GetComponentInChildren<DamagingParticle>();
         damagingParticle.damage = damage;
         damagingParticle.playerHealth = bossAI.playerHealth;
 
-        lavaInstance.GetComponentInChildren<ParticleSystem>().trigger.AddCollider(bossAI.playerModel.GetComponent<Collider>());
+        ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
+        Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
+        particleSystemtmp.trigger.AddCollider(collidertmp);
+
         context.TransitionTo((int)BossAI.StateOptions.MoveToPlayer);
     }
 }

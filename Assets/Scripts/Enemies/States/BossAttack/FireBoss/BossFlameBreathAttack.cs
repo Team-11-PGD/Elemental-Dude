@@ -12,18 +12,12 @@ public class BossFlameBreathAttack : State
     float smokeTime = 0.5f, attackTime = 2f;
     [SerializeField]
     float damage = 0.01f;
-
-    public enum bossAttacks
-    {
-        fireBreath,
-        fireSlam,
-        fireballRain,
-        lavaStream
-    }
-    public bossAttacks currentState;
+    BossAI bossAI;
 
     public override void Enter()
     {
+        bossAI = context as BossAI;
+
         particleSystem = Instantiate(smokePrefab, context.transform.position, context.transform.rotation, context.transform);
         StartCoroutine(SmokeTimer());
     }
@@ -32,16 +26,19 @@ public class BossFlameBreathAttack : State
 
     IEnumerator SmokeTimer()
     {
+        //SOUND: (smoky)
         yield return new WaitForSecondsRealtime(smokeTime);
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
 
         particleSystem = Instantiate(flamePrefab, context.transform.position, context.transform.rotation, context.transform);
+        particleSystem.GetComponent<DamagingParticle>().playerHealth = bossAI.playerHealth;
         particleSystem.GetComponent<DamagingParticle>().damage = this.damage;
         StartCoroutine(FlameTimer());
     }
 
     IEnumerator FlameTimer()
     {
+        //SOUND: (flame)
         yield return new WaitForSecondsRealtime(attackTime);
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
         context.TransitionTo((int)BossAI.StateOptions.MoveToPlayer);
