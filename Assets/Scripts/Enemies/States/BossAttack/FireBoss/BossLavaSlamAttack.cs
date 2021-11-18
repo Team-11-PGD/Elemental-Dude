@@ -12,11 +12,11 @@ public class BossLavaSlamAttack : State
     Transform slamPosition;
     [SerializeField]
     float damage = 0.1f;
-    BossAI bossAI;
+    FireBossAI bossAI;
 
     public override void Enter()
     {
-        bossAI = context as BossAI;
+        bossAI = context as FireBossAI;
         StartCoroutine(ChargeTime());
     }
 
@@ -37,6 +37,6 @@ public class BossLavaSlamAttack : State
         Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
         particleSystemtmp.trigger.AddCollider(collidertmp);
 
-        context.TransitionTo((int)BossAI.StateOptions.MoveToPlayer);
+        bossAI.NextState();
     }
 }

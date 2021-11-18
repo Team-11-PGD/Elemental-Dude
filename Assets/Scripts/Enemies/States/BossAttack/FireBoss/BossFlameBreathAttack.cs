@@ -12,11 +12,11 @@ public class BossFlameBreathAttack : State
     float smokeTime = 0.5f, attackTime = 2f;
     [SerializeField]
     float damage = 0.01f;
-    BossAI bossAI;
+    FireBossAI bossAI;
 
     public override void Enter()
     {
-        bossAI = context as BossAI;
+        bossAI = context as FireBossAI;
 
         particleSystem = Instantiate(smokePrefab, context.transform.position, context.transform.rotation, context.transform);
         StartCoroutine(SmokeTimer());
@@ -41,8 +41,7 @@ public class BossFlameBreathAttack : State
         //SOUND: (flame)
         yield return new WaitForSecondsRealtime(attackTime);
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
-        context.TransitionTo((int)BossAI.StateOptions.MoveToPlayer);
+
+        bossAI.NextState();
     }
-
-
 }
