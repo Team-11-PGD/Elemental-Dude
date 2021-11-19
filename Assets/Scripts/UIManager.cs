@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     Health player;
     [SerializeField]
     Slider playerHpBar;
+    [SerializeField]
+    bool startWithoutMouseOverride = false;
 
     void Awake()
     {
@@ -22,9 +24,10 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        if (startWithoutMouseOverride) SetMouseState(false);
+        else SetMouseState(SceneManager.GetActiveScene().name != "GameScene");
+
         SceneManager.activeSceneChanged += SceneChanged;
-        //SetMouseState(SceneManager.GetActiveScene().name != "GameScene");
-        SetMouseState(false);
         FindPauseMenu();
         // TODO: put this in its own script on the slider
         if (SceneManager.GetActiveScene().name == "GameScene")

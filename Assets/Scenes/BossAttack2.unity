@@ -553,11 +553,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704438996540, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 9.9833114e-30
+      value: 1.4223457e-36
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704438996540, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.3885078e-30
+      value: -2.1900053e-37
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704507876816, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2471,6 +2471,7 @@ MonoBehaviour:
   gameIsPaused: 0
   player: {fileID: 0}
   playerHpBar: {fileID: 0}
+  startWithoutMouseOverride: 1
 --- !u!4 &1971509700
 Transform:
   m_ObjectHideFlags: 0
