@@ -9,9 +9,11 @@ public class FireBossAI : BossAI
     Health shieldHealth;
 
     [SerializeField]
-    int nextPercentageStep = 33;
+    [Range(0,1)]
+    float nextPercentageStep = 0.33f;
     [SerializeField]
-    float nextStatePercentage;
+    [Range(0,1)]
+    float nextStatePercentage = 0.66f;
 
     public enum StateOptions
     {
@@ -64,7 +66,7 @@ public class FireBossAI : BossAI
 
     public bool SwitchToDefend()
     {
-        if (health.HpPercentage < nextStatePercentage)
+        if (health.HpPercentage <= nextStatePercentage)
         {
             nextStatePercentage -= nextPercentageStep;
             TransitionTo((int)StateOptions.MoveToCenter);

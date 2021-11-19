@@ -20,7 +20,7 @@ public class BossMoveToPosition : State
 
     public void Update()
     {
-        if (Vector3.Distance(bossAI.playerModel.position, transform.position) <= stopRange)
+        if (Vector3.Distance(target.position, transform.position) <= stopRange)
         {
             bossAI.agent.SetDestination(transform.position);
             bossAI.NextState();
