@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletProjectile : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     [SerializeField]
     private float damageAmount = 10;
@@ -20,11 +20,6 @@ public class BulletProjectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
     }
-
-	private void Start()
-	{
-       
-	}
 
 	private void OnTriggerEnter(Collider other)
     {

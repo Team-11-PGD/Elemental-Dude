@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BossMoveToPlayerState), typeof(BossLavaSlamAttack), typeof(BossFlameBreathAttack))]
-[RequireComponent(typeof(BossDefendingFireBallState), typeof(BossDefendingLavaStreamState), typeof(BossMoveToPosition))]
+[RequireComponent(typeof(BossDefendingFireballState), typeof(BossDefendingLavaStreamState), typeof(BossMoveToPosition))]
 public class FireBossAI : BossAI
 {
     [SerializeField]
@@ -36,7 +36,7 @@ public class FireBossAI : BossAI
         states.Add((int)StateOptions.FireAttacking1, GetComponent<BossLavaSlamAttack>());           // 1
         states.Add((int)StateOptions.FireAttacking2, GetComponent<BossFlameBreathAttack>());        // 2
         states.Add((int)StateOptions.MoveToCenter, GetComponent<BossMoveToPosition>());             // 3
-        states.Add((int)StateOptions.Defending1, GetComponent<BossDefendingFireBallState>());       // 4
+        states.Add((int)StateOptions.Defending1, GetComponent<BossDefendingFireballState>());       // 4
         states.Add((int)StateOptions.Defendig2, GetComponent<BossDefendingLavaStreamState>());      // 5
 
         StateMachineSetup((int)startState);
