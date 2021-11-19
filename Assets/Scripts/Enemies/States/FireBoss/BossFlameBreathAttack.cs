@@ -29,7 +29,6 @@ public class BossFlameBreathAttack : State
         //SOUND: (smoky)
         yield return new WaitForSecondsRealtime(smokeTime);
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
-
         particleSystem = Instantiate(flamePrefab, context.transform.position, context.transform.rotation, context.transform);
         particleSystem.GetComponent<DamagingParticle>().playerHealth = bossAI.playerHealth;
         particleSystem.GetComponent<DamagingParticle>().damage = this.damage;
@@ -42,6 +41,6 @@ public class BossFlameBreathAttack : State
         yield return new WaitForSecondsRealtime(attackTime);
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
 
-        bossAI.NextAttackState();
+        bossAI.TransitionTo((int)FireBossAI.StateOptions.MoveToPlayer);
     }
 }

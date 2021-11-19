@@ -6,11 +6,15 @@ public class BulletProjectile : MonoBehaviour
 {
     [SerializeField]
     private float damageAmount = 10;
+    [SerializeField]
+    [TagSelector]
+    private string[] hitableTags;
 
     private Rigidbody rb;
     private float dmgPercentage;
 
     private ElementMain.ElementType elementType;
+
 
     private void Awake()
     {
@@ -29,9 +33,12 @@ public class BulletProjectile : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.gameObject.tag == "Enemy")
+        foreach (string tag in hitableTags)
         {
-            DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
+            if (other.gameObject.tag == tag)
+            {
+                DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
+            }
         }
     }
 

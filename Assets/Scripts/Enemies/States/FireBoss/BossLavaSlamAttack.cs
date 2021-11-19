@@ -37,6 +37,6 @@ public class BossLavaSlamAttack : State
         Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
         particleSystemtmp.trigger.AddCollider(collidertmp);
 
-        if (!bossAI.SwitchToDefend()) bossAI.NextAttackState();
+        bossAI.TransitionTo((int)FireBossAI.StateOptions.MoveToPlayer);
     }
 }

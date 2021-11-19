@@ -76,6 +76,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
+  hitableTags:
+  - Enemy
+  - BossShield
+  - Boss
 --- !u!1 &8600321062549566495
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[RequireComponent(typeof(ElementMain))]
 public class Health : MonoBehaviour
 {
     public float maxHp;
 
-   // [HideInInspector]
+    // [HideInInspector]
     public float currentHp;
     public float HpPercentage { get { return currentHp / maxHp; } }
 
@@ -18,11 +20,12 @@ public class Health : MonoBehaviour
     public void Heal(int healAmt)
     {
         currentHp += healAmt;
-        if(currentHp > maxHp)
+        if (currentHp > maxHp)
         {
             currentHp = maxHp;
         }
     }
+
     public void Hit(float damageAmt)
     {
         currentHp -= damageAmt;
@@ -31,15 +34,20 @@ public class Health : MonoBehaviour
         if (currentHp <= 0)
         {
             //death
-            if(gameObject.tag != "Player")
+            switch (gameObject.tag)
             {
-                Destroy(gameObject);
-            }
-            else
-            {
-                UIManager.instance.GoToMainMenu();
+                case "Player":
+                    UIManager.instance.GoToMainMenu();
+                    break;
+                case "BossShield":
+                    gameObject.SetActive(false);
+                    break;
+                case "Boss":
+                    break;
+                default:
+                    Destroy(gameObject);
+                    break;
             }
         }
-
     }
 }

@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class BossDefendingFireBallState : State
 {
+    FireBossAI bossAI;
+
     public override void Enter()
     {
+        bossAI = context as FireBossAI;
         StartCoroutine(Timer(2));
     }
 
@@ -18,10 +21,6 @@ public class BossDefendingFireBallState : State
     IEnumerator Timer(float time)
     {
         yield return new WaitForSecondsRealtime(time);
-
-        // You can transition between states with the TransitionTo method.
-        // This method requires the id of the state.
-        // If you used a enum you will again need to cast this to a int.
-        context.TransitionTo((int)AIExample.StateOptions.EnemyAttacking);
+        bossAI.NextDefendState();
     }
 }

@@ -6,13 +6,15 @@ using UnityEngine;
 [RequireComponent(typeof(BossDefendingFireBallState), typeof(BossDefendingLavaStreamState), typeof(BossMoveToPosition))]
 public class FireBossAI : BossAI
 {
-    Health shieldHealth;
-
     [SerializeField]
-    [Range(0,1)]
+    Health shieldHealth;
+    [SerializeField]
+    GameObject shield;
+    [SerializeField]
+    [Range(0, 1)]
     float nextPercentageStep = 0.33f;
     [SerializeField]
-    [Range(0,1)]
+    [Range(0, 1)]
     float nextStatePercentage = 0.66f;
 
     public enum StateOptions
@@ -70,15 +72,29 @@ public class FireBossAI : BossAI
         {
             nextStatePercentage -= nextPercentageStep;
             TransitionTo((int)StateOptions.MoveToCenter);
+            shield.SetActive(true);
             return true;
         }
+        shield.SetActive(false);
         return false;
     }
 
     public void NextDefendState()
     {
         if (shieldHealth.HpPercentage > 0) TransitionTo(Random.Range(4, 6));
-        else TransitionTo((int)StateOptions.MoveToPlayer);
+        else
+        {
+            if (health.HpPercentage <= 0)
+            {
+                //TODO: Boss Death
+                //SOUND: (boss death sound)
+            }
+            else
+            {
+                shieldHealth.currentHp = shieldHealth.maxHp;
+                TransitionTo((int)StateOptions.MoveToPlayer);
+            }
+        }
     }
 
 

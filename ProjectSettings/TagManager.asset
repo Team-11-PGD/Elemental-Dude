@@ -7,6 +7,8 @@ TagManager:
   - Bullet
   - UICurrentWeapon
   - Enemy
+  - BossShield
+  - Boss
   layers:
   - Default
   - TransparentFX

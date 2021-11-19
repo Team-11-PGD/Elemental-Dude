@@ -23,7 +23,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         SceneManager.activeSceneChanged += SceneChanged;
-        SetMouseState(SceneManager.GetActiveScene().name != "GameScene");
+        //SetMouseState(SceneManager.GetActiveScene().name != "GameScene");
+        SetMouseState(false);
         FindPauseMenu();
         // TODO: put this in its own script on the slider
         if (SceneManager.GetActiveScene().name == "GameScene")

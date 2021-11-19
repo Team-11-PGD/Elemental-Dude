@@ -75,7 +75,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e479c1a4f2f4944a6744d6650fe901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 8600321062039574618}
+  damageAmount: 10
+  hitableTags:
+  - Enemy
+  - BossShield
+  - Boss
 --- !u!1 &8600321062549566495
 GameObject:
   m_ObjectHideFlags: 0
