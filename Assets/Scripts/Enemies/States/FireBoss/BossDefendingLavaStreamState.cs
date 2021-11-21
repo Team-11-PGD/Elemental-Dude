@@ -3,24 +3,47 @@ using UnityEngine;
 
 public class BossDefendingLavaStreamState : State
 {
+    //new GameObject particleSystem;
+
+    [SerializeField]
+    GameObject groundbreakPrefab, player;
+    [SerializeField]
+    Transform groundbreakStartPosition;
+
+    [SerializeField]
+    float groundbreakTime = 1f;
+    [SerializeField]
+    float nextDefenceStateTime = 4f;
+    [SerializeField]
+    float groundbreakDamage = 0.01f;
+
     FireBossAI bossAI;
 
     public override void Enter()
     {
         bossAI = context as FireBossAI;
-        StartCoroutine(Timer(2));
+        StartCoroutine(GroundbreakTimer());
     }
 
     public override void Exit() { }
 
     public void Update()
     {
-        context.transform.Rotate(Vector3.up, -2);
+        Vector3 playerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        transform.LookAt(playerPosition);
     }
 
-    IEnumerator Timer(float time)
+    IEnumerator GroundbreakTimer(float timer = 3f)
     {
-        yield return new WaitForSecondsRealtime(time);
+        yield return new WaitForSecondsRealtime(timer);
+        GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, context.transform);
+        DamagingParticle damagingParticle = groundbreakInstance.GetComponentInChildren<DamagingParticle>();
+        damagingParticle.damage = groundbreakDamage;
+        damagingParticle.playerHealth = bossAI.playerHealth;
+
+        ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
+        Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
+        particleSystemtmp.trigger.AddCollider(collidertmp);
         bossAI.NextDefendState();
     }
 }
