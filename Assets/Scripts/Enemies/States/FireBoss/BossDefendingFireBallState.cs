@@ -29,6 +29,7 @@ public class BossDefendingFireballState : State
     {
         for (int i = 0; i < fireballAmount; i++)
         {
+
             Vector3 randomPosition = new Vector3();
             Instantiate(fireball, randomPosition, Quaternion.identity, null);
             yield return new WaitForSecondsRealtime(time);
