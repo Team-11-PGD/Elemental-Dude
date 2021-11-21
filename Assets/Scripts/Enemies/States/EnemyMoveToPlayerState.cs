@@ -9,12 +9,12 @@ public class EnemyMoveToPlayerState : EnemyState
     [SerializeField]
     float stopRange = 1.5f;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
-        base.Enter();
+        base.Enter(previousStateId);
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     void Update()
     {

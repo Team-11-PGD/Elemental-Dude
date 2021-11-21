@@ -16,14 +16,14 @@ class EnemyPatrolingState : EnemyState
 
     float normalAgentSpeed;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
-        base.Enter();
+        base.Enter(previousStateId);
         normalAgentSpeed = agent.speed;
         agent.speed = 3.5f;
     }
 
-    public override void Exit()
+    public override void Exit(int nextStateId)
     {
         agent.speed = normalAgentSpeed;
     }

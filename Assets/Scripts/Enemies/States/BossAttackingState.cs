@@ -24,12 +24,12 @@ public class BossAttackingState: State
         lavaStream
     }
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
         StartCoroutine(BossAttack());
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     public void Update()
     {

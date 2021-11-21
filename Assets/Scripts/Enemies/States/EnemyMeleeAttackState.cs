@@ -12,13 +12,13 @@ public class EnemyMeleeAttackState : EnemyState
     [SerializeField]
     float damage = 1f;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
-        base.Enter();
+        base.Enter(previousStateId);
         StartCoroutine(Attack());
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     IEnumerator Attack()
     {

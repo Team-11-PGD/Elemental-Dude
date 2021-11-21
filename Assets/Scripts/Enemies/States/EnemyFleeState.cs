@@ -13,14 +13,14 @@ class EnemyFleeState : EnemyState
 
     bool cornerCheck = false;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
-        base.Enter();
+        base.Enter(previousStateId);
         NewFleeDestination();
         StartCoroutine(CornerTimer());
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     void NewFleeDestination()
     {

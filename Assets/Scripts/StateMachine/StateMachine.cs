@@ -7,7 +7,15 @@ public class StateMachine : MonoBehaviour
     protected Dictionary<int, State> states = new Dictionary<int, State>();
 
     public int CurrentStateId { get; private set; }
-    State CurrentState { get { return states[CurrentStateId]; } }
+    State CurrentState
+    {
+        get
+        {
+            if (CurrentStateId >= 0 && CurrentStateId < states.Count) return states[CurrentStateId];
+
+            return null;
+        }
+    }
 
     /// <summary>
     /// Set all states to inactive and activate first state
@@ -25,18 +33,24 @@ public class StateMachine : MonoBehaviour
     /// <summary>
     /// Change state and call the End and Start methods
     /// </summary>
-    /// <param name="stateId"> New state id to change to </param>
-    public void TransitionTo(int stateId)
+    /// <param name="nextStateId"> New state id to change to </param>
+    public void TransitionTo(int nextStateId)
     {
         if (CurrentState != null)
         {
-            CurrentState.Exit();
+            CurrentState.Exit(nextStateId);
             CurrentState.enabled = false;
         }
-        CurrentStateId = stateId;
+        int previousStateId = CurrentStateId;
+        CurrentStateId = nextStateId;
 
         CurrentState.SetContext(this);
         CurrentState.enabled = true;
-        CurrentState.Enter();
+        CurrentState.Enter(previousStateId);
+    }
+
+    public void DisableStates()
+    {
+        CurrentState.enabled = false;
     }
 }

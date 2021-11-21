@@ -15,12 +15,12 @@ class EnemyHealState : EnemyState
     [SerializeField]
     int healAmount = 1;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
         InvokeRepeating(nameof(Heal), 0, healTime);
     }
 
-    public override void Exit()
+    public override void Exit(int nextStateId)
     {
         CancelInvoke(nameof(Heal));
     }

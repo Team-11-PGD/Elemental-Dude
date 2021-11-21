@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(BossMoveToPlayerState), typeof(BossLavaSlamAttack), typeof(BossFlameBreathAttack))]
 [RequireComponent(typeof(BossDefendingFireballState), typeof(BossDefendingLavaStreamState), typeof(BossMoveToPosition))]
+[RequireComponent(typeof(BossDeath))]
 public class FireBossAI : BossAI
 {
     [SerializeField]
@@ -24,7 +25,8 @@ public class FireBossAI : BossAI
         FireAttacking2,
         MoveToCenter,
         Defending1,
-        Defendig2
+        Defendig2,
+        Death
     }
 
     [SerializeField]
@@ -38,8 +40,19 @@ public class FireBossAI : BossAI
         states.Add((int)StateOptions.MoveToCenter, GetComponent<BossMoveToPosition>());             // 3
         states.Add((int)StateOptions.Defending1, GetComponent<BossDefendingFireballState>());       // 4
         states.Add((int)StateOptions.Defendig2, GetComponent<BossDefendingLavaStreamState>());      // 5
+        states.Add((int)StateOptions.Death, GetComponent<BossDeath>());                             // 6
 
         StateMachineSetup((int)startState);
+    }
+
+    void OnEnable()
+    {
+        health.Hitted += Hitted;
+    }
+
+    void OnDisable()
+    {
+        health.Hitted -= Hitted;
     }
 
     public override void NextState()
@@ -56,8 +69,23 @@ public class FireBossAI : BossAI
             case (int)StateOptions.Defending1:
             case (int)StateOptions.Defendig2:
             case (int)StateOptions.MoveToCenter:
+                health.enabled = true;
+                shieldHealth.enabled = true;
                 NextDefendState();
                 break;
+        }
+    }
+
+    void Hitted()
+    {
+        if (health.HpPercentage <= 0)
+        {
+            TransitionTo((int)StateOptions.Death);
+            //SOUND: (boss death sound)
+        }
+        else
+        {
+            SwitchToDefend();
         }
     }
 
@@ -72,7 +100,10 @@ public class FireBossAI : BossAI
         {
             nextStatePercentage -= nextPercentageStep;
             TransitionTo((int)StateOptions.MoveToCenter);
+            health.enabled = false;
             shield.SetActive(true);
+            shieldHealth.currentHp = shieldHealth.maxHp;
+            shieldHealth.enabled = false;
             return true;
         }
         shield.SetActive(false);
@@ -84,16 +115,7 @@ public class FireBossAI : BossAI
         if (shieldHealth.HpPercentage > 0) TransitionTo(Random.Range(4, 6));
         else
         {
-            if (health.HpPercentage <= 0)
-            {
-                //TODO: Boss Death
-                //SOUND: (boss death sound)
-            }
-            else
-            {
-                shieldHealth.currentHp = shieldHealth.maxHp;
-                TransitionTo((int)StateOptions.MoveToPlayer);
-            }
+            TransitionTo((int)StateOptions.MoveToPlayer);
         }
     }
 

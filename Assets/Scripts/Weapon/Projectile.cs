@@ -29,6 +29,7 @@ public class Projectile : MonoBehaviour
             if (other.gameObject.tag == tag)
             {
                 Hit(other);
+                return;
             }
         }
     }

@@ -10,13 +10,13 @@ public class BossMoveToPosition : State
 
     BossAI bossAI;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
         bossAI = context as BossAI;
         bossAI.agent.SetDestination(target.position);
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     public void Update()
     {

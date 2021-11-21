@@ -26,13 +26,13 @@ public class BossDefendingFireballState : State
     FireBossAI bossAI;
     Vector3[] spawningPositions;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
         bossAI = context as FireBossAI;
         StartCoroutine(AnounceFireballs());
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     public void Update()
     {

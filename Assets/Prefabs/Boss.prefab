@@ -537,6 +537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield
       objectReference: {fileID: 0}
+    - target: {fileID: 2328765437372174215, guid: 03a9476e4c3cbed4ca231352deb6724c, type: 3}
+      propertyPath: maxHp
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3937004519716314198, guid: 03a9476e4c3cbed4ca231352deb6724c, type: 3}
       propertyPath: m_RootOrder
       value: 1

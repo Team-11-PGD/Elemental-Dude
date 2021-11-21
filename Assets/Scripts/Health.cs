@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
 {
     public float maxHp;
 
+    public event Action Hitted;
+
     // [HideInInspector]
     public float currentHp;
     public float HpPercentage { get { return currentHp / maxHp; } }
@@ -28,8 +30,11 @@ public class Health : MonoBehaviour
 
     public void Hit(float damageAmt)
     {
+        //if (!enabled) return;
+
         currentHp -= damageAmt;
-        Debug.Log($"{gameObject.name} has {currentHp} hp");
+        Debug.Log($"{gameObject.name} has {currentHp} hp and had {currentHp + damageAmt}");
+        Hitted?.Invoke();
 
         if (currentHp <= 0)
         {

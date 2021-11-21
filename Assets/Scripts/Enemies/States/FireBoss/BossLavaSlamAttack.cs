@@ -14,13 +14,13 @@ public class BossLavaSlamAttack : State
     float damage = 0.1f;
     FireBossAI bossAI;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
         bossAI = context as FireBossAI;
         StartCoroutine(ChargeTime());
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     IEnumerator ChargeTime()
     {

@@ -7,12 +7,12 @@ public class BossMoveToPlayerState : State
     float stopRange = 1.5f;
     BossAI bossAI;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
         bossAI = context as BossAI;
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     void Update()
     {

@@ -19,13 +19,13 @@ public class BossDefendingLavaStreamState : State
 
     FireBossAI bossAI;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
         bossAI = context as FireBossAI;
         StartCoroutine(GroundbreakTimer());
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     public void Update()
     {
