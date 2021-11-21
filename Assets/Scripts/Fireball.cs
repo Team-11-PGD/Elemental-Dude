@@ -29,7 +29,7 @@ public class Fireball : Projectile
             DamageHandler(other.gameObject.GetComponentInParent<Health>(), other.gameObject.GetComponentInParent<ElementMain>());
         }
 
-        GameObject instance = Instantiate(explosion, transform.position, Quaternion.identity, null);
+        GameObject instance = Instantiate(explosion, transform.position, Quaternion.identity);
 
         DamagingParticle shockWave = instance.GetComponentInChildren<DamagingParticle>();
         shockWave.damage = damageAmount;

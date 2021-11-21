@@ -4617,7 +4617,7 @@ GameObject:
   - component: {fileID: 199528594520767084}
   - component: {fileID: 1555635287264166806}
   m_Layer: 0
-  m_Name: EarthShatter 1
+  m_Name: EarthShatter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9508,7 +9508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoShutDown: 1
-  timer: 8
+  time: 0
 --- !u!1 &1584802242839310
 GameObject:
   m_ObjectHideFlags: 0
@@ -38028,7 +38028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c479fb38b30e749ac2aec1ba836b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.01
-  playerHealth: {fileID: 720444164659301398, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
+  damage: 0.1
+  playerHealth: {fileID: 0}
   isTrigger: 1
   particleSystem: {fileID: 198189877130538994}

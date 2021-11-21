@@ -66,7 +66,7 @@ public class BossDefendingFireballState : State
     {
         for (int i = 0; i < spawningPositions.Length; i++)
         {
-            GameObject instance = Instantiate(fireball, spawningPositions[i], Quaternion.identity, null);
+            GameObject instance = Instantiate(fireball, spawningPositions[i], Quaternion.identity);
             instance.GetComponent<Fireball>().SetupParticleDamage(bossAI.playerHealth, bossAI.playerModel.GetComponent<Collider>());
         }
         yield return new WaitForSecondsRealtime(spawningTime);

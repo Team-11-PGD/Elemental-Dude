@@ -6,7 +6,7 @@ public class BossDefendingLavaStreamState : State
     //new GameObject particleSystem;
 
     [SerializeField]
-    GameObject groundbreakPrefab, player;
+    GameObject groundbreakPrefab;
     [SerializeField]
     Transform groundbreakStartPosition;
 
@@ -29,14 +29,14 @@ public class BossDefendingLavaStreamState : State
 
     public void Update()
     {
-        Vector3 playerPosition = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        Vector3 playerPosition = new Vector3(bossAI.playerModel.transform.position.x, transform.position.y, bossAI.playerModel.transform.position.z);
         transform.LookAt(playerPosition);
     }
 
     IEnumerator GroundbreakTimer(float timer = 3f)
     {
         yield return new WaitForSecondsRealtime(timer);
-        GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, context.transform);
+        GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, null);
         DamagingParticle damagingParticle = groundbreakInstance.GetComponentInChildren<DamagingParticle>();
         damagingParticle.damage = groundbreakDamage;
         damagingParticle.playerHealth = bossAI.playerHealth;

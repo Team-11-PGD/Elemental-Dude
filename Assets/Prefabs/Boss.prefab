@@ -507,6 +507,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56874f1e7dec90746ab0dabc4caefaaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundbreakPrefab: {fileID: 1314945738539566, guid: 459abe6629949d9468c64fe72d39deb4, type: 3}
+  groundbreakStartPosition: {fileID: 5158375459202621933}
+  groundbreakTime: 1
+  nextDefenceStateTime: 4
+  groundbreakDamage: 0.01
 --- !u!114 &1196871036107130351
 MonoBehaviour:
   m_ObjectHideFlags: 0
