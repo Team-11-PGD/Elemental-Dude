@@ -5,48 +5,45 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
-    private float damageAmount = 10;
+    protected float damageAmount = 10;
     [SerializeField]
     [TagSelector]
     private string[] hitableTags;
 
-    private Rigidbody rb;
-    private float dmgPercentage;
-
     private ElementMain.ElementType elementType;
 
-
-    private void Awake()
+    private void OnCollisionEnter(Collision collision)
     {
-        rb = GetComponent<Rigidbody>();
+        Collided(collision.collider);
     }
 
-	private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Bullet")
-        {
-            Destroy(gameObject);
-        }
+        Collided(other);
+    }
 
+    private void Collided(Collider other)
+    {
         foreach (string tag in hitableTags)
         {
             if (other.gameObject.tag == tag)
             {
-                DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
+                Hit(other);
             }
         }
     }
 
-    public void DamageHandler(Health otherHealth, ElementMain otherElementMain)
+    protected virtual void Hit(Collider other)
+    {
+        DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
+        Destroy(gameObject);
+    }
+
+    protected void DamageHandler(Health otherHealth, ElementMain otherElementMain)
 	{
-        dmgPercentage = otherElementMain.ElementDmgPercentage(elementType, otherElementMain.currentType);
+        float dmgPercentage = otherElementMain.ElementDmgPercentage(elementType, otherElementMain.currentType);
         otherHealth.Hit(damageAmount * dmgPercentage);
 	}
-
-	internal void SetVelocity(Vector3 forward)
-	{
-        rb.velocity = forward;
-    }
 
     internal void SetElementType(ElementMain.ElementType type)
     {

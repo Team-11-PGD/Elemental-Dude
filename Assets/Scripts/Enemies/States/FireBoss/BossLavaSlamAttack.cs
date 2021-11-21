@@ -34,8 +34,8 @@ public class BossLavaSlamAttack : State
         damagingParticle.playerHealth = bossAI.playerHealth;
 
         ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
-        Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
-        particleSystemtmp.trigger.AddCollider(collidertmp);
+        Collider playerModel = bossAI.playerModel.GetComponent<Collider>();
+        particleSystemtmp.trigger.AddCollider(playerModel);
 
         bossAI.TransitionTo((int)FireBossAI.StateOptions.MoveToPlayer);
     }

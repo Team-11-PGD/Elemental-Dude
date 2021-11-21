@@ -486,6 +486,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5cb6d5d5c7a5c49b8a58c1db62cfb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnArea: {fileID: 0}
+  shockWaveSize: 13
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  shockWaveIndicator: {fileID: 2477050797949518447, guid: fa491447c845ab1429e1543d9e3d4eb3, type: 3}
+  fireball: {fileID: 4245124032347512106, guid: ed391c199de8b4049bbb85a0ff70afcc, type: 3}
+  fireballAmount: 10
+  spawningTime: 2
 --- !u!114 &7082591975353121217
 MonoBehaviour:
   m_ObjectHideFlags: 0

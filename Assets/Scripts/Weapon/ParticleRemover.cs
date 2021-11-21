@@ -8,7 +8,7 @@ public class ParticleRemover : MonoBehaviour
     [SerializeField]
     bool autoShutDown = false;
     [SerializeField]
-    float timer = 0f;
+    float time = 0f;
     bool shutingDown;
 
     void Start()
@@ -24,7 +24,7 @@ public class ParticleRemover : MonoBehaviour
     IEnumerator ParticleShutdown()
     {
         shutingDown = true;
-        yield return new WaitForSecondsRealtime(timer);
+        yield return new WaitForSecondsRealtime(time);
         List<ParticleSystem> particles = GetComponentsInChildren<ParticleSystem>().ToList();
         ParticleSystem parent = GetComponent<ParticleSystem>();
         particles.Add(parent);

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8600321062039574618}
   - component: {fileID: 1854659547300713574}
   - component: {fileID: 2139144223512651285}
+  - component: {fileID: 4435601899548796729}
   m_Layer: 0
   m_Name: RifleBullet
   m_TagString: Bullet
@@ -80,6 +81,18 @@ MonoBehaviour:
   - Enemy
   - BossShield
   - Boss
+--- !u!114 &4435601899548796729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8600321062039574619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9622f4f923e655241a88a4c5a36c6ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8600321062549566495
 GameObject:
   m_ObjectHideFlags: 0
