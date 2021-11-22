@@ -12,17 +12,7 @@ public class Projectile : MonoBehaviour
 
     private ElementMain.ElementType elementType;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Collided(collision.collider);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Collided(other);
-    }
-
-    private void Collided(Collider other)
+    protected void Collided(Collider other)
     {
         foreach (string tag in hitableTags)
         {

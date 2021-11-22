@@ -18,6 +18,11 @@ public class Fireball : Projectile
         this.playerModel = playerModel;
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        Collided(collision.collider);
+    }
+
     protected override void Hit(Collider other)
     {
         // Only hit once

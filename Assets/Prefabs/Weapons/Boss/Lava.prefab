@@ -9500,4 +9500,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoShutDown: 1
-  timer: 5
+  time: 5

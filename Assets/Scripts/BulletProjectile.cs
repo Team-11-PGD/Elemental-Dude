@@ -15,4 +15,9 @@ public class BulletProjectile : Projectile
     {
         rb.velocity = forward;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Collided(other);
+    }
 }
