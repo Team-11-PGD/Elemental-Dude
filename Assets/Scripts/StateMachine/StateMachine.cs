@@ -6,7 +6,7 @@ public class StateMachine : MonoBehaviour
 {
     protected Dictionary<int, State> states = new Dictionary<int, State>();
 
-    public int CurrentStateId { get; private set; }
+    public int CurrentStateId { get; private set; } = -1;
     State CurrentState
     {
         get
@@ -36,6 +36,8 @@ public class StateMachine : MonoBehaviour
     /// <param name="nextStateId"> New state id to change to </param>
     public void TransitionTo(int nextStateId)
     {
+        if (!enabled) return;
+
         if (CurrentState != null)
         {
             CurrentState.Exit(nextStateId);

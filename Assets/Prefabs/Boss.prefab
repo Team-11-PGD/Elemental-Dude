@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 50
   currentHp: 0
 --- !u!114 &2606436599316499700
 MonoBehaviour:
@@ -293,7 +293,6 @@ MonoBehaviour:
   groundbreakPrefab: {fileID: 1314945738539566, guid: 459abe6629949d9468c64fe72d39deb4, type: 3}
   groundbreakStartPosition: {fileID: 5158375459202621933}
   groundbreakTime: 1
-  nextDefenceStateTime: 4
   groundbreakDamage: 0.01
 --- !u!114 &1196871036107130351
 MonoBehaviour:
@@ -334,6 +333,18 @@ PrefabInstance:
     - target: {fileID: 673155285388530586, guid: 03a9476e4c3cbed4ca231352deb6724c, type: 3}
       propertyPath: m_Name
       value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891061575714000936, guid: 03a9476e4c3cbed4ca231352deb6724c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.8046083
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891061575714000936, guid: 03a9476e4c3cbed4ca231352deb6724c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.8046083
+      objectReference: {fileID: 0}
+    - target: {fileID: 1891061575714000936, guid: 03a9476e4c3cbed4ca231352deb6724c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.8046083
       objectReference: {fileID: 0}
     - target: {fileID: 2328765437372174215, guid: 03a9476e4c3cbed4ca231352deb6724c, type: 3}
       propertyPath: maxHp

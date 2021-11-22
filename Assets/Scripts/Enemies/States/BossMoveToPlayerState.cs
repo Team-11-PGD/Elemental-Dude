@@ -12,14 +12,16 @@ public class BossMoveToPlayerState : State
         bossAI = context as BossAI;
     }
 
-    public override void Exit(int nextStateId) { }
+    public override void Exit(int nextStateId)
+    {
+        bossAI.agent.SetDestination(transform.position);
+    }
 
     void Update()
     {
         bossAI.agent.SetDestination(bossAI.playerModel.position);
         if (Vector3.Distance(bossAI.playerModel.position, transform.position) <= stopRange)
         {
-            bossAI.agent.SetDestination(transform.position);
             bossAI.NextState();
         }
     }

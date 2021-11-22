@@ -16,13 +16,15 @@ public class BossMoveToPosition : State
         bossAI.agent.SetDestination(target.position);
     }
 
-    public override void Exit(int nextStateId) { }
+    public override void Exit(int nextStateId)
+    {
+        bossAI.agent.SetDestination(transform.position);
+    }
 
     public void Update()
     {
         if (Vector3.Distance(target.position, transform.position) <= stopRange)
         {
-            bossAI.agent.SetDestination(transform.position);
             bossAI.NextState();
         }
     }

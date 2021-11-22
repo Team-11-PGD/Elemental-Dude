@@ -15,13 +15,15 @@ public class BossDeath : State
 
     public override void Enter(int previousStateId)
     {
+        context.GetComponent<Collider>().enabled = false;
         stateId = context.CurrentStateId;
         renderer.enabled = false;
-        GameObject instance = Instantiate(fracturedModel, context.transform.position, Quaternion.identity, context.transform);
+        GameObject instance = Instantiate(fracturedModel, context.transform.position, context.transform.rotation, context.transform);
         foreach (Rigidbody rigidbody in instance.GetComponentsInChildren<Rigidbody>())
         {
             rigidbody.AddForce(Vector3.up * explosionForce);
         }
+        context.enabled = false;
     }
 
     public override void Exit(int nextStateId)

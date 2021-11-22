@@ -87,6 +87,11 @@ public class FireBossAI : BossAI
         {
             SwitchToDefend();
         }
+
+        if (shieldHealth.HpPercentage <= 0)
+        {
+
+        }
     }
 
     public void NextAttackState()

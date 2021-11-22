@@ -3,17 +3,13 @@ using UnityEngine;
 
 public class BossDefendingLavaStreamState : State
 {
-    //new GameObject particleSystem;
-
     [SerializeField]
     GameObject groundbreakPrefab;
     [SerializeField]
     Transform groundbreakStartPosition;
 
     [SerializeField]
-    float groundbreakTime = 1f;
-    [SerializeField]
-    float nextDefenceStateTime = 4f;
+    float groundbreakTime = 3f;
     [SerializeField]
     float groundbreakDamage = 0.01f;
 
@@ -33,9 +29,9 @@ public class BossDefendingLavaStreamState : State
         transform.LookAt(playerPosition);
     }
 
-    IEnumerator GroundbreakTimer(float timer = 3f)
+    IEnumerator GroundbreakTimer()
     {
-        yield return new WaitForSecondsRealtime(timer);
+        yield return new WaitForSecondsRealtime(groundbreakTime);
         GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, null);
         DamagingParticle damagingParticle = groundbreakInstance.GetComponentInChildren<DamagingParticle>();
         damagingParticle.damage = groundbreakDamage;
