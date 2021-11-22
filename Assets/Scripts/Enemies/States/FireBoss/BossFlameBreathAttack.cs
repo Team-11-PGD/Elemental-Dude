@@ -12,22 +12,37 @@ public class BossFlameBreathAttack : State
     float smokeTime = 0.5f, attackTime = 2f;
     [SerializeField]
     float damage = 0.01f;
+
     FireBossAI bossAI;
+    bool facePlayer;
 
     public override void Enter(int previousStateId)
     {
         bossAI = context as FireBossAI;
 
-        particleSystem = Instantiate(smokePrefab, context.transform.position, context.transform.rotation, context.transform);
+        facePlayer = true;
+
         StartCoroutine(SmokeTimer());
     }
 
     public override void Exit(int nextStateId) { }
 
+    void Update()
+    {
+        if (!facePlayer) return;
+
+        Vector3 playerPosition = new Vector3(bossAI.playerModel.transform.position.x, transform.position.y, bossAI.playerModel.transform.position.z);
+        transform.LookAt(playerPosition);
+    }
+
     IEnumerator SmokeTimer()
     {
         //SOUND: (smoky)
+        particleSystem = Instantiate(smokePrefab, context.transform.position, context.transform.rotation, context.transform);
         yield return new WaitForSecondsRealtime(smokeTime);
+
+        facePlayer = false;
+
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
 
         particleSystem = Instantiate(flamePrefab, context.transform.position, context.transform.rotation, context.transform);

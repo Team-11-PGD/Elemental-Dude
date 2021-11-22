@@ -48,11 +48,13 @@ public class FireBossAI : BossAI
     void OnEnable()
     {
         health.Hitted += Hitted;
+        shieldHealth.Hitted += ShieldHitted;
     }
 
     void OnDisable()
     {
         health.Hitted -= Hitted;
+        shieldHealth.Hitted -= ShieldHitted;
     }
 
     public override void NextState()
@@ -87,10 +89,13 @@ public class FireBossAI : BossAI
         {
             SwitchToDefend();
         }
+    }
 
+    void ShieldHitted()
+    {
         if (shieldHealth.HpPercentage <= 0)
         {
-
+            TransitionTo((int)StateOptions.MoveToPlayer);
         }
     }
 
