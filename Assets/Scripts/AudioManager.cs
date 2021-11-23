@@ -50,7 +50,8 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayAmbientAudio(SoundLocation sl)
 	{
-		ambient.clip = (AudioClip)Resources.Load(GetSoundLocation(sl));
+		Debug.Log(GetSoundLocation(sl));
+		ambient.clip = Resources.Load<AudioClip>(GetSoundLocation(sl));
 		ambient.loop = true;
 		ambient.volume = ambientVolume;
 		ambient.Play();
@@ -60,6 +61,6 @@ public class AudioManager : MonoBehaviour
 	{
 		gun.loop = false;
 		gun.volume = effectsVolume;
-		gun.PlayOneShot((AudioClip)Resources.Load(GetSoundLocation(sl)));
+		gun.PlayOneShot(Resources.Load<AudioClip>(GetSoundLocation(sl)));
 	}
 }
