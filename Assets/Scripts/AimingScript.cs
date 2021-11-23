@@ -25,16 +25,6 @@ public class AimingScript : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        bool isAiming = Input.GetMouseButton(1);
-        animator.SetBool(isAimingParam, isAiming);
-        if (isAiming)
-        {
-
-        }
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
