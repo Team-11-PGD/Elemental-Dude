@@ -119,7 +119,7 @@ public class Weapon : MonoBehaviour
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, 50f))
+        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, float.MaxValue))
         {
             //Debug.Log(hit.transform.name);
             aimPoint = hit.point;

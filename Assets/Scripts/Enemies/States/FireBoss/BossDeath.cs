@@ -10,7 +10,9 @@ public class BossDeath : State
     Renderer renderer;
     [SerializeField]
     float explosionForce = 1f;
-    
+    [SerializeField]
+    GameObject portal;
+
     int stateId;
 
     public override void Enter(int previousStateId)
@@ -24,6 +26,7 @@ public class BossDeath : State
             rigidbody.AddForce(Vector3.up * explosionForce);
         }
         context.enabled = false;
+        portal.SetActive(true);
     }
 
     public override void Exit(int nextStateId)
@@ -33,5 +36,5 @@ public class BossDeath : State
             context.TransitionTo(context.CurrentStateId);
     }
 
-    
+
 }
