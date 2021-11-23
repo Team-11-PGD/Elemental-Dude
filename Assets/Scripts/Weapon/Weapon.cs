@@ -49,6 +49,7 @@ public class Weapon : MonoBehaviour
         {
             timeToFire = Time.time + fireInterval;
             Shoot();
+            AudioManager.instance.PlayGunAudio(AudioManager.SoundLocation.GunShotTest);
         }
 
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
