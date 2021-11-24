@@ -19,6 +19,7 @@ public class BulletProjectile : Projectile
     private void OnTriggerEnter(Collider other)
     {
         Collided(other);
+        //SOUND: (inpact sound)?
         Destroy(gameObject);
     }
 }
