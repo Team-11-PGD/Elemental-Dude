@@ -289,7 +289,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 3
-      minScalar: 2
+      minScalar: 4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -664,7 +664,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 20
+    angle: 30
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -4838,6 +4838,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   playerHealth: {fileID: 0}
+  isTrigger: 0
+  particleSystem: {fileID: 0}
 --- !u!114 &5800953966673744213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4851,7 +4853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoShutDown: 0
-  timer: 0
+  time: 0
 --- !u!1 &1685911702664702
 GameObject:
   m_ObjectHideFlags: 0

@@ -78,8 +78,8 @@ MonoBehaviour:
   damageAmount: 10
   hitableTags:
   - Enemy
-  - BossShield
   - Boss
+  - BossShield
 --- !u!1 &8600321062549566495
 GameObject:
   m_ObjectHideFlags: 0

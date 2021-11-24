@@ -10,6 +10,7 @@ TagManager:
   - BossShield
   - Boss
   - Ground
+  - UnhittableShield
   layers:
   - Default
   - TransparentFX

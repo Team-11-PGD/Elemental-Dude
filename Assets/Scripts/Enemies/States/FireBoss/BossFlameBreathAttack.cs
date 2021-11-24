@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossFlameBreathAttack : State
 {
     new GameObject particleSystem;
+    [SerializeField]
+    Transform FlamePosition;
 
     [SerializeField]
     GameObject smokePrefab, flamePrefab;
@@ -38,14 +40,14 @@ public class BossFlameBreathAttack : State
     IEnumerator SmokeTimer()
     {
         //SOUND: (smoky)
-        particleSystem = Instantiate(smokePrefab, context.transform.position, context.transform.rotation, context.transform);
+        particleSystem = Instantiate(smokePrefab, FlamePosition.transform.position, context.transform.rotation, context.transform);
         yield return new WaitForSecondsRealtime(smokeTime);
 
         facePlayer = false;
 
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
 
-        particleSystem = Instantiate(flamePrefab, context.transform.position, context.transform.rotation, context.transform);
+        particleSystem = Instantiate(flamePrefab, FlamePosition.transform.position, context.transform.rotation, context.transform);
         particleSystem.GetComponent<DamagingParticle>().playerHealth = bossAI.playerHealth;
         particleSystem.GetComponent<DamagingParticle>().damage = this.damage;
         StartCoroutine(FlameTimer());

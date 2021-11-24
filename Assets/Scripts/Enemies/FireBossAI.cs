@@ -129,5 +129,14 @@ public class FireBossAI : BossAI
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (CurrentStateId == 3)
+        {
+            shield.tag = "UnhittableShield";
+        }
+        else shield.tag = "BossShield";
+    }
+
 
 }
