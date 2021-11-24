@@ -101,6 +101,7 @@ public class UIManager : MonoBehaviour
 
     void SwitchPause()
     {
+        //SOUND: ( Switch sounds)
         gameIsPaused = !gameIsPaused;
         SetMouseState(gameIsPaused);
 

@@ -23,6 +23,7 @@ public class EnemyMeleeAttackState : EnemyState
     IEnumerator Attack()
     {
         // Play charge animation
+        //SOUND: (Atack)
         Debug.Log("start attack animation");
 
         yield return new WaitForSecondsRealtime(attackChargeTime);

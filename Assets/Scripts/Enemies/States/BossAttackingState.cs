@@ -39,6 +39,7 @@ public class BossAttackingState: State
     IEnumerator BossAttack()
     {
         // Play charge animation
+        //SOUND: (Charge sound)
         Debug.Log("start bossattack animation");
 
         yield return new WaitForSecondsRealtime(attackChargeTime);

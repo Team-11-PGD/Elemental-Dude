@@ -24,6 +24,7 @@ public class Health : MonoBehaviour
         currentHp += healAmt;
         if (currentHp > maxHp)
         {
+            //SOUND: (For the player a healing sound)
             currentHp = maxHp;
         }
     }
@@ -42,12 +43,15 @@ public class Health : MonoBehaviour
             switch (gameObject.tag)
             {
                 case "Player":
+                    //SOUND: (Player death)
                     UIManager.instance.GoToMainMenu();
                     break;
                 case "BossShield":
                     gameObject.SetActive(false);
+                    //SOUND: (Shield destroyed)
                     break;
                 case "Boss":
+                    //SOUND: (Boss death)
                     break;
                 default:
                     Destroy(gameObject);
