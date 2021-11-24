@@ -49,10 +49,9 @@ public class MovementScript : MonoBehaviour
 
         //moves character with camera
         float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-        transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
+        //transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
         //makes character move in camera direction
         movementDirection = Quaternion.Euler(0f, targetAngle, 0f)* Vector3.forward;
-
         //jumping
         ySpeed += gravityMultiplier * Physics.gravity.y * Time.deltaTime;
         if (controller.isGrounded)
