@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef422e44dfe1754f8bfaf4735c3ccab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlamePosition: {fileID: 0}
+  FlamePosition: {fileID: 4932459855604928749}
   smokePrefab: {fileID: 7394829142842504223, guid: 237df58ca0f3b9a47812fbf6bc599fb1, type: 3}
   flamePrefab: {fileID: 1634767862067424, guid: 0d7e715fcdadd9e48b8e6b18b99af29c, type: 3}
   smokeTime: 1
@@ -356,6 +356,7 @@ MonoBehaviour:
   fracturedModel: {fileID: 3891040115948383337, guid: 51fe1349e29ec8b41a0171cd8023f990, type: 3}
   renderer: {fileID: 3895526102434882939}
   explosionForce: 1
+  portal: {fileID: 0}
 --- !u!1001 &5280064988402498480
 PrefabInstance:
   m_ObjectHideFlags: 0
