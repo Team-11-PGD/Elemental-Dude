@@ -1,66 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.Audio;
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-	[SerializeField]
-	private float ambientVolume;
-
-	[SerializeField]
-	private float effectsVolume;
-
-	private static bool firstRun = true;
-	private AudioSource ambient;
-	private AudioSource gun;
-
 	public static AudioManager instance;
+
+	public Sound[] sounds;
 
 	private void Awake()
 	{
-		if (!firstRun)
+		if (instance == null)
 		{
-			Destroy(this);
-			return;
+			instance = this;
 		}
-		firstRun = false;
+		else if(instance != this)
+		{
+			Destroy(gameObject);
+		}
 		DontDestroyOnLoad(this.gameObject);
 
-		instance = this;
 		InitAudioSources();
-		PlayAmbientAudio(SoundLocation.AmbientSoundTest);
-	}
-
-	public enum SoundLocation
-	{
-		GunShotTest,
-		AmbientSoundTest
-	}
-
-	public string GetSoundLocation(SoundLocation sl)
-	{
-		return "Audio/" + sl.ToString();
 	}
 
 	private void InitAudioSources()
 	{
-		ambient = this.gameObject.AddComponent<AudioSource>();
-		gun = this.gameObject.AddComponent<AudioSource>();
+		foreach (Sound s in sounds)
+		{
+			s.source = gameObject.AddComponent<AudioSource>();
+			s.source.clip = s.clip;
+
+			s.source.volume = s.volume;
+			s.source.pitch = s.pitch;
+			s.source.loop = s.loop;
+		}
 	}
 
-	public void PlayAmbientAudio(SoundLocation sl)
+
+	public void PlaySound(string name)
 	{
-		Debug.Log(GetSoundLocation(sl));
-		ambient.clip = Resources.Load<AudioClip>(GetSoundLocation(sl));
-		ambient.loop = true;
-		ambient.volume = ambientVolume;
-		ambient.Play();
+		Sound s = Array.Find(sounds, sound => sound.name == name);
+		if (s == null)
+		{
+			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
+			return;
+		}
+		s.source.Play();
 	}
 
-	public void PlayGunAudio(SoundLocation sl)
+	public void StopSound(string name)
 	{
-		gun.loop = false;
-		gun.volume = effectsVolume;
-		gun.PlayOneShot(Resources.Load<AudioClip>(GetSoundLocation(sl)));
+		Sound s = Array.Find(sounds, sound => sound.name == name);
+		if (s == null)
+		{
+			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
+			return;
+		}
+		s.source.Stop();
 	}
+
+
 }
