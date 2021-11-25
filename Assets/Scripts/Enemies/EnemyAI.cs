@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class EnemyAI : StateMachine
 {
+    public Transform playerModel;
+    public Health playerHealth;
+
+    [SerializeField]
+    Health health;
+    [SerializeField]
+    [Range(0, 1)]
+    float fleeHealthPercentage = 0.3f;
+
+    #region State Setup
     public enum StateOptions
     {
         MoveToPlayer,
@@ -13,19 +23,10 @@ public class EnemyAI : StateMachine
         Flee
     }
 
-    public Transform playerModel;
-    public Health playerHealth;
-
-    [SerializeField]
-    List<StateTuple> inspectorStates;
-    [SerializeField]
-    Health enemyHealth;
-    [SerializeField]
-    [Range(0, 1)]
-    float fleeHealthPercentage = 0.3f;
-
     [SerializeField]
     protected StateOptions startState;
+    [SerializeField]
+    List<StateTuple> inspectorStates;
 
     [Serializable]
     protected class StateTuple : Tuple<StateOptions, State>
@@ -54,10 +55,25 @@ public class EnemyAI : StateMachine
 
         StateMachineSetup((int)startState);
     }
+    #endregion State Setup
 
-    void Update()
+    protected virtual void OnEnable()
     {
-        if (enemyHealth.HpPercentage <= fleeHealthPercentage && (CurrentStateId != (int)StateOptions.Flee && CurrentStateId != (int)StateOptions.Heal))
+        health.Hitted += Hitted;
+        health.Died += Died;
+    }
+
+    protected virtual void OnDisable()
+    {
+        health.Hitted -= Hitted;
+        health.Died -= Died;
+    }
+
+    protected virtual void Died() { }
+
+    protected virtual void Hitted()
+    {
+        if (health.HpPercentage <= fleeHealthPercentage && (CurrentStateId != (int)StateOptions.Flee && CurrentStateId != (int)StateOptions.Heal))
         {
             TransitionTo((int)StateOptions.Flee);
         }
