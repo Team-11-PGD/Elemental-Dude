@@ -45,18 +45,6 @@ public class FireBossAI : BossAI
         StateMachineSetup((int)startState);
     }
 
-    void OnEnable()
-    {
-        health.Hitted += Hitted;
-        shieldHealth.Hitted += ShieldHitted;
-    }
-
-    void OnDisable()
-    {
-        health.Hitted -= Hitted;
-        shieldHealth.Hitted -= ShieldHitted;
-    }
-
     public override void NextState()
     {
         switch (CurrentStateId)
@@ -78,25 +66,33 @@ public class FireBossAI : BossAI
         }
     }
 
-    void Hitted()
+    protected override void OnEnable()
     {
-        if (health.HpPercentage <= 0)
-        {
-            TransitionTo((int)StateOptions.Death);
-            //SOUND: (boss death sound)
-        }
-        else
-        {
-            SwitchToDefend();
-        }
+        base.OnEnable();
+        shieldHealth.Died += ShieldDied;
     }
 
-    void ShieldHitted()
+    protected override void OnDisable()
     {
-        if (shieldHealth.HpPercentage <= 0)
-        {
-            TransitionTo((int)StateOptions.MoveToPlayer);
-        }
+        base.OnDisable();
+        shieldHealth.Died -= ShieldDied;
+    }
+
+    protected override void Hitted()
+    {
+        SwitchToDefend();
+    }
+
+    protected override void Died()
+    {
+        TransitionTo((int)StateOptions.Death);
+        //SOUND: (boss death sound)
+    }
+
+    void ShieldDied()
+    {
+        TransitionTo((int)StateOptions.MoveToPlayer);
+        //SOUND: (Shield destroyed)
     }
 
     public void NextAttackState()

@@ -356,6 +356,7 @@ MonoBehaviour:
   fracturedModel: {fileID: 3891040115948383337, guid: 51fe1349e29ec8b41a0171cd8023f990, type: 3}
   renderer: {fileID: 3895526102434882939}
   explosionForce: 1
+  portal: {fileID: 0}
 --- !u!1001 &5280064988402498480
 PrefabInstance:
   m_ObjectHideFlags: 0
