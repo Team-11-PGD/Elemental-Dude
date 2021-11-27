@@ -4305,7 +4305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3895526102434882937, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 51.562233
+      value: 47.38
       objectReference: {fileID: 0}
     - target: {fileID: 3895526102434882937, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4350,18 +4350,6 @@ PrefabInstance:
     - target: {fileID: 5158375459202621933, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.733
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014813875451980696, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7.947911
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014813875451980696, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 11.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 6014813875451980696, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 7.947911
       objectReference: {fileID: 0}
     - target: {fileID: 6103488072458605474, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
       propertyPath: spawnArea
@@ -4781,7 +4769,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1257535504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ba50fff3f117e14693aaf4d36c1f8d1, type: 3}
+  m_Script: {fileID: 11500000, guid: bd53851c6d916b3489e87bccacbfce35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 1230343846}
@@ -6777,7 +6765,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679882540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.5, y: 51.53, z: 276.2}
+  m_LocalPosition: {x: 32.5, y: 47.03, z: 276.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8673,6 +8661,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3958088174501504617, guid: 123bbd0e34ea44046996edfc2a978b64, type: 3}
+      propertyPath: CameraDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958088174839417745, guid: 123bbd0e34ea44046996edfc2a978b64, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.0000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201319237532895559, guid: 123bbd0e34ea44046996edfc2a978b64, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.0000005
+      objectReference: {fileID: 0}
     - target: {fileID: 9201319238531530264, guid: 123bbd0e34ea44046996edfc2a978b64, type: 3}
       propertyPath: m_RootOrder
       value: 5

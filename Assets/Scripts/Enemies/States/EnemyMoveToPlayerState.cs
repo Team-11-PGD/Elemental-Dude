@@ -25,10 +25,10 @@ public class EnemyMoveToPlayerState : EnemyState
             switch (Random.Range(0, 2))
             {
                 case 0:
-                    context.TransitionTo((int)BossAIOld.StateOptions.FireAttacking1);
+                    context.TransitionTo(BossAIOld.StateOptions.FireAttacking1);
                     break;
                 case 1:
-                    context.TransitionTo((int)BossAIOld.StateOptions.FireAttacking2);
+                    context.TransitionTo(BossAIOld.StateOptions.FireAttacking2);
                     break;
             }
 

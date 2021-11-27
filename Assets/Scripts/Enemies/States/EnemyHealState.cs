@@ -30,7 +30,7 @@ class EnemyHealState : EnemyState
         enemyHealth.Heal(healAmount);
         if (enemyHealth.HpPercentage >= neededHealthPercentage)
         {
-            context.TransitionTo((int)EnemyAI.StateOptions.MoveToPlayer);
+            context.TransitionTo(EnemyAI.StateOptions.MoveToPlayer);
         }
     }
 }

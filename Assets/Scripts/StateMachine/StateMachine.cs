@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    protected Dictionary<int, State> states = new Dictionary<int, State>();
+    private Dictionary<int, State> states = new Dictionary<int, State>();
 
     public int CurrentStateId { get; private set; } = -1;
-    State CurrentState
+
+    private State CurrentState
     {
         get
         {
@@ -18,25 +19,45 @@ public class StateMachine : MonoBehaviour
     }
 
     /// <summary>
+    /// Change the unclasified Enum to a int
+    /// </summary>
+    /// <param name="value"> Enum value to convert </param>
+    /// <returns> The converted enum as an int </returns>
+    private int EnumToInt(Enum value) => (int)Convert.ChangeType(value, value.GetTypeCode());
+
+    /// <summary>
+    /// Add a state to the state machine
+    /// </summary>
+    /// <param name="stateEnum"> The associated enum </param>
+    /// <param name="stateComponent"> The loaded state from the scene </param>
+    protected void AddState(Enum stateEnum, State stateComponent)
+    {
+        states.Add(EnumToInt(stateEnum), stateComponent);
+    }
+
+
+    /// <summary>
     /// Set all states to inactive and activate first state
     /// </summary>
-    /// <param name="startStateId"> Index to pick the first state from </param>
-    protected void StateMachineSetup(int startStateId = 0)
+    /// <param name="startState"> Index to pick the first state from </param>
+    protected void StateMachineSetup(Enum startState)
     {
         foreach (State state in states.Values)
         {
             state.enabled = false;
         }
-        TransitionTo(startStateId);
+        TransitionTo(startState);
     }
 
     /// <summary>
-    /// Change state and call the End and Start methods
+    /// Change state and call the Exit and Enter methods
     /// </summary>
-    /// <param name="nextStateId"> New state id to change to </param>
-    public void TransitionTo(int nextStateId)
+    /// <param name="nextState"> New state to change to </param>
+    public void TransitionTo(Enum nextState)
     {
         if (!enabled) return;
+
+        int nextStateId = EnumToInt(nextState);
 
         if (CurrentState != null)
         {
@@ -51,6 +72,9 @@ public class StateMachine : MonoBehaviour
         CurrentState.Enter(previousStateId);
     }
 
+    /// <summary>
+    /// Disables the current state (does not call Exit)
+    /// </summary>
     public void DisableStates()
     {
         CurrentState.enabled = false;

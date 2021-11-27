@@ -32,7 +32,7 @@ class EnemyPatrolingState : EnemyState
     {
         if (Vector3.Distance(enemyAI.playerModel.transform.position, transform.position) <= noticeRange || enemyHealth.HpPercentage != 1)
         {
-            context.TransitionTo((int)EnemyAI.StateOptions.MoveToPlayer);
+            context.TransitionTo(EnemyAI.StateOptions.MoveToPlayer);
         }
         if (agent.pathStatus == NavMeshPathStatus.PathComplete)
         {

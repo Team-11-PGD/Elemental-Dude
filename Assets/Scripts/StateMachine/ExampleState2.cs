@@ -21,7 +21,7 @@ public class ExampleState2 : State
         yield return new WaitForSecondsRealtime(time);
 
         // See ExampleState1 for explanation
-        context.TransitionTo((int)AIExample.StateOptions.EnemyDefending);
+        context.TransitionTo(AIExample.StateOptions.EnemyDefending);
     }
 }
 

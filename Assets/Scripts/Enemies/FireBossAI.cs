@@ -34,15 +34,15 @@ public class FireBossAI : BossAI
 
     protected void Start()
     {
-        states.Add((int)StateOptions.MoveToPlayer, GetComponent<BossMoveToPlayerState>());          // 0
-        states.Add((int)StateOptions.FireAttacking1, GetComponent<BossLavaSlamAttack>());           // 1
-        states.Add((int)StateOptions.FireAttacking2, GetComponent<BossFlameBreathAttack>());        // 2
-        states.Add((int)StateOptions.MoveToCenter, GetComponent<BossMoveToPosition>());             // 3
-        states.Add((int)StateOptions.Defending1, GetComponent<BossDefendingFireBallState>());       // 4
-        states.Add((int)StateOptions.Defendig2, GetComponent<BossDefendingLavaStreamState>());      // 5
-        states.Add((int)StateOptions.Death, GetComponent<BossDeath>());                             // 6
+        AddState(StateOptions.MoveToPlayer, GetComponent<BossMoveToPlayerState>());          // 0
+        AddState(StateOptions.FireAttacking1, GetComponent<BossLavaSlamAttack>());           // 1
+        AddState(StateOptions.FireAttacking2, GetComponent<BossFlameBreathAttack>());        // 2
+        AddState(StateOptions.MoveToCenter, GetComponent<BossMoveToPosition>());             // 3
+        AddState(StateOptions.Defending1, GetComponent<BossDefendingFireBallState>());       // 4
+        AddState(StateOptions.Defendig2, GetComponent<BossDefendingLavaStreamState>());      // 5
+        AddState(StateOptions.Death, GetComponent<BossDeath>());                             // 6
 
-        StateMachineSetup((int)startState);
+        StateMachineSetup(startState);
     }
 
     void OnEnable()
@@ -63,7 +63,7 @@ public class FireBossAI : BossAI
         {
             case (int)StateOptions.FireAttacking1:
             case (int)StateOptions.FireAttacking2:
-                if (!SwitchToDefend()) TransitionTo((int)StateOptions.MoveToPlayer);
+                if (!SwitchToDefend()) TransitionTo(StateOptions.MoveToPlayer);
                 break;
             case (int)StateOptions.MoveToPlayer:
                 NextAttackState();
@@ -82,7 +82,7 @@ public class FireBossAI : BossAI
     {
         if (health.HpPercentage <= 0)
         {
-            TransitionTo((int)StateOptions.Death);
+            TransitionTo(StateOptions.Death);
             //SOUND: (boss death sound)
         }
         else
@@ -95,13 +95,13 @@ public class FireBossAI : BossAI
     {
         if (shieldHealth.HpPercentage <= 0)
         {
-            TransitionTo((int)StateOptions.MoveToPlayer);
+            TransitionTo(StateOptions.MoveToPlayer);
         }
     }
 
     public void NextAttackState()
     {
-        if (!SwitchToDefend()) TransitionTo(Random.Range(1, 3));
+        if (!SwitchToDefend()) TransitionTo(RandomStateFromRange(StateOptions.FireAttacking1, StateOptions.FireAttacking2));
     }
 
     public bool SwitchToDefend()
@@ -109,7 +109,7 @@ public class FireBossAI : BossAI
         if (health.HpPercentage <= nextStatePercentage)
         {
             nextStatePercentage -= nextPercentageStep;
-            TransitionTo((int)StateOptions.MoveToCenter);
+            TransitionTo(StateOptions.MoveToCenter);
             health.enabled = false;
             shield.SetActive(true);
             shieldHealth.currentHp = shieldHealth.maxHp;
@@ -122,12 +122,16 @@ public class FireBossAI : BossAI
 
     public void NextDefendState()
     {
-        if (shieldHealth.HpPercentage > 0) TransitionTo(Random.Range(4, 6));
+        if (shieldHealth.HpPercentage > 0) TransitionTo(RandomStateFromRange(StateOptions.Defending1, StateOptions.Defendig2));
         else
         {
-            TransitionTo((int)StateOptions.MoveToPlayer);
+            TransitionTo(StateOptions.MoveToPlayer);
         }
     }
+
+    private StateOptions RandomStateFromRange(StateOptions minInclusive, StateOptions maxInclusive) 
+        => (StateOptions)Random.Range((int)minInclusive, (int)maxInclusive + 1);
+    
 
     private void FixedUpdate()
     {

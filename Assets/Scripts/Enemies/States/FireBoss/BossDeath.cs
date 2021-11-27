@@ -33,7 +33,7 @@ public class BossDeath : State
     {
         // lock this state
         if (context.CurrentStateId != stateId)
-            context.TransitionTo(context.CurrentStateId);
+            context.TransitionTo((FireBossAI.StateOptions)context.CurrentStateId);
     }
 
 
