@@ -49,17 +49,17 @@ public class EnemyAI : StateMachine
     {
         foreach (StateTuple tuple in inspectorStates)
         {
-            states.Add((int)tuple.Item1, tuple.Item2);
+            AddState(tuple.Item1, tuple.Item2);
         }
 
-        StateMachineSetup((int)startState);
+        StateMachineSetup(startState);
     }
 
     void Update()
     {
         if (enemyHealth.HpPercentage <= fleeHealthPercentage && (CurrentStateId != (int)StateOptions.Flee && CurrentStateId != (int)StateOptions.Heal))
         {
-            TransitionTo((int)StateOptions.Flee);
+            TransitionTo(StateOptions.Flee);
         }
     }
 }

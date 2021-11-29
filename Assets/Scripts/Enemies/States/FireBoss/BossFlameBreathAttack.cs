@@ -59,6 +59,6 @@ public class BossFlameBreathAttack : State
         yield return new WaitForSecondsRealtime(attackTime);
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
 
-        bossAI.TransitionTo((int)FireBossAI.StateOptions.MoveToPlayer);
+        bossAI.TransitionTo(FireBossAI.StateOptions.MoveToPlayer);
     }
 }

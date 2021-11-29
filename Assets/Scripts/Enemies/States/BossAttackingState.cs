@@ -51,7 +51,7 @@ public class BossAttackingState: State
         }
         else
         {
-            context.TransitionTo((int)BossAIOld.StateOptions.MoveToPlayer);
+            context.TransitionTo(BossAIOld.StateOptions.MoveToPlayer);
         }
     }
 
@@ -62,6 +62,6 @@ public class BossAttackingState: State
             // You can transition between states with the TransitionTo method.
             // This method requires the id of the state.
             // If you used a enum you will again need to cast this to a int.
-            context.TransitionTo((int)AIExample.StateOptions.EnemyAttacking);
+            context.TransitionTo(AIExample.StateOptions.EnemyAttacking);
         }*/
 }

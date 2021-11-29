@@ -34,7 +34,7 @@ public class EnemyMeleeAttackState : EnemyState
         }
         else
         {
-            context.TransitionTo((int)EnemyAI.StateOptions.MoveToPlayer);
+            context.TransitionTo(EnemyAI.StateOptions.MoveToPlayer);
         }
     }
 }

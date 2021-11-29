@@ -40,7 +40,7 @@ class EnemyFleeState : EnemyState
 
         if (Vector3.Distance(enemyAI.playerModel.position, transform.position) >= fleeRange || (agent.velocity == Vector3.zero && cornerCheck))
         {
-            context.TransitionTo((int)EnemyAI.StateOptions.Heal);
+            context.TransitionTo(EnemyAI.StateOptions.Heal);
         }
     }
 

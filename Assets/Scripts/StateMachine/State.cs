@@ -16,10 +16,10 @@ public abstract class State : MonoBehaviour
     /// <summary>
     /// Enter is called when this state is activated
     /// </summary>
-    public abstract void Enter(int previousStateId);
+    public virtual void Enter(int previousStateId) { }
 
     /// <summary>
     /// Exit is called when this state is deactivated
     /// </summary>
-    public abstract void Exit(int nextStateId);
+    public virtual void Exit(int nextStateId) { }
 }

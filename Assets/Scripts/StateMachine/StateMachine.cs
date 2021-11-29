@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    protected Dictionary<int, State> states = new Dictionary<int, State>();
+    private Dictionary<int, State> states = new Dictionary<int, State>();
 
     public int CurrentStateId { get; private set; } = -1;
     State CurrentState
@@ -17,26 +17,35 @@ public class StateMachine : MonoBehaviour
         }
     }
 
+    private int EnumToInt(Enum value) => (int)Convert.ChangeType(value, value.GetTypeCode());
+
     /// <summary>
     /// Set all states to inactive and activate first state
     /// </summary>
     /// <param name="startStateId"> Index to pick the first state from </param>
-    protected void StateMachineSetup(int startStateId = 0)
+    protected void StateMachineSetup(Enum startState)
     {
         foreach (State state in states.Values)
         {
             state.enabled = false;
         }
-        TransitionTo(startStateId);
+        TransitionTo(startState);
+    }
+
+    protected void AddState(Enum stateEnum, State stateComponent)
+    {
+        states.Add(EnumToInt(stateEnum), stateComponent);
     }
 
     /// <summary>
     /// Change state and call the End and Start methods
     /// </summary>
     /// <param name="nextStateId"> New state id to change to </param>
-    public void TransitionTo(int nextStateId)
+    public void TransitionTo(Enum nextState)
     {
         if (!enabled) return;
+
+        int nextStateId = EnumToInt(nextState);
 
         if (CurrentState != null)
         {
