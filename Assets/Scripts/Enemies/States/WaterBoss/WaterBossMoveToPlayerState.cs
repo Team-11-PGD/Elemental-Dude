@@ -24,6 +24,4 @@ public class WaterBossMoveToPlayerState : State
         Vector3 lengthShortner = teleportDirection.normalized * rangeAroundTarget;
         return teleportDirection - lengthShortner;
     }
-
-
 }
