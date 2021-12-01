@@ -49,7 +49,6 @@ public class Weapon : MonoBehaviour
         {
             timeToFire = Time.time + fireInterval;
             Shoot();
-            AudioManager.instance.PlaySound("Shoot");
         }
 
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
@@ -100,6 +99,8 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
+        //AudioManager.instance.PlaySoundEffect(this.gameObject, "PewPew");
+
         if (curBulletAmount <= 0)
         {
             Reload();

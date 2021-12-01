@@ -7,7 +7,8 @@ public class AudioManager : MonoBehaviour
 {
 	public static AudioManager instance;
 
-	public Sound[] sounds;
+	public Sound[] SoundEffects;
+	public Sound[] AmbianceSounds;
 
 	private void Awake()
 	{
@@ -21,12 +22,12 @@ public class AudioManager : MonoBehaviour
 		}
 		DontDestroyOnLoad(this.gameObject);
 
-		InitAudioSources();
+		InitAmbianceAudioSources();
 	}
 
-	private void InitAudioSources()
+	private void InitAmbianceAudioSources()
 	{
-		foreach (Sound s in sounds)
+		foreach (Sound s in AmbianceSounds)
 		{
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
@@ -38,9 +39,29 @@ public class AudioManager : MonoBehaviour
 	}
 
 
-	public void PlaySound(string name)
+	public void PlaySoundEffect(GameObject gameobj, string name)
 	{
-		Sound s = Array.Find(sounds, sound => sound.name == name);
+		Sound s = Array.Find(SoundEffects, sound => sound.name == name);
+		if (s == null)
+		{
+			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
+			return;
+		}
+
+		s.source = gameobj.gameObject.AddComponent<AudioSource>();
+		s.source.clip = s.clip;
+		
+		s.source.volume = s.volume;
+		s.source.pitch = s.pitch;
+		s.source.loop = s.loop;
+
+		s.source.Play();
+		Destroy(s.source, s.source.clip.length);
+	}
+
+	public void PlayAmbiance(string name)
+	{
+		Sound s = Array.Find(SoundEffects, sound => sound.name == name);
 		if (s == null)
 		{
 			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
@@ -48,17 +69,4 @@ public class AudioManager : MonoBehaviour
 		}
 		s.source.Play();
 	}
-
-	public void StopSound(string name)
-	{
-		Sound s = Array.Find(sounds, sound => sound.name == name);
-		if (s == null)
-		{
-			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
-			return;
-		}
-		s.source.Stop();
-	}
-
-
 }
