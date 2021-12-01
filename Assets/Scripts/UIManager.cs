@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     Slider playerHpBar;
     [SerializeField]
     bool startWithoutMouseOverride = false;
+    [SerializeField]
+    UIScore iScore;
 
     void Awake()
     {
@@ -128,6 +130,11 @@ public class UIManager : MonoBehaviour
                 //GameOver
                 GoToMainMenu();
             }
+        }
+        //this should work if we actually die, tested with keypress.
+        if (player.currentHp <= 0)
+        {
+            iScore.UpdateTimeScore();
         }
     }
 
