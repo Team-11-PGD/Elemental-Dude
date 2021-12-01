@@ -13,8 +13,8 @@ public class WaterBossAI : BossAI
         MoveToPlayer,
         WaterAttackBubble,
         WaterAttackSlam,
-        WaterAttackBeam,
         WaterAttackWave,
+        WaterAttackBeam,
         MoveToCenter,
         WaterDefenceWall,
         WaterDefenceDome,
@@ -29,7 +29,7 @@ public class WaterBossAI : BossAI
         states.Add((int)StateOptions.MoveToPlayer, GetComponent<WaterBossMoveToPlayerState>());                     // 0
         states.Add((int)StateOptions.WaterAttackBubble, GetComponent<WaterBossAttackingBouncingBubble>());          // 1
         states.Add((int)StateOptions.WaterAttackSlam, GetComponent<WaterBossAttackingSlam>());                      // 2
-
+        states.Add((int)StateOptions.WaterAttackWave, GetComponent<WaterBossAttackingWave>());                      // 3
         StateMachineSetup((int)startState);
     }
 

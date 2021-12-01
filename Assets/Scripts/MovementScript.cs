@@ -15,6 +15,8 @@ public class MovementScript : MonoBehaviour
     [SerializeField]
     private float jumpGracePeroid;
 
+    public Vector3 velocity;
+
     private float ySpeed;
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
@@ -22,6 +24,10 @@ public class MovementScript : MonoBehaviour
     private CharacterController controller;
     [SerializeField]
     private Transform cam;
+
+    public bool stunned = false;
+    public float stunDuration;
+    float stunTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +35,7 @@ public class MovementScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float veritcalInput = Input.GetAxisRaw("Vertical");
@@ -70,7 +76,7 @@ public class MovementScript : MonoBehaviour
         if (Time.time - lastGroundedTime <= jumpGracePeroid) 
         {
             ySpeed = -0.5f;
-            if (Time.time - jumpButtonPressedTime <= jumpGracePeroid)
+            if (Time.time - jumpButtonPressedTime <= jumpGracePeroid && stunned == false)
             {
                 //SOUND: (Jump)
                 ySpeed = jumpSpeed;
@@ -78,9 +84,20 @@ public class MovementScript : MonoBehaviour
                 lastGroundedTime = null;
             }
         }
-        Vector3 velocity = movementDirection * magnitude;
+        if(stunned == true)
+        {
+            stunTime -= Time.deltaTime;
+            if(stunTime < 0)
+            {
+                stunned = false; 
+            }
+        }
+        if(stunned == false)
+        {
+            stunTime = stunDuration;
+            velocity = movementDirection * magnitude;
+        }
         velocity.y = ySpeed;
-
         controller.Move(velocity * Time.deltaTime);
 
     }
