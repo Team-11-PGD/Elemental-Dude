@@ -13,7 +13,7 @@ public class AirBossAI : BossAI
 
     protected void Start()
     {
-        AddState(StateOptions.Dash, gameObject.AddComponent<DashState>());
+        AddState(StateOptions.Dash, gameObject.GetComponent<DashState>());
 
         StateMachineSetup(startState);
     }
