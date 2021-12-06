@@ -4,18 +4,16 @@ using UnityEngine;
 public class AirBossAI : BossAI
 {
     [SerializeField]
-    StateOptions startState = StateOptions.Tornado;
+    StateOptions startState = StateOptions.Dash;
 
     public enum StateOptions
     {
-        Dash,
-        Tornado
+        Dash
     }
 
     protected void Start()
     {
-        AddState(StateOptions.Dash, gameObject.AddComponent<DashState>());
-        AddState(StateOptions.Tornado, gameObject.AddComponent<TornadoState>());
+        AddState(StateOptions.Dash, gameObject.GetComponent<DashState>());
 
         StateMachineSetup(startState);
     }

@@ -1,13 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class DashState : State
 {
     [SerializeField]
     float attackRange = 1;
+    [SerializeField]
+    int totalDashes = 5;
+    [SerializeField]
+    Collider dashArea;
+    [SerializeField]
+    float damage = 1f;
+    [SerializeField]
+    float speed = 1;
+
     AirBossAI bossAI;
-    Vector3 dashDirection;
+    Vector3 dashPosition, dashDirection, dashStartPosition;
+    bool move;
 
     public override void Enter(int previousStateId)
     {
@@ -17,21 +29,58 @@ public class DashState : State
 
     private void Update()
     {
+        if (!move) return;
+        transform.position += dashDirection * Time.deltaTime * speed;
 
-    }
-
-    IEnumerator Dash()
-    {
-        dashDirection = new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1)).normalized;
-        Coroutine timer = StartCoroutine(Timer());
-        while (Vector3.Distance(transform.position, bossAI.playerModel.position) > attackRange || timer == null)
+        if (Vector3.Dot(transform.position - dashPosition, dashStartPosition - dashPosition) < 0)
         {
-            yield return null;
+            move = false;
+            Attack();
         }
     }
 
-    IEnumerator Timer()
+    private void OnDrawGizmos()
     {
-        yield return new WaitForSecondsRealtime(2);
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(dashPosition, 2);
+    }
+
+    private IEnumerator Dash()
+    {
+        int dashCount = 0;
+
+        // Dash randomly
+        while (dashCount < totalDashes)
+        {
+            dashPosition = new Vector3(
+                UnityEngine.Random.Range(dashArea.bounds.min.x, dashArea.bounds.max.x),
+                UnityEngine.Random.Range(dashArea.bounds.min.y, dashArea.bounds.max.y),
+                UnityEngine.Random.Range(dashArea.bounds.min.z, dashArea.bounds.max.z));
+            dashStartPosition = transform.position;
+            dashDirection = (dashPosition - transform.position).normalized;
+            dashCount++;
+
+            move = true;
+            yield return new WaitWhile(() => move);
+        }
+
+        // Dash towards the player
+        dashPosition = bossAI.playerModel.position;
+        dashDirection = (dashPosition - transform.position).normalized;
+
+        move = true;
+        yield return new WaitWhile(() => move);
+
+        context.TransitionTo(AirBossAI.StateOptions.Dash);
+    }
+
+    void Attack()
+    {
+        //Animation
+        if (Vector3.Distance(bossAI.playerModel.position, transform.position) <= attackRange)
+        {
+            bossAI.playerHealth.Hit(damage);
+            //SOUND: hit player
+        }
     }
 }
