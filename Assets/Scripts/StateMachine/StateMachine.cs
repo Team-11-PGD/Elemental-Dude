@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StateMachine : MonoBehaviour
@@ -70,6 +71,52 @@ public class StateMachine : MonoBehaviour
         CurrentState.SetContext(this);
         CurrentState.enabled = true;
         CurrentState.Enter(previousStateId);
+    }
+
+    /// <summary>
+    /// Choose a random state
+    /// </summary>
+    /// <param name="stateOptions"> Next state options </param>
+    /// <param name="excludeStateOptions"> When true all options appart from stateOptions can be choosen</param>
+    public void NextRandomState(Enum[] stateOptions, bool excludeStateOptions = false)
+    {
+        List<Enum> enums = new List<Enum>();
+        if (!excludeStateOptions)
+        {
+            // Use given options
+            enums = stateOptions.ToList();
+        }
+        else
+        {
+            // Find and use all options that were not given
+            Enum[] allOptions = (Enum[])stateOptions[0].GetType().GetEnumValues();
+            for (int i = 0; i < allOptions.Length; i++)
+            {
+                if (!stateOptions.Contains(allOptions[i]))
+                {
+                    enums.Add(allOptions[i]);
+                }
+            }
+        }
+
+        // Transition to a random option
+        TransitionTo(enums[UnityEngine.Random.Range(0, enums.Count)]);
+    }
+
+    /// <summary>
+    /// Choose a random state with Enum type
+    /// </summary>
+    /// <typeparam name="T"> Can only be a Enum. If not the function will throw an error </typeparam>
+    public void NextRandomState<T>()
+    {
+        Type type = typeof(T);
+        if (!type.IsEnum) throw new Exception("T must be a Enum");
+
+        // Find all options
+        Enum[] enums = (Enum[])type.GetEnumValues();
+
+        // Transition to a random option
+        TransitionTo(enums[UnityEngine.Random.Range(0, enums.Length)]);
     }
 
     /// <summary>

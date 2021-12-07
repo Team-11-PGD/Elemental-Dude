@@ -71,7 +71,7 @@ public class DashState : State
         move = true;
         yield return new WaitWhile(() => move);
 
-        context.TransitionTo(AirBossAI.StateOptions.Dash);
+        context.NextRandomState<AirBossAI.StateOptions>();
     }
 
     void Attack()
