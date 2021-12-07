@@ -89,19 +89,23 @@ public class StateMachine : MonoBehaviour
         else
         {
             // Find and use all options that were not given
-            Enum[] allOptions = (Enum[])stateOptions[0].GetType().GetEnumValues();
+            Array allOptions = stateOptions[0].GetType().GetEnumValues();
             for (int i = 0; i < allOptions.Length; i++)
             {
-                if (!stateOptions.Contains(allOptions[i]))
+                if (!stateOptions.Contains(allOptions.GetValue(i)))
                 {
-                    enums.Add(allOptions[i]);
+                    enums.Add((Enum)allOptions.GetValue(i));
                 }
             }
         }
 
+        if (enums.Count == 0) throw new Exception("No state was found to switch to. This can be caused by an empty Enum or excluding all options");
+
         // Transition to a random option
         TransitionTo(enums[UnityEngine.Random.Range(0, enums.Count)]);
     }
+
+    //voor de gene die bezig zijn met de boss ik heb deze twee functies toegevoegd zodat je makkelijker kan switchen tussen states
 
     /// <summary>
     /// Choose a random state with Enum type
@@ -113,10 +117,10 @@ public class StateMachine : MonoBehaviour
         if (!type.IsEnum) throw new Exception("T must be a Enum");
 
         // Find all options
-        Enum[] enums = (Enum[])type.GetEnumValues();
+        Array enums = Enum.GetValues(type);
 
         // Transition to a random option
-        TransitionTo(enums[UnityEngine.Random.Range(0, enums.Length)]);
+        TransitionTo((Enum)enums.GetValue(UnityEngine.Random.Range(0, enums.Length)));
     }
 
     /// <summary>

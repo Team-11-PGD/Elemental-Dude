@@ -310,6 +310,7 @@ MonoBehaviour:
   totalDashes: 5
   dashArea: {fileID: 209921852}
   damage: 1
+  speed: 50
 --- !u!114 &678749712
 MonoBehaviour:
   m_ObjectHideFlags: 0
