@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class DashState : State
@@ -76,7 +74,7 @@ public class DashState : State
 
     void Attack()
     {
-        //Animation
+        //TODO: Animation
         if (Vector3.Distance(bossAI.playerModel.position, transform.position) <= attackRange)
         {
             bossAI.playerHealth.Hit(damage);
