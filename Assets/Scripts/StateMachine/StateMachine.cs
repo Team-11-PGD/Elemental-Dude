@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    private Dictionary<int, State> states = new Dictionary<int, State>();
-
     public int CurrentStateId { get; private set; } = -1;
 
-    private State CurrentState
+    Dictionary<int, State> states = new Dictionary<int, State>();
+
+    State CurrentState
     {
         get
         {
@@ -24,7 +24,7 @@ public class StateMachine : MonoBehaviour
     /// </summary>
     /// <param name="value"> Enum value to convert </param>
     /// <returns> The converted enum as an int </returns>
-    private int EnumToInt(Enum value) => (int)Convert.ChangeType(value, value.GetTypeCode());
+    int EnumToInt(Enum value) => (int)Convert.ChangeType(value, value.GetTypeCode());
 
     /// <summary>
     /// Add a state to the state machine
@@ -40,7 +40,7 @@ public class StateMachine : MonoBehaviour
     /// <summary>
     /// Set all states to inactive and activate first state
     /// </summary>
-    /// <param name="startState"> Index to pick the first state from </param>
+    /// <param name="startState"> Enum to pick the first state from </param>
     protected void StateMachineSetup(Enum startState)
     {
         foreach (State state in states.Values)
@@ -99,21 +99,22 @@ public class StateMachine : MonoBehaviour
             }
         }
 
+        // Check if there was at least one option
         if (enums.Count == 0) throw new Exception("No state was found to switch to. This can be caused by an empty Enum or excluding all options");
 
         // Transition to a random option
         TransitionTo(enums[UnityEngine.Random.Range(0, enums.Count)]);
     }
 
-    //voor de gene die bezig zijn met de boss ik heb deze twee functies toegevoegd zodat je makkelijker kan switchen tussen states
-
     /// <summary>
     /// Choose a random state with Enum type
     /// </summary>
-    /// <typeparam name="T"> Can only be a Enum. If not the function will throw an error </typeparam>
+    /// <typeparam name="T"> Can only be a Enum </typeparam>
     public void NextRandomState<T>()
     {
         Type type = typeof(T);
+
+        // See if Enum type was given
         if (!type.IsEnum) throw new Exception("T must be a Enum");
 
         // Find all options

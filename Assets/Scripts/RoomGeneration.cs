@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,7 +23,7 @@ static public class RoomGeneration
     /// Load next level element data and scene
     /// </summary>
     /// <param name="elementTypes"> Types of elements to load the next level with </param>
-    /// <param name="amountOfElementsNextRound"> Amount of elements in combi for next level </param>
+    /// <param name="amountOfElementsNextRound"> Amount of elements for next level </param>
     public static void LoadNextLevel(List<ElementMain.ElementType> elementTypes, int amountOfElementsNextRound)
     {
         previousElements = CurrentElements;
@@ -58,6 +57,7 @@ static public class RoomGeneration
             NextElements[PATH_OPTIONS] = randomElements;
         }
 
+        // TODO: load next level
         Debug.Log(NextElements);
     }
 }
