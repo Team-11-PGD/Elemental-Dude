@@ -8,12 +8,14 @@ public class AirBossAI : BossAI
 
     public enum StateOptions
     {
-        Dash
+        Dash,
+        Tornado
     }
 
     protected void Start()
     {
         AddState(StateOptions.Dash, gameObject.GetComponent<DashState>());
+        AddState(StateOptions.Tornado, gameObject.GetComponent<TornadoState>());
 
         StateMachineSetup(startState);
     }
