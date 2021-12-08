@@ -12,8 +12,6 @@ public class BossAI : StateMachine
     [SerializeField]
     protected Health health;
 
-    public virtual void NextState()
-    {
-    }
+    public virtual void NextState() { }
 }
 

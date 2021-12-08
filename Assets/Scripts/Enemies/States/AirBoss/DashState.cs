@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class DashState : State
@@ -71,12 +69,12 @@ public class DashState : State
         move = true;
         yield return new WaitWhile(() => move);
 
-        context.TransitionTo(AirBossAI.StateOptions.Dash);
+        context.NextRandomState<AirBossAI.StateOptions>();
     }
 
     void Attack()
     {
-        //Animation
+        //TODO: Animation
         if (Vector3.Distance(bossAI.playerModel.position, transform.position) <= attackRange)
         {
             bossAI.playerHealth.Hit(damage);

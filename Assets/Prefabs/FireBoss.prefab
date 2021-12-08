@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 1196871036107130351}
   - component: {fileID: 8247946382484683168}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: FireBoss
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

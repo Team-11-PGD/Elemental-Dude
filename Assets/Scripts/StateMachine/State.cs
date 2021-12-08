@@ -5,9 +5,9 @@ public abstract class State : MonoBehaviour
     protected StateMachine context;
 
     /// <summary>
-    /// Sets the statemachine context to this state
+    /// Sets the state machine context to this state
     /// </summary>
-    /// <param name="context"></param>
+    /// <param name="context"> The state machine</param>
     public void SetContext(StateMachine context)
     {
         this.context = context;
