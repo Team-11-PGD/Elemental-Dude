@@ -26,7 +26,6 @@ public class Zoomscript : MonoBehaviour
         if(Input.GetAxis("Mouse ScrollWheel") != 0f)
         {
             cinemachine.CameraDistance -= Input.GetAxis("Mouse ScrollWheel");
-            Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
 
         }
         if(cinemachine.CameraDistance < zoomInMax)

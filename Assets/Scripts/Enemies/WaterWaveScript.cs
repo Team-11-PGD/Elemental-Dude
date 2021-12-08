@@ -19,16 +19,12 @@ public class WaterWaveScript : Projectile
 
     bool canDamage;
 
-    Collider waveCollider;
-    Vector3 velocity;
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody rigidbody = GetComponent<Rigidbody>();
         rigidbody.AddForce((player.position - boss.position).normalized * waveSpeed);
-        velocity = rigidbody.velocity;
         canDamage = true;
-        waveCollider = GetComponent<BoxCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,8 +46,9 @@ public class WaterWaveScript : Projectile
         if(other.tag == "Player")
         {
             DamageHandler(other.gameObject.GetComponentInParent<Health>(), other.gameObject.GetComponentInParent<ElementMain>());
-            other.gameObject.GetComponent<MovementScript>().stunned = true;
             other.gameObject.GetComponent<MovementScript>().stunDuration = waveStunDuration;
+
+            other.gameObject.GetComponent<MovementScript>().stunned = true;
             other.gameObject.GetComponent<MovementScript>().velocity = Vector3.forward * waveForce;
         }
     }

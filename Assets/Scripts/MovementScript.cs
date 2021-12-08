@@ -87,7 +87,7 @@ public class MovementScript : MonoBehaviour
         if(stunned == true)
         {
             stunTime -= Time.deltaTime;
-            if(stunTime < 0)
+            if(stunTime <= 0)
             {
                 stunned = false; 
             }
