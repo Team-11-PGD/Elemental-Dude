@@ -97,6 +97,8 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
+        //AudioManager.instance.PlaySoundEffect(this.gameObject, "PewPew");
+
         if (curBulletAmount <= 0)
         {
             Reload();
