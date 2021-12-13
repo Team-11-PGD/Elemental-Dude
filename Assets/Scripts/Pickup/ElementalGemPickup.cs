@@ -6,10 +6,9 @@ public class ElementalGemPickup : PickupMain
 {
     [SerializeField]
     private ElementMain element;
+    private WeaponSwitcher userWeapon;
 
     private string PickupText;
-
-    private WeaponSwitcher userWeapon;
 
     private bool inPickup = false;
     private bool confirmMenuOpen = false;
@@ -22,12 +21,8 @@ public class ElementalGemPickup : PickupMain
 
     protected override void OnTriggerEnter(Collider other)
     {
-        
-
         if ((other.gameObject.tag == "Player") && allowPickup)
         {
-            Debug.Log("enter");
-
             user = other;
             inPickup = true;
             ShowGemText();
@@ -36,7 +31,6 @@ public class ElementalGemPickup : PickupMain
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("exit");
         inPickup = false;
         allowPickup = true;
         confirmMenuOpen = false;
