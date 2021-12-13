@@ -17,11 +17,6 @@ public class BulletProjectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-	private void Start()
-	{
-       
-	}
-
 	private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Bullet")

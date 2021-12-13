@@ -6,7 +6,6 @@ public class Weapon : MonoBehaviour
 {
     public WeaponTypes weaponType;
     public Camera playerCam;
-    public LayerMask rayMask;
 
     [Header("Bullet")]
     public Transform spawnBulletPos;
@@ -26,6 +25,7 @@ public class Weapon : MonoBehaviour
     private float reloadEndTime;
     private Vector3 aimPoint;
 
+    [HideInInspector]
     public ElementMain elementMain;
 
 	public enum WeaponTypes
@@ -49,7 +49,6 @@ public class Weapon : MonoBehaviour
         {
             timeToFire = Time.time + fireInterval;
             Shoot();
-            AudioManager.instance.PlaySound("Shoot");
         }
 
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
@@ -62,8 +61,6 @@ public class Weapon : MonoBehaviour
             canFire = true;
             isReloading = false;
             curBulletAmount = maxBullets;
-
-            Debug.Log("Done reloading!");
 		}
     }
 
@@ -103,26 +100,16 @@ public class Weapon : MonoBehaviour
         if (curBulletAmount <= 0)
         {
             Reload();
-            Debug.Log("Reloading...");
-            canFire = false;
             return;
         }
         else
         {
             curBulletAmount -= 1;
- 
-            if(curBulletAmount <= 0)
-			{
-                Reload();
-                Debug.Log("Reloading...");
-                canFire = false;
-            }
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, 50f))
+        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, float.MaxValue))
         {
-            //Debug.Log(hit.transform.name);
             aimPoint = hit.point;
         }
         Vector3 aimDir = (aimPoint - spawnBulletPos.position).normalized;
@@ -148,6 +135,7 @@ public class Weapon : MonoBehaviour
     public virtual void Reload()
 	{
         isReloading = true;
+        canFire = false;
         reloadEndTime = Time.time + reloadTime;
 	}
 }
