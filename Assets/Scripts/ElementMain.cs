@@ -11,15 +11,11 @@ public class ElementMain : MonoBehaviour
     public float disadvantageElemPercentage = 0.5f;
     public ElementType currentType = ElementType.None;
 
-    //Do we still need this now?
-    /*public Dictionary<ElementType, Color> ElementColor = new Dictionary<ElementType, Color>
-	{
-		{ ElementType.None, Color.white},
-		{ ElementType.Water, Color.blue},
-		{ ElementType.Fire, new Color(1, 0.4f, 0)},
-		{ ElementType.Air, Color.grey},
-		{ ElementType.Earth, new Color(0.59f, 0.38f, 0.21f)}
-	};*/
+    public static Color ElementNone = Color.white;
+    public static Color ElementWater = Color.blue;
+    public static Color ElementFire = new Color(1, 0.4f, 0);
+    public static Color ElementAir = Color.grey;
+    public static Color ElementEarth = new Color(0.59f, 0.38f, 0.21f);
 
     public enum ElementType
     {
