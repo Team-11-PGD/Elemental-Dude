@@ -85,13 +85,13 @@ public class FireBossAI : BossAI
 
     protected override void Died()
     {
-        TransitionTo((int)StateOptions.Death);
+        TransitionTo(StateOptions.Death);
         //SOUND: (boss death sound)
     }
 
     void ShieldDied()
     {
-        TransitionTo((int)StateOptions.MoveToPlayer);
+        TransitionTo(StateOptions.MoveToPlayer);
         //SOUND: (Shield destroyed)
     }
 

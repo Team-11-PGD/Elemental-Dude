@@ -26,11 +26,11 @@ public class WaterBossAI : BossAI
 
     private void Start()
     {
-        states.Add((int)StateOptions.MoveToPlayer, GetComponent<WaterBossMoveToPlayerState>());                     // 0
-        states.Add((int)StateOptions.WaterAttackBubble, GetComponent<WaterBossAttackingBouncingBubble>());          // 1
-        states.Add((int)StateOptions.WaterAttackSlam, GetComponent<WaterBossAttackingSlam>());                      // 2
-        states.Add((int)StateOptions.WaterAttackWave, GetComponent<WaterBossAttackingWave>());                      // 3
-        StateMachineSetup((int)startState);
+        AddState(StateOptions.MoveToPlayer, GetComponent<WaterBossMoveToPlayerState>());                     // 0
+        AddState(StateOptions.WaterAttackBubble, GetComponent<WaterBossAttackingBouncingBubble>());          // 1
+        AddState(StateOptions.WaterAttackSlam, GetComponent<WaterBossAttackingSlam>());                      // 2
+        AddState(StateOptions.WaterAttackWave, GetComponent<WaterBossAttackingWave>());                      // 3
+        StateMachineSetup(startState);
     }
 
     private void Update()

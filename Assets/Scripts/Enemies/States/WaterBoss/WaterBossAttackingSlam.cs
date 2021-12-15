@@ -29,6 +29,6 @@ public class WaterBossAttackingSlam : State
         Instantiate(slamPrefab, slamPosition.position, context.transform.rotation, context.transform);
         //SOUND: (slam)
         yield return new WaitForSecondsRealtime(chargeTime);
-        bossAI.TransitionTo((int)WaterBossAI.StateOptions.MoveToPlayer);
+        bossAI.TransitionTo(WaterBossAI.StateOptions.MoveToPlayer);
     }
 }

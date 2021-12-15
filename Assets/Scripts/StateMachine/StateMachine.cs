@@ -19,14 +19,13 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    private int EnumToInt(Enum value) => (int)Convert.ChangeType(value, value.GetTypeCode());
 
     /// <summary>
     /// Change the unclasified Enum to a int
     /// </summary>
     /// <param name="value"> Enum value to convert </param>
     /// <returns> The converted enum as an int </returns>
-    int EnumToInt(Enum value) => (int)Convert.ChangeType(value, value.GetTypeCode());
+    private int EnumToInt(Enum value) => (int)Convert.ChangeType(value, value.GetTypeCode());
 
     /// <summary>
     /// Add a state to the state machine
@@ -50,11 +49,6 @@ public class StateMachine : MonoBehaviour
             state.enabled = false;
         }
         TransitionTo(startState);
-    }
-
-    protected void AddState(Enum stateEnum, State stateComponent)
-    {
-        states.Add(EnumToInt(stateEnum), stateComponent);
     }
 
     /// <summary>
