@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     Slider playerHpBar;
     [SerializeField]
     bool startWithoutMouseOverride = false;
+    [SerializeField]
+    UIScore iScore;
 
     void Awake()
     {
@@ -25,12 +27,12 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         if (startWithoutMouseOverride) SetMouseState(false);
-        else SetMouseState(SceneManager.GetActiveScene().name != "GameScene");
+        else SetMouseState(SceneManager.GetActiveScene().name != "InBetweenLevel1");
 
         SceneManager.activeSceneChanged += SceneChanged;
         FindPauseMenu();
         // TODO: put this in its own script on the slider
-        if (SceneManager.GetActiveScene().name == "GameScene")
+        if (SceneManager.GetActiveScene().name == "InBetweenLevel1")
         {
             playerHpBar.maxValue = player.maxHp;
             playerHpBar.value = player.currentHp;
@@ -61,7 +63,7 @@ public class UIManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("InBetweenLevel1");
     }
     public void QuitGame()
     {
@@ -70,13 +72,15 @@ public class UIManager : MonoBehaviour
     }
     public void GoToMainMenu()
     {
+        //updates the best play time.
+        iScore.UpdateTimeScore();
         SceneManager.LoadScene("MainMenu");
     }
 
     void SceneChanged(Scene oldScene, Scene newScene)
     {
         FindPauseMenu();
-        if (newScene.name == "GameScene")
+        if (newScene.name == "InBetweenLevel1")
         {
             ResumeGame();
         }
@@ -110,14 +114,14 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "GameScene")
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "InBetweenLevel1")
         {
             SwitchPause();
         }
 
         //Hp Bar functionality
         // TODO: put this in its own script on the slider
-        if (SceneManager.GetActiveScene().name == "GameScene")
+        if (SceneManager.GetActiveScene().name == "InBetweenLevel1")
         {
             playerHpBar.value = player.currentHp;
 
