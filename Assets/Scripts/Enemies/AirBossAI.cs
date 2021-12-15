@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(DashState), typeof(GroundSpikesState))]
+[RequireComponent(typeof(DashState), typeof(GroundSpikesState), typeof(TornadoState))]
 public class AirBossAI : BossAI
 {
     [SerializeField]
@@ -9,7 +9,7 @@ public class AirBossAI : BossAI
     public enum StateOptions
     {
         Dash,
-        GroundSpikes
+        GroundSpikes,
         Tornado
     }
 
