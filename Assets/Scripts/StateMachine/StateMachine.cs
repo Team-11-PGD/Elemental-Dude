@@ -19,6 +19,8 @@ public class StateMachine : MonoBehaviour
         }
     }
 
+    private int EnumToInt(Enum value) => (int)Convert.ChangeType(value, value.GetTypeCode());
+
     /// <summary>
     /// Change the unclasified Enum to a int
     /// </summary>
@@ -48,6 +50,11 @@ public class StateMachine : MonoBehaviour
             state.enabled = false;
         }
         TransitionTo(startState);
+    }
+
+    protected void AddState(Enum stateEnum, State stateComponent)
+    {
+        states.Add(EnumToInt(stateEnum), stateComponent);
     }
 
     /// <summary>
