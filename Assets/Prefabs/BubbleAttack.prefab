@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a781de1281d50c41aeccfe35b213c8a, type: 2}
+  - {fileID: 2100000, guid: 616a4180cad7d274f97d37c953dcfb69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,17 +122,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1945669496268959100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de5984fd27b4cc64c9350ebf52929213, type: 3}
+  m_Script: {fileID: 11500000, guid: 594759182ee570b4bb03b861c1d929c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
   hitableTags:
-  - Ground
   - Player
+  - Ground
   bubble: {fileID: 1945669496268959100}
   player: {fileID: 0}
   boss: {fileID: 0}
   availableSplits: 3
-  splitAngle: 59
-  bubbleMovementSpeed: 200
-  bubbleBounceHeight: 500
+  splitAngle: 90
+  bubbleMovementSpeed: 300
+  bubbleBounceHeight: 400

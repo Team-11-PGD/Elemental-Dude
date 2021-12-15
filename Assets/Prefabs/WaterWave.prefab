@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3093296309221363564}
   - component: {fileID: 3093296309221363552}
   - component: {fileID: 3093296309221363553}
-  - component: {fileID: 4164555137571329732}
   m_Layer: 0
   m_Name: WaterWave
   m_TagString: Untagged
@@ -63,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7a781de1281d50c41aeccfe35b213c8a, type: 2}
+  - {fileID: 2100000, guid: 616a4180cad7d274f97d37c953dcfb69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,17 +106,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3093296309221363567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63cb008cf9abaf645ba1eec2f43c7b49, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a0a698cfb578c84da8b1a0d71ecd5b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 2
+  damageAmount: 3
   hitableTags:
   - Player
   player: {fileID: 0}
   boss: {fileID: 0}
   waveSpeed: 500
   waveForce: 7
-  waveStunDuration: 5
+  waveStunDuration: 0.5
 --- !u!54 &3093296309221363553
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,22 +133,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 16
   m_CollisionDetection: 0
---- !u!114 &4164555137571329732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3093296309221363567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63cb008cf9abaf645ba1eec2f43c7b49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 3
-  hitableTags: []
-  player: {fileID: 0}
-  boss: {fileID: 0}
-  waveSpeed: 500
-  waveForce: 7
-  waveStunDuration: 555555

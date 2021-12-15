@@ -6,7 +6,7 @@ public class WaterBeam : Projectile
 {
     public Transform firepoint;
 
-    public Transform start, end;
+    public Transform startPoint, endPoint;
 
     public Transform aimPoint;
 
@@ -21,7 +21,7 @@ public class WaterBeam : Projectile
 
     private void Start()
     {
-        aimPoint.position = start.position;
+        aimPoint.position = startPoint.position;
         line.SetPosition(0, firepoint.position);
 
     }
@@ -29,7 +29,7 @@ public class WaterBeam : Projectile
     // Update is called once per frame
     void Update()
     {
-        aimPoint.Translate((end.position-start.position) * speed * Time.deltaTime);
+        aimPoint.Translate((endPoint.position-startPoint.position) * speed * Time.deltaTime);
         line.SetPosition(0, firepoint.position);
         line.SetPosition(1, aimPoint.position);
 
@@ -51,6 +51,14 @@ public class WaterBeam : Projectile
                 Debug.Log("pew");
             }
         }
+    }
+
+    public void BeamTarget(Transform fire, Transform aim, Transform start, Transform end)
+    {
+        firepoint = fire;
+        aimPoint = aim;
+        startPoint = start;
+        endPoint = end;
     }
 
 }
