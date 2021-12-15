@@ -7,14 +7,16 @@ using System;
 public class Health : MonoBehaviour
 {
     public float maxHp;
-
-    public event Action Hitted;
-
     // [HideInInspector]
     public float currentHp;
+
+    public event Action Hitted;
+    public event Action Died;
+    public event Action Healed;
+
     public float HpPercentage { get { return currentHp / maxHp; } }
 
-    private void Start()
+    void Start()
     {
         currentHp = maxHp;
     }
@@ -22,41 +24,16 @@ public class Health : MonoBehaviour
     public void Heal(int healAmt)
     {
         currentHp += healAmt;
-        if (currentHp > maxHp)
-        {
-            //SOUND: (For the player a healing sound)
-            currentHp = maxHp;
-        }
+        if (currentHp > maxHp) currentHp = maxHp;
+        Healed?.Invoke();
     }
 
     public void Hit(float damageAmt)
     {
-        //if (!enabled) return;
-
         currentHp -= damageAmt;
         Debug.Log($"{gameObject.name} has {currentHp} hp and had {currentHp + damageAmt}");
+        
         Hitted?.Invoke();
-
-        if (currentHp <= 0)
-        {
-            //death
-            switch (gameObject.tag)
-            {
-                case "Player":
-                    //SOUND: (Player death)
-                    UIManager.instance.GoToMainMenu();
-                    break;
-                case "BossShield":
-                    gameObject.SetActive(false);
-                    //SOUND: (Shield destroyed)
-                    break;
-                case "Boss":
-                    //SOUND: (Boss death)
-                    break;
-                default:
-                    Destroy(gameObject);
-                    break;
-            }
-        }
+        if (currentHp <= 0) Died?.Invoke();
     }
 }

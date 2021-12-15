@@ -12,6 +12,20 @@ public class BossAI : StateMachine
     [SerializeField]
     protected Health health;
 
+    protected virtual void OnEnable()
+    {
+        health.Hitted += Hitted;
+        health.Died += Died;
+    }
+
+    protected virtual void OnDisable()
+    {
+        health.Hitted -= Hitted;
+        health.Died -= Died;
+    }
+
+    protected virtual void Hitted() { }
+    protected virtual void Died() { }
     public virtual void NextState() { }
 }
 

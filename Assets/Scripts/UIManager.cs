@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +24,22 @@ public class UIManager : MonoBehaviour
         instance = this;
     }
 
+    void OnEnable()
+    {
+        player.Died += PlayerDied;
+    }
+
+    void OnDisable()
+    {
+        player.Died -= PlayerDied;
+    }
+
+
+    void PlayerDied()
+    {
+        //SOUND: (Player death)
+        GoToMainMenu();
+    }
 
     void Start()
     {
@@ -68,7 +85,7 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
     }
     public void GoToMainMenu()
     {

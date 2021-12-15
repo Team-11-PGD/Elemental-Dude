@@ -373,6 +373,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerModel: {fileID: 0}
   playerHealth: {fileID: 0}
+  health: {fileID: 1436399887241011648}
+  fleeHealthPercentage: 0.3
+  startState: 2
   inspectorStates:
   - item1: 0
     item2: {fileID: 8273331589724452290}
@@ -384,9 +387,6 @@ MonoBehaviour:
     item2: {fileID: 3607934715122800389}
   - item1: 4
     item2: {fileID: 7932866920127611963}
-  enemyHealth: {fileID: 1436399887241011648}
-  fleeHealthPercentage: 0.3
-  startState: 0
 --- !u!114 &8273331589724452290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,6 +416,8 @@ MonoBehaviour:
   meleeDistance: 2
   attackChargeTime: 1.5
   damage: 1
+  renderer: {fileID: 4912808448226590134}
+  animationTime: 0.5
 --- !u!114 &3229697003443597165
 MonoBehaviour:
   m_ObjectHideFlags: 0
