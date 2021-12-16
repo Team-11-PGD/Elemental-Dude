@@ -19,6 +19,15 @@ public class BulletProjectile : Projectile
     private void OnTriggerEnter(Collider other)
     {
         Collided(other);
+    }
+
+    protected override void Hit(Collider other)
+    {
+        if (!other.CompareTag("Ground"))
+        {
+            DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
+        }
+
         //SOUND: (inpact sound)?
         Destroy(gameObject);
     }
