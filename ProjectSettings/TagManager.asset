@@ -11,6 +11,8 @@ TagManager:
   - Boss
   - Ground
   - UnhittableShield
+  - Rifle
+  - Shotgun
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - BulletCollision
   - 
   - 
   - 
