@@ -15,9 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Slider playerHpBar;
     [SerializeField]
-    bool startWithoutMouseOverride = false;
-    [SerializeField]
-    UIScore iScore;
+    bool startWithoutMouseOverride = false;   
 
     void Awake()
     {
