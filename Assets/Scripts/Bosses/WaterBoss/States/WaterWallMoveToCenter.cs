@@ -11,7 +11,7 @@ public class WaterWallMoveToCenter : WaterWaveScript
 
     #region Dev-tool
     [SerializeField]
-    private bool devToolActive, start1, start2;
+    public bool startAppear, start1, start2;
     #endregion
 
     private bool stage1Moving, stage2Moving;
@@ -22,17 +22,17 @@ public class WaterWallMoveToCenter : WaterWaveScript
     protected override void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
-        moveToCenter = (roomCenter.position - transform.position).normalized * waveSpeed;
         canDamage = true;
-
-        #region Dev-tool
-        if(devToolActive) StartCoroutine(Appear());
-        #endregion
     }
 
     void Update()
     {
         #region Dev-tool
+        if (startAppear)
+        {
+            StartCoroutine(Appear());
+            startAppear = false;
+        }
         if (start1)
         {
             StartStage(1);
@@ -54,7 +54,8 @@ public class WaterWallMoveToCenter : WaterWaveScript
     public IEnumerator Appear()
     {
         rigidBody.AddForce(Vector3.up * waveSpeed);
-        yield return new WaitUntil(() => transform.position.y >= roomCenter.position.y);
+        yield return new WaitUntil(() => transform.position.y -6 >= roomCenter.position.y); //The -6 is so it lines up with the bottom and not the middle
+        moveToCenter = (roomCenter.position - transform.position).normalized * waveSpeed;
         rigidBody.velocity = Vector3.zero;
         StartStage(1);
     }

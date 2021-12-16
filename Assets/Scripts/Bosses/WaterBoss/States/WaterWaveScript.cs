@@ -46,6 +46,6 @@ public class WaterWaveScript : Projectile
     public void GiveTarget(Transform boss, Transform player)
     {
         this.boss = boss;
-        this.player = player;        
+        this.player = player;
     }
 }

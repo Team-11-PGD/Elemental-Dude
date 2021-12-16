@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(WaterBossMoveToPlayerState), typeof(WaterBossAttackingBouncingBubble), typeof(WaterBossAttackingSlam))]
+[RequireComponent(typeof(WaterBossAttackingWave))]
 
 public class WaterBossAI : BossAI
 {
