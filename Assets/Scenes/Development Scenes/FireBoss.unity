@@ -4400,6 +4400,18 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 3837940491755870654}
+    - target: {fileID: 7237728692765012872, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
+      propertyPath: healthSpawnArea
+      value: 
+      objectReference: {fileID: 1822663660}
+    - target: {fileID: 7237728692765012872, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
+      propertyPath: fallingHealthPickup
+      value: 
+      objectReference: {fileID: 8618477386730529060, guid: ee3641178926be441a472a0c1e89ca1a, type: 3}
+    - target: {fileID: 7237728692765012872, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
+      propertyPath: uiObjectHealthPickup
+      value: 
+      objectReference: {fileID: 1054367191}
     - target: {fileID: 8247946382484683168, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
       propertyPath: portal
       value: 

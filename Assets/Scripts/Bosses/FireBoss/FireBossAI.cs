@@ -17,13 +17,21 @@ public class FireBossAI : BossAI
     [SerializeField]
     [Range(0, 1)]
     float nextStatePercentage = 0.66f;
+    [SerializeField]
+    int healthPickupAmount = 3;
+    [SerializeField]
+    GameObject fallingHealthPickup;
+    [SerializeField]
+    BoxCollider healthSpawnArea;
+    [SerializeField]
+    GameObject uiObjectHealthPickup;
 
     int currentStage = 1;
     BossLavaSlamAttack slamAttack;
     BossFlameBreathAttack flameBreathAttack;
     BossDefendingFireBallState fireBallState;
     BossDefendingLavaStreamState lavaStreamState;
-
+    List<GameObject> healthPickups;
 
     public enum StateOptions
     {
@@ -109,6 +117,10 @@ public class FireBossAI : BossAI
         TransitionTo(StateOptions.MoveToPlayer);
         //SOUND: (Shield destroyed)
         shield.SetActive(false);
+        for (int i = 0; i < healthPickups.Count; i++)
+        {
+            if (healthPickups[i] != null) Destroy(healthPickups[i]);
+        }
         NextStage();
     }
 
@@ -134,6 +146,19 @@ public class FireBossAI : BossAI
             shield.SetActive(true);
             shieldHealth.currentHp = shieldHealth.maxHp;
             shieldHealth.enabled = false;
+
+            //Healht spawning
+            healthPickups = new List<GameObject>();
+            for (int i = 0; i < healthPickupAmount; i++)
+            {
+                Vector3 spawningPosition = new Vector3(
+                Random.Range(healthSpawnArea.bounds.min.x, healthSpawnArea.bounds.max.x),
+                Random.Range(healthSpawnArea.bounds.min.y, healthSpawnArea.bounds.max.y),
+                Random.Range(healthSpawnArea.bounds.min.z, healthSpawnArea.bounds.max.z));
+
+                healthPickups.Add(Instantiate(fallingHealthPickup, spawningPosition, Quaternion.identity));
+                healthPickups[healthPickups.Count - 1].GetComponent<ShowPickupText>().uiObject = uiObjectHealthPickup;
+            }
             return true;
         }
         return false;
