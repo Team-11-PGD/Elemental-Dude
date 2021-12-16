@@ -18,6 +18,13 @@ public class FireBossAI : BossAI
     [Range(0, 1)]
     float nextStatePercentage = 0.66f;
 
+    int currentStage = 1;
+    BossLavaSlamAttack slamAttack;
+    BossFlameBreathAttack flameBreathAttack;
+    BossDefendingFireBallState fireBallState;
+    BossDefendingLavaStreamState lavaStreamState;
+
+
     public enum StateOptions
     {
         MoveToPlayer,
@@ -34,12 +41,17 @@ public class FireBossAI : BossAI
 
     protected void Start()
     {
+        slamAttack = GetComponent<BossLavaSlamAttack>();
+        flameBreathAttack = GetComponent<BossFlameBreathAttack>();
+        fireBallState = GetComponent<BossDefendingFireBallState>();
+        lavaStreamState = GetComponent<BossDefendingLavaStreamState>();
+
         AddState(StateOptions.MoveToPlayer, GetComponent<BossMoveToPlayerState>());          // 0
-        AddState(StateOptions.FireAttacking1, GetComponent<BossLavaSlamAttack>());           // 1
-        AddState(StateOptions.FireAttacking2, GetComponent<BossFlameBreathAttack>());        // 2
+        AddState(StateOptions.FireAttacking1, slamAttack);                                   // 1
+        AddState(StateOptions.FireAttacking2, flameBreathAttack);                            // 2
         AddState(StateOptions.MoveToCenter, GetComponent<BossMoveToPosition>());             // 3
-        AddState(StateOptions.Defending1, GetComponent<BossDefendingFireBallState>());       // 4
-        AddState(StateOptions.Defendig2, GetComponent<BossDefendingLavaStreamState>());      // 5
+        AddState(StateOptions.Defending1, fireBallState);                                    // 4
+        AddState(StateOptions.Defendig2, lavaStreamState);                                   // 5
         AddState(StateOptions.Death, GetComponent<BossDeath>());                             // 6
 
         StateMachineSetup(startState);
@@ -85,14 +97,26 @@ public class FireBossAI : BossAI
 
     protected override void Died()
     {
-        TransitionTo(StateOptions.Death);
-        //SOUND: (boss death sound)
+        if (currentStage == 4)
+        {
+            TransitionTo(StateOptions.Death);
+            //SOUND: (boss death sound)
+        }
     }
 
     void ShieldDied()
     {
         TransitionTo(StateOptions.MoveToPlayer);
         //SOUND: (Shield destroyed)
+        shield.SetActive(false);
+        NextStage();
+    }
+
+    void NextStage()
+    {
+        currentStage++;
+        slamAttack.lavaSize *= 1.5f;
+        //fireBallState.
     }
 
     public void NextAttackState()
@@ -112,7 +136,6 @@ public class FireBossAI : BossAI
             shieldHealth.enabled = false;
             return true;
         }
-        shield.SetActive(false);
         return false;
     }
 
@@ -125,9 +148,9 @@ public class FireBossAI : BossAI
         }
     }
 
-    private StateOptions RandomStateFromRange(StateOptions minInclusive, StateOptions maxInclusive) 
+    private StateOptions RandomStateFromRange(StateOptions minInclusive, StateOptions maxInclusive)
         => (StateOptions)Random.Range((int)minInclusive, (int)maxInclusive + 1);
-    
+
 
     private void FixedUpdate()
     {

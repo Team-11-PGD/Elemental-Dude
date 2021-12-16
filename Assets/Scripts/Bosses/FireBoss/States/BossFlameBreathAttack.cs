@@ -27,7 +27,11 @@ public class BossFlameBreathAttack : State
         StartCoroutine(SmokeTimer());
     }
 
-    public override void Exit(int nextStateId) { }
+    public override void Exit(int nextStateId) 
+    {
+        StopAllCoroutines();
+        particleSystem?.GetComponent<ParticleRemover>().ShutDown();
+    }
 
     void Update()
     {

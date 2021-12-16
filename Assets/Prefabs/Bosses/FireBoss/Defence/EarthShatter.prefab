@@ -37004,15 +37004,15 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 1
   TriggerModule:
     enabled: 1
     serializedVersion: 2
-    inside: 0
+    inside: 2
     outside: 0
-    enter: 2
+    enter: 0
     exit: 0
     colliderQueryMode: 0
     radiusScale: 0.5
@@ -38036,6 +38036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0.1
   playerHealth: {fileID: 0}
+  triggerType: 0
   isTrigger: 1
   particleSystem: {fileID: 198189877130538994}
 --- !u!1 &3606508315372190130

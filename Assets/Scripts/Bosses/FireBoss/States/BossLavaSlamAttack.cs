@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossLavaSlamAttack : State
 {
+    public float lavaSize = 1;
+
     [SerializeField]
     float chargeTime = 1.5f;
     [SerializeField]
@@ -12,6 +14,8 @@ public class BossLavaSlamAttack : State
     Transform slamPosition;
     [SerializeField]
     float damage = 0.1f;
+
+
     FireBossAI bossAI;
 
     public override void Enter(int previousStateId)
@@ -32,6 +36,7 @@ public class BossLavaSlamAttack : State
         DamagingParticle damagingParticle = lavaInstance.GetComponentInChildren<DamagingParticle>();
         damagingParticle.damage = damage;
         damagingParticle.playerHealth = bossAI.playerHealth;
+        damagingParticle.transform.localScale = Vector3.one * lavaSize;
 
         ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
         Collider playerModel = bossAI.playerModel.GetComponent<Collider>();

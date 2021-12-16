@@ -9,6 +9,8 @@ public class DamagingParticle : MonoBehaviour
     public Health playerHealth;
 
     [SerializeField]
+    ParticleSystemTriggerEventType triggerType = ParticleSystemTriggerEventType.Enter;
+    [SerializeField]
     bool isTrigger = false;
     [SerializeField]
     ParticleSystem particleSystem;
@@ -18,7 +20,7 @@ public class DamagingParticle : MonoBehaviour
         if (!isTrigger) return;
 
         List<Particle> particles = new List<Particle>();
-        particleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, particles);
+        particleSystem.GetTriggerParticles(triggerType, particles);
         if (particles.Count > 0)
             playerHealth.Hit(damage);
     }

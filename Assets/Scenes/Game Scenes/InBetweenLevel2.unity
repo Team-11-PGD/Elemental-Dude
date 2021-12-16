@@ -9519,6 +9519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Room_2.3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8408b8a8f4846154caee7d24818f97c3, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8408b8a8f4846154caee7d24818f97c3, type: 3}
 --- !u!4 &1138622663 stripped
@@ -10780,6 +10784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 354883776}
   rocks: {fileID: 232004051}
+  playerTag: 
 --- !u!65 &1257535509
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13363,15 +13368,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4118231974685914, guid: d1467b9bd6ef9cd44a6a72aeddbb6e75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.626
+      value: 19.31
       objectReference: {fileID: 0}
     - target: {fileID: 4118231974685914, guid: d1467b9bd6ef9cd44a6a72aeddbb6e75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 27.850971
+      value: 28.69
       objectReference: {fileID: 0}
     - target: {fileID: 4118231974685914, guid: d1467b9bd6ef9cd44a6a72aeddbb6e75, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -39.828003
+      value: -41.41
       objectReference: {fileID: 0}
     - target: {fileID: 4118231974685914, guid: d1467b9bd6ef9cd44a6a72aeddbb6e75, type: 3}
       propertyPath: m_LocalRotation.w

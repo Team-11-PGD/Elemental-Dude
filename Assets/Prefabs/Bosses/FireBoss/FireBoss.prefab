@@ -207,8 +207,8 @@ MonoBehaviour:
   playerModel: {fileID: 0}
   playerHealth: {fileID: 0}
   health: {fileID: 9091546307120621000}
-  shieldHealth: {fileID: 0}
-  shield: {fileID: 0}
+  shieldHealth: {fileID: 1672892339746717238}
+  shield: {fileID: 4481545906232435243}
   nextPercentageStep: 0.33
   nextStatePercentage: 0.66
   startState: 0
@@ -311,6 +311,7 @@ MonoBehaviour:
   fireball: {fileID: 4245124032347512106, guid: ed391c199de8b4049bbb85a0ff70afcc, type: 3}
   fireballAmount: 10
   spawningTime: 2
+  damage: 10
 --- !u!114 &7082591975353121217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +327,7 @@ MonoBehaviour:
   groundbreakPrefab: {fileID: 1314945738539566, guid: 459abe6629949d9468c64fe72d39deb4, type: 3}
   groundbreakStartPosition: {fileID: 5158375459202621933}
   groundbreakTime: 1
-  groundbreakDamage: 2
+  groundbreakDamage: 0.2
 --- !u!114 &1196871036107130351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +372,10 @@ PrefabInstance:
     - target: {fileID: 673155285388530586, guid: 6d8d7a487034c4d4d895316b18a39876, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2328765437372174215, guid: 6d8d7a487034c4d4d895316b18a39876, type: 3}
+      propertyPath: maxHp
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3937004519716314198, guid: 6d8d7a487034c4d4d895316b18a39876, type: 3}
       propertyPath: m_RootOrder
@@ -419,8 +424,24 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8708955237174153389, guid: 6d8d7a487034c4d4d895316b18a39876, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6d8d7a487034c4d4d895316b18a39876, type: 3}
+--- !u!1 &4481545906232435243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 673155285388530586, guid: 6d8d7a487034c4d4d895316b18a39876, type: 3}
+  m_PrefabInstance: {fileID: 3991914865468223921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &127558380890484199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3937004519716314198, guid: 6d8d7a487034c4d4d895316b18a39876, type: 3}
   m_PrefabInstance: {fileID: 3991914865468223921}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1672892339746717238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2328765437372174215, guid: 6d8d7a487034c4d4d895316b18a39876, type: 3}
+  m_PrefabInstance: {fileID: 3991914865468223921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4481545906232435243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BulletProjectile : Projectile
 {
+    [SerializeField]
+    private float destroyTime = 30f;
     private Rigidbody rb;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(Timer());
     }
 
     internal void SetVelocity(Vector3 forward)
@@ -19,6 +22,12 @@ public class BulletProjectile : Projectile
     private void OnTriggerEnter(Collider other)
     {
         Collided(other);
+    }
+
+    IEnumerator Timer()
+    {
+        yield return new WaitForSecondsRealtime(destroyTime);
+        Destroy(gameObject);
     }
 
     protected override void Hit(Collider other)

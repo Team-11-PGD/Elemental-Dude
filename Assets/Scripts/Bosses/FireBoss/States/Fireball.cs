@@ -12,10 +12,11 @@ public class Fireball : Projectile
 
     bool hit = false;
 
-    public void SetupParticleDamage(Health playerHealth, Collider playerModel)
+    public void SetupParticleDamage(Health playerHealth, Collider playerModel, float damage)
     {
         this.playerHealth = playerHealth;
         this.playerModel = playerModel;
+        damageAmount = damage;
     }
 
     void OnCollisionEnter(Collision collision)

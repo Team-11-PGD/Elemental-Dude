@@ -22,6 +22,8 @@ public class BossDefendingFireBallState : State
     int fireballAmount = 10;
     [SerializeField]
     float spawningTime = 2;
+    [SerializeField]
+    float damage = 1;
 
     FireBossAI bossAI;
     Vector3[] spawningPositions;
@@ -67,7 +69,7 @@ public class BossDefendingFireBallState : State
         for (int i = 0; i < spawningPositions.Length; i++)
         {
             GameObject instance = Instantiate(fireball, spawningPositions[i], Quaternion.identity);
-            instance.GetComponent<Fireball>().SetupParticleDamage(bossAI.playerHealth, bossAI.playerModel.GetComponent<Collider>());
+            instance.GetComponent<Fireball>().SetupParticleDamage(bossAI.playerHealth, bossAI.playerModel.GetComponent<Collider>(), damage);
         }
         yield return new WaitForSecondsRealtime(spawningTime);
         bossAI.NextDefendState();

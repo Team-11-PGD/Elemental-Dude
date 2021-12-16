@@ -8,11 +8,15 @@ public class BossActivator : MonoBehaviour
     GameObject boss;
     [SerializeField]
     GameObject rocks;
-    float bossActivationRange = 20;
+    [SerializeField]
+    [TagSelector]
+    string playerTag;
 
     private void OnTriggerExit(Collider other)
     {
-        if (Vector3.Distance(other.transform.position, transform.position) <= bossActivationRange)
+        if (!other.CompareTag(playerTag)) return;
+
+        if (Vector3.Dot(transform.forward, other.transform.position - transform.position) >= 0)
         {
             boss.SetActive(true);
             rocks.SetActive(true);
