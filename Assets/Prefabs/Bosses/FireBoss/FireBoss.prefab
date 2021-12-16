@@ -89,7 +89,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3895526102434882937
 Transform:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   flamePrefab: {fileID: 1634767862067424, guid: 0d7e715fcdadd9e48b8e6b18b99af29c, type: 3}
   smokeTime: 1
   attackTime: 2
-  damage: 0.1
+  damage: 2
 --- !u!114 &1211462552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
   slamPrefab: {fileID: 7695839885820242209, guid: 17ef32b26250d6e468510198acea225d, type: 3}
   lavaPrefab: {fileID: 3263454105782360207, guid: ffd0d32bdf9daa14c98b236ab7088f87, type: 3}
   slamPosition: {fileID: 5158375459202621933}
-  damage: 0.1
+  damage: 2
 --- !u!114 &9091546307120621000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   groundbreakPrefab: {fileID: 1314945738539566, guid: 459abe6629949d9468c64fe72d39deb4, type: 3}
   groundbreakStartPosition: {fileID: 5158375459202621933}
   groundbreakTime: 1
-  groundbreakDamage: 0.1
+  groundbreakDamage: 2
 --- !u!114 &1196871036107130351
 MonoBehaviour:
   m_ObjectHideFlags: 0

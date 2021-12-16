@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
         SceneManager.activeSceneChanged += SceneChanged;
         FindPauseMenu();
         // TODO: put this in its own script on the slider
-        if (SceneManager.GetActiveScene().name == "InBetweenLevel1")
+        if (playerHpBar != null)
         {
             playerHpBar.maxValue = player.maxHp;
             playerHpBar.value = player.currentHp;
@@ -90,7 +90,7 @@ public class UIManager : MonoBehaviour
     public void GoToMainMenu()
     {
         //updates the best play time.
-        iScore.UpdateTimeScore();
+        //iScore.UpdateTimeScore();
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -138,16 +138,16 @@ public class UIManager : MonoBehaviour
 
         //Hp Bar functionality
         // TODO: put this in its own script on the slider
-        if (SceneManager.GetActiveScene().name == "InBetweenLevel1")
+        if (playerHpBar != null)
         {
             playerHpBar.value = player.currentHp;
 
 
-            if (player.currentHp <= 0)
-            {
-                //GameOver
-                GoToMainMenu();
-            }
+            //if (player.currentHp <= 0)
+            //{
+            //    //GameOver
+            //    GoToMainMenu();
+            //}
         }
     }
 
