@@ -5,25 +5,19 @@ using UnityEngine;
 public class WaterWaveScript : Projectile
 {
     [SerializeField]
-    public Transform player;
-    [SerializeField]
-    public Transform boss;
+    protected Transform player, boss;
+
+    protected Rigidbody rigidBody;
 
     [SerializeField]
-    float waveSpeed;
+    protected float waveSpeed, waveForce, waveStunDuration;
 
-    [SerializeField]
-    float waveForce;
-    [SerializeField]
-    float waveStunDuration;
+    protected bool canDamage;
 
-    bool canDamage;
-
-    // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
-        rigidbody.AddForce((player.position - boss.position).normalized * waveSpeed);
+        rigidBody = GetComponent<Rigidbody>();
+        rigidBody.AddForce((player.position - boss.position).normalized * waveSpeed);
         canDamage = true;
     }
 
@@ -34,11 +28,7 @@ public class WaterWaveScript : Projectile
             Collided(other);
             canDamage = false;
         }
-        if(other.gameObject.tag == "OutOfBounds")
-        {
-            Destroy(gameObject);
-        }
-
+        if(other.gameObject.tag == "OutOfBounds") Destroy(gameObject);
     }
 
     protected override void Hit(Collider other)
@@ -46,10 +36,10 @@ public class WaterWaveScript : Projectile
         if(other.tag == "Player")
         {
             DamageHandler(other.gameObject.GetComponentInParent<Health>(), other.gameObject.GetComponentInParent<ElementMain>());
-            other.gameObject.GetComponent<MovementScript>().stunDuration = waveStunDuration;
-            Debug.Log("hoi");
-            other.gameObject.GetComponent<MovementScript>().stunned = true;
-            other.gameObject.GetComponent<MovementScript>().velocity = Vector3.forward * waveForce;
+            MovementScript movement = other.gameObject.GetComponent<MovementScript>();
+            movement.stunDuration = waveStunDuration;
+            movement.stunned = true;
+            movement.velocity = Vector3.forward * waveForce;
         }
     }
 
@@ -57,9 +47,5 @@ public class WaterWaveScript : Projectile
     {
         this.boss = boss;
         this.player = player;        
-    }
-    // Update is called once per frame
-    void Update()
-    {
     }
 }
