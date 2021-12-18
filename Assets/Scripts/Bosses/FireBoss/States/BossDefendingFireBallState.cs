@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 // Joshua Knaven
-public class BossDefendingFireBallState : State
+public class BossDefendingFireBallState : FireBossState
 {
     [SerializeField]
     BoxCollider spawnArea;
@@ -26,12 +26,10 @@ public class BossDefendingFireBallState : State
     [SerializeField]
     float damage = 1;
 
-    FireBossAI bossAI;
     Vector3[] spawningPositions;
 
     public override void Enter(int previousStateId)
     {
-        bossAI = context as FireBossAI;
         StartCoroutine(AnounceFireballs());
     }
 

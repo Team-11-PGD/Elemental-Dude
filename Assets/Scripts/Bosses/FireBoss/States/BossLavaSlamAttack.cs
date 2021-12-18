@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossLavaSlamAttack : State
+public class BossLavaSlamAttack : FireBossState
 {
     public float lavaSize = 1;
 
@@ -15,12 +15,8 @@ public class BossLavaSlamAttack : State
     [SerializeField]
     float damage = 0.1f;
 
-
-    FireBossAI bossAI;
-
     public override void Enter(int previousStateId)
     {
-        bossAI = context as FireBossAI;
         StartCoroutine(ChargeTime());
     }
 

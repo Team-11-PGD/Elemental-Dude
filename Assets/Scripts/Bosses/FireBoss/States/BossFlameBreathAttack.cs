@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossFlameBreathAttack : State
+public class BossFlameBreathAttack : FireBossState
 {
     new GameObject particleSystem;
     [SerializeField]
@@ -15,13 +15,10 @@ public class BossFlameBreathAttack : State
     [SerializeField]
     float damage = 0.01f;
 
-    FireBossAI bossAI;
     bool facePlayer;
 
     public override void Enter(int previousStateId)
     {
-        bossAI = context as FireBossAI;
-
         facePlayer = true;
 
         StartCoroutine(SmokeTimer());

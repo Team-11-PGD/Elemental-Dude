@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class BossDefendingLavaStreamState : State
+public class BossDefendingLavaStreamState : FireBossState
 {
     [SerializeField]
     GameObject groundbreakPrefab;
@@ -13,11 +13,8 @@ public class BossDefendingLavaStreamState : State
     [SerializeField]
     float groundbreakDamage = 0.01f;
 
-    FireBossAI bossAI;
-
     public override void Enter(int previousStateId)
     {
-        bossAI = context as FireBossAI;
         StartCoroutine(GroundbreakTimer());
     }
 
