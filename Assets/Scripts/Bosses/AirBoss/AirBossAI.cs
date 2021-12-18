@@ -3,13 +3,14 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(DashState), typeof(GroundSpikesState), typeof(TornadoState))]
-[RequireComponent(/*typeof(SmallTornadoState), typeof(CeilingSpikesState), */typeof(BossDeath))]
+[RequireComponent(typeof(VulnerableState)/* ,typeof(SmallTornadoState), typeof(CeilingSpikesState)*/)]
+[RequireComponent(typeof(BossDeath))]
 public class AirBossAI : BossAI
 {
     [SerializeField]
     StateOptions startState = StateOptions.Dash;
     [SerializeField]
-    [Range(0,1)]
+    [Range(0, 1)]
     float nextStatePercentage = 0.5f;
     [SerializeField]
     int nextStateDelay = 1000;
@@ -19,6 +20,7 @@ public class AirBossAI : BossAI
         Dash,
         GroundSpikes,
         Tornado,
+        Vulnerable,
         SmallTornados,
         CeilingSpikes,
         Death
