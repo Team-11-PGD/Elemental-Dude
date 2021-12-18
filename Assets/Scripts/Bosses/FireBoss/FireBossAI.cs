@@ -147,7 +147,7 @@ public class FireBossAI : BossAI
             shieldHealth.currentHp = shieldHealth.maxHp;
             shieldHealth.enabled = false;
 
-            //Healht spawning
+            // Health spawning
             healthPickups = new List<GameObject>();
             for (int i = 0; i < healthPickupAmount; i++)
             {
