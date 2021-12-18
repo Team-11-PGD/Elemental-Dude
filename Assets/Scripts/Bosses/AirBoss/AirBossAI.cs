@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(DashState), typeof(GroundSpikesState), typeof(TornadoState))]
+[RequireComponent(/*typeof(SmallTornadoState), typeof(CeilingSpikesState), */typeof(BossDeath))]
 public class AirBossAI : BossAI
 {
     [SerializeField]
@@ -33,6 +34,7 @@ public class AirBossAI : BossAI
 
     private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes, StateOptions.Tornado };
     private int currentState = 1;
+    private DashState dash;
     private GroundSpikesState groundSpikes;
 
     /// <summary>
@@ -50,6 +52,9 @@ public class AirBossAI : BossAI
         AddState(StateOptions.Dash, gameObject.GetComponent<DashState>());
         AddState(StateOptions.GroundSpikes, gameObject.GetComponent<GroundSpikesState>());
         AddState(StateOptions.Tornado, gameObject.GetComponent<TornadoState>());
+        //AddState(StateOptions.SmallTornados, gameObject.GetComponent<SmallTornadoState>());
+        //AddState(StateOptions.CeilingSpikes, gameObject.GetComponent<CeilingSpikesState>());
+        AddState(StateOptions.Death, gameObject.GetComponent<BossDeath>());
 
         StateMachineSetup(startState);
     }
@@ -64,14 +69,15 @@ public class AirBossAI : BossAI
 
     protected override void Died()
     {
-        TransitionTo(StateOptions.Death);
+        base.TransitionTo(StateOptions.Death);
     }
 
     private void UpdateState()
     {
         currentState++;
         groundSpikes.spikePercentage *= 1.5f;
-
+        nextStateDelay = (int)(nextStateDelay * 0.5f);
+        dash.speed *= 1.5f;
         TransitionTo(StateOptions.SmallTornados);
     }
 }
