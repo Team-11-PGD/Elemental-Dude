@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   advantageElemPercentage: 1.5
   disadvantageElemPercentage: 0.5
-  currentType: 0
+  currentType: 3
 --- !u!114 &7004715947265456704
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -79,7 +79,7 @@ public class StateMachine : MonoBehaviour
     /// </summary>
     /// <param name="stateOptions"> Next state options </param>
     /// <param name="excludeStateOptions"> When true all options appart from stateOptions can be choosen</param>
-    public void NextRandomState(Enum[] stateOptions, bool excludeStateOptions = false)
+    public void NextRandomState(bool excludeStateOptions = false, params Enum[] stateOptions)
     {
         List<Enum> enums = new List<Enum>();
         if (!excludeStateOptions)
@@ -105,6 +105,15 @@ public class StateMachine : MonoBehaviour
 
         // Transition to a random option
         TransitionTo(enums[UnityEngine.Random.Range(0, enums.Count)]);
+    }
+
+    /// <summary>
+    /// Choose a random state
+    /// </summary>
+    /// <param name="stateOptions"> Next state options </param>
+    public void NextRandomState(params Enum[] stateOptions)
+    {
+        NextRandomState(stateOptions: stateOptions);
     }
 
     /// <summary>
