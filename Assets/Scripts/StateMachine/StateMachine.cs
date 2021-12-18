@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// Joshua Knaven
 public class StateMachine : MonoBehaviour
 {
     public int CurrentStateId { get; private set; } = -1;
 
     Dictionary<int, State> states = new Dictionary<int, State>();
 
-    State CurrentState
+    protected State CurrentState
     {
         get
         {
-            if (CurrentStateId >= 0 && CurrentStateId < states.Count) return states[CurrentStateId];
-
+            if (states.ContainsKey(CurrentStateId)) return states[CurrentStateId];
+            if (CurrentStateId != -1) throw new Exception($"{CurrentStateId} is a key that has not been added to the states");
             return null;
         }
     }
-
 
     /// <summary>
     /// Change the unclasified Enum to a int

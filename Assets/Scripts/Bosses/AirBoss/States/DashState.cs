@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashState : State
+public class DashState : AirBossState
 {
     public float speed = 1;
 
@@ -15,13 +15,11 @@ public class DashState : State
     [SerializeField]
     float damage = 1f;
 
-    AirBossAI bossAI;
     Vector3 dashPosition, dashDirection, dashStartPosition;
     bool move;
 
     public override void Enter(int previousStateId)
     {
-        bossAI = context as AirBossAI;
         StartCoroutine(Dash());
     }
 
@@ -51,9 +49,9 @@ public class DashState : State
         while (dashCount < totalDashes)
         {
             dashPosition = new Vector3(
-                UnityEngine.Random.Range(dashArea.bounds.min.x, dashArea.bounds.max.x),
-                UnityEngine.Random.Range(dashArea.bounds.min.y, dashArea.bounds.max.y),
-                UnityEngine.Random.Range(dashArea.bounds.min.z, dashArea.bounds.max.z));
+                Random.Range(dashArea.bounds.min.x, dashArea.bounds.max.x),
+                Random.Range(dashArea.bounds.min.y, dashArea.bounds.max.y),
+                Random.Range(dashArea.bounds.min.z, dashArea.bounds.max.z));
             dashStartPosition = transform.position;
             dashDirection = (dashPosition - transform.position).normalized;
             dashCount++;
@@ -69,7 +67,7 @@ public class DashState : State
         move = true;
         yield return new WaitWhile(() => move);
 
-        context.NextRandomState<AirBossAI.StateOptions>();
+        context.NextRandomState(bossAI.CurrentStateOptions);
     }
 
     void Attack()

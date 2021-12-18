@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VulnerableState : State
+// Joshua Knaven
+public class VulnerableState : AirBossState
 {
     [SerializeField]
     int healthPickupAmount = 3;
@@ -28,6 +29,11 @@ public class VulnerableState : State
             healthPickups.Add(Instantiate(fallingHealthPickup, spawningPosition, Quaternion.identity));
             healthPickups[healthPickups.Count - 1].GetComponent<ShowPickupText>().uiObject = uiObjectHealthPickup;
         }
+    }
+
+    public override void Hitted()
+    {
+        context.NextRandomState(bossAI.CurrentStateOptions);
     }
 
     public override void Exit(int nextStateId)

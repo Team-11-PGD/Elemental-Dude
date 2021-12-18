@@ -16,7 +16,11 @@ GameObject:
   - component: {fileID: 7004715947265456704}
   - component: {fileID: 7004715947265456734}
   - component: {fileID: 7004715947265456735}
-  - component: {fileID: 7004715947265456706}
+  - component: {fileID: 4568714983940714406}
+  - component: {fileID: 6963123388500567959}
+  - component: {fileID: 2748594981072418810}
+  - component: {fileID: 7568265492181491691}
+  - component: {fileID: 7111900124205609264}
   m_Layer: 0
   m_Name: AirBoss
   m_TagString: Untagged
@@ -145,7 +149,7 @@ MonoBehaviour:
   playerModel: {fileID: 0}
   playerHealth: {fileID: 0}
   health: {fileID: 7004715947265456704}
-  startState: 0
+  startState: 5
   nextStatePercentage: 0.5
   nextStateDelay: 1000
 --- !u!114 &7004715947265456735
@@ -165,7 +169,7 @@ MonoBehaviour:
   totalDashes: 5
   dashArea: {fileID: 0}
   damage: 1
---- !u!114 &7004715947265456706
+--- !u!114 &4568714983940714406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,11 +178,79 @@ MonoBehaviour:
   m_GameObject: {fileID: 7004715947265456729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22968e9bf9d7b149ab046032c0ea57e, type: 3}
+  m_Script: {fileID: 11500000, guid: 96812585ff7f7e9408fb9ea1f3a80720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spikePercentage: 0.25
+  isGroundSpike: 1
   spawnArea: {fileID: 0}
   spike: {fileID: 6517573089156151556, guid: 52d05a1abc9d4074fbf5d2ea1fa41d41, type: 3}
   spikeSize: 1
   spawningTime: 2
+--- !u!114 &6963123388500567959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004715947265456729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d6e0ee4f25ad64b80216df3bfe430a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spikePercentage: 0.25
+  isGroundSpike: 0
+  spawnArea: {fileID: 0}
+  spike: {fileID: 6517573089156151556, guid: 52d05a1abc9d4074fbf5d2ea1fa41d41, type: 3}
+  spikeSize: 1
+  spawningTime: 2
+--- !u!114 &2748594981072418810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004715947265456729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036c9b2099164834db65c3d348a1d8a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tornadoPrefab: {fileID: 0}
+  testCube: {fileID: 0}
+  tornadoCenter: {fileID: 0}
+  tornadoTime: 10
+  pullForce: 500
+--- !u!114 &7568265492181491691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004715947265456729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3feecab1741f7439d5cb4936820e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPickupAmount: 3
+  fallingHealthPickup: {fileID: 8618477386730529060, guid: ee3641178926be441a472a0c1e89ca1a, type: 3}
+  healthSpawnArea: {fileID: 0}
+  uiObjectHealthPickup: {fileID: 0}
+--- !u!114 &7111900124205609264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004715947265456729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2849d6c44d6ac43991664f482219a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fracturedModel: {fileID: 919132149155446097, guid: 6ca00c73860db084da256aaf9ab05e6f, type: 3}
+  renderer: {fileID: 7004715947265456731}
+  explosionForce: 1
+  portal: {fileID: 0}

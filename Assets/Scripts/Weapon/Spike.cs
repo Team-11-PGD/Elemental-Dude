@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Joshua Knaven
 public class Spike : MonoBehaviour
 {
     public Health playerHealth;
+    public bool isGroundSpike = true;
 
     [SerializeField]
     float timeActive = 1f;
@@ -22,7 +24,7 @@ public class Spike : MonoBehaviour
 
     void Start()
     {
-        upPosition = transform.position + Vector3.up * upDistance;
+        upPosition = transform.position + Vector3.up * (isGroundSpike ? upDistance : -upDistance);
         StartCoroutine(MoveUp());
     }
 

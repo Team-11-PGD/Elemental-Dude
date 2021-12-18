@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Joshua Knaven
 public class BossActivator : MonoBehaviour
 {
     [SerializeField]

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TornadoState : State
+public class TornadoState : AirBossState
 {
     [SerializeField]
     GameObject tornadoPrefab;
@@ -16,11 +16,8 @@ public class TornadoState : State
     float pullForce = 500;
     float refreshRate;
 
-    AirBossAI bossAI;
-
     public override void Enter(int previousStateId)
     {
-        bossAI = context as AirBossAI;
         StartCoroutine(PullPlayer());
     }
 

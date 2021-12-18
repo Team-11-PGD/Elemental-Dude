@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// Joshua Knaven
 public class BossAI : StateMachine
 {
     public NavMeshAgent agent;
@@ -11,6 +13,21 @@ public class BossAI : StateMachine
 
     [SerializeField]
     protected Health health;
+
+    protected new void TransitionTo(Enum nextState)
+    {
+        if (CurrentState is BossState)
+        {
+            health.Hitted -= (CurrentState as BossState).Hitted;
+            health.Died -= (CurrentState as BossState).Died;
+        }
+        base.TransitionTo(nextState);
+        if (CurrentState is BossState)
+        {
+            health.Hitted += (CurrentState as BossState).Hitted;
+            health.Died += (CurrentState as BossState).Died;
+        }
+    }
 
     protected virtual void OnEnable()
     {

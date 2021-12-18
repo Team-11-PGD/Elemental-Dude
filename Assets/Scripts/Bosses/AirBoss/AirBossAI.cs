@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(DashState), typeof(GroundSpikesState), typeof(TornadoState))]
-[RequireComponent(typeof(VulnerableState)/* ,typeof(SmallTornadoState), typeof(CeilingSpikesState)*/)]
+[RequireComponent(typeof(VulnerableState)/* ,typeof(SmallTornadoState)*/, typeof(CeilingSpikesState))]
 [RequireComponent(typeof(BossDeath))]
 public class AirBossAI : BossAI
 {
@@ -37,7 +37,8 @@ public class AirBossAI : BossAI
     private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes, StateOptions.Tornado };
     private int currentState = 1;
     private DashState dash;
-    private GroundSpikesState groundSpikes;
+    private SpawnSpikesState groundSpikes;
+    private SpawnSpikesState ceilingSpikes;
 
     /// <summary>
     /// Use a delayed transition
@@ -51,11 +52,15 @@ public class AirBossAI : BossAI
 
     protected void Start()
     {
-        AddState(StateOptions.Dash, gameObject.GetComponent<DashState>());
-        AddState(StateOptions.GroundSpikes, gameObject.GetComponent<GroundSpikesState>());
+        dash = gameObject.GetComponent<DashState>();
+        AddState(StateOptions.Dash, dash);
+        groundSpikes = gameObject.GetComponent<GroundSpikesState>();
+        AddState(StateOptions.GroundSpikes, groundSpikes);
         AddState(StateOptions.Tornado, gameObject.GetComponent<TornadoState>());
+        AddState(StateOptions.Vulnerable, gameObject.GetComponent<VulnerableState>());
         //AddState(StateOptions.SmallTornados, gameObject.GetComponent<SmallTornadoState>());
-        //AddState(StateOptions.CeilingSpikes, gameObject.GetComponent<CeilingSpikesState>());
+        ceilingSpikes = gameObject.GetComponent<CeilingSpikesState>();
+        AddState(StateOptions.CeilingSpikes, ceilingSpikes);
         AddState(StateOptions.Death, gameObject.GetComponent<BossDeath>());
 
         StateMachineSetup(startState);
@@ -78,6 +83,7 @@ public class AirBossAI : BossAI
     {
         currentState++;
         groundSpikes.spikePercentage *= 1.5f;
+        ceilingSpikes.spikePercentage *= 1.5f;
         nextStateDelay = (int)(nextStateDelay * 0.5f);
         dash.speed *= 1.5f;
         TransitionTo(StateOptions.SmallTornados);
