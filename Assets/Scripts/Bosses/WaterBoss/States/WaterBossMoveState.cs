@@ -20,9 +20,9 @@ public class WaterBossMoveState : State
     {
         bossAI = context as WaterBossAI;
         if (teleportToPlayer) transform.position = CalculateTeleportPosition(bossAI.playerModel);
-        else CalculateTeleportPosition(teleportPositions[Random.Range(0, teleportPositions.Count)]);
+        else transform.position =  CalculateTeleportPosition(teleportPositions[Random.Range(0, teleportPositions.Count - 1)]);
     }
-
+    
     public override void Exit(int nextStateId) { }
 
 
