@@ -508,6 +508,10 @@ PrefabInstance:
       propertyPath: spawnArea
       value: 
       objectReference: {fileID: 1732162272}
+    - target: {fileID: 7004715947265456706, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
+      propertyPath: spikePercentage
+      value: 0.0625
+      objectReference: {fileID: 0}
     - target: {fileID: 7004715947265456729, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: m_Name
       value: AirBoss
@@ -555,6 +559,10 @@ PrefabInstance:
     - target: {fileID: 7004715947265456733, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004715947265456734, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
+      propertyPath: startState
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7004715947265456734, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: playerModel

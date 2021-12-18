@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DashState : State
 {
+    public float speed = 1;
+
     [SerializeField]
     float attackRange = 1;
     [SerializeField]
@@ -12,8 +14,6 @@ public class DashState : State
     Collider dashArea;
     [SerializeField]
     float damage = 1f;
-    [SerializeField]
-    float speed = 1;
 
     AirBossAI bossAI;
     Vector3 dashPosition, dashDirection, dashStartPosition;
