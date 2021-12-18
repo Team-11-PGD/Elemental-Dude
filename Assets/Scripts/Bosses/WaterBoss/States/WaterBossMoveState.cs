@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Chris Huider
-public class WaterBossMoveToPlayerState : State
+public class WaterBossMoveState : State
 {
-    WaterBossAI bossAI;
+    private WaterBossAI bossAI;
+
+    [SerializeField]
+    private List<Transform> teleportPositions;
+
+    [SerializeField]
+    private bool teleportToPlayer;
 
     [SerializeField]
     private float rangeAroundTarget = 5;
@@ -13,7 +19,8 @@ public class WaterBossMoveToPlayerState : State
     public override void Enter(int previousStateId)
     {
         bossAI = context as WaterBossAI;
-        transform.position = CalculateTeleportPosition(bossAI.playerModel);
+        if (teleportToPlayer) transform.position = CalculateTeleportPosition(bossAI.playerModel);
+        else CalculateTeleportPosition(teleportPositions[Random.Range(0, teleportPositions.Count)]);
     }
 
     public override void Exit(int nextStateId) { }
