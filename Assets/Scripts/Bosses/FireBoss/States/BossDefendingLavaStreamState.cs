@@ -28,15 +28,18 @@ public class BossDefendingLavaStreamState : FireBossState
 
     IEnumerator GroundbreakTimer()
     {
-        yield return new WaitForSecondsRealtime(groundbreakTime);
-        GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, null);
-        DamagingParticle damagingParticle = groundbreakInstance.GetComponentInChildren<DamagingParticle>();
-        damagingParticle.damage = groundbreakDamage;
-        damagingParticle.playerHealth = bossAI.playerHealth;
+        for (int i = 0; i < bossAI.instantiateAmount; i++)
+        {
+            yield return new WaitForSecondsRealtime(groundbreakTime);
+            GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, null);
+            DamagingParticle damagingParticle = groundbreakInstance.GetComponentInChildren<DamagingParticle>();
+            damagingParticle.damage = groundbreakDamage;
+            damagingParticle.playerHealth = bossAI.playerHealth;
 
-        ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
-        Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
-        particleSystemtmp.trigger.AddCollider(collidertmp);
+            ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
+            Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
+            particleSystemtmp.trigger.AddCollider(collidertmp);         
+        }
         bossAI.NextDefendState();
     }
 }

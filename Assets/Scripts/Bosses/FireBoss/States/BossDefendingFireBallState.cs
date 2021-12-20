@@ -31,6 +31,10 @@ public class BossDefendingFireBallState : FireBossState
     public override void Enter(int previousStateId)
     {
         StartCoroutine(AnounceFireballs());
+        bossAI.amountOFireballs = (bossAI.sizeSpawnArea / bossAI.sizeFireball) * bossAI.PercentageOfRoomFilled;
+        Debug.Log(bossAI.amountOFireballs);
+        Debug.Log(bossAI.sizeSpawnArea + "area");
+        Debug.Log(bossAI.PercentageOfRoomFilled + "prec");
     }
 
     public override void Exit(int nextStateId) { }
@@ -42,7 +46,7 @@ public class BossDefendingFireBallState : FireBossState
 
     IEnumerator AnounceFireballs()
     {
-        spawningPositions = new Vector3[fireballAmount];
+        spawningPositions = new Vector3[fireballAmount];//new Vector3[(int)bossAI.amountOFireballs];
         for (int i = 0; i < spawningPositions.Length; i++)
         {
             spawningPositions[i] = new Vector3(

@@ -19,7 +19,6 @@ public class BossLavaSlamAttack : FireBossState
     {
         StartCoroutine(ChargeTime());
     }
-
     public override void Exit(int nextStateId) { }
 
     IEnumerator ChargeTime()
@@ -32,12 +31,11 @@ public class BossLavaSlamAttack : FireBossState
         DamagingParticle damagingParticle = lavaInstance.GetComponentInChildren<DamagingParticle>();
         damagingParticle.damage = damage;
         damagingParticle.playerHealth = bossAI.playerHealth;
-        damagingParticle.transform.localScale = Vector3.one * lavaSize;
+        damagingParticle.transform.localScale *= bossAI.sizeChange;
 
         ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
         Collider playerModel = bossAI.playerModel.GetComponent<Collider>();
         particleSystemtmp.trigger.AddCollider(playerModel);
-
         bossAI.TransitionTo(FireBossAI.StateOptions.MoveToPlayer);
     }
 }

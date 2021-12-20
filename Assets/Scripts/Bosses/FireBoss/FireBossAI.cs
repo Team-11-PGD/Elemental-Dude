@@ -33,6 +33,13 @@ public class FireBossAI : BossAI
     BossDefendingLavaStreamState lavaStreamState;
     List<GameObject> healthPickups;
 
+    public int instantiateAmount = 1;
+    public float sizeChange = 1;
+    public float amountOFireballs;
+    public int sizeFireball = 1;
+    public int sizeSpawnArea = 36;
+    public float PercentageOfRoomFilled;
+
     public enum StateOptions
     {
         MoveToPlayer,
@@ -106,7 +113,7 @@ public class FireBossAI : BossAI
     protected override void Died()
     {
         if (currentStage == 4)
-        {
+        {     
             TransitionTo(StateOptions.Death);
             //SOUND: (boss death sound)
         }
@@ -128,6 +135,9 @@ public class FireBossAI : BossAI
     {
         currentStage++;
         slamAttack.lavaSize *= 1.5f;
+        instantiateAmount++;
+        sizeChange *= 1.5f;
+        PercentageOfRoomFilled += 0.2f;
         //fireBallState.
     }
 
