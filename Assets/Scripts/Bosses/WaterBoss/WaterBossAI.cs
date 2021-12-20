@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(WaterBossMoveToPlayerState), typeof(WaterBossAttackingBouncingBubble), typeof(WaterBossAttackingSlam))]
+[RequireComponent(typeof(WaterBossMoveState), typeof(WaterBossAttackingBouncingBubble), typeof(WaterBossAttackingSlam))]
+[RequireComponent(typeof(WaterBossAttackingWave))]
 
 public class WaterBossAI : BossAI
 {
@@ -28,7 +29,7 @@ public class WaterBossAI : BossAI
 
     private void Start()
     {
-        AddState(StateOptions.MoveToPlayer, GetComponent<WaterBossMoveToPlayerState>());                     // 0
+        AddState(StateOptions.MoveToPlayer, GetComponent<WaterBossMoveState>());                     // 0
         AddState(StateOptions.WaterAttackBubble, GetComponent<WaterBossAttackingBouncingBubble>());          // 1
         AddState(StateOptions.WaterAttackSlam, GetComponent<WaterBossAttackingSlam>());                      // 2
         AddState(StateOptions.WaterAttackWave, GetComponent<WaterBossAttackingWave>());                      // 3
