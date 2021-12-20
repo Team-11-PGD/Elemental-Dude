@@ -46,7 +46,8 @@ public class SpawnSpikesState : AirBossState
             spikes[i].isGroundSpike = isGroundSpike;
         }
 
-        context.NextRandomState(true, AirBossAI.StateOptions.Tornado);
+        //context.NextRandomState(true, AirBossAI.StateOptions.Tornado);
+        context.NextRandomState<AirBossAI.StateOptions>();
     }
 
     Vector3 GetPointInCollider()
