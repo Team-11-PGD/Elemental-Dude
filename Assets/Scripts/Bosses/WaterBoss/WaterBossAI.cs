@@ -10,6 +10,10 @@ public class WaterBossAI : BossAI
     public bool facePlayer = false;
     public Transform beamFirePoint;
     public Transform beamEndPoint;
+    [SerializeField]
+    float defenceStatePercentage = 0.4f;
+    [SerializeField]
+    float waterRisePercentage = 0.8f;
 
     public enum StateOptions
     {
@@ -36,6 +40,43 @@ public class WaterBossAI : BossAI
         AddState(StateOptions.WaterAttackBeam, GetComponent<WaterBossAttackingBeam>());                      // 4
         StateMachineSetup(startState);
     }
+
+    public override void NextState()
+    {
+        switch (CurrentStateId)
+        {
+
+        }
+    }
+
+    public void NextAttackState()
+    {
+        if (!SwitchToDefend()) TransitionTo(RandomStateFromRange(StateOptions.FireAttacking1, StateOptions.FireAttacking2));
+    }
+
+    public bool SwitchToDefend()
+    {
+        if (health.HpPercentage <= waterRisePercentage)
+        {
+            TransitionTo(StateOptions.MoveToCenter);
+            return true;
+        }
+        if(health.HpPercentage <= defenceStatePercentage)
+        {
+            TransitionTo(StateOptions.)
+        }
+        return false;
+    }
+
+    public void NextDefendState()
+    {
+        if (shieldHealth.HpPercentage > 0) TransitionTo(RandomStateFromRange(StateOptions.Defending1, StateOptions.Defendig2));
+        else
+        {
+            TransitionTo(StateOptions.MoveToPlayer);
+        }
+    }
+
 
     private void Update()
     {

@@ -8912,7 +8912,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365488471}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 3, z: -10.74}
+  m_LocalPosition: {x: 14.5, y: 3, z: 8.7}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 2605122310829264990}
@@ -8978,8 +8978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargeTime: 1.8
-  slamPrefab: {fileID: 0}
-  slamPosition: {fileID: 0}
+  slamPrefab: {fileID: 5462717699898839755, guid: 61e3685b7dd00bd42a5c060de8b7ec83, type: 3}
+  slamPosition: {fileID: 2605122310829264990}
 --- !u!195 &1365488480
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9035,7 +9035,7 @@ MonoBehaviour:
   facePlayer: 0
   beamFirePoint: {fileID: 746660522}
   beamEndPoint: {fileID: 2105557588}
-  startState: 4
+  startState: 0
 --- !u!114 &1365488483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9062,6 +9062,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc8b6fc99af84341aaa1d066a72f461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teleportPositions: []
+  teleportToPlayer: 0
   rangeAroundTarget: 5
 --- !u!1001 &1382044769
 PrefabInstance:
