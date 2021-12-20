@@ -10,8 +10,7 @@ public class WaterBossMoveState : State
     [SerializeField]
     private List<Transform> teleportPositions;
 
-    [SerializeField]
-    private bool teleportToPlayer;
+    public bool teleportToPlayer;
 
     [SerializeField]
     private float rangeAroundTarget = 5;

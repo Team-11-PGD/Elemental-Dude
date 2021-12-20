@@ -8,12 +8,13 @@ using UnityEngine;
 public class WaterBossAI : BossAI
 {
     public bool facePlayer = false;
-    public Transform beamFirePoint;
-    public Transform beamEndPoint;
+    public Transform beamFirePoint, beamEndPoint;
     [SerializeField]
     float defenceStatePercentage = 0.4f;
     [SerializeField]
     float waterRisePercentage = 0.8f;
+    [SerializeField]
+    private WaterController controller;
 
     public enum StateOptions
     {
@@ -33,7 +34,7 @@ public class WaterBossAI : BossAI
 
     private void Start()
     {
-        AddState(StateOptions.MoveToPlayer, GetComponent<WaterBossMoveState>());                     // 0
+        AddState(StateOptions.MoveToPlayer, GetComponent<WaterBossMoveState>());                             // 0
         AddState(StateOptions.WaterAttackBubble, GetComponent<WaterBossAttackingBouncingBubble>());          // 1
         AddState(StateOptions.WaterAttackSlam, GetComponent<WaterBossAttackingSlam>());                      // 2
         AddState(StateOptions.WaterAttackWave, GetComponent<WaterBossAttackingWave>());                      // 3
@@ -58,12 +59,15 @@ public class WaterBossAI : BossAI
     {
         if (health.HpPercentage <= waterRisePercentage)
         {
-            TransitionTo(StateOptions.MoveToCenter);
+            controller.startAppear = true;
             return true;
         }
         if(health.HpPercentage <= defenceStatePercentage)
         {
-            TransitionTo(StateOptions.)
+            controller.start2 = true;
+            GetComponent<WaterBossMoveState>().teleportToPlayer = false;
+            TransitionTo(StateOptions.MoveToPlayer);
+            return true;
         }
         return false;
     }
