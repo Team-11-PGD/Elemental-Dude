@@ -30,11 +30,12 @@ public class AirBossAI : BossAI
     {
         get
         {
-            return currentState > 1 ? (Enum[])Enum.GetValues(typeof(StateOptions)) : firstStateOptions;
+            return currentState == 1 ? firstStateOptions : secondStateOptions;
         }
     }
 
     private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes /*, StateOptions.Tornado*/ };
+    private static readonly Enum[] secondStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes /*, StateOptions.Tornado*/, StateOptions.Vulnerable, StateOptions.SmallTornados, StateOptions.CeilingSpikes };
     private int currentState = 1;
     private DashState dash;
     private SpawnSpikesState groundSpikes;

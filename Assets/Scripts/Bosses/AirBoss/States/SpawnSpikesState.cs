@@ -47,7 +47,7 @@ public class SpawnSpikesState : AirBossState
         }
 
         //context.NextRandomState(true, AirBossAI.StateOptions.Tornado);
-        context.NextRandomState<AirBossAI.StateOptions>();
+        context.NextRandomState(bossAI.CurrentStateOptions);
     }
 
     Vector3 GetPointInCollider()
