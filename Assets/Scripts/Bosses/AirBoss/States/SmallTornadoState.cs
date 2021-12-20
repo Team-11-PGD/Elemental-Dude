@@ -11,12 +11,12 @@ public class SmallTornadoState : AirBossState
     [SerializeField]
     int smallTornadoAmount = 5;
 
-    float normalGravityMultiplier;
+    float? normalGravityMultiplier;
     List<GameObject> SmallTornados = new List<GameObject>();
 
     public override void Enter(int previousStateId)
     {
-        if (previousStateId == -1)
+        if (normalGravityMultiplier == null)
         {
             normalGravityMultiplier = bossAI.playerModel.GetComponent<MovementScript>().gravityMultiplier;
         }
@@ -35,7 +35,7 @@ public class SmallTornadoState : AirBossState
             GameObject instance = Instantiate(smallTornado, GetPointInCollider(), Quaternion.identity);
             SmallTornado smallTornadoInstance = instance.GetComponent<SmallTornado>();
             smallTornadoInstance.player = bossAI.playerModel.GetComponent<MovementScript>();
-            smallTornadoInstance.normalGravityMultiplier = normalGravityMultiplier;
+            smallTornadoInstance.normalGravityMultiplier = normalGravityMultiplier.Value;
             SmallTornados.Add(instance);
         }
 

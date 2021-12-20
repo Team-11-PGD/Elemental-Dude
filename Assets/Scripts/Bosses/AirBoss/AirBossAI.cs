@@ -34,7 +34,7 @@ public class AirBossAI : BossAI
         }
     }
 
-    private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes, /*StateOptions.Tornado*/ };
+    private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes /*, StateOptions.Tornado*/ };
     private int currentState = 1;
     private DashState dash;
     private SpawnSpikesState groundSpikes;
