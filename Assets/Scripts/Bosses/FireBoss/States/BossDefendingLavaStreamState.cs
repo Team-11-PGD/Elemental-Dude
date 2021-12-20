@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BossDefendingLavaStreamState : FireBossState
 {
+    public int instantiateAmount = 1;
+
     [SerializeField]
     GameObject groundbreakPrefab;
     [SerializeField]
@@ -28,9 +30,8 @@ public class BossDefendingLavaStreamState : FireBossState
 
     IEnumerator GroundbreakTimer()
     {
-        for (int i = 0; i < bossAI.instantiateAmount; i++)
+        for (int i = 0; i < instantiateAmount; i++)
         {
-            yield return new WaitForSecondsRealtime(groundbreakTime);
             GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, null);
             DamagingParticle damagingParticle = groundbreakInstance.GetComponentInChildren<DamagingParticle>();
             damagingParticle.damage = groundbreakDamage;
@@ -39,6 +40,7 @@ public class BossDefendingLavaStreamState : FireBossState
             ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
             Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
             particleSystemtmp.trigger.AddCollider(collidertmp);         
+            yield return new WaitForSecondsRealtime(groundbreakTime);
         }
         bossAI.NextDefendState();
     }

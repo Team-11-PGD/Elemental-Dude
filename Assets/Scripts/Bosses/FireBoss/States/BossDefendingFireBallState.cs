@@ -4,6 +4,9 @@ using UnityEngine;
 // Joshua Knaven
 public class BossDefendingFireBallState : FireBossState
 {
+    public int sizeFireball = 1;
+    public float percentageOfRoomFilled = 0.1f;
+
     [SerializeField]
     BoxCollider spawnArea;
 
@@ -26,15 +29,17 @@ public class BossDefendingFireBallState : FireBossState
     [SerializeField]
     float damage = 1;
 
+    private float amountOFireballs;
     Vector3[] spawningPositions;
 
     public override void Enter(int previousStateId)
     {
         StartCoroutine(AnounceFireballs());
-        bossAI.amountOFireballs = (bossAI.sizeSpawnArea / bossAI.sizeFireball) * bossAI.PercentageOfRoomFilled;
-        Debug.Log(bossAI.amountOFireballs);
-        Debug.Log(bossAI.sizeSpawnArea + "area");
-        Debug.Log(bossAI.PercentageOfRoomFilled + "prec");
+        float sizeSpawnArea = spawnArea.bounds.size.x * spawnArea.bounds.size.z;
+        amountOFireballs = (sizeSpawnArea / sizeFireball) * percentageOfRoomFilled;
+        Debug.Log(amountOFireballs);
+        Debug.Log(sizeSpawnArea + "area");
+        Debug.Log(percentageOfRoomFilled + "prec");
     }
 
     public override void Exit(int nextStateId) { }

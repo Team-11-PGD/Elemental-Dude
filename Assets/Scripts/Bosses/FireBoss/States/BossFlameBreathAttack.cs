@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossFlameBreathAttack : FireBossState
 {
+    public float size = 1;
+
     new GameObject particleSystem;
     [SerializeField]
     Transform FlamePosition;
@@ -51,7 +53,7 @@ public class BossFlameBreathAttack : FireBossState
         particleSystem = Instantiate(flamePrefab, FlamePosition.transform.position, context.transform.rotation, context.transform);
         particleSystem.GetComponent<DamagingParticle>().playerHealth = bossAI.playerHealth;
         particleSystem.GetComponent<DamagingParticle>().damage = this.damage;
-        particleSystem.transform.localScale *= bossAI.sizeChange;
+        particleSystem.transform.localScale *= size;
         StartCoroutine(FlameTimer());
     }
 

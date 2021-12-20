@@ -31,7 +31,7 @@ public class BossLavaSlamAttack : FireBossState
         DamagingParticle damagingParticle = lavaInstance.GetComponentInChildren<DamagingParticle>();
         damagingParticle.damage = damage;
         damagingParticle.playerHealth = bossAI.playerHealth;
-        damagingParticle.transform.localScale *= bossAI.sizeChange;
+        damagingParticle.transform.localScale *= lavaSize;
 
         ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
         Collider playerModel = bossAI.playerModel.GetComponent<Collider>();
