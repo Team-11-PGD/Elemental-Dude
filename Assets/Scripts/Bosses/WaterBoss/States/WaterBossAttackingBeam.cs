@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaterBossBeamState : MonoBehaviour
+public class WaterBossAttackingBeam : State
 {
-    // Start is called before the first frame update
-    void Start()
+    WaterBossAI bossAI;
+
+    [SerializeField]
+    GameObject waterBeam;
+
+    [SerializeField]
+    private float distanceFromBoss;
+
+    public override void Enter(int previousStateId)
     {
-        
+        bossAI = context as WaterBossAI;
+        FireBeam();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Exit(int nextStateId)
     {
-        
+        bossAI.facePlayer = false;
+    }
+
+    private void FireBeam()
+    {
+        GameObject beamInstance = Instantiate(waterBeam, bossAI.beamFirePoint.position, Quaternion.identity);
+        beamInstance.GetComponent<WaterBeam>().BeamTarget(bossAI.beamFirePoint, bossAI.playerModel, bossAI.beamEndPoint);
     }
 }

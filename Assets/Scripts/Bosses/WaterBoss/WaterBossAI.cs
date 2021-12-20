@@ -7,6 +7,8 @@ using UnityEngine;
 public class WaterBossAI : BossAI
 {
     public bool facePlayer = false;
+    public Transform beamFirePoint;
+    public Transform beamEndPoint;
 
     public enum StateOptions
     {
@@ -30,6 +32,7 @@ public class WaterBossAI : BossAI
         AddState(StateOptions.WaterAttackBubble, GetComponent<WaterBossAttackingBouncingBubble>());          // 1
         AddState(StateOptions.WaterAttackSlam, GetComponent<WaterBossAttackingSlam>());                      // 2
         AddState(StateOptions.WaterAttackWave, GetComponent<WaterBossAttackingWave>());                      // 3
+        AddState(StateOptions.WaterAttackBeam, GetComponent<WaterBossAttackingBeam>());                      // 4
         StateMachineSetup(startState);
     }
 

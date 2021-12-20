@@ -27,7 +27,7 @@ public class WaterWaveScript : Projectile
         canDamage = true;
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (canDamage && other.gameObject.tag == "Player")
         {
@@ -47,7 +47,6 @@ public class WaterWaveScript : Projectile
         {
             DamageHandler(other.gameObject.GetComponentInParent<Health>(), other.gameObject.GetComponentInParent<ElementMain>());
             other.gameObject.GetComponent<MovementScript>().stunDuration = waveStunDuration;
-            Debug.Log("hoi");
             other.gameObject.GetComponent<MovementScript>().stunned = true;
             other.gameObject.GetComponent<MovementScript>().velocity = Vector3.forward * waveForce;
         }
@@ -61,5 +60,6 @@ public class WaterWaveScript : Projectile
     // Update is called once per frame
     void Update()
     {
+
     }
 }
