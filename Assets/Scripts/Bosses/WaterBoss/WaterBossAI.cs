@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(WaterBossMoveState), typeof(WaterBossAttackingBouncingBubble), typeof(WaterBossAttackingSlam))]
@@ -16,16 +17,19 @@ public class WaterBossAI : BossAI
     [SerializeField]
     private WaterController controller;
 
+    private float distanceToPlayer;
+    [SerializeField]
+    float meleeRange;
+    [SerializeField]
+    int nextStateDelay;
+
     public enum StateOptions
     {
         MoveToPlayer,
-        WaterAttackBubble,
         WaterAttackSlam,
         WaterAttackWave,
+        WaterAttackBubble,
         WaterAttackBeam,
-        MoveToCenter,
-        WaterDefenceWall,
-        WaterDefenceDome,
         Death
     }
 
@@ -35,29 +39,55 @@ public class WaterBossAI : BossAI
     private void Start()
     {
         AddState(StateOptions.MoveToPlayer, GetComponent<WaterBossMoveState>());                             // 0
-        AddState(StateOptions.WaterAttackBubble, GetComponent<WaterBossAttackingBouncingBubble>());          // 1
-        AddState(StateOptions.WaterAttackSlam, GetComponent<WaterBossAttackingSlam>());                      // 2
-        AddState(StateOptions.WaterAttackWave, GetComponent<WaterBossAttackingWave>());                      // 3
+        AddState(StateOptions.WaterAttackSlam, GetComponent<WaterBossAttackingSlam>());                      // 1
+        AddState(StateOptions.WaterAttackWave, GetComponent<WaterBossAttackingWave>());                      // 2
+        AddState(StateOptions.WaterAttackBubble, GetComponent<WaterBossAttackingBouncingBubble>());          // 3
         AddState(StateOptions.WaterAttackBeam, GetComponent<WaterBossAttackingBeam>());                      // 4
         StateMachineSetup(startState);
     }
-
+    public async void TransitionTo(StateOptions nextState)
+    {
+        await Task.Delay(nextStateDelay);
+        base.TransitionTo(nextState);
+    }
     public override void NextState()
     {
         switch (CurrentStateId)
         {
-
+            case (int)StateOptions.WaterAttackSlam:
+                NextAttackState();
+                break;
+            case (int)StateOptions.WaterAttackWave:
+                NextAttackState();
+                break;
+            case (int)StateOptions.WaterAttackBubble:
+                TransitionTo(StateOptions.MoveToPlayer);
+                break;
+            case (int)StateOptions.WaterAttackBeam:
+                TransitionTo(StateOptions.MoveToPlayer);
+                break;
+            case (int)StateOptions.MoveToPlayer:
+                NextAttackState();
+                break;
         }
     }
 
+
     public void NextAttackState()
     {
-        if (!SwitchToDefend()) TransitionTo(RandomStateFromRange(StateOptions.FireAttacking1, StateOptions.FireAttacking2));
+        if (distanceToPlayer <= meleeRange)
+        {
+            TransitionTo(RandomStateFromRange(StateOptions.WaterAttackSlam, StateOptions.WaterAttackWave));
+        }
+        if(distanceToPlayer > meleeRange)
+        {
+            TransitionTo(RandomStateFromRange(StateOptions.WaterAttackBubble, StateOptions.WaterAttackBeam));
+        }
     }
 
     public bool SwitchToDefend()
     {
-        if (health.HpPercentage <= waterRisePercentage)
+        if (health.HpPercentage <= waterRisePercentage && health.HpPercentage > defenceStatePercentage)
         {
             controller.startAppear = true;
             return true;
@@ -72,18 +102,18 @@ public class WaterBossAI : BossAI
         return false;
     }
 
-    public void NextDefendState()
+    protected override void Hitted()
     {
-        if (shieldHealth.HpPercentage > 0) TransitionTo(RandomStateFromRange(StateOptions.Defending1, StateOptions.Defendig2));
-        else
-        {
-            TransitionTo(StateOptions.MoveToPlayer);
-        }
+        SwitchToDefend();
     }
 
+    private StateOptions RandomStateFromRange(StateOptions minInclusive, StateOptions maxInclusive)
+        => (StateOptions)Random.Range((int)minInclusive, (int)maxInclusive + 1);
 
     private void Update()
     {
+        distanceToPlayer = (playerModel.position - this.transform.position).magnitude;
+        Debug.Log(distanceToPlayer);
         if (facePlayer)
         {
             Vector3 playerPosition = new Vector3(playerModel.transform.position.x, transform.position.y, playerModel.transform.position.z);
