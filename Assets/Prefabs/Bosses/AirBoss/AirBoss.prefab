@@ -149,7 +149,7 @@ MonoBehaviour:
   playerModel: {fileID: 0}
   playerHealth: {fileID: 0}
   health: {fileID: 7004715947265456704}
-  startState: 5
+  startState: 0
   nextStatePercentage: 0.5
   nextStateDelay: 1000
 --- !u!114 &7004715947265456735

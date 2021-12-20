@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(DashState), typeof(GroundSpikesState), typeof(TornadoState))]
-[RequireComponent(typeof(VulnerableState)/* ,typeof(SmallTornadoState)*/, typeof(CeilingSpikesState))]
+[RequireComponent(typeof(VulnerableState) ,typeof(SmallTornadoState), typeof(CeilingSpikesState))]
 [RequireComponent(typeof(BossDeath))]
 public class AirBossAI : BossAI
 {
@@ -56,9 +56,9 @@ public class AirBossAI : BossAI
         AddState(StateOptions.Dash, dash);
         groundSpikes = gameObject.GetComponent<GroundSpikesState>();
         AddState(StateOptions.GroundSpikes, groundSpikes);
-        AddState(StateOptions.Tornado, gameObject.GetComponent<TornadoState>());
+        //AddState(StateOptions.Tornado, gameObject.GetComponent<TornadoState>());
         AddState(StateOptions.Vulnerable, gameObject.GetComponent<VulnerableState>());
-        //AddState(StateOptions.SmallTornados, gameObject.GetComponent<SmallTornadoState>());
+        AddState(StateOptions.SmallTornados, gameObject.GetComponent<SmallTornadoState>());
         ceilingSpikes = gameObject.GetComponent<CeilingSpikesState>();
         AddState(StateOptions.CeilingSpikes, ceilingSpikes);
         AddState(StateOptions.Death, gameObject.GetComponent<BossDeath>());

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
+    public float gravityMultiplier = 1; //to adjust gravity and make it feel good
+
     [SerializeField]
     private float speed;
     [SerializeField]
@@ -11,13 +13,11 @@ public class MovementScript : MonoBehaviour
     [SerializeField]
     private float jumpSpeed;
     [SerializeField]
-    private float gravityMultiplier = 1; //to adjust gravity and make it feel good
-    [SerializeField]
     private float jumpGracePeroid;
 
     public Vector3 velocity;
 
-    private float ySpeed;
+    public float ySpeed;
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
 
