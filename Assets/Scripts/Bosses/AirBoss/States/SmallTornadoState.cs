@@ -14,13 +14,13 @@ public class SmallTornadoState : AirBossState
     float normalGravityMultiplier;
     List<GameObject> SmallTornados = new List<GameObject>();
 
-    private void Start()
-    {
-        normalGravityMultiplier = bossAI.playerModel.GetComponent<MovementScript>().gravityMultiplier;
-    }
-
     public override void Enter(int previousStateId)
     {
+        if (previousStateId == -1)
+        {
+            normalGravityMultiplier = bossAI.playerModel.GetComponent<MovementScript>().gravityMultiplier;
+        }
+
         if (SmallTornados.Count > 0)
         {
             foreach (GameObject tornado in SmallTornados)
