@@ -47,24 +47,24 @@ public class WeaponUI : MonoBehaviour
         //color changer for the Ui.
         if (weaponSwitcher.curWeapon == Weapon.WeaponTypes.Rifle)
         {
-            if (elementRifle.currentType == ElementMain.ElementType.Water) SelectorRifle.color = ElementMain.ElementWater;
-            if (elementRifle.currentType == ElementMain.ElementType.Air) SelectorRifle.color = ElementMain.ElementAir;
-            if (elementRifle.currentType == ElementMain.ElementType.Fire) SelectorRifle.color = ElementMain.ElementFire;
-            if (elementRifle.currentType == ElementMain.ElementType.Earth) SelectorRifle.color = ElementMain.ElementEarth;
+            if (elementRifle.currentType == ElementMain.ElementType.Water) SelectorRifle.color = ElementColors.WaterColor;
+            if (elementRifle.currentType == ElementMain.ElementType.Air) SelectorRifle.color = ElementColors.AirColor;
+            if (elementRifle.currentType == ElementMain.ElementType.Fire) SelectorRifle.color = ElementColors.FireColor;
+            if (elementRifle.currentType == ElementMain.ElementType.Earth) SelectorRifle.color = ElementColors.EarthColor;
         }
         if (weaponSwitcher.curWeapon == Weapon.WeaponTypes.Shotgun)
         {
-            if (elementShotgun.currentType == ElementMain.ElementType.Water) SelectorShotgun.color = ElementMain.ElementWater;
-            if (elementShotgun.currentType == ElementMain.ElementType.Air) SelectorShotgun.color = ElementMain.ElementAir;
-            if (elementShotgun.currentType == ElementMain.ElementType.Fire) SelectorShotgun.color = ElementMain.ElementFire;
-            if (elementShotgun.currentType == ElementMain.ElementType.Earth) SelectorShotgun.color = ElementMain.ElementEarth;
+            if (elementShotgun.currentType == ElementMain.ElementType.Water) SelectorShotgun.color = ElementColors.WaterColor;
+            if (elementShotgun.currentType == ElementMain.ElementType.Air) SelectorShotgun.color = ElementColors.AirColor;
+            if (elementShotgun.currentType == ElementMain.ElementType.Fire) SelectorShotgun.color = ElementColors.FireColor;
+            if (elementShotgun.currentType == ElementMain.ElementType.Earth) SelectorShotgun.color = ElementColors.EarthColor;
         }
         if (weaponSwitcher.curWeapon == Weapon.WeaponTypes.RPG)
         {
-            if (elementRPG.currentType == ElementMain.ElementType.Water) SelectorRPG.color = ElementMain.ElementWater;
-            if (elementRPG.currentType == ElementMain.ElementType.Air) SelectorRPG.color = ElementMain.ElementAir;
-            if (elementRPG.currentType == ElementMain.ElementType.Fire) SelectorRPG.color = ElementMain.ElementFire;
-            if (elementRPG.currentType == ElementMain.ElementType.Earth) SelectorRPG.color = ElementMain.ElementEarth;
+            if (elementRPG.currentType == ElementMain.ElementType.Water) SelectorRPG.color = ElementColors.WaterColor;
+            if (elementRPG.currentType == ElementMain.ElementType.Air) SelectorRPG.color = ElementColors.AirColor;
+            if (elementRPG.currentType == ElementMain.ElementType.Fire) SelectorRPG.color = ElementColors.FireColor;
+            if (elementRPG.currentType == ElementMain.ElementType.Earth) SelectorRPG.color = ElementColors.EarthColor;
         }
     }
 }

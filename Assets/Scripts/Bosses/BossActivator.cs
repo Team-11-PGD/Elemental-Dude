@@ -6,20 +6,31 @@ using UnityEngine;
 public class BossActivator : MonoBehaviour
 {
     [SerializeField]
-    GameObject boss;
+    GameObject waterBoss, fireBoss, airBoss;
     [SerializeField]
     GameObject rocks;
     [SerializeField]
     [TagSelector]
     string playerTag;
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag(playerTag)) return;
 
         if (Vector3.Dot(transform.forward, other.transform.position - transform.position) >= 0)
         {
-            boss.SetActive(true);
+            switch (RoomGeneration.CurrentElements[0])
+            {
+                case ElementMain.ElementType.Water:
+                    waterBoss.SetActive(true);
+                    break;
+                case ElementMain.ElementType.Fire:
+                    fireBoss.SetActive(true);
+                    break;
+                case ElementMain.ElementType.Air:
+                    airBoss.SetActive(true);
+                    break;
+            }
             rocks.SetActive(true);
             GetComponent<Collider>().isTrigger = false;
         }

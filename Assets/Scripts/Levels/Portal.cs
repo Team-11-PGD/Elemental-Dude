@@ -12,13 +12,13 @@ public class Portal : MonoBehaviour
     private void Start()
     {
         // TODO: add option to have multiple elements on a portal
-        Color color1 = ColorMaster.GetElement(RoomGeneration.NextElements[nextSceneId][0]).color;
+        Color color1 = ElementColors.GetElement(RoomGeneration.NextElements[nextSceneId][0]).color;
         rend.material.SetColor("_Color", color1);
 
         Color color2 = color1;
         if (RoomGeneration.NextElements[nextSceneId].Count == 2)
         {
-            color2 = ColorMaster.GetElement(RoomGeneration.NextElements[nextSceneId][1]).color;
+            color2 = ElementColors.GetElement(RoomGeneration.NextElements[nextSceneId][1]).color;
         }
         rend.material.SetColor("_Color2", color2);
     }

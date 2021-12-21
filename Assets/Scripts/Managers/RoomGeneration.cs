@@ -19,7 +19,8 @@ public class RoomGeneration : MonoBehaviour
             transform.parent = null;
             instance = this;
             DontDestroyOnLoad(instance);
-            UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.None }, 2);
+            UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.None }, 1);
+            UpdateElements(NextElements[0], 1);
         }
     }
 
@@ -95,15 +96,5 @@ public class RoomGeneration : MonoBehaviour
 
             NextElements[i] = randomElements;
         }
-
-
-        foreach (List<ElementMain.ElementType> elements in NextElements)
-        {
-            foreach (ElementMain.ElementType element in elements)
-            {
-                Debug.Log(element);
-            }
-        }
-
     }
 }

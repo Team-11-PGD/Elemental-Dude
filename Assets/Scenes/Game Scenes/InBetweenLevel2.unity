@@ -4912,6 +4912,56 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 0675575158efbfe49ac876fef25e21b3, type: 3}
+--- !u!1 &574298342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 574298343}
+  - component: {fileID: 574298344}
+  m_Layer: 0
+  m_Name: RoomGeneration
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &574298343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574298342}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1758593682}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &574298344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574298342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9874f5df51fc86d4286e8e12c71e71e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - sceneAsset: {fileID: 102900000, guid: 16f3c30c3ffc6e64781fbfbb9840b3cc, type: 3}
+    scenePath: Assets/Scenes/Game Scenes/InBetweenLevel1.unity
+  - sceneAsset: {fileID: 102900000, guid: 895f164c59febd64c919f76a7c952643, type: 3}
+    scenePath: Assets/Scenes/Game Scenes/InBetweenLevel2.unity
+  - sceneAsset: {fileID: 102900000, guid: 7a7bcf64382aa5946ae2136de4d82b7c, type: 3}
+    scenePath: Assets/Scenes/Game Scenes/InBetweenLevel3.unity
 --- !u!1001 &574920089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15549,6 +15599,7 @@ Transform:
   - {fileID: 57713525}
   - {fileID: 1775358784}
   - {fileID: 1562385158}
+  - {fileID: 574298343}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15642,10 +15693,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d694dfe8849058a499bf2d28811de2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ElementFire: {fileID: 2100000, guid: 0b602c7dc79944e4ead20732e9dccf28, type: 2}
-  ElementWater: {fileID: 2100000, guid: b300fe5d99da77c489f0e37af018fdd4, type: 2}
-  ElementAir: {fileID: 2100000, guid: deb897d1558d8f64b8f80710914338d5, type: 2}
-  ElementEarth: {fileID: 2100000, guid: bc2ba30407d40f94b9aebf388ac700d3, type: 2}
+  FireMaterial: {fileID: 0}
+  WaterMaterial: {fileID: 0}
+  AirMaterial: {fileID: 0}
+  EarthMaterial: {fileID: 0}
 --- !u!4 &1775358784
 Transform:
   m_ObjectHideFlags: 0
