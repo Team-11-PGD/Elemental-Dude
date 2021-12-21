@@ -4,8 +4,25 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
-static public class RoomGeneration
+public class RoomGeneration : MonoBehaviour
 {
+    public static RoomGeneration instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            transform.parent = null;
+            instance = this;
+            DontDestroyOnLoad(instance);
+            UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.None }, 2);
+        }
+    }
+
     /// <summary>
     /// A list of all active elements in the level
     /// </summary>
@@ -16,8 +33,15 @@ static public class RoomGeneration
     /// </summary>
     public static List<ElementMain.ElementType>[] NextElements { get; private set; } = new List<ElementMain.ElementType>[PATH_OPTIONS];
 
+    public static int Level { get; private set; } = 0;
+
+    [SerializeField]
+    SceneReference[] levels;
+
     static List<ElementMain.ElementType> previousElements = new List<ElementMain.ElementType>();
-    const int PATH_OPTIONS = 2;
+    public const int MULTI_ELEMENT_LEVEL = 3;
+    public const int FINAL_LEVEL = 5;
+    public const int PATH_OPTIONS = 2;
 
     /// <summary>
     /// Load next level element data and scene
@@ -25,6 +49,21 @@ static public class RoomGeneration
     /// <param name="elementTypes"> Types of elements to load the next level with </param>
     /// <param name="amountOfElementsNextRound"> Amount of elements for next level </param>
     public static void LoadNextLevel(List<ElementMain.ElementType> elementTypes, int amountOfElementsNextRound)
+    {
+        UpdateElements(elementTypes, amountOfElementsNextRound);
+
+        // Load next level
+        Level++;
+        int randLevel;
+        do
+        {
+            randLevel = UnityEngine.Random.Range(0, instance.levels.Length);
+        } while (instance.levels[randLevel].ScenePath == SceneManager.GetActiveScene().path);
+        Debug.Log(instance.levels[randLevel].ScenePath);
+        SceneManager.LoadScene(instance.levels[randLevel]);
+    }
+
+    private static void UpdateElements(List<ElementMain.ElementType> elementTypes, int amountOfElementsNextRound)
     {
         previousElements = CurrentElements;
         CurrentElements = elementTypes;
@@ -38,7 +77,7 @@ static public class RoomGeneration
             {
                 // Create a list with all possible elements
                 List<ElementMain.ElementType> availableElements = Enum.GetValues(typeof(ElementMain.ElementType)).OfType<ElementMain.ElementType>().ToList();
-                availableElements.Remove(ElementMain.ElementType.None); 
+                availableElements.Remove(ElementMain.ElementType.None);
 
                 randomElements = new List<ElementMain.ElementType>();
 
@@ -54,10 +93,17 @@ static public class RoomGeneration
                 randomElements.Sort();
             } while (randomElements == previousElements); // Make sure the new elements dont repeat the previous level
 
-            NextElements[PATH_OPTIONS] = randomElements;
+            NextElements[i] = randomElements;
         }
 
-        // TODO: load next level
-        Debug.Log(NextElements);
+
+        foreach (List<ElementMain.ElementType> elements in NextElements)
+        {
+            foreach (ElementMain.ElementType element in elements)
+            {
+                Debug.Log(element);
+            }
+        }
+
     }
 }
