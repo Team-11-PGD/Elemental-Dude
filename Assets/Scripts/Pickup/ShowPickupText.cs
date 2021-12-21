@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Chris Huider
 public class ShowPickupText : MonoBehaviour
 {
     public GameObject uiObject;

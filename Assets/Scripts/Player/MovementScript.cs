@@ -26,7 +26,9 @@ public class MovementScript : MonoBehaviour
     private Transform cam;
 
     public bool stunned = false;
+
     public float stunDuration;
+
     float stunTime;
     // Start is called before the first frame update
     void Start()
