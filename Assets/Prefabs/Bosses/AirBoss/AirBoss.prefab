@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 7111900124205609264}
   m_Layer: 0
   m_Name: AirBoss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 0
+  maxHp: 30
   currentHp: 0
 --- !u!114 &7004715947265456734
 MonoBehaviour:
@@ -149,7 +149,7 @@ MonoBehaviour:
   playerModel: {fileID: 0}
   playerHealth: {fileID: 0}
   health: {fileID: 7004715947265456704}
-  startState: 5
+  startState: 0
   nextStatePercentage: 0.5
   nextStateDelay: 1000
 --- !u!114 &7004715947265456735
