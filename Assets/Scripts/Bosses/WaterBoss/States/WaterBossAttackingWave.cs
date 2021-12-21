@@ -16,6 +16,7 @@ public class WaterBossAttackingWave : State
         bossAI = context as WaterBossAI;
         bossAI.facePlayer = true;
         SpawnWave();
+        bossAI.NextState();
     }
 
     public override void Exit(int nextStateId)
@@ -25,7 +26,7 @@ public class WaterBossAttackingWave : State
 
     private void SpawnWave()
     {
-        GameObject waveInstance = Instantiate(waterWave, transform.position + Vector3.forward * distanceFromBoss, Quaternion.identity);
+        GameObject waveInstance = Instantiate(waterWave, transform.position + Vector3.forward * distanceFromBoss, this.transform.rotation);
         waveInstance.GetComponent<WaterWaveScript>().GiveTarget(this.gameObject.transform, bossAI.playerModel);
     }
 }

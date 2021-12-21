@@ -18,6 +18,7 @@ public class WaterBossAttackingBouncingBubble : State
         bossAI = context as WaterBossAI;
         bossAI.facePlayer = true;
         SpawnBubble();
+        bossAI.NextState();
     }
 
     public override void Exit(int nextStateId)
