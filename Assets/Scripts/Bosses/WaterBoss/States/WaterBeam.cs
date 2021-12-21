@@ -27,7 +27,7 @@ public class WaterBeam : Projectile
     // Update is called once per frame
     void Update()
     {
-        aimPoint.Translate((endPoint.position-startPoint.position) * speed * Time.deltaTime);
+        aimPoint.Translate((endPoint.position - startPoint.position) * speed * Time.deltaTime);
         line.SetPosition(0, firePoint.position);
         line.SetPosition(1, aimPoint.position);
 
@@ -52,12 +52,12 @@ public class WaterBeam : Projectile
             }
         }
     }
-
     public void BeamTarget(Transform fire, Transform start, Transform end)
     {
         firePoint = fire;
         startPoint = start;
         endPoint = end;
     }
+
 
 }

@@ -17,6 +17,7 @@ public class WaterBossAttackingSlam : State
         bossAI = context as WaterBossAI;
         bossAI.facePlayer = true;
         StartCoroutine(SlamAttack());
+        bossAI.NextState();
     }
 
     public override void Exit(int nextStateId)

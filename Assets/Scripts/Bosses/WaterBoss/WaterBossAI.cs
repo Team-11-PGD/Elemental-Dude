@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,7 +10,8 @@ using UnityEngine;
 public class WaterBossAI : BossAI
 {
     public bool facePlayer = false;
-    public Transform beamFirePoint, beamEndPoint;
+    public Transform beamFirePoint, beamEndPointLeft, beamEndPointRight;
+
     [SerializeField]
     float defenceStatePercentage = 0.4f;
     [SerializeField]
@@ -45,7 +47,7 @@ public class WaterBossAI : BossAI
         AddState(StateOptions.WaterAttackBeam, GetComponent<WaterBossAttackingBeam>());                      // 4
         StateMachineSetup(startState);
     }
-    public async void TransitionTo(StateOptions nextState)
+    public new async void TransitionTo(Enum nextState)
     {
         await Task.Delay(nextStateDelay);
         base.TransitionTo(nextState);
@@ -108,12 +110,11 @@ public class WaterBossAI : BossAI
     }
 
     private StateOptions RandomStateFromRange(StateOptions minInclusive, StateOptions maxInclusive)
-        => (StateOptions)Random.Range((int)minInclusive, (int)maxInclusive + 1);
+        => (StateOptions)UnityEngine.Random.Range((int)minInclusive, (int)maxInclusive + 1);
 
     private void Update()
     {
         distanceToPlayer = (playerModel.position - this.transform.position).magnitude;
-        Debug.Log(distanceToPlayer);
         if (facePlayer)
         {
             Vector3 playerPosition = new Vector3(playerModel.transform.position.x, transform.position.y, playerModel.transform.position.z);
