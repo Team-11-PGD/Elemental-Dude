@@ -148,7 +148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2069135489152081729
 Transform:
   m_ObjectHideFlags: 0
@@ -241,7 +241,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextSceneId: 0
   rend: {fileID: 2069135489152081743}
-  light: {fileID: 2069135489869040722}
 --- !u!1 &2069135489833281661
 GameObject:
   m_ObjectHideFlags: 0

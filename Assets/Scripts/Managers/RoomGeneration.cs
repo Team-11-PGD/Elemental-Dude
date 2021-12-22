@@ -19,8 +19,8 @@ public class RoomGeneration : MonoBehaviour
             transform.parent = null;
             instance = this;
             DontDestroyOnLoad(instance);
-            UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.None }, 1);
-            UpdateElements(NextElements[0], 1);
+            UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.Air }, 1);
+            //UpdateElements(NextElements[0], 1);
         }
     }
 

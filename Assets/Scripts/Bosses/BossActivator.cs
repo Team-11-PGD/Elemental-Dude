@@ -22,13 +22,13 @@ public class BossActivator : MonoBehaviour
             switch (RoomGeneration.CurrentElements[0])
             {
                 case ElementMain.ElementType.Water:
-                    waterBoss.SetActive(true);
+                    waterBoss?.SetActive(true);
                     break;
                 case ElementMain.ElementType.Fire:
-                    fireBoss.SetActive(true);
+                    fireBoss?.SetActive(true);
                     break;
                 case ElementMain.ElementType.Air:
-                    airBoss.SetActive(true);
+                    airBoss?.SetActive(true);
                     break;
             }
             rocks.SetActive(true);

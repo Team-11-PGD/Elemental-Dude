@@ -140,7 +140,7 @@ public class FireBossAI : BossAI
 
     public bool SwitchToDefend()
     {
-        if (health.HpPercentage <= nextStatePercentage)
+        if (health.HpPercentage <= nextStatePercentage && currentStage < 4)
         {
             nextStatePercentage -= nextPercentageStep;
             TransitionTo(StateOptions.MoveToCenter);

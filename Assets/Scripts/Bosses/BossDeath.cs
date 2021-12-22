@@ -11,7 +11,7 @@ public class BossDeath : State
     [SerializeField]
     float explosionForce = 1f;
     [SerializeField]
-    GameObject portal;
+    GameObject[] portals;
 
     int stateId;
 
@@ -25,8 +25,12 @@ public class BossDeath : State
         {
             rigidbody.AddForce(Vector3.up * explosionForce);
         }
+        instance.GetComponent<Renderer>().material = renderer.material;
         context.enabled = false;
-        portal.SetActive(true);
+        foreach (GameObject portal in portals)
+        {
+            portal.SetActive(true);
+        }
     }
 
     public override void Exit(int nextStateId)
