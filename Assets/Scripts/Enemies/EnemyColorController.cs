@@ -16,22 +16,22 @@ public class EnemyColorController : MonoBehaviour
         //Fire element
         if (elementMain.currentType == ElementMain.ElementType.Fire)
         {
-            rend.material = ColorMaster.instance.ElementFire;
+            rend.material = ElementColors.instance.FireMaterial;
         }
         //Water element
         if (elementMain.currentType == ElementMain.ElementType.Water)
         {
-            rend.material = ColorMaster.instance.ElementWater;
+            rend.material = ElementColors.instance.WaterMaterial;
         }
         //Earth element
         if (elementMain.currentType == ElementMain.ElementType.Earth)
         {
-            rend.material = ColorMaster.instance.ElementEarth;
+            rend.material = ElementColors.instance.EarthMaterial;
         }
         //Air element
         if (elementMain.currentType == ElementMain.ElementType.Air)
         {
-            rend.material = ColorMaster.instance.ElementAir;
+            rend.material = ElementColors.instance.AirMaterial;
         }
     }
 }

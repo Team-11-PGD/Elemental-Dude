@@ -128,6 +128,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 2
   playerCam: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
   spawnBulletPos: {fileID: 2664363308535266568}
   bulletPrefab: {fileID: 8600321062039574617, guid: 00d2d262bfb718a4887e28c4058a95bd, type: 3}
   curBulletAmount: 0
@@ -136,6 +139,7 @@ MonoBehaviour:
   bulletSpeed: 40
   reloadTime: 3
   fireInterval: 0
+  elementMain: {fileID: 0}
 --- !u!114 &7687334907029580273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,5 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec63d62cba19714683f397e86d7c05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamagePercentage: 1.5
+  advantageElemPercentage: 1.5
+  disadvantageElemPercentage: 0.5
   currentType: 0

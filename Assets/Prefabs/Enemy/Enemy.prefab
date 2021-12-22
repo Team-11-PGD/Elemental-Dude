@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
+  maxHp: 10
   currentHp: 0
 --- !u!114 &4912808448226590281
 MonoBehaviour:
@@ -492,4 +492,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementMain: {fileID: -4841626783498317459}
-  colorMaster: {fileID: 0}

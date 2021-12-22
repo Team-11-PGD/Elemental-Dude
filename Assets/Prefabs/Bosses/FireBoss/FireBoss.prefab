@@ -211,6 +211,10 @@ MonoBehaviour:
   shield: {fileID: 4481545906232435243}
   nextPercentageStep: 0.33
   nextStatePercentage: 0.66
+  healthPickupAmount: 3
+  fallingHealthPickup: {fileID: 8618477386730529060, guid: ee3641178926be441a472a0c1e89ca1a, type: 3}
+  healthSpawnArea: {fileID: 0}
+  uiObjectHealthPickup: {fileID: 0}
   startState: 0
 --- !u!114 &3895526102434882940
 MonoBehaviour:
@@ -238,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef422e44dfe1754f8bfaf4735c3ccab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: 1
   FlamePosition: {fileID: 4932459855604928749}
   smokePrefab: {fileID: 7394829142842504223, guid: 237df58ca0f3b9a47812fbf6bc599fb1, type: 3}
   flamePrefab: {fileID: 1634767862067424, guid: 0d7e715fcdadd9e48b8e6b18b99af29c, type: 3}
@@ -256,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56aaa748650682e41a580cc2ae0cea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lavaSize: 1
   chargeTime: 1
   slamPrefab: {fileID: 7695839885820242209, guid: 17ef32b26250d6e468510198acea225d, type: 3}
   lavaPrefab: {fileID: 3263454105782360207, guid: ffd0d32bdf9daa14c98b236ab7088f87, type: 3}
@@ -302,6 +308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5cb6d5d5c7a5c49b8a58c1db62cfb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeFireball: 1
+  percentageOfRoomFilled: 0.1
   spawnArea: {fileID: 0}
   shockWaveSize: 13
   groundLayer:
@@ -324,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56874f1e7dec90746ab0dabc4caefaaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instantiateAmount: 1
   groundbreakPrefab: {fileID: 1314945738539566, guid: 459abe6629949d9468c64fe72d39deb4, type: 3}
   groundbreakStartPosition: {fileID: 5158375459202621933}
   groundbreakTime: 1
@@ -357,7 +366,7 @@ MonoBehaviour:
   fracturedModel: {fileID: 3891040115948383337, guid: 51fe1349e29ec8b41a0171cd8023f990, type: 3}
   renderer: {fileID: 3895526102434882939}
   explosionForce: 1
-  portal: {fileID: 0}
+  portals: []
 --- !u!1001 &3991914865468223921
 PrefabInstance:
   m_ObjectHideFlags: 0
