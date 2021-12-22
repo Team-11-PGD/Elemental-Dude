@@ -25,7 +25,10 @@ public class BossDeath : State
         {
             rigidbody.AddForce(Vector3.up * explosionForce);
         }
-        instance.GetComponent<Renderer>().material = renderer.material;
+        foreach (Renderer childRenderer in instance.GetComponentsInChildren<Renderer>())
+        {
+            childRenderer.material = renderer.material;
+        }
         context.enabled = false;
         foreach (GameObject portal in portals)
         {

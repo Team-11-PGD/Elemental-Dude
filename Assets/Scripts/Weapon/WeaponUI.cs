@@ -74,7 +74,11 @@ public class WeaponUI : MonoBehaviour
         {
             if (elementRifle.currentType == ElementMain.ElementType.Water) { SelectorRifle.color = ElementColors.WaterColor; rifleEffective.sprite = Fe; allowShowRifle = true; }
             if (elementRifle.currentType == ElementMain.ElementType.Air) { SelectorRifle.color = ElementColors.AirColor; rifleEffective.sprite = We; allowShowRifle = true; }
-            if (elementRifle.currentType == ElementMain.ElementType.Fire) { SelectorRifle.color = ElementColors.FireColor; rifleEffective.sprite = Ae; allowShowRifle = true; }
+            if (elementRifle.currentType == ElementMain.ElementType.Fire) { 
+                SelectorRifle.color = ElementColors.FireColor; 
+                rifleEffective.sprite = Ae; 
+                allowShowRifle = true; 
+            }
         }
         if (weaponSwitcher.curWeapon == Weapon.WeaponTypes.Shotgun)
         {

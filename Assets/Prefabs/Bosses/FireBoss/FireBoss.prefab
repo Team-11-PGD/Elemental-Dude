@@ -179,7 +179,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 1479372276
   m_Radius: 0.71
-  m_Speed: 3.5
+  m_Speed: 12
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef422e44dfe1754f8bfaf4735c3ccab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 1
+  size: 1.5
   FlamePosition: {fileID: 4932459855604928749}
   smokePrefab: {fileID: 7394829142842504223, guid: 237df58ca0f3b9a47812fbf6bc599fb1, type: 3}
   flamePrefab: {fileID: 1634767862067424, guid: 0d7e715fcdadd9e48b8e6b18b99af29c, type: 3}
@@ -279,8 +279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
+  maxHp: 200
   currentHp: 0
+  damageTaken: 0
 --- !u!114 &2606436599316499700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328765437372174215, guid: 6d8d7a487034c4d4d895316b18a39876, type: 3}
       propertyPath: maxHp
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3937004519716314198, guid: 6d8d7a487034c4d4d895316b18a39876, type: 3}
       propertyPath: m_RootOrder

@@ -26,12 +26,14 @@ public class UIManager : MonoBehaviour
 
     void OnEnable()
     {
-        player.Died += PlayerDied;
+        if (player != null)
+            player.Died += PlayerDied;
     }
 
     void OnDisable()
     {
-        player.Died -= PlayerDied;
+        if (player != null)
+            player.Died -= PlayerDied;
     }
 
 
@@ -39,6 +41,7 @@ public class UIManager : MonoBehaviour
     {
         //SOUND: (Player death)
         GoToMainMenu();
+        
     }
 
     void Start()
@@ -85,7 +88,9 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+#if UNITY_EDITOR
         EditorApplication.isPlaying = false;
+#endif
     }
     public void GoToMainMenu()
     {
@@ -98,7 +103,7 @@ public class UIManager : MonoBehaviour
     void SceneChanged(Scene oldScene, Scene newScene)
     {
         FindPauseMenu();
-        if (newScene.name == "InBetweenLevel1")
+        if (newScene.name == "InBetweenLevel1" || newScene.name == "InBetweenLevel2" || newScene.name == "InBetweenLevel3")
         {
             ResumeGame();
         }
@@ -132,7 +137,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name == "InBetweenLevel1")
+        if (Input.GetKeyDown(KeyCode.Escape) && (SceneManager.GetActiveScene().name == "InBetweenLevel1" || SceneManager.GetActiveScene().name == "InBetweenLevel2" || SceneManager.GetActiveScene().name == "InBetweenLevel3"))
         {
             SwitchPause();
         }

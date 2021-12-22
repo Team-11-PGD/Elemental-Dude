@@ -4779,8 +4779,10 @@ MonoBehaviour:
   minRotation: 0
   maxRotation: 45
   speed: 3
-  force: 1
+  force: 0.2
   particleSystem: {fileID: 198000010021673064}
+  timer: 0
+  maxTimer: 0.5
 --- !u!114 &-7257532196942926904
 MonoBehaviour:
   m_ObjectHideFlags: 0

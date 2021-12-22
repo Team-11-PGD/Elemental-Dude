@@ -19,7 +19,7 @@ public class RoomGeneration : MonoBehaviour
             transform.parent = null;
             instance = this;
             DontDestroyOnLoad(instance);
-            UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.Air }, 1);
+            UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.Fire }, 1);
             UpdateElements(NextElements[0], 1);
         }
     }
@@ -79,6 +79,7 @@ public class RoomGeneration : MonoBehaviour
                 // Create a list with all possible elements
                 List<ElementMain.ElementType> availableElements = Enum.GetValues(typeof(ElementMain.ElementType)).OfType<ElementMain.ElementType>().ToList();
                 availableElements.Remove(ElementMain.ElementType.None);
+                availableElements.Remove(ElementMain.ElementType.Earth); 
 
                 randomElements = new List<ElementMain.ElementType>();
 

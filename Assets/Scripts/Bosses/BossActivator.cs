@@ -30,6 +30,9 @@ public class BossActivator : MonoBehaviour
                 case ElementMain.ElementType.Air:
                     airBoss?.SetActive(true);
                     break;
+                default:
+                    fireBoss?.SetActive(true);
+                    break;
             }
             rocks.SetActive(true);
             GetComponent<Collider>().isTrigger = false;

@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 30
   currentHp: 0
+  damageTaken: 0
 --- !u!114 &7004715947265456734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +170,7 @@ MonoBehaviour:
   attackRange: 1
   totalDashes: 5
   dashArea: {fileID: 0}
-  damage: 1
+  damage: 15
 --- !u!114 &4568714983940714406
 MonoBehaviour:
   m_ObjectHideFlags: 0
