@@ -12165,6 +12165,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1714106660}
+    - target: {fileID: 2880506871450384638, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3895526102434882916, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
       propertyPath: m_Name
       value: FireBoss
@@ -12220,6 +12224,14 @@ PrefabInstance:
     - target: {fileID: 4481545906232435243, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158375459202621933, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158375459202621933, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6103488072458605474, guid: 283c119b1f5993e4fa89e9f2b3154d5d, type: 3}
       propertyPath: spawnArea
