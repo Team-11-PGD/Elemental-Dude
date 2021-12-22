@@ -7,6 +7,9 @@ public class WaterBossAttackingBeam : State
     WaterBossAI bossAI;
 
     [SerializeField]
+    Transform beamFirePoint, beamEndPointLeft, beamEndPointRight;
+
+    [SerializeField]
     GameObject waterBeam;
 
     [SerializeField]
@@ -30,15 +33,15 @@ public class WaterBossAttackingBeam : State
         yield return new WaitForSecondsRealtime(0.5f);
         if(direction < 1)
         {
-            GameObject beamInstance = Instantiate(waterBeam, bossAI.beamFirePoint.position, Quaternion.identity);
-            beamInstance.GetComponent<WaterBeam>().BeamTarget(bossAI.beamFirePoint, bossAI.playerModel, bossAI.beamEndPointLeft);
+            GameObject beamInstance = Instantiate(waterBeam, beamFirePoint.position, Quaternion.identity);
+            beamInstance.GetComponent<WaterBeam>().BeamTarget(beamFirePoint, bossAI.playerModel, beamEndPointLeft);
             yield return new WaitForSecondsRealtime(3);
             Destroy(beamInstance);
         }
         if(direction >= 1)
         {
-            GameObject beamInstance = Instantiate(waterBeam, bossAI.beamFirePoint.position, Quaternion.identity);
-            beamInstance.GetComponent<WaterBeam>().BeamTarget(bossAI.beamFirePoint, bossAI.playerModel, bossAI.beamEndPointRight);
+            GameObject beamInstance = Instantiate(waterBeam, beamFirePoint.position, Quaternion.identity);
+            beamInstance.GetComponent<WaterBeam>().BeamTarget(beamFirePoint, bossAI.playerModel, beamEndPointRight);
             yield return new WaitForSecondsRealtime(3);
             Destroy(beamInstance);
         }

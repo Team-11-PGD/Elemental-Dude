@@ -10,7 +10,6 @@ using UnityEngine;
 public class WaterBossAI : BossAI
 {
     public bool facePlayer = false;
-    public Transform beamFirePoint, beamEndPointLeft, beamEndPointRight;
 
     [SerializeField]
     float defenceStatePercentage = 0.4f;

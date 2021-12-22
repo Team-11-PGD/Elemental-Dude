@@ -397,9 +397,6 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   health: {fileID: 4940457610322526991}
   facePlayer: 0
-  beamFirePoint: {fileID: 4940457609865311210}
-  beamEndPointLeft: {fileID: 4940457609609179207}
-  beamEndPointRight: {fileID: 4940457608913663466}
   defenceStatePercentage: 0.4
   waterRisePercentage: 0.8
   controller: {fileID: 6427183231525125560, guid: 1f3cf5bb2393ee544ae54e2c82e16128, type: 3}
@@ -419,6 +416,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waterBeam: {fileID: 8568339252055603626, guid: 48948b8bf3fa8aa45b48172a0a812bb1, type: 3}
+  beamFirePoint: {fileID: 4940457609865311210}
+  beamEndPointLeft: {fileID: 4940457609609179207}
+  beamEndPointRight: {fileID: 4940457608913663466}
   distanceFromBoss: 0
 --- !u!114 &4940457610322526988
 MonoBehaviour:

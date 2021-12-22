@@ -20,7 +20,7 @@ public class RoomGeneration : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(instance);
             UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.Air }, 1);
-            //UpdateElements(NextElements[0], 1);
+            UpdateElements(NextElements[0], 1);
         }
     }
 

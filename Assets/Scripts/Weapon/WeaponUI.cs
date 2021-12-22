@@ -72,21 +72,21 @@ public class WeaponUI : MonoBehaviour
         //color changer for the Ui.
         if (weaponSwitcher.curWeapon == Weapon.WeaponTypes.Rifle)
         {
-            if (elementRifle.currentType == ElementMain.ElementType.Water) { SelectorRifle.color = ElementMain.ElementWater; rifleEffective.sprite = Fe; allowShowRifle = true; }
-            if (elementRifle.currentType == ElementMain.ElementType.Air) { SelectorRifle.color = ElementMain.ElementAir; rifleEffective.sprite = We; allowShowRifle = true; }
-            if (elementRifle.currentType == ElementMain.ElementType.Fire) { SelectorRifle.color = ElementMain.ElementFire; rifleEffective.sprite = Ae; allowShowRifle = true; }
+            if (elementRifle.currentType == ElementMain.ElementType.Water) { SelectorRifle.color = ElementColors.WaterColor; rifleEffective.sprite = Fe; allowShowRifle = true; }
+            if (elementRifle.currentType == ElementMain.ElementType.Air) { SelectorRifle.color = ElementColors.AirColor; rifleEffective.sprite = We; allowShowRifle = true; }
+            if (elementRifle.currentType == ElementMain.ElementType.Fire) { SelectorRifle.color = ElementColors.FireColor; rifleEffective.sprite = Ae; allowShowRifle = true; }
         }
         if (weaponSwitcher.curWeapon == Weapon.WeaponTypes.Shotgun)
         {
-            if (elementShotgun.currentType == ElementMain.ElementType.Water) { SelectorShotgun.color = ElementMain.ElementWater; shotgunEffective.sprite = Fe; allowShowShotgun = true; }
-            if (elementShotgun.currentType == ElementMain.ElementType.Air){ SelectorShotgun.color = ElementMain.ElementAir; shotgunEffective.sprite = We; allowShowShotgun = true; }
-            if (elementShotgun.currentType == ElementMain.ElementType.Fire){ SelectorShotgun.color = ElementMain.ElementFire; shotgunEffective.sprite = Ae; allowShowShotgun = true; }
+            if (elementShotgun.currentType == ElementMain.ElementType.Water) { SelectorShotgun.color = ElementColors.WaterColor; shotgunEffective.sprite = Fe; allowShowShotgun = true; }
+            if (elementShotgun.currentType == ElementMain.ElementType.Air){ SelectorShotgun.color = ElementColors.AirColor; shotgunEffective.sprite = We; allowShowShotgun = true; }
+            if (elementShotgun.currentType == ElementMain.ElementType.Fire){ SelectorShotgun.color = ElementColors.FireColor; shotgunEffective.sprite = Ae; allowShowShotgun = true; }
         }
         if (weaponSwitcher.curWeapon == Weapon.WeaponTypes.RPG)
         {
-            if (elementRPG.currentType == ElementMain.ElementType.Water) { SelectorRPG.color = ElementMain.ElementWater; rgpEffective.sprite = Fe; allowShowRpg = true; }
-            if (elementRPG.currentType == ElementMain.ElementType.Air){ SelectorRPG.color = ElementMain.ElementAir; rgpEffective.sprite = We; allowShowRpg = true; }
-            if (elementRPG.currentType == ElementMain.ElementType.Fire){ SelectorRPG.color = ElementMain.ElementFire; rgpEffective.sprite = Ae; allowShowRpg = true; }
+            if (elementRPG.currentType == ElementMain.ElementType.Water) { SelectorRPG.color = ElementColors.WaterColor; rgpEffective.sprite = Fe; allowShowRpg = true; }
+            if (elementRPG.currentType == ElementMain.ElementType.Air){ SelectorRPG.color = ElementColors.AirColor; rgpEffective.sprite = We; allowShowRpg = true; }
+            if (elementRPG.currentType == ElementMain.ElementType.Fire){ SelectorRPG.color = ElementColors.FireColor; rgpEffective.sprite = Ae; allowShowRpg = true; }
         }
     }
 }
