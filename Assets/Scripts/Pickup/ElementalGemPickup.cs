@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Chris Huider
 public class ElementalGemPickup : PickupMain
@@ -8,6 +9,13 @@ public class ElementalGemPickup : PickupMain
     [SerializeField]
     private ElementMain element;
     private WeaponSwitcher userWeapon;
+
+    [SerializeField]
+    private Image fireElement;
+    [SerializeField]
+    private Image waterElement;
+    [SerializeField]
+    private Image airElement;
 
     private string PickupText;
 
@@ -40,6 +48,9 @@ public class ElementalGemPickup : PickupMain
 
     private void ShowGemText()
     {
+        if (element.currentType == ElementMain.ElementType.Fire) fireElement.enabled = true; else fireElement.enabled = false;
+        if (element.currentType == ElementMain.ElementType.Water) waterElement.enabled = true; else waterElement.enabled = false;
+        if (element.currentType == ElementMain.ElementType.Air) airElement.enabled = true; else airElement.enabled = false;
         PickupText = $"Press E to use {element.currentType} gem.";
         text.powerupText = PickupText;
         text.StartText(false);

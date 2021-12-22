@@ -89,6 +89,7 @@ public class UIManager : MonoBehaviour
     }
     public void GoToMainMenu()
     {
+        iScore.UpdateTimeScore();
         //updates the best play time.
         //iScore.UpdateTimeScore();
         SceneManager.LoadScene("MainMenu");
@@ -143,11 +144,11 @@ public class UIManager : MonoBehaviour
             playerHpBar.value = player.currentHp;
 
 
-            //if (player.currentHp <= 0)
-            //{
-            //    //GameOver
-            //    GoToMainMenu();
-            //}
+            if (player.currentHp <= 0)
+            {
+                //GameOver
+                GoToMainMenu();
+            }
         }
     }
 
