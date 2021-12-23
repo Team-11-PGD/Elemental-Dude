@@ -15,9 +15,33 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Slider playerHpBar;
     [SerializeField]
+    Slider enemyHpBar;
+    [SerializeField]
     bool startWithoutMouseOverride = false;
     [SerializeField]
     UIScore iScore;
+    public Camera playerCam;
+    [SerializeField]
+    GameObject enemyBarSee;
+
+    [SerializeField]
+    Health FireHealth;
+    [SerializeField]
+    //Health WaterHealth;
+    //[SerializeField]
+    Health AirHealth;
+
+    [SerializeField]
+    GameObject rocks;
+    [SerializeField]
+    GameObject fireboss;
+    //[SerializeField]
+    //GameObject waterboss;
+    [SerializeField]
+    GameObject airboss;
+
+    private bool checkOnce = false;
+    private int range = 100;
 
     void Awake()
     {
@@ -41,7 +65,7 @@ public class UIManager : MonoBehaviour
     {
         //SOUND: (Player death)
         GoToMainMenu();
-        
+
     }
 
     void Start()
@@ -57,6 +81,7 @@ public class UIManager : MonoBehaviour
             playerHpBar.maxValue = player.maxHp;
             playerHpBar.value = player.currentHp;
         }
+        enemyBarSee.SetActive(false);
     }
 
     void FindPauseMenu()
@@ -155,6 +180,36 @@ public class UIManager : MonoBehaviour
                 GoToMainMenu();
             }
         }
+        if (enemyHpBar.value <= 0)
+        {
+            enemyBarSee.SetActive(false);
+        }
+        if (rocks.active == true)
+        {
+            if (fireboss.active == true) FireBar();
+            //if (waterboss.active = true) WaterBar();
+            if (airboss.active == true) AirBar();
+            if (!checkOnce)
+            {
+                enemyBarSee.active = true;
+            }
+            checkOnce = true;
+        }
     }
-
+    private void FireBar()
+    {
+        enemyHpBar.maxValue = FireHealth.maxHp;
+        enemyHpBar.value = FireHealth.currentHp;
+    }
+    private void WaterBar()
+    {
+        //enemyHpBar.maxValue = WaterHealth.maxHp;
+        //enemyHpBar.value = WaterHealth.currentHp;
+    }
+    private void AirBar()
+    {
+        enemyHpBar.maxValue = AirHealth.maxHp;
+        enemyHpBar.value = AirHealth.currentHp;
+    }
 }
+
