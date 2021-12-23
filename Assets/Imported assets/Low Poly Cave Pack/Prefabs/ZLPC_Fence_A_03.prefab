@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4109057858173294}
   - component: {fileID: 33123219412082366}
   - component: {fileID: 23917605103670200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Fence_A_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}

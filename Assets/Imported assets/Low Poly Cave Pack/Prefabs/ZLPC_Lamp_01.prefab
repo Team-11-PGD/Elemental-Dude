@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4195962245259996}
   - component: {fileID: 33580966844200226}
   - component: {fileID: 23122498455376694}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Lamp_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
