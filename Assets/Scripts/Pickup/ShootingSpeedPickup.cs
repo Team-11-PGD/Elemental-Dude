@@ -7,13 +7,13 @@ public class ShootingSpeedPickup : PickupMain
 
     [SerializeField]
     private string shootingSpeedPowerupText = "You picked up extra shooting speed.";
-    ///example code
-    //public Player player;
+
+    private WeaponSwitcher userWeapon;
 
     private void IncreaseShootingSpeed()
     {
-        ///example code
-        //player.shootingSpeed += 0.1f;
+        userWeapon = user.GetComponentInParent<WeaponSwitcher>();
+        userWeapon.GetWeapon(userWeapon.curWeapon).fireInterval -= 0.02f;
     }
 
     protected override void PickedUpPickup()
