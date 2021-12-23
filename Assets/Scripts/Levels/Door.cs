@@ -5,24 +5,21 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField]
-    private GameObject leftDoor, rightDoor;
+    Animator anim;
 
-    bool test;
+    private bool doorClosed = true;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if ((other.gameObject.tag == "Player") && doorClosed)
+        {
+            OpenDoor();
+            doorClosed = false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenDoor()
     {
-        
+        anim.Play("DoorOpen");
     }
-
-    /*public IEnumerator openDoor(GameObject door)
-    {
-        yield return new WaitUntil(() => door.transform.rotation.y => 93f);
-    }*/
 }
