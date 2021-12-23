@@ -21,8 +21,8 @@ public class Door : MonoBehaviour
         
     }
 
-    /*public IEnumerator openDoor()
+    /*public IEnumerator openDoor(GameObject door)
     {
-        yield return new WaitUntil(test) ;
+        yield return new WaitUntil(() => door.transform.rotation.y => 93f);
     }*/
 }
