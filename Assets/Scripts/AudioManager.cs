@@ -1,7 +1,5 @@
-using UnityEngine.Audio;
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,6 +7,7 @@ public class AudioManager : MonoBehaviour
 
 	public Sound[] SoundEffects;
 	public Sound[] AmbianceSounds;
+	public Sound[] GunSounds;
 
 	private void Awake()
 	{
@@ -16,18 +15,32 @@ public class AudioManager : MonoBehaviour
 		{
 			instance = this;
 		}
-		else if(instance != this)
+		else if (instance != this)
 		{
 			Destroy(gameObject);
 		}
 		DontDestroyOnLoad(this.gameObject);
 
 		InitAmbianceAudioSources();
+		InitGunSoundSources();
 	}
 
 	private void InitAmbianceAudioSources()
 	{
 		foreach (Sound s in AmbianceSounds)
+		{
+			s.source = gameObject.AddComponent<AudioSource>();
+			s.source.clip = s.clip;
+
+			s.source.volume = s.volume;
+			s.source.pitch = s.pitch;
+			s.source.loop = s.loop;
+		}
+	}
+
+	private void InitGunSoundSources()
+	{
+		foreach (Sound s in GunSounds)
 		{
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
@@ -50,7 +63,7 @@ public class AudioManager : MonoBehaviour
 
 		s.source = gameobj.gameObject.AddComponent<AudioSource>();
 		s.source.clip = s.clip;
-		
+
 		s.source.volume = s.volume;
 		s.source.pitch = s.pitch;
 		s.source.loop = s.loop;
@@ -61,12 +74,27 @@ public class AudioManager : MonoBehaviour
 
 	public void PlayAmbiance(string name)
 	{
-		Sound s = Array.Find(SoundEffects, sound => sound.name == name);
+		Sound s = Array.Find(AmbianceSounds, sound => sound.name == name);
 		if (s == null)
 		{
 			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
 			return;
 		}
+		s.source.Play();
+	}
+
+	public void PlayWeaponSound(string name)
+	{
+		Sound s = Array.Find(GunSounds, sound => sound.name == name);
+		if (s == null)
+		{
+			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
+			return;
+		}
+
+		if (s.randomPitch)
+			s.source.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+
 		s.source.Play();
 	}
 }

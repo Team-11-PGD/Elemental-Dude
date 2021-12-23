@@ -581,6 +581,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4702168108326637951, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
+      propertyPath: fireInterval
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702168108326637951, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: maxBulletSpread
       value: 0
       objectReference: {fileID: 0}
@@ -614,27 +618,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704438996540, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.3376441
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704438996540, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.042254448
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704438996540, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97627115
+      value: 0.9790261
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704438996540, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.15322061
+      value: 0.1335213
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704438996540, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.15117918
+      value: 0.15247172
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704438996540, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.023726774
+      value: -0.020794367
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704507876816, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -662,7 +666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704507876816, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.023726776
+      value: -0.023726778
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704679901264, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -686,7 +690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704679901264, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.023726776
+      value: -0.023726778
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704753600465, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_FollowOffset.y
@@ -742,7 +746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8494001704866535089, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.023726782
+      value: -0.023726784
       objectReference: {fileID: 0}
     - target: {fileID: 8494001705498549042, guid: 238743d344822804aa1b98dd5aac13d1, type: 3}
       propertyPath: m_Orbits.Array.data[2].m_Height
@@ -1748,7 +1752,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4bae127cadb290409abb175ae145e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  SoundEffects: []
+  AmbianceSounds:
+  - name: Ambiant
+    clip: {fileID: 8300000, guid: ff2d5377964f6654d8919a8a1da66bd9, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 1
+    source: {fileID: 0}
+  GunSounds:
+  - name: RifleShoot
+    clip: {fileID: 8300000, guid: f4d5b458a5c0aa049ad535a062e73814, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: ShotgunShoot
+    clip: {fileID: 8300000, guid: 06100dc247f68e647af0f6fc282eb905, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: WeaponSwitch
+    clip: {fileID: 8300000, guid: fad45089eec11a7419b2bdf990b52388, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1073778777
 Transform:
   m_ObjectHideFlags: 0

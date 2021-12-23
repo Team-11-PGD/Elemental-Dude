@@ -97,8 +97,6 @@ public class Weapon : MonoBehaviour
 
     public void Shoot()
     {
-        //AudioManager.instance.PlaySoundEffect(this.gameObject, "PewPew");
-
         if (curBulletAmount <= 0)
         {
             Reload();
@@ -132,7 +130,26 @@ public class Weapon : MonoBehaviour
             bullet.GetComponent<BulletProjectile>().SetVelocity(bullet.forward * bulletSpeed);
             bullet.GetComponent<BulletProjectile>().SetElementType(elementMain.currentType);
         }
+        ShootSound();
     }
+
+    private void ShootSound()
+	{
+		switch (weaponType)
+		{
+			case WeaponTypes.Rifle:
+                AudioManager.instance.PlayWeaponSound("RifleShoot");
+				break;
+			case WeaponTypes.Shotgun:
+                AudioManager.instance.PlayWeaponSound("ShotgunShoot");
+                break;
+			case WeaponTypes.RPG:
+                AudioManager.instance.PlayWeaponSound("RifleShoot");
+                break;
+			default:
+				break;
+		}
+	}
 
     public virtual void Reload()
 	{
