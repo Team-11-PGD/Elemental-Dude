@@ -18,14 +18,20 @@ public class WeaponSwitcher : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
+			//SOUND: (switch to rifle)
+			Debug.Log("switch to rifle");
 			SwitchWeapon(Weapon.WeaponTypes.Rifle);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
+			//SOUND: (switch to shotgyn)
+			Debug.Log("switch to shotty");
 			SwitchWeapon(Weapon.WeaponTypes.Shotgun);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
+			//SOUND: (switch to rpg)
+			Debug.Log("switch to rpg");
 			SwitchWeapon(Weapon.WeaponTypes.RPG);
 		}
 	}

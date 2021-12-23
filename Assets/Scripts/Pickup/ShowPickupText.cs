@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Chris Huider
 public class ShowPickupText : MonoBehaviour
 {
     public GameObject uiObject;
+    private Text UIText;
+
     [HideInInspector]
     public string powerupText;
 
     [SerializeField]
     private float showTextDuration = 4;
 
-    private Text UIText;
-
     private void Start()
     {
-        if (uiObject == null) uiObject = GameObject.Find("PickupText"); // O(n)
+        if (uiObject == null) uiObject = GameObject.Find("PickupText");
         uiObject.SetActive(false);
         UIText = uiObject.GetComponent<Text>();
     }
@@ -25,10 +26,7 @@ public class ShowPickupText : MonoBehaviour
     {
         uiObject.SetActive(true);
         UIText.text = powerupText;
-        if (useTimer)
-        {
-            StartCoroutine(TextDisableTimer());
-        }
+        if (useTimer) StartCoroutine(TextDisableTimer());
     }
 
     private IEnumerator TextDisableTimer()

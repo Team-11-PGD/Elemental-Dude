@@ -7,6 +7,9 @@ public class Weapon : MonoBehaviour
     public WeaponTypes weaponType;
     public Camera playerCam;
 
+    [SerializeField]
+    private LayerMask layerMask;
+
     [Header("Bullet")]
     public Transform spawnBulletPos;
     public Transform bulletPrefab;
@@ -47,12 +50,14 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetButton("Fire1") && Time.time >= timeToFire && canFire)
         {
+            //SOUND: (shoot)
             timeToFire = Time.time + fireInterval;
             Shoot();
         }
 
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
+            //SOUND: (reload)
             Reload();
         }
 
@@ -61,6 +66,9 @@ public class Weapon : MonoBehaviour
             canFire = true;
             isReloading = false;
             curBulletAmount = maxBullets;
+
+            //SOUND: (done reloading sound)
+            Debug.Log("Done reloading!");
 		}
     }
 
@@ -71,26 +79,31 @@ public class Weapon : MonoBehaviour
             case ElementMain.ElementType.None:
                 elementMain.currentType = ElementMain.ElementType.None;
                 Debug.Log("I am a None element now");
+                //SOUND: (no element)
                 break;
 
             case ElementMain.ElementType.Water:
                 elementMain.currentType = ElementMain.ElementType.Water;
                 Debug.Log("I am a Water element now");
+                //SOUND: (Water element)
                 break;
 
             case ElementMain.ElementType.Fire:
                 elementMain.currentType = ElementMain.ElementType.Fire;
                 Debug.Log("I am a Fire element now");
+                //SOUND: (fire element)
                 break;
 
             case ElementMain.ElementType.Air:
                 elementMain.currentType = ElementMain.ElementType.Air;
                 Debug.Log("I am an Air element now");
+                //SOUND: (air element)
                 break;
 
             case ElementMain.ElementType.Earth:
                 elementMain.currentType = ElementMain.ElementType.Earth;
                 Debug.Log("I am an Earth element now");
+                //SOUND: (eart element)
                 break;
         }
     }
@@ -99,16 +112,25 @@ public class Weapon : MonoBehaviour
     {
         if (curBulletAmount <= 0)
         {
+            //SOUND: (reload)
             Reload();
             return;
         }
         else
         {
             curBulletAmount -= 1;
+ 
+            if(curBulletAmount <= 0)
+			{
+                //SOUND: (reload)
+                Reload();
+                Debug.Log("Reloading...");
+                canFire = false;
+            }
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, float.MaxValue))
+        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, float.MaxValue, layerMask))
         {
             aimPoint = hit.point;
         }

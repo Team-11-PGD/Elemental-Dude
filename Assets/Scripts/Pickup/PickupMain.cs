@@ -3,29 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Chris Huider
 public class PickupMain : MonoBehaviour
 {
+    [SerializeField]
     protected ShowPickupText text;
+    [SerializeField]
     protected MeshRenderer model;
     protected Collider user;
 
     protected bool allowPickup = true;
-
-    private void Start()
-    {
-        text = GetComponent<ShowPickupText>();
-        model = GetComponent<MeshRenderer>();
-    }
-
-    private void Update()
-    {
-        ///Testing code start
-        /*if (Input.GetKeyDown(KeyCode.E) && allowPickup)
-        {
-            PickedUpPowerup();
-        }*/
-        ///Testing code end
-    }
 
     protected virtual void OnTriggerEnter(Collider other)
     {
@@ -33,6 +20,7 @@ public class PickupMain : MonoBehaviour
         {
             user = other;
             PickedUpPickup();
+            //SOUND: (pick up)
         }
     }
 

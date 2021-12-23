@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Chris Huider
 public class ShootingSpeedPickup : PickupMain
 {
 
@@ -18,6 +19,7 @@ public class ShootingSpeedPickup : PickupMain
 
     protected override void PickedUpPickup()
     {
+        //SOUND: (pick up sound)
         text.powerupText = shootingSpeedPowerupText;
         IncreaseShootingSpeed();
 

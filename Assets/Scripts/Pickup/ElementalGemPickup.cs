@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
+// Chris Huider
 public class ElementalGemPickup : PickupMain
 {
     [SerializeField]
     private ElementMain element;
+    private WeaponSwitcher userWeapon;
+
+    [SerializeField]
+    private Image fireElement;
+    [SerializeField]
+    private Image waterElement;
+    [SerializeField]
+    private Image airElement;
 
     private string PickupText;
-
-    private WeaponSwitcher userWeapon;
 
     private bool inPickup = false;
     private bool confirmMenuOpen = false;
@@ -22,12 +30,8 @@ public class ElementalGemPickup : PickupMain
 
     protected override void OnTriggerEnter(Collider other)
     {
-        
-
         if ((other.gameObject.tag == "Player") && allowPickup)
         {
-            Debug.Log("enter");
-
             user = other;
             inPickup = true;
             ShowGemText();
@@ -36,7 +40,6 @@ public class ElementalGemPickup : PickupMain
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("exit");
         inPickup = false;
         allowPickup = true;
         confirmMenuOpen = false;
@@ -45,6 +48,9 @@ public class ElementalGemPickup : PickupMain
 
     private void ShowGemText()
     {
+        if (element.currentType == ElementMain.ElementType.Fire) fireElement.enabled = true; else fireElement.enabled = false;
+        if (element.currentType == ElementMain.ElementType.Water) waterElement.enabled = true; else waterElement.enabled = false;
+        if (element.currentType == ElementMain.ElementType.Air) airElement.enabled = true; else airElement.enabled = false;
         PickupText = $"Press E to use {element.currentType} gem.";
         text.powerupText = PickupText;
         text.StartText(false);

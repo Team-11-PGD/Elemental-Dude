@@ -13,14 +13,14 @@ class EnemyFleeState : EnemyState
 
     bool cornerCheck = false;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
-        base.Enter();
+        base.Enter(previousStateId);
         NewFleeDestination();
         StartCoroutine(CornerTimer());
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     void NewFleeDestination()
     {
@@ -40,7 +40,7 @@ class EnemyFleeState : EnemyState
 
         if (Vector3.Distance(enemyAI.playerModel.position, transform.position) >= fleeRange || (agent.velocity == Vector3.zero && cornerCheck))
         {
-            context.TransitionTo((int)EnemyAI.StateOptions.Heal);
+            context.TransitionTo(EnemyAI.StateOptions.Heal);
         }
     }
 

@@ -9,12 +9,12 @@ public class EnemyMoveToPlayerState : EnemyState
     [SerializeField]
     float stopRange = 1.5f;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
-        base.Enter();
+        base.Enter(previousStateId);
     }
 
-    public override void Exit() { }
+    public override void Exit(int nextStateId) { }
 
     void Update()
     {
@@ -22,16 +22,7 @@ public class EnemyMoveToPlayerState : EnemyState
         if (Vector3.Distance(enemyAI.playerModel.position, transform.position) <= stopRange)
         {
             agent.SetDestination(transform.position);
-            switch (Random.Range(0, 2))
-            {
-                case 0:
-                    context.TransitionTo((int)BossAI.StateOptions.FireAttacking1);
-                    break;
-                case 1:
-                    context.TransitionTo((int)BossAI.StateOptions.FireAttacking2);
-                    break;
-            }
-
+            context.TransitionTo(EnemyAI.StateOptions.Attacking);
         }
     }
 

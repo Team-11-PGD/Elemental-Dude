@@ -1,13 +1,14 @@
 using UnityEngine;
 
+// Joshua Knaven
 public abstract class State : MonoBehaviour
 {
     protected StateMachine context;
 
     /// <summary>
-    /// Sets the statemachine context to this state
+    /// Sets the state machine context to this state
     /// </summary>
-    /// <param name="context"></param>
+    /// <param name="context"> The state machine</param>
     public void SetContext(StateMachine context)
     {
         this.context = context;
@@ -16,10 +17,10 @@ public abstract class State : MonoBehaviour
     /// <summary>
     /// Enter is called when this state is activated
     /// </summary>
-    public abstract void Enter();
+    public virtual void Enter(int previousStateId) { }
 
     /// <summary>
     /// Exit is called when this state is deactivated
     /// </summary>
-    public abstract void Exit();
+    public virtual void Exit(int nextStateId) { }
 }

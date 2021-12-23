@@ -2,47 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletProjectile : MonoBehaviour
+public class BulletProjectile : Projectile
 {
     [SerializeField]
-    private float damageAmount = 10;
-
+    private float destroyTime = 30f;
     private Rigidbody rb;
-    private float dmgPercentage;
-
-    private ElementMain.ElementType elementType;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(Timer());
     }
 
-	private void OnTriggerEnter(Collider other)
+    internal void SetVelocity(Vector3 forward)
     {
-        if (other.gameObject.tag != "Bullet")
-        {
-            Destroy(gameObject);
-        }
-
-        if (other.gameObject.tag == "Enemy")
-        {
-            DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
-        }
-    }
-
-    public void DamageHandler(Health otherHealth, ElementMain otherElementMain)
-	{
-        dmgPercentage = otherElementMain.ElementDmgPercentage(elementType, otherElementMain.currentType);
-        otherHealth.Hit(damageAmount * dmgPercentage);
-	}
-
-	internal void SetVelocity(Vector3 forward)
-	{
         rb.velocity = forward;
     }
 
-    internal void SetElementType(ElementMain.ElementType type)
+    private void OnTriggerEnter(Collider other)
     {
-        elementType = type;
+        Collided(other);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Collided(collision.collider);
+    }
+
+    IEnumerator Timer()
+    {
+        yield return new WaitForSecondsRealtime(destroyTime);
+        Destroy(gameObject);
+    }
+
+    protected override void Hit(Collider other)
+    {
+        if (!other.CompareTag("Ground"))
+        {
+            DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
+        }
+
+        //SOUND: (inpact sound)?
+        Destroy(gameObject);
     }
 }

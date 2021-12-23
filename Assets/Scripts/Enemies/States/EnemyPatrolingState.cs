@@ -16,14 +16,14 @@ class EnemyPatrolingState : EnemyState
 
     float normalAgentSpeed;
 
-    public override void Enter()
+    public override void Enter(int previousStateId)
     {
-        base.Enter();
+        base.Enter(previousStateId);
         normalAgentSpeed = agent.speed;
         agent.speed = 3.5f;
     }
 
-    public override void Exit()
+    public override void Exit(int nextStateId)
     {
         agent.speed = normalAgentSpeed;
     }
@@ -32,7 +32,7 @@ class EnemyPatrolingState : EnemyState
     {
         if (Vector3.Distance(enemyAI.playerModel.transform.position, transform.position) <= noticeRange || enemyHealth.HpPercentage != 1)
         {
-            context.TransitionTo((int)EnemyAI.StateOptions.MoveToPlayer);
+            context.TransitionTo(EnemyAI.StateOptions.MoveToPlayer);
         }
         if (agent.pathStatus == NavMeshPathStatus.PathComplete)
         {

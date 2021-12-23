@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class EnemyAI : StateMachine
 {
+    public Transform playerModel;
+    public Health playerHealth;
+
+    [SerializeField]
+    Health health;
+    [SerializeField]
+    [Range(0, 1)]
+    float fleeHealthPercentage = 0.3f;
+
+    #region State Setup
     public enum StateOptions
     {
         MoveToPlayer,
@@ -13,19 +23,10 @@ public class EnemyAI : StateMachine
         Flee
     }
 
-    public Transform playerModel;
-    public Health playerHealth;
-
-    [SerializeField]
-    List<StateTuple> inspectorStates;
-    [SerializeField]
-    Health enemyHealth;
-    [SerializeField]
-    [Range(0, 1)]
-    float fleeHealthPercentage = 0.3f;
-
     [SerializeField]
     protected StateOptions startState;
+    [SerializeField]
+    List<StateTuple> inspectorStates;
 
     [Serializable]
     protected class StateTuple : Tuple<StateOptions, State>
@@ -49,17 +50,34 @@ public class EnemyAI : StateMachine
     {
         foreach (StateTuple tuple in inspectorStates)
         {
-            states.Add((int)tuple.Item1, tuple.Item2);
+            AddState(tuple.Item1, tuple.Item2);
         }
 
-        StateMachineSetup((int)startState);
+        StateMachineSetup(startState);
+    }
+    #endregion State Setup
+
+    protected virtual void OnEnable()
+    {
+        health.Hitted += Hitted;
+        health.Died += Died;
     }
 
-    void Update()
+    protected virtual void OnDisable()
     {
-        if (enemyHealth.HpPercentage <= fleeHealthPercentage && (CurrentStateId != (int)StateOptions.Flee && CurrentStateId != (int)StateOptions.Heal))
+        health.Hitted -= Hitted;
+        health.Died -= Died;
+    }
+
+    protected virtual void Died() {
+        Destroy(gameObject);
+    }
+
+    protected virtual void Hitted()
+    {
+        if (health.HpPercentage <= fleeHealthPercentage && (CurrentStateId != (int)StateOptions.Flee && CurrentStateId != (int)StateOptions.Heal))
         {
-            TransitionTo((int)StateOptions.Flee);
+            TransitionTo(StateOptions.Flee);
         }
     }
 }
