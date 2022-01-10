@@ -38,12 +38,13 @@ namespace MalbersAnimations
 
             var BrainCam = AssetDatabase.LoadAssetAtPath("Assets/Malbers Animations/Common/Cinemachine/CM Brain.prefab", typeof(GameObject)) as GameObject;
             var CMFreeLook = AssetDatabase.LoadAssetAtPath("Assets/Malbers Animations/Common/Cinemachine/CM FreeLook Main.prefab", typeof(GameObject)) as GameObject;
-
-            if (BrainCam && CMFreeLook)
-            {
-                PrefabUtility.InstantiatePrefab(BrainCam);
-                PrefabUtility.InstantiatePrefab(CMFreeLook);
-            }
+            var WolfLite = AssetDatabase.LoadAssetAtPath("Assets/Malbers Animations/Animal Controller/Wolf Lite/Wolf Lite.prefab", typeof(GameObject)) as GameObject;
+            var Steve = AssetDatabase.LoadAssetAtPath("Assets/Malbers Animations/Animal Controller/Human/Steve.prefab", typeof(GameObject)) as GameObject;
+             
+            if (BrainCam) PrefabUtility.InstantiatePrefab(BrainCam);
+            if (CMFreeLook) PrefabUtility.InstantiatePrefab(CMFreeLook);
+            if (WolfLite) PrefabUtility.InstantiatePrefab(WolfLite);
+            if (Steve) PrefabUtility.InstantiatePrefab(Steve);
         }
 
 
