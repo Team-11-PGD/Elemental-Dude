@@ -10,7 +10,7 @@ Material:
   m_Name: Golem Polyart Desert
   m_Shader: {fileID: 4800000, guid: 64ce74c36ec896d42a70b7451202a4da, type: 3}
   m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 1
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -84,6 +84,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AlphaCutoff: 0.5
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -132,3 +133,4 @@ Material:
     - _color31: {r: 0.5849056, g: 0.35774887, b: 0.33383763, a: 0}
     - _color32: {r: 0.14150941, g: 0.016172502, b: 0, a: 0}
     - _eqwe: {r: 0.2352941, g: 0.1764706, b: 0.1019608, a: 1}
+  m_BuildTextureStacks: []
