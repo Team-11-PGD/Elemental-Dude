@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4043558549950084}
   - component: {fileID: 33980686167105750}
   - component: {fileID: 23735743866974326}
+  - component: {fileID: 4557134994927775496}
   m_Layer: 8
   m_Name: ZLPC_Rock_A_1
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4557134994927775496
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389422230692682}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 3409defb867207443b984e9bca885a3c, type: 3}
