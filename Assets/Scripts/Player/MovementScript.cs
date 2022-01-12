@@ -65,7 +65,7 @@ public class MovementScript : MonoBehaviour
         movementDirection = Quaternion.Euler(0f, targetAngle, 0f)* Vector3.forward;
         //jumping
         ySpeed += gravityMultiplier * Physics.gravity.y * Time.deltaTime;
-        if (IsGrounded())
+        if (controller.isGrounded)
         {
             lastGroundedTime = Time.time;
         }
@@ -75,7 +75,7 @@ public class MovementScript : MonoBehaviour
         }
         if (Time.time - lastGroundedTime <= jumpGracePeroid) 
         {
-            //ySpeed = -2f;
+            ySpeed = -2f;
             if (Time.time - jumpButtonPressedTime <= jumpGracePeroid && stunDuration <= 0)
             {
                 //SOUND: (Jump)
@@ -95,15 +95,5 @@ public class MovementScript : MonoBehaviour
         velocity.y = ySpeed;
         controller.Move(velocity * Time.deltaTime);
 
-    }
-
-    private bool IsGrounded()
-    {
-        float groundDetection = 0f;
-        RaycastHit raycastHit;
-
-        Physics.SphereCast(playerCollider.bounds.center, playerCollider.bounds.extents.x ,Vector3.down, out raycastHit, playerCollider.bounds.extents.y + groundDetection);
-
-        return raycastHit.collider != null;
     }
 }
