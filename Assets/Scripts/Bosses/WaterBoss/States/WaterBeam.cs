@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class WaterBeam : Projectile
 {
-    public Transform firepoint;
+    public Transform firePoint;
 
-    public Transform startPoint, endPoint;
+    public Transform startPoint;
+    public Transform endPoint;
 
     public Transform aimPoint;
 
@@ -17,48 +18,46 @@ public class WaterBeam : Projectile
 
     RaycastHit hit;
 
-    public LayerMask beamMask;
-
     private void Start()
     {
         aimPoint.position = startPoint.position;
-        line.SetPosition(0, firepoint.position);
-
+        line.SetPosition(0, firePoint.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        aimPoint.Translate((endPoint.position-startPoint.position) * speed * Time.deltaTime);
-        line.SetPosition(0, firepoint.position);
+        aimPoint.Translate((endPoint.position - startPoint.position) * speed * Time.deltaTime);
+        line.SetPosition(0, firePoint.position);
         line.SetPosition(1, aimPoint.position);
 
 
-        Ray ray = new Ray(firepoint.position, aimPoint.position);
+        Ray ray = new Ray(firePoint.position, aimPoint.position - firePoint.position);
+        Debug.DrawRay(ray.origin, ray.direction * 10, Color.red);
 
-        if (Physics.Raycast(ray.origin, ray.direction, out (hit), maxLength))
+        if (Physics.SphereCast(ray.origin, line.endWidth/2, ray.direction, out (hit), maxLength))
         {
-            if (hit.collider)
+
+            if (hit.collider && hit.collider.gameObject.tag != "Boss")
             {
                 line.SetPosition(1, hit.point);
             }
-        }
-
-        if (Physics.Raycast(ray.origin, ray.direction, out (hit), maxLength, beamMask))
-        {
-            if (hit.collider)
+            if(hit.collider.gameObject.tag == "Player")
             {
-                Debug.Log("pew");
+                Collided(hit.collider);
+            }
+            if(hit.collider.gameObject.tag == "Finish")
+            {
+                Destroy(gameObject);
             }
         }
     }
-
-    public void BeamTarget(Transform fire, Transform aim, Transform start, Transform end)
+    public void BeamTarget(Transform fire, Transform start, Transform end)
     {
-        firepoint = fire;
-        aimPoint = aim;
+        firePoint = fire;
         startPoint = start;
         endPoint = end;
     }
+
 
 }

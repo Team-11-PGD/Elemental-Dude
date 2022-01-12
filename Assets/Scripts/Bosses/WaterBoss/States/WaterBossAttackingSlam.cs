@@ -17,6 +17,7 @@ public class WaterBossAttackingSlam : State
         bossAI = context as WaterBossAI;
         bossAI.facePlayer = true;
         StartCoroutine(SlamAttack());
+        bossAI.NextState();
     }
 
     public override void Exit(int nextStateId)
@@ -29,6 +30,5 @@ public class WaterBossAttackingSlam : State
         Instantiate(slamPrefab, slamPosition.position, context.transform.rotation, context.transform);
         //SOUND: (slam)
         yield return new WaitForSecondsRealtime(chargeTime);
-        bossAI.TransitionTo(WaterBossAI.StateOptions.MoveToPlayer);
     }
 }

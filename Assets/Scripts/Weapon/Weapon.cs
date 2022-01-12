@@ -7,6 +7,9 @@ public class Weapon : MonoBehaviour
     public WeaponTypes weaponType;
     public Camera playerCam;
 
+    [SerializeField]
+    private LayerMask layerMask;
+
     [Header("Bullet")]
     public Transform spawnBulletPos;
     public Transform bulletPrefab;
@@ -129,7 +132,7 @@ public class Weapon : MonoBehaviour
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, float.MaxValue))
+        if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, float.MaxValue, layerMask))
         {
             aimPoint = hit.point;
         }

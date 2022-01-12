@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 616a4180cad7d274f97d37c953dcfb69, type: 2}
+  - {fileID: 2100000, guid: d1271ff09b1ecb14e9483a016b0604f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -106,16 +106,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3093296309221363567}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a0a698cfb578c84da8b1a0d71ecd5b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f2f5519b36fc004f8b16d21ede101c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 3
+  damageAmount: 10
   hitableTags:
   - Player
   player: {fileID: 0}
   boss: {fileID: 0}
-  waveSpeed: 500
-  waveForce: 7
+  waveSpeed: 400
+  waveForce: 1
   waveStunDuration: 0.5
 --- !u!54 &3093296309221363553
 Rigidbody:
@@ -131,5 +131,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 20
   m_CollisionDetection: 0

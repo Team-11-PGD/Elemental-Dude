@@ -24,6 +24,11 @@ public class BulletProjectile : Projectile
         Collided(other);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Collided(collision.collider);
+    }
+
     IEnumerator Timer()
     {
         yield return new WaitForSecondsRealtime(destroyTime);

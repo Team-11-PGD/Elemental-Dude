@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Chris Huider
 public class WaterBossAttackingBouncingBubble : State
 {
     WaterBossAI bossAI;
@@ -17,6 +18,7 @@ public class WaterBossAttackingBouncingBubble : State
         bossAI = context as WaterBossAI;
         bossAI.facePlayer = true;
         SpawnBubble();
+        bossAI.NextState();
     }
 
     public override void Exit(int nextStateId)

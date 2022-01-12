@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 2748594981072418810}
   - component: {fileID: 7568265492181491691}
   - component: {fileID: 7111900124205609264}
+  - component: {fileID: 7638383843997521955}
   m_Layer: 0
   m_Name: AirBoss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,8 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 0
+  maxHp: 30
   currentHp: 0
+  damageTaken: 0
 --- !u!114 &7004715947265456734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +151,7 @@ MonoBehaviour:
   playerModel: {fileID: 0}
   playerHealth: {fileID: 0}
   health: {fileID: 7004715947265456704}
-  startState: 5
+  startState: 0
   nextStatePercentage: 0.5
   nextStateDelay: 1000
 --- !u!114 &7004715947265456735
@@ -168,7 +170,7 @@ MonoBehaviour:
   attackRange: 1
   totalDashes: 5
   dashArea: {fileID: 0}
-  damage: 1
+  damage: 15
 --- !u!114 &4568714983940714406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96812585ff7f7e9408fb9ea1f3a80720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikePercentage: 0.25
+  spikePercentage: 0.0625
   isGroundSpike: 1
   spawnArea: {fileID: 0}
   spike: {fileID: 6517573089156151556, guid: 52d05a1abc9d4074fbf5d2ea1fa41d41, type: 3}
@@ -199,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d6e0ee4f25ad64b80216df3bfe430a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikePercentage: 0.25
+  spikePercentage: 0.0625
   isGroundSpike: 0
   spawnArea: {fileID: 0}
   spike: {fileID: 6517573089156151556, guid: 52d05a1abc9d4074fbf5d2ea1fa41d41, type: 3}
@@ -250,7 +252,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2849d6c44d6ac43991664f482219a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fracturedModel: {fileID: 919132149155446097, guid: 6ca00c73860db084da256aaf9ab05e6f, type: 3}
+  fracturedModel: {fileID: 3891040115948383337, guid: 51fe1349e29ec8b41a0171cd8023f990, type: 3}
   renderer: {fileID: 7004715947265456731}
   explosionForce: 1
-  portal: {fileID: 0}
+  portals: []
+--- !u!114 &7638383843997521955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004715947265456729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3248643fc1bb60d4d891cb9b8d08cdb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smallTornado: {fileID: 1000010715882420, guid: a44e43e0173f01a468604fc45b47f42d, type: 3}
+  spawnArea: {fileID: 0}
+  smallTornadoAmount: 5

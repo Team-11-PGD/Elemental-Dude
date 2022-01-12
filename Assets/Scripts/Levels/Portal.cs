@@ -5,18 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-	[SerializeField] string nextScene;
+    [Range(0, RoomGeneration.PATH_OPTIONS - 1)]
+    [SerializeField] int nextSceneId;
+    [SerializeField] Renderer rend;
 
-	private void OnTriggerEnter(Collider other)
-	{
-	    if(other.tag == "Player")
-		{
-			LoadNextScene(nextScene);
-		}	
-	}
+    private void Start()
+    {
+        // TODO: add option to have multiple elements on a portal
+        Color color1 = ElementColors.GetElement(RoomGeneration.NextElements[nextSceneId][0]).color;
+        rend.material.SetColor("_Color", color1);
 
-	void LoadNextScene(string levelName)
-	{
-		SceneManager.LoadScene(levelName);
-	}
+        Color color2 = color1;
+        if (RoomGeneration.NextElements[nextSceneId].Count == 2)
+        {
+            color2 = ElementColors.GetElement(RoomGeneration.NextElements[nextSceneId][1]).color;
+        }
+        rend.material.SetColor("_Color2", color2);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            RoomGeneration.LoadNextLevel(RoomGeneration.NextElements[nextSceneId], RoomGeneration.Level < RoomGeneration.MULTI_ELEMENT_LEVEL ? 1 : RoomGeneration.Level < RoomGeneration.FINAL_LEVEL ? 2 : 3);
+        }
+    }
 }

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(DashState), typeof(GroundSpikesState), typeof(TornadoState))]
-[RequireComponent(typeof(VulnerableState)/* ,typeof(SmallTornadoState)*/, typeof(CeilingSpikesState))]
+[RequireComponent(typeof(VulnerableState) ,typeof(SmallTornadoState), typeof(CeilingSpikesState))]
 [RequireComponent(typeof(BossDeath))]
 public class AirBossAI : BossAI
 {
@@ -19,7 +19,7 @@ public class AirBossAI : BossAI
     {
         Dash,
         GroundSpikes,
-        Tornado,
+        //Tornado,
         Vulnerable,
         SmallTornados,
         CeilingSpikes,
@@ -30,11 +30,12 @@ public class AirBossAI : BossAI
     {
         get
         {
-            return currentState > 1 ? (Enum[])Enum.GetValues(typeof(StateOptions)) : firstStateOptions;
+            return currentState == 1 ? firstStateOptions : secondStateOptions;
         }
     }
 
-    private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes, StateOptions.Tornado };
+    private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes /*, StateOptions.Tornado*/ };
+    private static readonly Enum[] secondStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes /*, StateOptions.Tornado*/, StateOptions.Vulnerable, StateOptions.SmallTornados, StateOptions.CeilingSpikes };
     private int currentState = 1;
     private DashState dash;
     private SpawnSpikesState groundSpikes;
@@ -56,9 +57,9 @@ public class AirBossAI : BossAI
         AddState(StateOptions.Dash, dash);
         groundSpikes = gameObject.GetComponent<GroundSpikesState>();
         AddState(StateOptions.GroundSpikes, groundSpikes);
-        AddState(StateOptions.Tornado, gameObject.GetComponent<TornadoState>());
+        //AddState(StateOptions.Tornado, gameObject.GetComponent<TornadoState>());
         AddState(StateOptions.Vulnerable, gameObject.GetComponent<VulnerableState>());
-        //AddState(StateOptions.SmallTornados, gameObject.GetComponent<SmallTornadoState>());
+        AddState(StateOptions.SmallTornados, gameObject.GetComponent<SmallTornadoState>());
         ceilingSpikes = gameObject.GetComponent<CeilingSpikesState>();
         AddState(StateOptions.CeilingSpikes, ceilingSpikes);
         AddState(StateOptions.Death, gameObject.GetComponent<BossDeath>());

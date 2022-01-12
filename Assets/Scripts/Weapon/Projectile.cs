@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
-    protected float damageAmount = 10;
+    public float damageAmount = 10;
     [SerializeField]
     [TagSelector]
     private string[] hitableTags;
@@ -26,12 +26,14 @@ public class Projectile : MonoBehaviour
 
     protected virtual void Hit(Collider other)
     {
+        Debug.Log("projectile HIT " + damageAmount);
         DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
         Destroy(gameObject);
     }
 
     protected void DamageHandler(Health otherHealth, ElementMain otherElementMain)
 	{
+        Debug.Log("projectile DAMAGAEHANDLER " + damageAmount);
         float dmgPercentage = otherElementMain.ElementDmgPercentage(elementType, otherElementMain.currentType);
         otherHealth.Hit(damageAmount * dmgPercentage);
 	}

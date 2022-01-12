@@ -357,8 +357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
+  maxHp: 10
   currentHp: 0
+  damageTaken: 0
 --- !u!114 &4912808448226590281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,9 +414,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ad6d29e5c68eb4097f0c9e2aaf0051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeDistance: 2
-  attackChargeTime: 1.5
-  damage: 1
+  meleeDistance: 5
+  attackChargeTime: 0.5
+  damage: 5
   renderer: {fileID: 4912808448226590134}
   animationTime: 0.5
 --- !u!114 &3229697003443597165
@@ -492,4 +493,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementMain: {fileID: -4841626783498317459}
-  colorMaster: {fileID: 0}

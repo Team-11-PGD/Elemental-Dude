@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
+    public float gravityMultiplier = 1; //to adjust gravity and make it feel good
+
     [SerializeField]
     private float speed;
     [SerializeField]
@@ -11,13 +13,11 @@ public class MovementScript : MonoBehaviour
     [SerializeField]
     private float jumpSpeed;
     [SerializeField]
-    private float gravityMultiplier = 1; //to adjust gravity and make it feel good
-    [SerializeField]
     private float jumpGracePeroid;
 
     public Vector3 velocity;
 
-    private float ySpeed;
+    public float ySpeed;
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
 
@@ -25,9 +25,8 @@ public class MovementScript : MonoBehaviour
     [SerializeField]
     private Transform cam;
 
-    public bool stunned = false;
     public float stunDuration;
-    float stunTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,7 +75,7 @@ public class MovementScript : MonoBehaviour
         if (Time.time - lastGroundedTime <= jumpGracePeroid) 
         {
             ySpeed = -0.5f;
-            if (Time.time - jumpButtonPressedTime <= jumpGracePeroid && stunned == false)
+            if (Time.time - jumpButtonPressedTime <= jumpGracePeroid && stunDuration <= 0)
             {
                 //SOUND: (Jump)
                 ySpeed = jumpSpeed;
@@ -84,17 +83,12 @@ public class MovementScript : MonoBehaviour
                 lastGroundedTime = null;
             }
         }
-        if(stunned == true)
+        if(stunDuration > 0)
         {
-            stunTime -= Time.deltaTime;
-            if(stunTime <= 0)
-            {
-                stunned = false; 
-            }
+            stunDuration -= Time.deltaTime;
         }
-        if(stunned == false)
+        if(stunDuration <= 0)
         {
-            stunTime = stunDuration;
             velocity = movementDirection * magnitude;
         }
         velocity.y = ySpeed;

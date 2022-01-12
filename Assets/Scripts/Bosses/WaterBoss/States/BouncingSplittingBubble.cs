@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Chris Huider
 public class BouncingSplittingBubble : Projectile
 {
     [SerializeField]

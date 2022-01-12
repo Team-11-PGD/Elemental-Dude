@@ -49,6 +49,7 @@ public class StateMachine : MonoBehaviour
             state.enabled = false;
         }
         TransitionTo(startState);
+        Debug.Log(startState);
     }
 
     /// <summary>
@@ -113,7 +114,7 @@ public class StateMachine : MonoBehaviour
     /// <param name="stateOptions"> Next state options </param>
     public void NextRandomState(params Enum[] stateOptions)
     {
-        NextRandomState(stateOptions: stateOptions);
+        NextRandomState(false, stateOptions);
     }
 
     /// <summary>
