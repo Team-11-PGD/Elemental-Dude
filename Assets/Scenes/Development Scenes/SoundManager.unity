@@ -990,6 +990,13 @@ MonoBehaviour:
     randomPitch: 0
     loop: 0
     source: {fileID: 0}
+  - name: PlayerDeath
+    clip: {fileID: 8300000, guid: cb7638a22e1213d4ebfb29b80f70ad6e, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
   AmbianceSounds:
   - name: Ambiant
     clip: {fileID: 8300000, guid: ff2d5377964f6654d8919a8a1da66bd9, type: 3}
@@ -997,6 +1004,28 @@ MonoBehaviour:
     pitch: 1
     randomPitch: 0
     loop: 1
+    source: {fileID: 0}
+  MonsterSounds:
+  - name: BossDeath
+    clip: {fileID: 8300000, guid: 8335ecad48d7745469bbdd0496b39fd8, type: 3}
+    volume: 0.3
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: BossShieldDestroy
+    clip: {fileID: 8300000, guid: c849e9c7cbcd5e84fa29b304ea7204b9, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyAttack
+    clip: {fileID: 8300000, guid: 580029827ca03114c9a1f2888ef7008d, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 1
+    loop: 0
     source: {fileID: 0}
   GunSounds:
   - name: RifleShoot
@@ -1014,7 +1043,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: WeaponSwitch
-    clip: {fileID: 8300000, guid: fad45089eec11a7419b2bdf990b52388, type: 3}
+    clip: {fileID: 8300000, guid: 5f5bf58213952ff4e8fdb25740cc5f4b, type: 3}
     volume: 0.5
     pitch: 1
     randomPitch: 1
@@ -1156,7 +1185,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-102308
+  m_Name: pb_Mesh-1554
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1447,6 +1476,10 @@ PrefabInstance:
     - target: {fileID: 3958088174839417745, guid: 123bbd0e34ea44046996edfc2a978b64, type: 3}
       propertyPath: m_LocalPosition.z
       value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408843422918692489, guid: 123bbd0e34ea44046996edfc2a978b64, type: 3}
+      propertyPath: bulletDamage
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9201319237532895559, guid: 123bbd0e34ea44046996edfc2a978b64, type: 3}
       propertyPath: m_LocalPosition.x

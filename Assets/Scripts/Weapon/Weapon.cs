@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     public int maxBullets;
     public float maxBulletSpread = 0.02f;
     public float bulletSpeed = 40;
+    public float bulletDamage = 1;
 
     [Header("Timers")]
     public float reloadTime;
@@ -66,7 +67,6 @@ public class Weapon : MonoBehaviour
             isReloading = false;
             curBulletAmount = maxBullets;
 
-            //SOUND: (done reloading sound)
             Debug.Log("Done reloading!");
 		}
     }
@@ -78,7 +78,6 @@ public class Weapon : MonoBehaviour
             case ElementMain.ElementType.None:
                 elementMain.currentType = ElementMain.ElementType.None;
                 Debug.Log("I am a None element now");
-                //SOUND: (no element)
                 break;
 
             case ElementMain.ElementType.Water:
@@ -96,13 +95,7 @@ public class Weapon : MonoBehaviour
             case ElementMain.ElementType.Air:
                 elementMain.currentType = ElementMain.ElementType.Air;
                 Debug.Log("I am an Air element now");
-                AudioManager.instance.PlayWeaponSound( "ChangeElementAir");
-                break;
-                
-            case ElementMain.ElementType.Earth:
-                elementMain.currentType = ElementMain.ElementType.Earth;
-                Debug.Log("I am an Earth element now");
-                //SOUND: (eart element)
+                AudioManager.instance.PlayWeaponSound("ChangeElementAir");
                 break;
         }
     }
@@ -128,6 +121,7 @@ public class Weapon : MonoBehaviour
             }
         }
 
+        Transform bullet;
         RaycastHit hit;
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, float.MaxValue, layerMask))
         {
@@ -135,7 +129,6 @@ public class Weapon : MonoBehaviour
         }
         Vector3 aimDir = (aimPoint - spawnBulletPos.position).normalized;
 
-        Transform bullet;
         if (weaponType == WeaponTypes.Shotgun)
         {
             for (int i = 0; i < 6; i++)
@@ -143,6 +136,7 @@ public class Weapon : MonoBehaviour
 				bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
                 bullet.GetComponent<BulletProjectile>().SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
                 bullet.GetComponent<BulletProjectile>().SetElementType(elementMain.currentType);
+                bullet.GetComponent<BulletProjectile>().SetDamage(bulletDamage);
             }
         }
         else
@@ -150,6 +144,7 @@ public class Weapon : MonoBehaviour
             bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
             bullet.GetComponent<BulletProjectile>().SetVelocity(bullet.forward * bulletSpeed);
             bullet.GetComponent<BulletProjectile>().SetElementType(elementMain.currentType);
+            bullet.GetComponent<BulletProjectile>().SetDamage(bulletDamage);
         }
         ShootSound();
     }

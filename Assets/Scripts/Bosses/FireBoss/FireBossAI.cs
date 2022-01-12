@@ -108,14 +108,16 @@ public class FireBossAI : BossAI
         if (currentStage == 4)
         {     
             TransitionTo(StateOptions.Death);
-            //SOUND: (boss death sound)
+            //SOUND: Check (boss death sound)
+            AudioManager.instance.PlayMonsterSound(this.gameObject,"BossDeath");
         }
     }
 
     void ShieldDied()
     {
         TransitionTo(StateOptions.MoveToPlayer);
-        //SOUND: (Shield destroyed)
+        //SOUND: Check (Shield destroyed)
+        AudioManager.instance.PlayMonsterSound(this.gameObject, "BossShieldDestroy");
         shield.SetActive(false);
         for (int i = 0; i < healthPickups.Count; i++)
         {

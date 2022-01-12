@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
 
 	public Sound[] SoundEffects;
 	public Sound[] AmbianceSounds;
+	public Sound[] MonsterSounds;
 	public Sound[] GunSounds;
 
 	private void Awake()
@@ -55,6 +56,26 @@ public class AudioManager : MonoBehaviour
 	public void PlaySoundEffect(GameObject gameobj, string name)
 	{
 		Sound s = Array.Find(SoundEffects, sound => sound.name == name);
+		if (s == null)
+		{
+			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
+			return;
+		}
+
+		s.source = gameobj.gameObject.AddComponent<AudioSource>();
+		s.source.clip = s.clip;
+
+		s.source.volume = s.volume;
+		s.source.pitch = s.pitch;
+		s.source.loop = s.loop;
+
+		s.source.Play();
+		Destroy(s.source, s.source.clip.length);
+	}
+
+	public void PlayMonsterSound(GameObject gameobj, string name)
+	{
+		Sound s = Array.Find(MonsterSounds, sound => sound.name == name);
 		if (s == null)
 		{
 			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");

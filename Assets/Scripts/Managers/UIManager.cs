@@ -38,10 +38,8 @@ public class UIManager : MonoBehaviour
 
 
     void PlayerDied()
-    {
-        //SOUND: (Player death)
-        GoToMainMenu();
-        
+    {   
+        GoToMainMenu();   
     }
 
     void Start()

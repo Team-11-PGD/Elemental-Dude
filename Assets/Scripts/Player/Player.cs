@@ -23,16 +23,16 @@ public class Player : MonoBehaviour
 
     void Hitted()
     {
-        //SOUND: (Player hit
+        //SOUND: Check (Player hit)
     }
 
     void Died()
     {
-        //SOUND: (Player death)
+        //SOUND: Check (Player death)
+        AudioManager.instance.PlaySoundEffect(this.gameObject, "PlayerDeath");
     }
 
     void Healed()
     {
-        //SOUND: (Player heal)
     }
 }

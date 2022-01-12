@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField]
-    public float damageAmount = 10;
+    public float damageAmount;
     [SerializeField]
     [TagSelector]
     private string[] hitableTags;
 
     private ElementMain.ElementType elementType;
 
-    protected void Collided(Collider other)
+    private void Start()
+	{
+        Debug.Log(damageAmount);
+	}
+
+	protected void Collided(Collider other)
     {
         foreach (string tag in hitableTags)
         {
@@ -41,5 +45,10 @@ public class Projectile : MonoBehaviour
     internal void SetElementType(ElementMain.ElementType type)
     {
         elementType = type;
+    }
+
+    internal void SetDamage(float DamageAmount)
+    {
+        damageAmount = DamageAmount;
     }
 }

@@ -19,9 +19,11 @@ public class ShootingSpeedPickup : PickupMain
 
     protected override void PickedUpPickup()
     {
-        //SOUND: (pick up sound)
         text.powerupText = shootingSpeedPowerupText;
         IncreaseShootingSpeed();
+
+        //SOUND: Check(ShootingSpeedPickup)
+        AudioManager.instance.PlaySoundEffect(this.gameObject, "ShootSpeedPickup");
 
         StartCoroutine(RemovePickupOnTimer());
     }
