@@ -79,7 +79,7 @@ public class RoomGeneration : MonoBehaviour
                 // Create a list with all possible elements
                 List<ElementMain.ElementType> availableElements = Enum.GetValues(typeof(ElementMain.ElementType)).OfType<ElementMain.ElementType>().ToList();
                 availableElements.Remove(ElementMain.ElementType.None);
-                availableElements.Remove(ElementMain.ElementType.Earth); 
+                //availableElements.Remove(ElementMain.ElementType.Earth); 
 
                 randomElements = new List<ElementMain.ElementType>();
 

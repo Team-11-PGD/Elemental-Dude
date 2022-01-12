@@ -29,9 +29,9 @@ public class CrystalColorPicker : MonoBehaviour
             case ElementMain.ElementType.Air:
                 meshFilter.mesh = crystals.airCrystals[index];
                 break;
-            case ElementMain.ElementType.Earth:
-                meshFilter.mesh = crystals.earthCrystals[index];
-                break;
+            //case ElementMain.ElementType.Earth:
+            //    meshFilter.mesh = crystals.earthCrystals[index];
+            //    break;
         }
     }
 }
