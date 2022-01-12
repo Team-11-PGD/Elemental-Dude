@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     private ElementMain.ElementType elementType;
 
 
-    protected void Collided(Collider other)
+    protected virtual void Collided(Collider other)
     {
         foreach (string tag in hitableTags)
         {

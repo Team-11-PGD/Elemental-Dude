@@ -38,7 +38,7 @@ public class Fireball : Projectile
 
         GameObject instance = Instantiate(explosion, transform.position, Quaternion.identity);
 
-        DamagingParticle shockWave = instance.GetComponentInChildren<DamagingParticle>();
+        PlayerDamagingParticle shockWave = instance.GetComponentInChildren<PlayerDamagingParticle>();
         shockWave.damage = damageAmount;
         shockWave.playerHealth = playerHealth;
         shockWave.GetComponent<ParticleSystem>().trigger.AddCollider(playerModel);
