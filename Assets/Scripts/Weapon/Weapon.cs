@@ -18,6 +18,7 @@ public class Weapon : MonoBehaviour
     public float maxBulletSpread = 0.02f;
     public float bulletSpeed = 40;
     public float weaponDamage = 1;
+    public float extraDamage = 0, extraSpeed = 0;
 
     [Header("Timers")]
     public float reloadTime;
@@ -150,7 +151,7 @@ public class Weapon : MonoBehaviour
                 BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
                 bulletProjectile.SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
                 bulletProjectile.SetElementType(elementMain.currentType);
-                bulletProjectile.SetDamage(weaponDamage);
+                bulletProjectile.SetDamage(weaponDamage + extraDamage);
             }
         }
         else
@@ -159,7 +160,7 @@ public class Weapon : MonoBehaviour
             BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
             bulletProjectile.SetVelocity(bullet.forward * bulletSpeed);
             bulletProjectile.SetElementType(elementMain.currentType);
-            bulletProjectile.SetDamage(weaponDamage);
+            bulletProjectile.SetDamage(weaponDamage + extraDamage);
         }
     }
 
@@ -167,6 +168,6 @@ public class Weapon : MonoBehaviour
     {
         isReloading = true;
         canFire = false;
-        reloadEndTime = Time.time + reloadTime;
+        reloadEndTime = Time.time + reloadTime - extraSpeed;
     }
 }

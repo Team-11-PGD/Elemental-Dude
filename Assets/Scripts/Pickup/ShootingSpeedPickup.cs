@@ -5,6 +5,7 @@ using UnityEngine;
 // Chris Huider
 public class ShootingSpeedPickup : PickupMain
 {
+    [SerializeField] float amount = 0.1f;
 
     [SerializeField]
     private string shootingSpeedPowerupText = "You picked up extra shooting speed.";
@@ -20,6 +21,9 @@ public class ShootingSpeedPickup : PickupMain
     protected override void PickedUpPickup(Collider player)
     {
         //SOUND: (pick up sound)
+        WeaponSwitcher weapon = player.transform.parent.GetComponent<WeaponSwitcher>();
+        weapon.ExtraSpeed += amount;
+
         text.powerupText = shootingSpeedPowerupText;
         IncreaseShootingSpeed();
 

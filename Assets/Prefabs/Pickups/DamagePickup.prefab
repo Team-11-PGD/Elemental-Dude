@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e8b37ceaba57bdd4ba99039c5a129fa3, type: 2}
+  - {fileID: 2100000, guid: 22d3eb4bd1311054eb5ddc0330139728, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,4 +126,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 8618477386730529063}
   model: {fileID: 8618477386730529112}
+  amount: 1
   damagePowerupText: You picked up extra damage.

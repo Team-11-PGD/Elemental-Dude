@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class DamagePickup : PickupMain
 {
+    [SerializeField] float amount = 1f;
     [SerializeField] string damagePowerupText = "You picked up extra damage.";
-
-    Weapon[] weapons;
 
     protected override void PickedUpPickup(Collider player)
     {
-        weapons = player.transform.parent.GetComponent<WeaponSwitcher>().weapons;
+        WeaponSwitcher weapon = player.transform.parent.GetComponent<WeaponSwitcher>();
 
-        foreach (var weapon in weapons)
-        {
-            weapon.weaponDamage++;
-        }
+        weapon.ExtraDamage += amount;
 
         text.powerupText = damagePowerupText;
 
