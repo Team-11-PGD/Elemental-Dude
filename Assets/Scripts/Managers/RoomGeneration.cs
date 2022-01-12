@@ -79,7 +79,7 @@ public class RoomGeneration : MonoBehaviour
                 // Create a list with all possible elements
                 List<ElementMain.ElementType> availableElements = Enum.GetValues(typeof(ElementMain.ElementType)).OfType<ElementMain.ElementType>().ToList();
                 availableElements.Remove(ElementMain.ElementType.None);
-                availableElements.Remove(ElementMain.ElementType.Earth); 
+                availableElements.Remove(ElementMain.ElementType.Earth);
 
                 randomElements = new List<ElementMain.ElementType>();
 
@@ -93,7 +93,7 @@ public class RoomGeneration : MonoBehaviour
 
                 // Sort the list so that different order doesn't matter when checking repeating levels
                 randomElements.Sort();
-            } while (randomElements == previousElements); // Make sure the new elements dont repeat the previous level
+            } while (randomElements == previousElements || NextElements.Contains(randomElements)); // Make sure the new elements dont repeat the previous level
 
             NextElements[i] = randomElements;
         }
