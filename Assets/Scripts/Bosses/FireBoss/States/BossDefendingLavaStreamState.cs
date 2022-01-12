@@ -32,10 +32,9 @@ public class BossDefendingLavaStreamState : FireBossState
 
     IEnumerator GroundbreakTimer()
     {
-<<<<<<< Updated upstream
-=======
+
         yield return new WaitForSecondsRealtime(lookAtTime);
->>>>>>> Stashed changes
+
         for (int i = 0; i < instantiateAmount; i++)
         {
             GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, null);
