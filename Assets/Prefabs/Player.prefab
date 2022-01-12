@@ -530,14 +530,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a959fd14ad26204088128f289422470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravityMultiplier: 1.5
   speed: 8
   sprintSpeed: 12
   jumpSpeed: 7
-  gravityMultiplier: 1.5
   jumpGracePeroid: 0.2
   velocity: {x: 0, y: 0, z: 0}
+  ySpeed: 0
   cam: {fileID: 9201319238182384171}
-  stunned: 0
   stunDuration: 0
 --- !u!114 &9201319237946114718
 MonoBehaviour:
@@ -689,6 +689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 0
+  damageTaken: 0
 --- !u!114 &9201319238531530265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,6 +986,10 @@ PrefabInstance:
     - target: {fileID: 7579705869424591645, guid: 96eed5ddaf4f47e4db7b870b3b940436, type: 3}
       propertyPath: fireInterval
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579705869424591645, guid: 96eed5ddaf4f47e4db7b870b3b940436, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7579705869424591647, guid: 96eed5ddaf4f47e4db7b870b3b940436, type: 3}
       propertyPath: m_Name

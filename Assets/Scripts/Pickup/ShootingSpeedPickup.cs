@@ -17,7 +17,7 @@ public class ShootingSpeedPickup : PickupMain
         //player.shootingSpeed += 0.1f;
     }
 
-    protected override void PickedUpPickup()
+    protected override void PickedUpPickup(Collider player)
     {
         //SOUND: (pick up sound)
         text.powerupText = shootingSpeedPowerupText;

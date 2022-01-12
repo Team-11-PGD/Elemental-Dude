@@ -4,33 +4,20 @@ using UnityEngine;
 
 public class DamagePickup : PickupMain
 {
-    
-     private Weapon weapon;
-     float oldDamage;
-    
+    [SerializeField] string damagePowerupText = "You picked up extra damage.";
 
-   
-
-     [SerializeField]
-    private string damagePowerupText = "You picked up extra damage.";
+    Weapon[] weapons;
 
     protected override void PickedUpPickup(Collider player)
     {
+        weapons = player.transform.parent.GetComponent<WeaponSwitcher>().weapons;
 
-        weapon = player.transform.parent.GetComponent > { Weapon();
+        foreach (var weapon in weapons)
+        {
+            weapon.weaponDamage++;
+        }
 
-
-        // userDamage.damageAmount = newUserDamage;
-        //Debug.Log("after " + userDamage.damageAmount);
-
-        oldDamage = weapon.bulletDamage;
-        weapon.bulletDamage =  20;
-        
-        Debug.Log(" pickup" + weapon.bulletDamage, weapon);
-
-        //userDamage = userDamage.damageAmount;
         text.powerupText = damagePowerupText;
-      
 
         StartCoroutine(RemovePickupOnTimer());
     }
