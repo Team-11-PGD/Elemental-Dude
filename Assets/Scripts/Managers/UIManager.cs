@@ -18,6 +18,12 @@ public class UIManager : MonoBehaviour
     bool startWithoutMouseOverride = false;
     [SerializeField]
     UIScore iScore;
+    //Damage Overlay
+    public Image dmgOverlay;
+    public float overlayTime = 0.5f;
+    Color alphaColor;
+    public float overLaydecayRate = 0.01f;
+
 
     void Awake()
     {
@@ -46,6 +52,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        alphaColor = dmgOverlay.color;
         if (startWithoutMouseOverride) SetMouseState(false);
         else SetMouseState(SceneManager.GetActiveScene().name != "InBetweenLevel1");
 
@@ -141,20 +148,34 @@ public class UIManager : MonoBehaviour
         {
             SwitchPause();
         }
-
+        //Damage Overlay
+        if (player.hit)
+        {
+            alphaColor.a = 0.5f;
+            StartCoroutine(dmgOverlayOff());
+        }
+        if (!player.hit)
+        {
+            alphaColor.a -= overLaydecayRate;
+        }
+        dmgOverlay.color = alphaColor;
         //Hp Bar functionality
         // TODO: put this in its own script on the slider
         if (playerHpBar != null)
         {
             playerHpBar.value = player.currentHp;
-
-
             if (player.currentHp <= 0)
             {
                 //GameOver
                 GoToMainMenu();
             }
         }
+    }
+
+    IEnumerator dmgOverlayOff()
+    {
+        yield return new WaitForSecondsRealtime(overlayTime);
+        player.hit = false;
     }
 
 }

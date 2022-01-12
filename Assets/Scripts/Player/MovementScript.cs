@@ -27,14 +27,18 @@ public class MovementScript : MonoBehaviour
 
     public float stunDuration;
 
+    [SerializeField]
+    private Collider playerCollider;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        playerCollider = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float veritcalInput = Input.GetAxisRaw("Vertical");
@@ -61,20 +65,17 @@ public class MovementScript : MonoBehaviour
         movementDirection = Quaternion.Euler(0f, targetAngle, 0f)* Vector3.forward;
         //jumping
         ySpeed += gravityMultiplier * Physics.gravity.y * Time.deltaTime;
-        if (controller.isGrounded)
+        if (IsGrounded())
         {
-            
             lastGroundedTime = Time.time;
         }
         if (Input.GetButtonDown("Jump"))
         {
-            
             jumpButtonPressedTime = Time.time;
         }
-
         if (Time.time - lastGroundedTime <= jumpGracePeroid) 
         {
-            ySpeed = -0.5f;
+            //ySpeed = -2f;
             if (Time.time - jumpButtonPressedTime <= jumpGracePeroid && stunDuration <= 0)
             {
                 //SOUND: (Jump)
@@ -94,5 +95,15 @@ public class MovementScript : MonoBehaviour
         velocity.y = ySpeed;
         controller.Move(velocity * Time.deltaTime);
 
+    }
+
+    private bool IsGrounded()
+    {
+        float groundDetection = 0f;
+        RaycastHit raycastHit;
+
+        Physics.SphereCast(playerCollider.bounds.center, playerCollider.bounds.extents.x ,Vector3.down, out raycastHit, playerCollider.bounds.extents.y + groundDetection);
+
+        return raycastHit.collider != null;
     }
 }
