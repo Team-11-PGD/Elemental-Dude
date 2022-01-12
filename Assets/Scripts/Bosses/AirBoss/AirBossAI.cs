@@ -19,7 +19,7 @@ public class AirBossAI : BossAI
     {
         Dash,
         GroundSpikes,
-        //Tornado,
+        Tornado,
         Vulnerable,
         SmallTornados,
         CeilingSpikes,
@@ -34,8 +34,8 @@ public class AirBossAI : BossAI
         }
     }
 
-    private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes /*, StateOptions.Tornado*/ };
-    private static readonly Enum[] secondStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes /*, StateOptions.Tornado*/, StateOptions.Vulnerable, StateOptions.SmallTornados, StateOptions.CeilingSpikes };
+    private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes , StateOptions.Tornado };
+    private static readonly Enum[] secondStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes , StateOptions.Tornado, StateOptions.Vulnerable, StateOptions.SmallTornados, StateOptions.CeilingSpikes };
     private int currentState = 1;
     private DashState dash;
     private SpawnSpikesState groundSpikes;
@@ -57,7 +57,7 @@ public class AirBossAI : BossAI
         AddState(StateOptions.Dash, dash);
         groundSpikes = gameObject.GetComponent<GroundSpikesState>();
         AddState(StateOptions.GroundSpikes, groundSpikes);
-        //AddState(StateOptions.Tornado, gameObject.GetComponent<TornadoState>());
+        AddState(StateOptions.Tornado, gameObject.GetComponent<TornadoState>());
         AddState(StateOptions.Vulnerable, gameObject.GetComponent<VulnerableState>());
         AddState(StateOptions.SmallTornados, gameObject.GetComponent<SmallTornadoState>());
         ceilingSpikes = gameObject.GetComponent<CeilingSpikesState>();
