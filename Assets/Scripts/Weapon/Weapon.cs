@@ -50,7 +50,6 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetButton("Fire1") && Time.time >= timeToFire && canFire)
         {
-            //SOUND: (shoot)
             timeToFire = Time.time + fireInterval;
             Shoot();
         }
@@ -85,21 +84,21 @@ public class Weapon : MonoBehaviour
             case ElementMain.ElementType.Water:
                 elementMain.currentType = ElementMain.ElementType.Water;
                 Debug.Log("I am a Water element now");
-                //SOUND: (Water element)
+                AudioManager.instance.PlayWeaponSound("ChangeElementWater");
                 break;
 
             case ElementMain.ElementType.Fire:
                 elementMain.currentType = ElementMain.ElementType.Fire;
                 Debug.Log("I am a Fire element now");
-                //SOUND: (fire element)
+                AudioManager.instance.PlayWeaponSound("ChangeElementFire");
                 break;
 
             case ElementMain.ElementType.Air:
                 elementMain.currentType = ElementMain.ElementType.Air;
                 Debug.Log("I am an Air element now");
-                //SOUND: (air element)
+                AudioManager.instance.PlayWeaponSound( "ChangeElementAir");
                 break;
-
+                
             case ElementMain.ElementType.Earth:
                 elementMain.currentType = ElementMain.ElementType.Earth;
                 Debug.Log("I am an Earth element now");
