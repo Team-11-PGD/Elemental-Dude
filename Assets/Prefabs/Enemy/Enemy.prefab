@@ -435,6 +435,7 @@ GameObject:
   - component: {fileID: 7728377318561197121}
   - component: {fileID: 4150230067159578903}
   - component: {fileID: 693258748762996703}
+  - component: {fileID: 8720466839154833937}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -921,3 +922,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementMain: {fileID: 4150230067159578903}
+--- !u!114 &8720466839154833937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4718170521264756171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb1aff4b9c3f394d81a0517a0ce8926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupOptions:
+  - pickup: {fileID: 8618477386730529060, guid: 780f18b9103928246b314ec51ff65714, type: 3}
+    spawnChance: 0.419
+  - pickup: {fileID: 4400722110547890599, guid: b3541ef6bb78c11468599c68023bea81, type: 3}
+    spawnChance: 0.686
+  - pickup: {fileID: 8618477386730529060, guid: 7febb85f14a19014dafd45fed93c7b85, type: 3}
+    spawnChance: 0.269
+  health: {fileID: 1637230264210459066}
