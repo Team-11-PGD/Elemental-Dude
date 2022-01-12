@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33249777782431908}
   - component: {fileID: 23688988035773266}
   - component: {fileID: 782854065720714071}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Cliff_A_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

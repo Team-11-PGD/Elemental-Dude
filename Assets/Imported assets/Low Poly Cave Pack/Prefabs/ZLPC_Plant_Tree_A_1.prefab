@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4777279716196872}
   - component: {fileID: 33037542015642196}
   - component: {fileID: 23884582852628328}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Plant_Tree_A_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4057358405815850}
   - component: {fileID: 33126591870455248}
   - component: {fileID: 23023765872200138}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Stairs_A_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

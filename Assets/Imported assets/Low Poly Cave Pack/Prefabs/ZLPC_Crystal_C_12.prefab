@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33587930205454056}
   - component: {fileID: 23293265280399452}
   - component: {fileID: 3526828197243021176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Crystal_C_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,3 +95,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crystals: {fileID: 11400000, guid: 4f7d3ab20061be441b48b2db7b923b5e, type: 2}
+  element: 0
