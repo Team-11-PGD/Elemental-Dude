@@ -31,7 +31,7 @@ class EnemyFleeState : EnemyState
 
     void Update()
     {
-        Debug.Log($"{name} is Fleeing");
+        
 
         if (agent.pathStatus == NavMeshPathStatus.PathComplete)
         {

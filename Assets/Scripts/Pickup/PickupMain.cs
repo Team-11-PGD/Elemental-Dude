@@ -32,12 +32,12 @@ public class PickupMain : MonoBehaviour
         if ((other.gameObject.tag == "Player") && allowPickup)
         {
             user = other;
-            PickedUpPickup();
+            PickedUpPickup(other);
             //SOUND: (pick up)
         }
     }
 
-    protected virtual void PickedUpPickup(){}
+    protected virtual void PickedUpPickup( Collider player){}
 
     protected IEnumerator RemovePickupOnTimer()
     {
