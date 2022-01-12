@@ -64,38 +64,84 @@ public class RoomGeneration : MonoBehaviour
         SceneManager.LoadScene(instance.levels[randLevel]);
     }
 
+    [ContextMenu("Update Elements")]
+    public void Test()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.Fire }, 1);
+            int duplicate = 0;
+            for (int j = 0; j < 1; j++)
+            {
+                if (NextElements[0][j] == NextElements[1][j]) duplicate++;
+            }
+            if (duplicate == 1)
+            {
+                NextElements[0].ForEach((element) => print($"Next 0: {element}"));
+                NextElements[1].ForEach((element) => print($"Next 1: {element}"));
+            }
+
+            UpdateElements(NextElements[0], 1);
+            duplicate = 0;
+            for (int j = 0; j < 1; j++)
+            {
+                if (NextElements[0][j] == NextElements[1][j]) duplicate++;
+            }
+            if (duplicate == 1)
+            {
+                NextElements[0].ForEach((element) => print($"Next 0: {element}"));
+                NextElements[1].ForEach((element) => print($"Next 1: {element}"));
+            }
+        }
+    }
+
     private static void UpdateElements(List<ElementMain.ElementType> elementTypes, int amountOfElementsNextRound)
     {
         previousElements = CurrentElements;
         CurrentElements = elementTypes;
 
-        // Get random elements for each path
-        for (int i = 0; i < PATH_OPTIONS; i++)
+        NextElements = new List<ElementMain.ElementType>[PATH_OPTIONS];
+
+        int duplicate;
+        do
         {
-            List<ElementMain.ElementType> randomElements;
-
-            do
+            for (int i = 0; i < PATH_OPTIONS; i++)
             {
-                // Create a list with all possible elements
-                List<ElementMain.ElementType> availableElements = Enum.GetValues(typeof(ElementMain.ElementType)).OfType<ElementMain.ElementType>().ToList();
-                availableElements.Remove(ElementMain.ElementType.None);
-                availableElements.Remove(ElementMain.ElementType.Earth);
-
-                randomElements = new List<ElementMain.ElementType>();
-
-                // Find random elements
-                for (int j = 0; j < amountOfElementsNextRound; j++)
+                int previousDuplicate;
+                do
                 {
-                    int rand = UnityEngine.Random.Range(0, availableElements.Count);
-                    randomElements.Add(availableElements[rand]);
-                    availableElements.RemoveAt(rand);
-                }
+                    // Get random elements for each path
+                    List<ElementMain.ElementType> availableElements = Enum.GetValues(typeof(ElementMain.ElementType)).OfType<ElementMain.ElementType>().ToList();
+                    availableElements.Remove(ElementMain.ElementType.None);
+                    availableElements.Remove(ElementMain.ElementType.Earth);
+                    List<ElementMain.ElementType> randomElements = new List<ElementMain.ElementType>();
 
-                // Sort the list so that different order doesn't matter when checking repeating levels
-                randomElements.Sort();
-            } while (randomElements == previousElements || NextElements.Contains(randomElements)); // Make sure the new elements dont repeat the previous level
+                    // Find random elements
+                    for (int j = 0; j < amountOfElementsNextRound; j++)
+                    {
+                        int rand = UnityEngine.Random.Range(0, availableElements.Count);
+                        randomElements.Add(availableElements[rand]);
+                        availableElements.RemoveAt(rand);
+                    }
+                    randomElements.Sort();
 
-            NextElements[i] = randomElements;
-        }
+                    NextElements[i] = randomElements;
+
+                    // Check if options are same
+                    previousDuplicate = 0;
+                    for (int k = 0; k < previousElements.Count; k++)
+                    {
+                        if (NextElements[i][k] == previousElements[k]) previousDuplicate++;
+                    }
+                } while (previousDuplicate == previousElements.Count);
+            }
+
+            // Check if options are same
+            duplicate = 0;
+            for (int i = 0; i < amountOfElementsNextRound; i++)
+            {
+                if (NextElements[0][i] == NextElements[1][i]) duplicate++;
+            }
+        } while (duplicate == amountOfElementsNextRound);
     }
 }
