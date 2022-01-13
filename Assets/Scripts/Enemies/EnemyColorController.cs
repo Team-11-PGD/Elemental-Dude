@@ -24,10 +24,10 @@ public class EnemyColorController : MonoBehaviour
             rend.material = ElementColors.instance.WaterMaterial;
         }
         //Earth element
-        if (elementMain.currentType == ElementMain.ElementType.Earth)
-        {
-            rend.material = ElementColors.instance.EarthMaterial;
-        }
+        //if (elementMain.currentType == ElementMain.ElementType.Earth)
+        //{
+        //    rend.material = ElementColors.instance.EarthMaterial;
+        //}
         //Air element
         if (elementMain.currentType == ElementMain.ElementType.Air)
         {

@@ -102,11 +102,11 @@ public class Weapon : MonoBehaviour
                 //SOUND: (air element)
                 break;
 
-            case ElementMain.ElementType.Earth:
-                elementMain.currentType = ElementMain.ElementType.Earth;
-                Debug.Log("I am an Earth element now");
-                //SOUND: (eart element)
-                break;
+            //case ElementMain.ElementType.Earth:
+            //    elementMain.currentType = ElementMain.ElementType.Earth;
+            //    Debug.Log("I am an Earth element now");
+            //    //SOUND: (eart element)
+            //    break;
         }
     }
 

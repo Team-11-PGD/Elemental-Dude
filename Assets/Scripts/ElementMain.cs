@@ -17,7 +17,6 @@ public class ElementMain : MonoBehaviour
         Water,
         Fire,
         Air,
-        Earth
     }
 
     public float ElementDmgPercentage(ElementType thisElement, ElementType otherElement)
@@ -29,7 +28,7 @@ public class ElementMain : MonoBehaviour
                 {
                     return advantageElemPercentage;
                 }
-                else if (otherElement == ElementType.Earth)
+                else if (otherElement == ElementType.Air)
                 {
                     return disadvantageElemPercentage;
                 }
@@ -47,22 +46,11 @@ public class ElementMain : MonoBehaviour
                 break;
 
             case ElementType.Air:
-                if (otherElement == ElementType.Earth)
-                {
-                    return advantageElemPercentage;
-                }
-                else if (otherElement == ElementType.Fire)
-                {
-                    return disadvantageElemPercentage;
-                }
-                break;
-
-            case ElementType.Earth:
                 if (otherElement == ElementType.Water)
                 {
                     return advantageElemPercentage;
                 }
-                else if (otherElement == ElementType.Air)
+                else if (otherElement == ElementType.Fire)
                 {
                     return disadvantageElemPercentage;
                 }
