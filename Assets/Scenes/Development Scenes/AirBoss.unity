@@ -715,7 +715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2748594981072418810, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2748594981072418810, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: pullForce
@@ -807,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7004715947265456734, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: startState
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7004715947265456734, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: playerModel
