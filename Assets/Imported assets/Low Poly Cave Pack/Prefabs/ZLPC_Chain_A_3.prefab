@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4849307918237642}
   - component: {fileID: 33561427876455686}
   - component: {fileID: 23775866263422256}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Chain_A_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
