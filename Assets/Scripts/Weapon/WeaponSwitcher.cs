@@ -36,7 +36,7 @@ public class WeaponSwitcher : MonoBehaviour
 	void SwitchWeapon(Weapon.WeaponTypes weaponType)
 	{
 		if(curWeapon != weaponType)
-		AudioManager.instance.PlayWeaponSound("WeaponSwitch");
+		AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "WeaponSwitch");
 
 		GetWeapon(curWeapon).gameObject.SetActive(false);
 		GetWeapon(weaponType).gameObject.SetActive(true);

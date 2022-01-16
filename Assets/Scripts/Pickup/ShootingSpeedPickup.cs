@@ -23,7 +23,7 @@ public class ShootingSpeedPickup : PickupMain
         IncreaseShootingSpeed();
 
         //SOUND: Check(ShootingSpeedPickup)
-        AudioManager.instance.PlaySoundEffect(this.gameObject, "ShootSpeedPickup");
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.SoundEffects, this.gameObject, "ShootSpeedPickup");
 
         StartCoroutine(RemovePickupOnTimer());
     }

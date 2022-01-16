@@ -76,7 +76,6 @@ public class DashState : AirBossState
         if (Vector3.Distance(bossAI.playerModel.position, transform.position) <= attackRange)
         {
             bossAI.playerHealth.Hit(damage);
-            //SOUND: hit player
         }
     }
 }

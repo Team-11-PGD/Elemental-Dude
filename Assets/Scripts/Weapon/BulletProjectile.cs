@@ -41,8 +41,6 @@ public class BulletProjectile : Projectile
         {
             DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
         }
-
-        //SOUND: (inpact sound)?
         Destroy(gameObject);
     }
 }

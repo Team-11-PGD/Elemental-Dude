@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     void Died()
     {
         //SOUND: Check (Player death)
-        AudioManager.instance.PlaySoundEffect(this.gameObject, "PlayerDeath");
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.PlayerSounds, this.gameObject, "PlayerDeath");
     }
 
     void Healed()
