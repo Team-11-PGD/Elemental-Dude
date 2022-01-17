@@ -749,6 +749,14 @@ PrefabInstance:
       propertyPath: spawnArea
       value: 
       objectReference: {fileID: 1732162272}
+    - target: {fileID: 4568714983940714406, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
+      propertyPath: spikeSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568714983940714406, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
+      propertyPath: spawningTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6344560454078016492, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: portal
       value: 

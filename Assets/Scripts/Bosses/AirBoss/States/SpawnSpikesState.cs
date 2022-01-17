@@ -25,20 +25,14 @@ public class SpawnSpikesState : AirBossState
         StartCoroutine(Spawning());
     }
 
-    private void FixedUpdate()
-    {
-    }
-
     IEnumerator Spawning()
     {
         float area = spawnArea.bounds.size.x * spawnArea.bounds.size.z;
         float maxSpikes = area / spikeSize;
         int spikeCount = (int)(maxSpikes * spikePercentage);
-
         Spike[] spikes = new Spike[spikeCount];
         for (int i = 0; i < spikeCount; i++)
-        {
-            yield return new WaitForSecondsRealtime(spawningTime);
+        {            
             Vector3 point = new Vector3(bossAI.playerModel.position.x, bossAI.playerModel.position.y - 1, bossAI.playerModel.position.z);
             spikes[i] = Instantiate(spike, point, Quaternion.identity).GetComponent<Spike>();
             spikes[i].playerHealth = bossAI.playerHealth;
