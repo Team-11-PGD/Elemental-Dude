@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletProjectile : Projectile
 {
     [SerializeField]
-    private float destroyTime = 30f;
+    private float destroyTime = 10f;
     private Rigidbody rb;
 
     private void Awake()
@@ -37,9 +37,9 @@ public class BulletProjectile : Projectile
 
     protected override void Hit(Collider other)
     {
-        if (!other.CompareTag("Ground"))
+        if (other.TryGetComponent(out Health health))
         {
-            DamageHandler(other.gameObject.GetComponent<Health>(), other.gameObject.GetComponent<ElementMain>());
+            DamageHandler(health, other.gameObject.GetComponent<ElementMain>());
         }
 
         //SOUND: (inpact sound)?

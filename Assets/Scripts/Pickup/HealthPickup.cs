@@ -10,7 +10,7 @@ public class HealthPickup : PickupMain
     [SerializeField]
     private string healthPowerupText = "You picked up health.";
 
-    protected override void PickedUpPickup()
+    protected override void PickedUpPickup(Collider player)
     {
         userHealth = user.GetComponentInParent<Health>();
         text.powerupText = healthPowerupText;

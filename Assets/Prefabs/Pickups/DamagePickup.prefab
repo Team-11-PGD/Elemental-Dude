@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8618477386730529112}
   - component: {fileID: 8618477386730529113}
   - component: {fileID: 8618477386730529063}
+  - component: {fileID: 2264892410939388321}
   m_Layer: 0
   m_Name: DamagePickup
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e8b37ceaba57bdd4ba99039c5a129fa3, type: 2}
+  - {fileID: 2100000, guid: 22d3eb4bd1311054eb5ddc0330139728, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,3 +112,19 @@ MonoBehaviour:
   uiObject: {fileID: 0}
   powerupText: 
   showTextDuration: 4
+--- !u!114 &2264892410939388321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8618477386730529060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63b0166f981de742b513673137431cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 8618477386730529063}
+  model: {fileID: 8618477386730529112}
+  amount: 1
+  damagePowerupText: You picked up extra damage.
