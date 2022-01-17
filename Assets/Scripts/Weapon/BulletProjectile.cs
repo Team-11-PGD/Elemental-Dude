@@ -43,6 +43,11 @@ public class BulletProjectile : Projectile
         }
 
         //SOUND: (inpact sound)?
-        Destroy(gameObject);
+    }
+
+    protected override void Collided(Collider other)
+    {
+        base.Collided(other);
+        if (gameObject != null) Destroy(gameObject);
     }
 }
