@@ -69,7 +69,9 @@ public class EnemyAI : StateMachine
         health.Died -= Died;
     }
 
-    protected virtual void Died() { }
+    protected virtual void Died() {
+        Destroy(gameObject);
+    }
 
     protected virtual void Hitted()
     {

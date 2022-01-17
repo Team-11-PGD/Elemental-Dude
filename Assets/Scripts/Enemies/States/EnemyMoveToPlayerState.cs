@@ -22,16 +22,7 @@ public class EnemyMoveToPlayerState : EnemyState
         if (Vector3.Distance(enemyAI.playerModel.position, transform.position) <= stopRange)
         {
             agent.SetDestination(transform.position);
-            switch (Random.Range(0, 2))
-            {
-                case 0:
-                    context.TransitionTo(BossAIOld.StateOptions.FireAttacking1);
-                    break;
-                case 1:
-                    context.TransitionTo(BossAIOld.StateOptions.FireAttacking2);
-                    break;
-            }
-
+            context.TransitionTo(EnemyAI.StateOptions.Attacking);
         }
     }
 

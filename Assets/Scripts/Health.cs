@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     public float maxHp;
     // [HideInInspector]
     public float currentHp;
+    public float damageTaken;
 
     public event Action Hitted;
     public event Action Died;
@@ -30,6 +31,7 @@ public class Health : MonoBehaviour
 
     public void Hit(float damageAmt)
     {
+        damageTaken = damageAmt;
         currentHp -= damageAmt;
         Debug.Log($"{gameObject.name} has {currentHp} hp and had {currentHp + damageAmt}");
         
