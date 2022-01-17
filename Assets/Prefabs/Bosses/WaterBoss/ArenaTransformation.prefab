@@ -134,9 +134,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &2760718054742792616
@@ -273,9 +270,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &3057306615570277302
@@ -412,9 +406,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &5248793683320551112
@@ -551,9 +542,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &5617134457079762505
@@ -690,9 +678,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &6195824291498459417
@@ -829,9 +814,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &6427183231525125561
@@ -884,6 +866,7 @@ MonoBehaviour:
   startAppear: 0
   start1: 0
   start2: 0
+  start3: 0
 --- !u!1 &6427183232411151768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,9 +1043,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &7365896315366379426
@@ -1199,9 +1179,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &7623259801569927673
@@ -1338,9 +1315,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &7902497489108178153
@@ -1477,9 +1451,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &8348663816663446110
@@ -1612,13 +1583,10 @@ MonoBehaviour:
   - Player
   player: {fileID: 0}
   boss: {fileID: 0}
-  waveSpeed: 45
+  waveSpeed: 300
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 9
   stage2Distance: 4
   waterWall: {fileID: 6427183232433983657}
@@ -1756,9 +1724,6 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20
 --- !u!1 &9042900190794873681
@@ -1895,8 +1860,5 @@ MonoBehaviour:
   waveForce: 7
   waveStunDuration: 0
   roomCenter: {fileID: 0}
-  startAppear: 0
-  start1: 0
-  start2: 0
   stage1Distance: 30
   stage2Distance: 20

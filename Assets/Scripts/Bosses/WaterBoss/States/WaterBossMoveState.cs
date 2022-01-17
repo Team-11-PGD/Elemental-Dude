@@ -19,7 +19,8 @@ public class WaterBossMoveState : State
     {
         bossAI = context as WaterBossAI;
         if (teleportToPlayer) transform.position = CalculateTeleportPosition(bossAI.playerModel);
-        else transform.position =  CalculateTeleportPosition(teleportPositions[Random.Range(0, teleportPositions.Count - 1)]);
+        else transform.position = teleportPositions[Random.Range(0, teleportPositions.Count - 1)].position; //CalculateTeleportPosition(teleportPositions[Random.Range(0, teleportPositions.Count - 1)]);
+        Debug.Log(transform.position);
         //Only teleports to a position that is connected to the navmesh it's currently on.
         bossAI.NextState();
     }

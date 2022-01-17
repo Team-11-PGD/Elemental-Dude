@@ -44,6 +44,8 @@ public class WaterBeam : Projectile
             }
             if(hit.collider.gameObject.tag == "Player")
             {
+                Debug.Log("hit");
+                DamageHandler(hit.collider.gameObject.GetComponentInParent<Health>(), hit.collider.gameObject.GetComponentInParent<ElementMain>());
                 Collided(hit.collider);
             }
             if(hit.collider.gameObject.tag == "Finish")

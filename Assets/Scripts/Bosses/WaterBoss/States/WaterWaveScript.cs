@@ -21,6 +21,11 @@ public class WaterWaveScript : Projectile
         canDamage = true;
     }
 
+    protected virtual void FixedUpdate()
+    {
+        gameObject.transform.localScale += new Vector3(0.05f, 0.1f, 0);
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (canDamage && other.gameObject.tag == "Player")
@@ -38,7 +43,6 @@ public class WaterWaveScript : Projectile
             DamageHandler(other.gameObject.GetComponentInParent<Health>(), other.gameObject.GetComponentInParent<ElementMain>());
             MovementScript movement = other.gameObject.GetComponent<MovementScript>();
             movement.stunDuration = waveStunDuration;
-            Debug.Log(movement.stunDuration);
             movement.velocity = rigidBody.velocity * waveForce;
         }
     }

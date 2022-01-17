@@ -11,6 +11,7 @@ public class WaterBossAI : BossAI
 {
     public bool facePlayer = false;
 
+    public float stateCooldown = 0.5f;
     [SerializeField]
     float defenceStatePercentage = 0.4f;
     [SerializeField]
@@ -20,12 +21,16 @@ public class WaterBossAI : BossAI
 
     private float distanceToPlayer;
     [SerializeField]
-    float meleeRange;
+    float meleeRange = 10;
     [SerializeField]
     int nextStateDelay;
 
+    bool stage1 = true;
+    bool stage2 = true;
+
     public enum StateOptions
     {
+        WaterTeleport,
         MoveToPlayer,
         WaterAttackSlam,
         WaterAttackWave,
@@ -39,11 +44,12 @@ public class WaterBossAI : BossAI
 
     private void Start()
     {
-        AddState(StateOptions.MoveToPlayer, GetComponent<WaterBossMoveState>());                             // 0
+        AddState(StateOptions.WaterTeleport, GetComponent<WaterBossMoveState>());                          // 0
         AddState(StateOptions.WaterAttackSlam, GetComponent<WaterBossAttackingSlam>());                      // 1
         AddState(StateOptions.WaterAttackWave, GetComponent<WaterBossAttackingWave>());                      // 2
         AddState(StateOptions.WaterAttackBubble, GetComponent<WaterBossAttackingBouncingBubble>());          // 3
         AddState(StateOptions.WaterAttackBeam, GetComponent<WaterBossAttackingBeam>());                      // 4
+        AddState(StateOptions.Death, GetComponent<BossDeath>());                                             // 5
         StateMachineSetup(startState);
     }
     public new async void TransitionTo(Enum nextState)
@@ -62,12 +68,12 @@ public class WaterBossAI : BossAI
                 NextAttackState();
                 break;
             case (int)StateOptions.WaterAttackBubble:
-                TransitionTo(StateOptions.MoveToPlayer);
+                TransitionTo(StateOptions.WaterTeleport);
                 break;
             case (int)StateOptions.WaterAttackBeam:
-                TransitionTo(StateOptions.MoveToPlayer);
+                TransitionTo(StateOptions.WaterTeleport);
                 break;
-            case (int)StateOptions.MoveToPlayer:
+            case (int)StateOptions.WaterTeleport:
                 NextAttackState();
                 break;
         }
@@ -82,22 +88,24 @@ public class WaterBossAI : BossAI
         }
         if(distanceToPlayer > meleeRange)
         {
-            TransitionTo(RandomStateFromRange(StateOptions.WaterAttackBubble, StateOptions.WaterAttackBeam));
+            TransitionTo(RandomStateFromRange(StateOptions.WaterAttackWave, StateOptions.WaterAttackBeam));
         }
     }
 
     public bool SwitchToDefend()
     {
-        if (health.HpPercentage <= waterRisePercentage && health.HpPercentage > defenceStatePercentage)
+        if (health.HpPercentage <= waterRisePercentage && health.HpPercentage > defenceStatePercentage && stage1 == true)
         {
+            stage1 = false;
             controller.startAppear = true;
             return true;
         }
-        if(health.HpPercentage <= defenceStatePercentage)
+        if(health.HpPercentage <= defenceStatePercentage && stage2 == true)
         {
             controller.start2 = true;
             GetComponent<WaterBossMoveState>().teleportToPlayer = false;
             TransitionTo(StateOptions.MoveToPlayer);
+            stage2 = false;
             return true;
         }
         return false;
@@ -106,6 +114,13 @@ public class WaterBossAI : BossAI
     protected override void Hitted()
     {
         SwitchToDefend();
+    }
+
+    protected override void Died()
+    {
+        controller.start3 = true;
+        TransitionTo(StateOptions.Death);
+        //SOUND: (boss death sound)
     }
 
     private StateOptions RandomStateFromRange(StateOptions minInclusive, StateOptions maxInclusive)
