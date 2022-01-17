@@ -16,7 +16,7 @@ public class ElementMain : MonoBehaviour
         None,
         Water,
         Fire,
-        Air,
+        Air
     }
 
     public float ElementDmgPercentage(ElementType thisElement, ElementType otherElement)
