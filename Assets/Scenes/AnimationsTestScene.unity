@@ -29478,104 +29478,7 @@ Animator:
   m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: '
-
-    Transform '' L Foot'' has been deleted
-
-    Transform
-    '' L Calf'' has been deleted
-
-    Transform '' L Thigh'' has been deleted
-
-    Transform
-    '' R Foot'' has been deleted
-
-    Transform '' R Calf'' has been deleted
-
-    Transform
-    '' R Thigh'' has been deleted
-
-    Transform '' L Finger02'' has been deleted
-
-    Transform
-    '' L Finger01'' has been deleted
-
-    Transform '' L Finger0'' has been deleted
-
-    Transform
-    '' L Finger12'' has been deleted
-
-    Transform '' L Finger11'' has been deleted
-
-    Transform
-    '' L Finger1'' has been deleted
-
-    Transform '' L Finger22'' has been deleted
-
-    Transform
-    '' L Finger21'' has been deleted
-
-    Transform '' L Finger2'' has been deleted
-
-    Transform
-    '' L Hand'' has been deleted
-
-    Transform '' L Forearm'' has been deleted
-
-    Transform
-    '' L UpperArm'' has been deleted
-
-    Transform '' L Clavicle'' has been deleted
-
-    Transform
-    '' Head'' has been deleted
-
-    Transform '' Neck'' has been deleted
-
-    Transform
-    '' R Finger02'' has been deleted
-
-    Transform '' R Finger01'' has been deleted
-
-    Transform
-    '' R Finger0'' has been deleted
-
-    Transform '' R Finger12'' has been deleted
-
-    Transform
-    '' R Finger11'' has been deleted
-
-    Transform '' R Finger1'' has been deleted
-
-    Transform
-    '' R Finger22'' has been deleted
-
-    Transform '' R Finger21'' has been deleted
-
-    Transform
-    '' R Finger2'' has been deleted
-
-    Transform '' R Hand'' has been deleted
-
-    Transform
-    '' R Forearm'' has been deleted
-
-    Transform '' R UpperArm'' has been deleted
-
-    Transform
-    '' R Clavicle'' has been deleted
-
-    Transform '' Spine2'' has been deleted
-
-    Transform
-    '' Spine1'' has been deleted
-
-    Transform '' Spine'' has been deleted
-
-    Transform
-    '' Pelvis'' has been deleted
-
-    Transform ''CG'' has been deleted'
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -34188,104 +34091,7 @@ Animator:
   m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: '
-
-    Transform '' L Foot'' has been deleted
-
-    Transform
-    '' L Calf'' has been deleted
-
-    Transform '' L Thigh'' has been deleted
-
-    Transform
-    '' R Foot'' has been deleted
-
-    Transform '' R Calf'' has been deleted
-
-    Transform
-    '' R Thigh'' has been deleted
-
-    Transform '' L Finger02'' has been deleted
-
-    Transform
-    '' L Finger01'' has been deleted
-
-    Transform '' L Finger0'' has been deleted
-
-    Transform
-    '' L Finger12'' has been deleted
-
-    Transform '' L Finger11'' has been deleted
-
-    Transform
-    '' L Finger1'' has been deleted
-
-    Transform '' L Finger22'' has been deleted
-
-    Transform
-    '' L Finger21'' has been deleted
-
-    Transform '' L Finger2'' has been deleted
-
-    Transform
-    '' L Hand'' has been deleted
-
-    Transform '' L Forearm'' has been deleted
-
-    Transform
-    '' L UpperArm'' has been deleted
-
-    Transform '' L Clavicle'' has been deleted
-
-    Transform
-    '' Head'' has been deleted
-
-    Transform '' Neck'' has been deleted
-
-    Transform
-    '' R Finger02'' has been deleted
-
-    Transform '' R Finger01'' has been deleted
-
-    Transform
-    '' R Finger0'' has been deleted
-
-    Transform '' R Finger12'' has been deleted
-
-    Transform
-    '' R Finger11'' has been deleted
-
-    Transform '' R Finger1'' has been deleted
-
-    Transform
-    '' R Finger22'' has been deleted
-
-    Transform '' R Finger21'' has been deleted
-
-    Transform
-    '' R Finger2'' has been deleted
-
-    Transform '' R Hand'' has been deleted
-
-    Transform
-    '' R Forearm'' has been deleted
-
-    Transform '' R UpperArm'' has been deleted
-
-    Transform
-    '' R Clavicle'' has been deleted
-
-    Transform '' Spine2'' has been deleted
-
-    Transform
-    '' Spine1'' has been deleted
-
-    Transform '' Spine'' has been deleted
-
-    Transform
-    '' Pelvis'' has been deleted
-
-    Transform ''CG'' has been deleted'
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -57967,104 +57773,7 @@ Animator:
   m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
-  m_WarningMessage: '
-
-    Transform '' L Foot'' has been deleted
-
-    Transform
-    '' L Calf'' has been deleted
-
-    Transform '' L Thigh'' has been deleted
-
-    Transform
-    '' R Foot'' has been deleted
-
-    Transform '' R Calf'' has been deleted
-
-    Transform
-    '' R Thigh'' has been deleted
-
-    Transform '' L Finger02'' has been deleted
-
-    Transform
-    '' L Finger01'' has been deleted
-
-    Transform '' L Finger0'' has been deleted
-
-    Transform
-    '' L Finger12'' has been deleted
-
-    Transform '' L Finger11'' has been deleted
-
-    Transform
-    '' L Finger1'' has been deleted
-
-    Transform '' L Finger22'' has been deleted
-
-    Transform
-    '' L Finger21'' has been deleted
-
-    Transform '' L Finger2'' has been deleted
-
-    Transform
-    '' L Hand'' has been deleted
-
-    Transform '' L Forearm'' has been deleted
-
-    Transform
-    '' L UpperArm'' has been deleted
-
-    Transform '' L Clavicle'' has been deleted
-
-    Transform
-    '' Head'' has been deleted
-
-    Transform '' Neck'' has been deleted
-
-    Transform
-    '' R Finger02'' has been deleted
-
-    Transform '' R Finger01'' has been deleted
-
-    Transform
-    '' R Finger0'' has been deleted
-
-    Transform '' R Finger12'' has been deleted
-
-    Transform
-    '' R Finger11'' has been deleted
-
-    Transform '' R Finger1'' has been deleted
-
-    Transform
-    '' R Finger22'' has been deleted
-
-    Transform '' R Finger21'' has been deleted
-
-    Transform
-    '' R Finger2'' has been deleted
-
-    Transform '' R Hand'' has been deleted
-
-    Transform
-    '' R Forearm'' has been deleted
-
-    Transform '' R UpperArm'' has been deleted
-
-    Transform
-    '' R Clavicle'' has been deleted
-
-    Transform '' Spine2'' has been deleted
-
-    Transform
-    '' Spine1'' has been deleted
-
-    Transform '' Spine'' has been deleted
-
-    Transform
-    '' Pelvis'' has been deleted
-
-    Transform ''CG'' has been deleted'
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -87246,8 +86955,8 @@ MonoBehaviour:
   PivotPosDir: 0
   showStates: 1
   ModeShowEvents: 1
-  Editor_Tabs1: 2
-  Editor_Tabs2: 4
+  Editor_Tabs1: 4
+  Editor_Tabs2: 0
   Editor_EventTabs: 1
   SelectedMode: 3
   SelectedState: 4

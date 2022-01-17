@@ -1657,7 +1657,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55ab18b2853af874d9e29a0851427b77, type: 3}
   m_Name: 
@@ -12949,12 +12949,12 @@ AnimatorStateMachine:
   - {fileID: -8378104910647559346}
   - {fileID: -2563633934699085204}
   m_StateMachineTransitions:
-  - first: {fileID: 1107587008717819978}
-    second:
-    - {fileID: 1109875883353409524}
   - first: {fileID: 1107575968228998442}
     second:
     - {fileID: 1109757864082561892}
+  - first: {fileID: 1107587008717819978}
+    second:
+    - {fileID: 1109875883353409524}
   - first: {fileID: 1107095588754503736}
     second:
     - {fileID: 1109517166829480238}
@@ -17402,7 +17402,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55ab18b2853af874d9e29a0851427b77, type: 3}
   m_Name: 
