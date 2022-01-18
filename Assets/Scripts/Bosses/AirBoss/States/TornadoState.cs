@@ -40,11 +40,17 @@ public class TornadoState : AirBossState
         context.transform.Rotate(Vector3.up, rotateSpeed);
         foreach (GameObject bomb in bombs)
         {
-            if (throwAtPlayer == false)
+            if (throwAtPlayer == false && bomb != null)
             {
             direction = tornadoCenter.position - bomb.transform.position;
             }
             bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForce);
+            
+            if(bomb.GetComponent<Health>().currentHp <= 0)
+            {
+                
+                
+            }                                                                                                                                                                                                      
         }
     }
 
@@ -71,9 +77,9 @@ public class TornadoState : AirBossState
     {
         foreach (GameObject bomb in bombs)
         {
+            if( bomb != null)
             direction = bossAI.playerModel.position - bomb.transform.position;
-            bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForcePlayer);
-            Debug.Log("bombie");
+            bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForcePlayer);            
             yield return new WaitForSecondsRealtime(spawnTime);
         }
         throwAtPlayer = false;

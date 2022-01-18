@@ -49,6 +49,8 @@ public class BossDefendingFireBallState : FireBossState
         context.transform.Rotate(Vector3.up, 2);
     }
 
+   
+
     IEnumerator AnounceFireballs()
     {
         spawningPositions = new Vector3[fireballAmount];//new Vector3[(int)bossAI.amountOFireballs];

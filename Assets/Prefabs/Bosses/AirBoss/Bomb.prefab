@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7590802107139182129}
   - component: {fileID: 8182996786376581104}
   - component: {fileID: 2888395760206727394}
+  - component: {fileID: 977471395198774921}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Enemy
@@ -144,3 +145,15 @@ MonoBehaviour:
   maxHp: 5
   currentHp: 0
   damageTaken: 0
+--- !u!114 &977471395198774921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743774650559784787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7a0aa4fa246e774cb8763874e9b162c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
