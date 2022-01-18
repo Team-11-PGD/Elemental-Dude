@@ -18,6 +18,7 @@ public class VulnerableState : AirBossState
 
     public override void Enter(int previousStateId)
     {
+        bossAI.move = false;
         healthPickups = new List<GameObject>();
         for (int i = 0; i < healthPickupAmount; i++)
         {
@@ -42,5 +43,6 @@ public class VulnerableState : AirBossState
         {
             if (healthPickups[i] != null) Destroy(healthPickups[i]);
         }
+        bossAI.move = true;
     }
 }

@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 5491870992242177098}
   - component: {fileID: 5497374594853134816}
   - component: {fileID: 5658883314527281962}
-  - component: {fileID: 574019211380734497}
   m_Layer: 0
   m_Name: SandSwirlsEffect
   m_TagString: Untagged
@@ -4818,18 +4817,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &574019211380734497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5659874526905601942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2b695943420b543b72f1c67a9ed2e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5659874528034763308
 GameObject:
   m_ObjectHideFlags: 0

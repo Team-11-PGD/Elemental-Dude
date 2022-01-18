@@ -5071,9 +5071,13 @@ MonoBehaviour:
   animator: {fileID: 0}
   animal: {fileID: 0}
   health: {fileID: 7004715947265456704}
-  startState: 0
+  startState: 2
   nextStatePercentage: 0.5
   nextStateDelay: 1000
+  dashArea: {fileID: 0}
+  damage: 15
+  attackRange: 3
+  dashSpeed: 30
 --- !u!114 &7004715947265456735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5086,11 +5090,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6d11e501f18c541a5ebe939484b355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
-  attackRange: 1
-  totalDashes: 5
-  dashArea: {fileID: 0}
-  damage: 15
 --- !u!114 &4568714983940714406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5139,11 +5138,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 036c9b2099164834db65c3d348a1d8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombSpawnArea: {fileID: 0}
   tornadoPrefab: {fileID: 0}
-  testCube: {fileID: 0}
+  bombPrefab: {fileID: 0}
   tornadoCenter: {fileID: 0}
   tornadoTime: 10
+  spawnTime: 2
+  bombAmount: 5
   pullForce: 500
+  pullForcePlayer: 0
+  rotateSpeed: 500
+  damage: 1
 --- !u!114 &7568265492181491691
 MonoBehaviour:
   m_ObjectHideFlags: 0
