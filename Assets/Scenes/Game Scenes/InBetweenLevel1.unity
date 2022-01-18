@@ -12551,7 +12551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 377335759174711301, guid: 6628bfdb67bdcc04a9568aa8da2b8506, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6454346169454830127, guid: 6628bfdb67bdcc04a9568aa8da2b8506, type: 3}
       propertyPath: mainCamera
@@ -47247,6 +47247,10 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 452401175}
+    - target: {fileID: 88415340578464870, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 145338339065342345, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -47357,6 +47361,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3091149646766953811, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151602971523530221, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7512631908520902111, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
