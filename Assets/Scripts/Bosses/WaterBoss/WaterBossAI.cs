@@ -31,7 +31,6 @@ public class WaterBossAI : BossAI
     public enum StateOptions
     {
         WaterTeleport,
-        MoveToPlayer,
         WaterAttackSlam,
         WaterAttackWave,
         WaterAttackBubble,
@@ -104,7 +103,7 @@ public class WaterBossAI : BossAI
         {
             controller.start2 = true;
             GetComponent<WaterBossMoveState>().teleportToPlayer = false;
-            TransitionTo(StateOptions.MoveToPlayer);
+            TransitionTo(StateOptions.WaterTeleport);
             stage2 = false;
             return true;
         }
