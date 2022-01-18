@@ -14534,7 +14534,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   spawnBulletPos: {fileID: 7797368175994593621}
-  bulletPrefab: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
+  bulletPrefab: {fileID: 5845613157251687612, guid: fd8ef299978c67046aeaa933d54affbb, type: 3}
   curBulletAmount: 0
   maxBullets: 30
   maxBulletSpread: 0.02
@@ -14650,7 +14650,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   spawnBulletPos: {fileID: 7797368175873208660}
-  bulletPrefab: {fileID: 8600321062039574617, guid: 00d2d262bfb718a4887e28c4058a95bd, type: 3}
+  bulletPrefab: {fileID: 5845613157251687612, guid: fd8ef299978c67046aeaa933d54affbb, type: 3}
   curBulletAmount: 0
   maxBullets: 1
   maxBulletSpread: 0.02
@@ -14767,7 +14767,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   spawnBulletPos: {fileID: 7797368175459595501}
-  bulletPrefab: {fileID: 8600321062039574617, guid: b393fb1618d48a74591c0313bd6ae983, type: 3}
+  bulletPrefab: {fileID: 5845613157251687612, guid: fd8ef299978c67046aeaa933d54affbb, type: 3}
   curBulletAmount: 0
   maxBullets: 1
   maxBulletSpread: 0.02
