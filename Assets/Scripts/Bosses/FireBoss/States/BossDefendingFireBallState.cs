@@ -58,7 +58,10 @@ public class BossDefendingFireBallState : FireBossState
             }
 
             GameObject instance = Instantiate(fireball, spawningPositions[i], Quaternion.Euler(-90, 0, 0));
-            instance.GetComponentInChildren<PlayerDamagingParticle>().damage = damage;
+            PlayerDamagingParticle playerDamagingParticle = instance.GetComponentInChildren<PlayerDamagingParticle>();
+            playerDamagingParticle.damage = damage;
+            playerDamagingParticle.playerHealth = bossAI.playerHealth;
+            playerDamagingParticle.GetComponent<ParticleSystem>().trigger.AddCollider(bossAI.playerModel.GetComponent<Collider>());
         }
 
         yield return new WaitForSecondsRealtime(spawningTime);

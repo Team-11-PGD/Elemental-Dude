@@ -16927,15 +16927,13 @@ MonoBehaviour:
   sizeFireball: 1
   percentageOfRoomFilled: 0.1
   spawnArea: {fileID: 0}
-  shockWaveSize: 13
   groundLayer:
     serializedVersion: 2
     m_Bits: 9
-  shockWaveIndicator: {fileID: 2477050797949518447, guid: fa491447c845ab1429e1543d9e3d4eb3, type: 3}
-  fireball: {fileID: 4245124032347512106, guid: ed391c199de8b4049bbb85a0ff70afcc, type: 3}
+  fireball: {fileID: 6468135881437671960, guid: 9a4c00ec440e24d4599c4ba940ae7580, type: 3}
   fireballAmount: 10
   spawningTime: 2
-  damage: 1
+  damage: 15
 --- !u!114 &5067504519082224737
 MonoBehaviour:
   m_ObjectHideFlags: 0
