@@ -32,6 +32,8 @@ public class BossDefendingLavaStreamState : FireBossState
     {
         for (int i = 0; i < instantiateAmount; i++)
         {
+            AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossLavaStreamAttack");
+
             GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, null);
             DamagingParticle damagingParticle = groundbreakInstance.GetComponentInChildren<DamagingParticle>();
             damagingParticle.damage = groundbreakDamage;

@@ -45,11 +45,9 @@ public class MovementScript : MonoBehaviour
         //shift for sprinting
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            //SOUND: (footsteps sprinting)
             magnitude = Mathf.Clamp01(movementDirection.magnitude) * sprintSpeed;
         }else
         {
-            //SOUND: (footsteps)
             magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
         }
         movementDirection.Normalize();
@@ -77,7 +75,6 @@ public class MovementScript : MonoBehaviour
             ySpeed = -0.5f;
             if (Time.time - jumpButtonPressedTime <= jumpGracePeroid && stunDuration <= 0)
             {
-                //SOUND: (Jump)
                 ySpeed = jumpSpeed;
                 jumpButtonPressedTime = null;
                 lastGroundedTime = null;

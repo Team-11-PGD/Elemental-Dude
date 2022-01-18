@@ -98,11 +98,11 @@ public class Weapon : MonoBehaviour
                 Debug.Log("I am an Air element now");
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementAir");
                 break;
-            //case ElementMain.ElementType.Earth:
-            //    elementMain.currentType = ElementMain.ElementType.Earth;
-            //    Debug.Log("I am an Earth element now");
-            //    //SOUND: (eart element)
-            //    break;
+
+                //case ElementMain.ElementType.Earth:
+                //    elementMain.currentType = ElementMain.ElementType.Earth;
+                //    Debug.Log("I am an Earth element now");
+                //    break;
         }
     }
 
@@ -148,22 +148,22 @@ public class Weapon : MonoBehaviour
     }
 
     private void ShootSound()
-	{
-		switch (weaponType)
-		{
-			case WeaponTypes.Rifle:
+    {
+        switch (weaponType)
+        {
+            case WeaponTypes.Rifle:
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RifleShoot");
-				break;
-			case WeaponTypes.Shotgun:
+                break;
+            case WeaponTypes.Shotgun:
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ShotgunShoot");
                 break;
-			case WeaponTypes.RPG:
+            case WeaponTypes.RPG:
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RPGShoot");
                 break;
-			default:
-				break;
-		}
-	}
+            default:
+                break;
+        }
+    }
 
     private void ReloadSound()
     {
@@ -184,12 +184,13 @@ public class Weapon : MonoBehaviour
     }
 
     public virtual void Reload()
-	{
+    {
         //SOUND: Check (reload)
         ReloadSound();
-    {
-        isReloading = true;
-        canFire = false;
-        reloadEndTime = Time.time + reloadTime;
+        {
+            isReloading = true;
+            canFire = false;
+            reloadEndTime = Time.time + reloadTime;
+        }
     }
 }

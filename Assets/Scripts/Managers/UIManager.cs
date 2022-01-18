@@ -64,14 +64,14 @@ public class UIManager : MonoBehaviour
     void PlayerDied()
     {
         //SOUND: (Player death)
-        GoToMainMenu();
+        GoToGameOver();
 
     }
 
     void Start()
     {
         if (startWithoutMouseOverride) SetMouseState(false);
-        else SetMouseState(SceneManager.GetActiveScene().name != "InBetweenLevel1");
+        else SetMouseState(SceneManager.GetActiveScene().name != "SoundManager");
 
         SceneManager.activeSceneChanged += SceneChanged;
         FindPauseMenu();
@@ -124,6 +124,14 @@ public class UIManager : MonoBehaviour
         //iScore.UpdateTimeScore();
         SceneManager.LoadScene("MainMenu");
     }
+    
+    public void GoToGameOver()
+    {
+        iScore.UpdateTimeScore();
+        //updates the best play time.
+        //iScore.UpdateTimeScore();
+        SceneManager.LoadScene("GameOver");
+    }
 
     void SceneChanged(Scene oldScene, Scene newScene)
     {
@@ -152,7 +160,7 @@ public class UIManager : MonoBehaviour
 
     void SwitchPause()
     {
-        //SOUND: ( Switch sounds)
+        AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.UISounds, "PauseToggle");
         gameIsPaused = !gameIsPaused;
         SetMouseState(gameIsPaused);
 
@@ -162,7 +170,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && (SceneManager.GetActiveScene().name == "InBetweenLevel1" || SceneManager.GetActiveScene().name == "InBetweenLevel2" || SceneManager.GetActiveScene().name == "InBetweenLevel3"))
+        if (Input.GetKeyDown(KeyCode.Escape) && (SceneManager.GetActiveScene().name == "SoundManager" || SceneManager.GetActiveScene().name == "InBetweenLevel2" || SceneManager.GetActiveScene().name == "InBetweenLevel3"))
         {
             SwitchPause();
         }
@@ -172,13 +180,6 @@ public class UIManager : MonoBehaviour
         if (playerHpBar != null)
         {
             playerHpBar.value = player.currentHp;
-
-
-            if (player.currentHp <= 0)
-            {
-                //GameOver
-                GoToMainMenu();
-            }
         }
         if (enemyHpBar.value <= 0)
         {

@@ -24,14 +24,18 @@ public class BossLavaSlamAttack : FireBossState
     IEnumerator ChargeTime()
     {
         Instantiate(slamPrefab, slamPosition.position, context.transform.rotation, context.transform);
-        //SOUND: (slam)
+        //SOUND: Check(slam)
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossSlamAttack");
+
         yield return new WaitForSecondsRealtime(chargeTime);
-        //SOUND: (bubble bubble lava)
+        //SOUND: Check(bubble bubble lava)
+        
         GameObject lavaInstance = Instantiate(lavaPrefab, slamPosition.position, context.transform.rotation);
         DamagingParticle damagingParticle = lavaInstance.GetComponentInChildren<DamagingParticle>();
         damagingParticle.damage = damage;
         damagingParticle.playerHealth = bossAI.playerHealth;
         damagingParticle.transform.localScale *= lavaSize;
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossLavaAttack");
 
         ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
         Collider playerModel = bossAI.playerModel.GetComponent<Collider>();

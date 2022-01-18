@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
 	public Sound[] AmbianceSounds;
 	public Sound[] MonsterSounds;
 	public Sound[] GunSounds;
+	public Sound[] UISounds;
 
 	private void Awake()
 	{
@@ -39,6 +40,16 @@ public class AudioManager : MonoBehaviour
 		}
 
 		foreach (Sound s in GunSounds)
+		{
+			s.source = gameObject.AddComponent<AudioSource>();
+			s.source.clip = s.clip;
+
+			s.source.volume = s.volume;
+			s.source.pitch = s.pitch;
+			s.source.loop = s.loop;
+		}
+
+		foreach (Sound s in UISounds)
 		{
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
@@ -85,5 +96,16 @@ public class AudioManager : MonoBehaviour
 			s.source.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
 
 		s.source.Play();
+	}
+
+	public void StopSoundFromWorld(Sound[] SoundArray, string name)
+	{
+		Sound s = Array.Find(SoundArray, sound => sound.name == name);
+		if (s == null)
+		{
+			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
+			return;
+		}
+		s.source.Stop();
 	}
 }

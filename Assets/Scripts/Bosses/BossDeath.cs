@@ -17,6 +17,8 @@ public class BossDeath : State
 
     public override void Enter(int previousStateId)
     {
+        AudioManager.instance.StopSoundFromWorld(AudioManager.instance.AmbianceSounds, "BossMusic");
+
         context.GetComponent<Collider>().enabled = false;
         stateId = context.CurrentStateId;
         renderer.enabled = false;
