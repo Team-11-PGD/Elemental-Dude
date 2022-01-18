@@ -24,13 +24,15 @@ public class TornadoState : AirBossState
     float pullForcePlayer;
     [SerializeField]
     float rotateSpeed = 500;
+    [SerializeField]
+    float damage = 1f;
     List<GameObject> bombs = new List<GameObject>();
     Vector3 direction;
     bool throwAtPlayer;
 
     public override void Enter(int previousStateId)
     {
-        StartCoroutine(CreateTornado());
+        StartCoroutine(CreateRocks());
     }
 
     public override void Exit(int nextStateId) { }
@@ -42,19 +44,13 @@ public class TornadoState : AirBossState
         {
             if (throwAtPlayer == false && bomb != null)
             {
-            direction = tornadoCenter.position - bomb.transform.position;
+                direction = tornadoCenter.position - bomb.transform.position;
             }
             bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForce);
-            
-            if(bomb.GetComponent<Health>().currentHp <= 0)
-            {
-                
-                
-            }                                                                                                                                                                                                      
         }
     }
 
-    IEnumerator CreateTornado()
+    IEnumerator CreateRocks()
     {
         Instantiate(tornadoPrefab, tornadoCenter.position, context.transform.rotation);
         for (int i = 0; i < bombAmount; i++)
@@ -64,24 +60,32 @@ public class TornadoState : AirBossState
                       Random.Range(bombSpawnArea.bounds.min.y, bombSpawnArea.bounds.max.y),
                       Random.Range(bombSpawnArea.bounds.min.z, bombSpawnArea.bounds.max.z));
             GameObject bomb = Instantiate(bombPrefab, randomPosition, Quaternion.identity);
+            bomb.GetComponent<Health>().Died += () =>
+            {               
+                bombs.Remove(bomb);
+                Destroy(bomb);
+
+            };
             bombs.Add(bomb);
             yield return new WaitForSecondsRealtime(spawnTime);
         }
         StartCoroutine(ThrowBombs());
         //yield return new WaitForSecondsRealtime(tornadoTime);
-        //context.TransitionTo(AirBossAI.StateOptions.Dash);
-
     }
 
     IEnumerator ThrowBombs()
     {
-        foreach (GameObject bomb in bombs)
+        for (int i = bombs.Count - 1; i >= 0; i--)
         {
-            if( bomb != null)
-            direction = bossAI.playerModel.position - bomb.transform.position;
-            bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForcePlayer);            
+            GameObject bomb = bombs[i];
+            if (bomb != null)
+            {
+                direction = bossAI.playerModel.position - bomb.transform.position;
+                bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForcePlayer);
+            }
             yield return new WaitForSecondsRealtime(spawnTime);
         }
         throwAtPlayer = false;
+        context.TransitionTo(AirBossAI.StateOptions.Dash);
     }
 }

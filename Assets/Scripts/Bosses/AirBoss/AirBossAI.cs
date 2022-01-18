@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(DashState), typeof(GroundSpikesState), typeof(TornadoState))]
-[RequireComponent(typeof(VulnerableState) ,typeof(SmallTornadoState), typeof(CeilingSpikesState))]
+[RequireComponent(typeof(VulnerableState), typeof(SmallTornadoState), typeof(CeilingSpikesState))]
 [RequireComponent(typeof(BossDeath))]
 public class AirBossAI : BossAI
 {
@@ -14,6 +14,16 @@ public class AirBossAI : BossAI
     float nextStatePercentage = 0.5f;
     [SerializeField]
     int nextStateDelay = 1000;
+    [SerializeField]
+    Collider dashArea;
+    [SerializeField]
+    float damage = 1f;
+    [SerializeField]
+    float attackRange = 1;
+    public float dashSpeed = 1;
+    Vector3 dashStartPosition;
+    Vector3 dashDirection;
+    Vector3 dashPosition;
 
     public enum StateOptions
     {
@@ -34,8 +44,8 @@ public class AirBossAI : BossAI
         }
     }
 
-    private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes , StateOptions.Tornado };
-    private static readonly Enum[] secondStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes , StateOptions.Tornado, StateOptions.Vulnerable, StateOptions.SmallTornados, StateOptions.CeilingSpikes };
+    private static readonly Enum[] firstStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes, StateOptions.Tornado };
+    private static readonly Enum[] secondStateOptions = { StateOptions.Dash, StateOptions.GroundSpikes, StateOptions.Tornado, StateOptions.Vulnerable, StateOptions.SmallTornados, StateOptions.CeilingSpikes };
     private int currentState = 1;
     private DashState dash;
     private SpawnSpikesState groundSpikes;
@@ -65,6 +75,46 @@ public class AirBossAI : BossAI
         AddState(StateOptions.Death, gameObject.GetComponent<BossDeath>());
 
         StateMachineSetup(startState);
+        SetDashPosition();
+    }
+
+
+    private void Update()
+    {
+        transform.position += dashDirection * Time.deltaTime * dashSpeed;
+
+        if (Vector3.Dot(transform.position - dashPosition, dashStartPosition - dashPosition) < 0)
+        {
+            Attack();
+        }
+    }
+
+    void Attack()
+    {
+        //TODO: Animation
+        if (Vector3.Distance(playerModel.position, transform.position) <= attackRange)
+        {
+            playerHealth.Hit(damage);
+            //SOUND: hit player
+        }
+        SetDashPosition();
+    }
+
+    public void SetDashPosition(Vector3? newPosition = null)
+    {
+        if (!newPosition.HasValue)
+        {
+            dashPosition = new Vector3(
+                 UnityEngine.Random.Range(dashArea.bounds.min.x, dashArea.bounds.max.x),
+                 UnityEngine.Random.Range(dashArea.bounds.min.y, dashArea.bounds.max.y),
+                 UnityEngine.Random.Range(dashArea.bounds.min.z, dashArea.bounds.max.z));
+        }
+        else
+        {
+            dashPosition = newPosition.Value;
+        }
+        dashStartPosition = transform.position;
+        dashDirection = (dashPosition - transform.position).normalized;
     }
 
     protected override void Hitted()
@@ -86,7 +136,7 @@ public class AirBossAI : BossAI
         groundSpikes.spikePercentage *= 1.5f;
         ceilingSpikes.spikePercentage *= 1.5f;
         nextStateDelay = (int)(nextStateDelay * 0.5f);
-        dash.speed *= 1.5f;
+        dashSpeed *= 1.5f;
         TransitionTo(StateOptions.SmallTornados);
     }
 }
