@@ -63,6 +63,8 @@ public class FireBossAI : BossAI
         AddState(StateOptions.Death, GetComponent<BossDeath>());                             // 6
 
         StateMachineSetup(startState);
+
+        transform.localScale *= 3.5f;
     }
 
     public override void NextState()

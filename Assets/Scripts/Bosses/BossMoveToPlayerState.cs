@@ -16,8 +16,6 @@ public class BossMoveToPlayerState : State
 
         bossAI.animator.speed = 1.25f;
 
-        if(transform.localScale.x != 3.5f) transform.localScale *= 3.5f;
-
         bossAI.bossTargeting.SetTarget(bossAI.playerModel);
     }
 

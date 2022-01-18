@@ -13660,7 +13660,7 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 9
     Variable: {fileID: 0}
   height: 1.48
   center: {x: 0, y: 0, z: 0}
@@ -16911,7 +16911,7 @@ MonoBehaviour:
   flamePrefab: {fileID: 1634767862067424, guid: 0d7e715fcdadd9e48b8e6b18b99af29c, type: 3}
   smokeTime: 0.5
   attackTime: 2
-  damage: 0.01
+  damage: 0.5
 --- !u!114 &5067504519082224738
 MonoBehaviour:
   m_ObjectHideFlags: 0
