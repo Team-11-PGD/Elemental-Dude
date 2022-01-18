@@ -138,6 +138,9 @@ public class FireBossAI : BossAI
     {
         if (health.HpPercentage <= nextStatePercentage && currentStage < 4)
         {
+            bossTargeting.ClearTarget();
+            bossTargeting.HasArrived = true;
+
             nextStatePercentage -= nextPercentageStep;
             if (nextStatePercentage < 0) nextStatePercentage = 0;
             TransitionTo(StateOptions.MoveToCenter);
