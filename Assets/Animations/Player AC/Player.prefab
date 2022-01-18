@@ -12450,7 +12450,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: fd6ccc80ba5083142845fdc8724ed827, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14539,6 +14539,9 @@ MonoBehaviour:
   maxBullets: 30
   maxBulletSpread: 0.02
   bulletSpeed: 40
+  weaponDamage: 1
+  extraDamage: 0
+  extraSpeed: 0
   reloadTime: 3
   fireInterval: 0.4
   currentTarget: {fileID: 0}
@@ -14652,6 +14655,9 @@ MonoBehaviour:
   maxBullets: 1
   maxBulletSpread: 0.02
   bulletSpeed: 40
+  weaponDamage: 1
+  extraDamage: 0
+  extraSpeed: 0
   reloadTime: 3
   fireInterval: 0
   currentTarget: {fileID: 0}
@@ -14766,6 +14772,9 @@ MonoBehaviour:
   maxBullets: 1
   maxBulletSpread: 0.02
   bulletSpeed: 40
+  weaponDamage: 1
+  extraDamage: 0
+  extraSpeed: 0
   reloadTime: 1
   fireInterval: 1
   currentTarget: {fileID: 0}

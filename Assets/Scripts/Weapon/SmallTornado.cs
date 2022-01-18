@@ -5,7 +5,7 @@ using static UnityEngine.ParticleSystem;
 
 public class SmallTornado : MonoBehaviour
 {
-    public MovementScript player;
+    public Rigidbody player;
     public float normalGravityMultiplier = 1;
 
     [SerializeField]
@@ -37,7 +37,7 @@ public class SmallTornado : MonoBehaviour
         }
         else
         {
-            player.gravityMultiplier = normalGravityMultiplier;
+            //player.gravityMultiplier = normalGravityMultiplier;
         }
     }
 
@@ -49,9 +49,9 @@ public class SmallTornado : MonoBehaviour
         if (enteredParticles.Count > 0)
         {
             Debug.Log("enter");
-            player.gravityMultiplier = 0;
+            //player.gravityMultiplier = 0;
             timer = maxTimer;
-            player.ySpeed = 0;
+            //player.ySpeed = 0;
         }
     }
 }
