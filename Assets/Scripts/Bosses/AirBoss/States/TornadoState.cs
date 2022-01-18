@@ -15,12 +15,18 @@ public class TornadoState : AirBossState
     [SerializeField]
     float tornadoTime = 30;
     [SerializeField]
+    float spawnTime = 2;
+    [SerializeField]
     int bombAmount = 5;
     [SerializeField]
-    float pullForce = 500;
+    float pullForce;
+    [SerializeField]
+    float pullForcePlayer;
     [SerializeField]
     float rotateSpeed = 500;
     List<GameObject> bombs = new List<GameObject>();
+    Vector3 direction;
+    bool throwAtPlayer;
 
     public override void Enter(int previousStateId)
     {
@@ -34,8 +40,11 @@ public class TornadoState : AirBossState
         context.transform.Rotate(Vector3.up, rotateSpeed);
         foreach (GameObject bomb in bombs)
         {
-        Vector3 bombPullDirection = tornadoCenter.position - bomb.transform.position;
-        bomb.GetComponent<Rigidbody>().AddForce(bombPullDirection.normalized * pullForce * Time.deltaTime);
+            if (throwAtPlayer == false)
+            {
+            direction = tornadoCenter.position - bomb.transform.position;
+            }
+            bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForce);
         }
     }
 
@@ -50,9 +59,23 @@ public class TornadoState : AirBossState
                       Random.Range(bombSpawnArea.bounds.min.z, bombSpawnArea.bounds.max.z));
             GameObject bomb = Instantiate(bombPrefab, randomPosition, Quaternion.identity);
             bombs.Add(bomb);
+            yield return new WaitForSecondsRealtime(spawnTime);
         }
-        yield return new WaitForSecondsRealtime(tornadoTime);
-        context.TransitionTo(AirBossAI.StateOptions.Dash);
+        StartCoroutine(ThrowBombs());
+        //yield return new WaitForSecondsRealtime(tornadoTime);
+        //context.TransitionTo(AirBossAI.StateOptions.Dash);
 
+    }
+
+    IEnumerator ThrowBombs()
+    {
+        foreach (GameObject bomb in bombs)
+        {
+            direction = bossAI.playerModel.position - bomb.transform.position;
+            bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForcePlayer);
+            Debug.Log("bombie");
+            yield return new WaitForSecondsRealtime(spawnTime);
+        }
+        throwAtPlayer = false;
     }
 }
