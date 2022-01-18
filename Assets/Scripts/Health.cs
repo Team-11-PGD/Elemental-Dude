@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 [RequireComponent(typeof(ElementMain))]
@@ -19,8 +20,9 @@ public class Health : MonoBehaviour
     public event Action Died;
     public event Action Healed;
 
-    public float HpPercentage { get { return currentHp / maxHp; } }
+    public bool hit;
 
+    public float HpPercentage { get { return currentHp / maxHp; } }
     void Start()
     {
         currentHp = maxHp;
@@ -40,6 +42,7 @@ public class Health : MonoBehaviour
             Debug.Log("piew");
             ShowDmgText();
         }
+        hit = true;
         damageTaken = damageAmt;
         currentHp -= damageAmt;
         Debug.Log($"{gameObject.name} has {currentHp} hp and had {currentHp + damageAmt}");

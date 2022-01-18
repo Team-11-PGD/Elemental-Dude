@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -20,6 +22,12 @@ public class UIManager : MonoBehaviour
     bool startWithoutMouseOverride = false;
     [SerializeField]
     UIScore iScore;
+    //Damage Overlay
+    public Volume dmgOverlay;
+    Vignette damageOverlay;
+    public float overlayTime = 0.5f;
+    Color alphaColor;
+    public float overLaydecayRate = 0.01f;
     [SerializeField]
     GameObject enemyBarSee;
 
@@ -70,6 +78,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        dmgOverlay.profile.TryGet(out damageOverlay);
         if (startWithoutMouseOverride) SetMouseState(false);
         else SetMouseState(SceneManager.GetActiveScene().name != "InBetweenLevel1");
 
@@ -166,14 +175,24 @@ public class UIManager : MonoBehaviour
         {
             SwitchPause();
         }
-
+        //Damage Overlay
+        if (player.hit)
+        {
+            if(damageOverlay.intensity.value <= 0.2f)
+            {
+                damageOverlay.intensity.value = 0.5f;
+                StartCoroutine(dmgOverlayOff());
+            }
+        }
+        if (!player.hit)
+        {
+            damageOverlay.intensity.value -= overLaydecayRate;
+        }
         //Hp Bar functionality
         // TODO: put this in its own script on the slider
         if (playerHpBar != null)
         {
             playerHpBar.value = player.currentHp;
-
-
             if (player.currentHp <= 0)
             {
                 //GameOver
@@ -212,4 +231,11 @@ public class UIManager : MonoBehaviour
         enemyHpBar.value = AirHealth.currentHp;
     }
 }
+    }
+
+    IEnumerator dmgOverlayOff()
+    {
+        yield return new WaitForSecondsRealtime(overlayTime);
+        player.hit = false;
+    }
 

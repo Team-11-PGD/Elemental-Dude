@@ -27,14 +27,18 @@ public class MovementScript : MonoBehaviour
 
     public float stunDuration;
 
+    [SerializeField]
+    private Collider playerCollider;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        playerCollider = GetComponent<CapsuleCollider>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float veritcalInput = Input.GetAxisRaw("Vertical");
@@ -63,18 +67,15 @@ public class MovementScript : MonoBehaviour
         ySpeed += gravityMultiplier * Physics.gravity.y * Time.deltaTime;
         if (controller.isGrounded)
         {
-            
             lastGroundedTime = Time.time;
         }
         if (Input.GetButtonDown("Jump"))
         {
-            
             jumpButtonPressedTime = Time.time;
         }
-
         if (Time.time - lastGroundedTime <= jumpGracePeroid) 
         {
-            ySpeed = -0.5f;
+            ySpeed = -2f;
             if (Time.time - jumpButtonPressedTime <= jumpGracePeroid && stunDuration <= 0)
             {
                 //SOUND: (Jump)
