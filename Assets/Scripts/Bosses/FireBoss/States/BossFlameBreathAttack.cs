@@ -50,7 +50,7 @@ public class BossFlameBreathAttack : FireBossState
 
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
 
-        particleSystem = Instantiate(flamePrefab, FlamePosition.transform.position, context.transform.rotation, context.transform);
+        particleSystem = Instantiate(flamePrefab, FlamePosition.transform.position, FlamePosition.transform.rotation, context.transform);
         particleSystem.GetComponent<PlayerDamagingParticle>().playerHealth = bossAI.playerHealth;
         particleSystem.GetComponent<PlayerDamagingParticle>().damage = this.damage;
         particleSystem.transform.localScale *= size;
