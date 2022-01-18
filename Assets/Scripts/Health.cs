@@ -6,6 +6,8 @@ using System;
 [RequireComponent(typeof(ElementMain))]
 public class Health : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject dmgText;
     public float maxHp;
     // [HideInInspector]
     public float currentHp;
@@ -31,6 +33,10 @@ public class Health : MonoBehaviour
 
     public void Hit(float damageAmt)
     {
+        if(dmgText != null)
+        {
+            ShowDmgText();
+        }
         damageTaken = damageAmt;
         currentHp -= damageAmt;
         Debug.Log($"{gameObject.name} has {currentHp} hp and had {currentHp + damageAmt}");
@@ -44,5 +50,10 @@ public class Health : MonoBehaviour
             }
             currentHp = 0;
         }
+    }
+
+    void ShowDmgText()
+    {
+        Instantiate(dmgText, transform.position, Quaternion.identity, transform);
     }
 }
