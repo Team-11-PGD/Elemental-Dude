@@ -14,8 +14,6 @@ TagManager:
   - Boss
   - Ground
   - UnhittableShield
-  - Rifle
-  - Shotgun
   - Animal
   - Water
   layers:
@@ -39,13 +37,13 @@ TagManager:
   - 
   - 
   - 
+  - 
+  - 
+  - 
   - Animal
   - 
   - 
   - Enemy
-  - 
-  - 
-  - 
   - 
   - 
   - 

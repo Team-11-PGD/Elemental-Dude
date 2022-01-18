@@ -5,7 +5,7 @@ using static UnityEngine.ParticleSystem;
 
 public class SmallTornado : MonoBehaviour
 {
-    public MovementScript player;
+    public Rigidbody player;
     public float normalGravityMultiplier = 1;
 
     [SerializeField]
@@ -18,9 +18,6 @@ public class SmallTornado : MonoBehaviour
     [SerializeField]
     ParticleSystem particleSystem;
 
-    [SerializeField]
-    float timer, maxTimer = 2;
-
     private void Start()
     {
         particleSystem.trigger.AddCollider(player.GetComponent<Collider>());
@@ -28,30 +25,18 @@ public class SmallTornado : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.up, Random.Range(minRotation, maxRotation) * (Random.Range(0f, 1f) > 0.5f ? 1 : -1));
-        transform.position += transform.forward * speed * Time.deltaTime;
-        if (timer > 0)
-        {
-            player.GetComponent<CharacterController>().Move(Vector3.up * force);
-            timer -= Time.deltaTime;
-        }
-        else
-        {
-            player.gravityMultiplier = normalGravityMultiplier;
-        }
+        //transform.Rotate(Vector3.up, Random.Range(minRotation, maxRotation) * (Random.Range(0f, 1f) > 0.5f ? 1 : -1));
+        //transform.position += transform.up * speed * Time.deltaTime;
     }
 
     void OnParticleTrigger()
     {
-        List<Particle> enteredParticles = new List<Particle>();
-        particleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enteredParticles);
+        List<Particle> insideParticles = new List<Particle>();
+        particleSystem.GetTriggerParticles(ParticleSystemTriggerEventType.Inside, insideParticles);
 
-        if (enteredParticles.Count > 0)
+        if (insideParticles.Count > 0)
         {
-            Debug.Log("enter");
-            player.gravityMultiplier = 0;
-            timer = maxTimer;
-            player.ySpeed = 0;
+            player.AddForce(Vector3.up * force, ForceMode.VelocityChange);
         }
     }
 }

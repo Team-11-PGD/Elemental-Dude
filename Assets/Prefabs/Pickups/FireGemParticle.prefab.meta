@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/Pickups/FireGemParticle.prefab.meta
 guid: fd583b82ef03fc241b812d43cdfa6185
+=======
+guid: 9a4c00ec440e24d4599c4ba940ae7580
+>>>>>>> origin/sprint3/Particles-update:Assets/Prefabs/Bosses/FireBoss/Defence/OrbitalBeamRed.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

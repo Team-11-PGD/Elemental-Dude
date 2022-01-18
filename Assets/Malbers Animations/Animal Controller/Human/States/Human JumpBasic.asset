@@ -94,7 +94,7 @@ MonoBehaviour:
   WaitForAnimation: 1
   Jumps:
     UseConstant: 1
-    ConstantValue: 3
+    ConstantValue: 1
     Variable: {fileID: 0}
   JumpPressed:
     UseConstant: 1
@@ -120,6 +120,7 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 8
     Variable: {fileID: 11400000, guid: 8ee0bf1f77aecf64c83fe6307542d514, type: 2}
+  JumpInterrupt: 0.9
   ResetJump:
   - {fileID: 11400000, guid: 975403cc10f8cec46a3caa6ed4e3d6c5, type: 2}
   profiles:

@@ -645,7 +645,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!136 &350244466165322547
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2362,7 +2362,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
   m_CanStrafe:
     UseConstant: 1
-    ConstantValue: 0
+    ConstantValue: 1
     Variable: {fileID: 0}
   m_StrafeNormalize:
     UseConstant: 1
@@ -12450,7 +12450,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: fd6ccc80ba5083142845fdc8724ed827, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14534,11 +14534,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   spawnBulletPos: {fileID: 7797368175994593621}
-  bulletPrefab: {fileID: 8600321062039574617, guid: dcb07b60dfddd6f42b5664fb32a0d595, type: 3}
+  bulletPrefab: {fileID: 5845613157251687612, guid: fd8ef299978c67046aeaa933d54affbb, type: 3}
   curBulletAmount: 0
   maxBullets: 30
   maxBulletSpread: 0.02
-  bulletSpeed: 40
+  bulletSpeed: 80
+  weaponDamage: 1
+  extraDamage: 0
+  extraSpeed: 0
   reloadTime: 3
   fireInterval: 0.4
   currentTarget: {fileID: 0}
@@ -14647,11 +14650,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   spawnBulletPos: {fileID: 7797368175873208660}
-  bulletPrefab: {fileID: 8600321062039574617, guid: 00d2d262bfb718a4887e28c4058a95bd, type: 3}
+  bulletPrefab: {fileID: 5845613157251687612, guid: 7208629aa735cf747ac6e4a1ae8f2071, type: 3}
   curBulletAmount: 0
   maxBullets: 1
   maxBulletSpread: 0.02
   bulletSpeed: 40
+  weaponDamage: 1
+  extraDamage: 0
+  extraSpeed: 0
   reloadTime: 3
   fireInterval: 0
   currentTarget: {fileID: 0}
@@ -14761,11 +14767,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   spawnBulletPos: {fileID: 7797368175459595501}
-  bulletPrefab: {fileID: 8600321062039574617, guid: b393fb1618d48a74591c0313bd6ae983, type: 3}
+  bulletPrefab: {fileID: 5845613157251687612, guid: fd8ef299978c67046aeaa933d54affbb, type: 3}
   curBulletAmount: 0
   maxBullets: 1
-  maxBulletSpread: 0.02
-  bulletSpeed: 40
+  maxBulletSpread: 0.2
+  bulletSpeed: 80
+  weaponDamage: 1
+  extraDamage: 0
+  extraSpeed: 0
   reloadTime: 1
   fireInterval: 1
   currentTarget: {fileID: 0}
