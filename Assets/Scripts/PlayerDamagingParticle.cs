@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
-public class DamagingParticle : MonoBehaviour
+public class PlayerDamagingParticle : MonoBehaviour
 {
     public float damage;
     public Health playerHealth;

@@ -12,17 +12,9 @@ public class EnemyMeleeAttackState : EnemyState
     [SerializeField]
     float damage = 1f;
 
-    [Header("Tmp attack animation")]
-    [SerializeField]
-    Renderer renderer;
-    [SerializeField]
-    float animationTime = 0.5f;
-    Color startColor;
-
     public override void Enter(int previousStateId)
     {
         base.Enter(previousStateId);
-        startColor = renderer.material.color;
         StartCoroutine(Attack());
     }
 
@@ -32,23 +24,15 @@ public class EnemyMeleeAttackState : EnemyState
         // SOUND: (Atack)
         Debug.Log("start attack animation");
 
-        yield return new WaitForSecondsRealtime(attackChargeTime);
         if (Vector3.Distance(enemyAI.playerModel.position, transform.position) <= meleeDistance)
         {
             enemyAI.playerHealth.Hit(damage);
-            StartCoroutine(TMPAttackAnimation());
+            yield return new WaitForSecondsRealtime(attackChargeTime);
             StartCoroutine(Attack());
         }
         else
         {
             context.TransitionTo(EnemyAI.StateOptions.MoveToPlayer);
         }
-    }
-
-    IEnumerator TMPAttackAnimation()
-    {
-        renderer.material.color = Color.white;
-        yield return new WaitForSecondsRealtime(animationTime);
-        renderer.material.color = startColor;
     }
 }

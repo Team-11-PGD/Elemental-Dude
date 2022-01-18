@@ -36,7 +36,7 @@ public class ElementColors : MonoBehaviour
         ElementMain.ElementType.Water => instance.WaterMaterial,
         ElementMain.ElementType.Fire => instance.FireMaterial,
         ElementMain.ElementType.Air => instance.AirMaterial,
-        ElementMain.ElementType.Earth => instance.EarthMaterial,
+        //ElementMain.ElementType.Earth => instance.EarthMaterial,
         _ => throw new System.NotImplementedException()
     };
 }

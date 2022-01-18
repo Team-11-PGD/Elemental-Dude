@@ -17,6 +17,8 @@ public class Weapon : MonoBehaviour
     public int maxBullets;
     public float maxBulletSpread = 0.02f;
     public float bulletSpeed = 40;
+    public float weaponDamage = 1;
+    public float extraDamage = 0, extraSpeed = 0;
 
     [Header("Timers")]
     public float reloadTime;
@@ -102,11 +104,11 @@ public class Weapon : MonoBehaviour
                 //SOUND: (air element)
                 break;
 
-            case ElementMain.ElementType.Earth:
-                elementMain.currentType = ElementMain.ElementType.Earth;
-                Debug.Log("I am an Earth element now");
-                //SOUND: (eart element)
-                break;
+            //case ElementMain.ElementType.Earth:
+            //    elementMain.currentType = ElementMain.ElementType.Earth;
+            //    Debug.Log("I am an Earth element now");
+            //    //SOUND: (eart element)
+            //    break;
         }
     }
 
@@ -146,15 +148,19 @@ public class Weapon : MonoBehaviour
             for (int i = 0; i < 6; i++)
             {
                 bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
-                bullet.GetComponent<BulletProjectile>().SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
-                bullet.GetComponent<BulletProjectile>().SetElementType(elementMain.currentType);
+                BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
+                bulletProjectile.SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
+                bulletProjectile.SetElementType(elementMain.currentType);
+                bulletProjectile.SetDamage(weaponDamage + extraDamage);
             }
         }
         else
         {
             bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
-            bullet.GetComponent<BulletProjectile>().SetVelocity(bullet.forward * bulletSpeed);
-            bullet.GetComponent<BulletProjectile>().SetElementType(elementMain.currentType);
+            BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
+            bulletProjectile.SetVelocity(bullet.forward * bulletSpeed);
+            bulletProjectile.SetElementType(elementMain.currentType);
+            bulletProjectile.SetDamage(weaponDamage + extraDamage);
         }
     }
 
@@ -162,6 +168,6 @@ public class Weapon : MonoBehaviour
     {
         isReloading = true;
         canFire = false;
-        reloadEndTime = Time.time + reloadTime;
+        reloadEndTime = Time.time + reloadTime - extraSpeed;
     }
 }

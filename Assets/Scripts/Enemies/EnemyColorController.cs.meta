@@ -3,7 +3,13 @@ guid: d5c1970ac41baf649ae5540fc8b155d5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - elementMain: {instanceID: 0}
+  - meshFilter: {instanceID: 0}
+  - water: {fileID: -4730965337007391850, guid: 5e02d06f6f56f7a40b3e9f0baa0ad55a, type: 3}
+  - fire: {fileID: 162402106941819099, guid: 5e02d06f6f56f7a40b3e9f0baa0ad55a, type: 3}
+  - air: {fileID: 2879550149419537939, guid: 5e02d06f6f56f7a40b3e9f0baa0ad55a, type: 3}
+  - earth: {fileID: -6701981171827496212, guid: 5e02d06f6f56f7a40b3e9f0baa0ad55a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

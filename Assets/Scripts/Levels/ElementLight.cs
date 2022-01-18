@@ -18,13 +18,17 @@ public class ElementLight : MonoBehaviour
                 light.color = ElementColors.NoneColor;
                 break;
             case ElementMain.ElementType.Water:
+                light.color = ElementColors.WaterColor;
                 break;
             case ElementMain.ElementType.Fire:
+                light.color = ElementColors.FireColor;
                 break;
             case ElementMain.ElementType.Air:
+                light.color = ElementColors.AirColor;
                 break;
-            case ElementMain.ElementType.Earth:
-                break;
+            //case ElementMain.ElementType.Earth:
+            //    light.color = ElementColors.EarthColor;
+            //    break;
             default:
                 break;
         }
