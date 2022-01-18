@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnemyItemDrop : MonoBehaviour
 {
     [SerializeField]
-    private Object[] pickups;
-    [SerializeField]
     public Health health;
+    [SerializeField]
+    private Object[] pickups;
+    
 
     private int randomValue;
 

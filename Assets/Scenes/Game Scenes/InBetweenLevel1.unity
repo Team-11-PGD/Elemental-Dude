@@ -49141,6 +49141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce53dcb260c79740bed0eda0e76acb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 1637230263358063209}
   pickups:
   - {fileID: 1443526004702831040, guid: 780f18b9103928246b314ec51ff65714, type: 3}
   - {fileID: 2308884053414729001, guid: 7febb85f14a19014dafd45fed93c7b85, type: 3}
