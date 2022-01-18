@@ -5,10 +5,8 @@ using UnityEngine;
 public class WaterBeam : Projectile
 {
     public Transform firePoint;
-
     public Transform startPoint;
     public Transform endPoint;
-
     public Transform aimPoint;
 
     public LineRenderer line;
@@ -17,6 +15,7 @@ public class WaterBeam : Projectile
     public float maxLength;
 
     RaycastHit hit;
+    Ray ray;
 
     private void Start()
     {
@@ -32,8 +31,7 @@ public class WaterBeam : Projectile
         line.SetPosition(1, aimPoint.position);
 
 
-        Ray ray = new Ray(firePoint.position, aimPoint.position - firePoint.position);
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.red);
+        ray = new Ray(firePoint.position, aimPoint.position - firePoint.position);
 
         if (Physics.SphereCast(ray.origin, line.endWidth/2, ray.direction, out (hit), maxLength))
         {
@@ -44,7 +42,6 @@ public class WaterBeam : Projectile
             }
             if(hit.collider.gameObject.tag == "Player")
             {
-                Debug.Log("hit");
                 DamageHandler(hit.collider.gameObject.GetComponentInParent<Health>(), hit.collider.gameObject.GetComponentInParent<ElementMain>());
                 Collided(hit.collider);
             }
