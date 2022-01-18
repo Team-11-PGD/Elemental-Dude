@@ -81,7 +81,7 @@ MonoBehaviour:
   - Boss
   - BossShield
   - Ground
-  destroyTime: 30
+  destroyTime: 10
 --- !u!1 &8600321062549566495
 GameObject:
   m_ObjectHideFlags: 0

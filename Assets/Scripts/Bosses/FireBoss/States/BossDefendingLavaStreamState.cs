@@ -13,6 +13,8 @@ public class BossDefendingLavaStreamState : FireBossState
     [SerializeField]
     float groundbreakTime = 3f;
     [SerializeField]
+    float lookAtTime = 1f;
+    [SerializeField]
     float groundbreakDamage = 0.01f;
 
     public override void Enter(int previousStateId)
@@ -30,10 +32,11 @@ public class BossDefendingLavaStreamState : FireBossState
 
     IEnumerator GroundbreakTimer()
     {
+        yield return new WaitForSecondsRealtime(lookAtTime);
         for (int i = 0; i < instantiateAmount; i++)
         {
             GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, null);
-            DamagingParticle damagingParticle = groundbreakInstance.GetComponentInChildren<DamagingParticle>();
+            PlayerDamagingParticle damagingParticle = groundbreakInstance.GetComponentInChildren<PlayerDamagingParticle>();
             damagingParticle.damage = groundbreakDamage;
             damagingParticle.playerHealth = bossAI.playerHealth;
 

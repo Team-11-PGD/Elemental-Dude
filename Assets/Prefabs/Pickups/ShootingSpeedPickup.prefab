@@ -124,5 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15973fed932156d419fa25def7e7187b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  text: {fileID: 4400722110547890596}
+  model: {fileID: 4400722110547890651}
+  amount: 0.1
   shootingSpeedPowerupText: You picked up extra shooting speed.

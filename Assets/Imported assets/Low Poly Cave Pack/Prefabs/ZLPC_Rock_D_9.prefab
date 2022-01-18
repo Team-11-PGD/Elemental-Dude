@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4854493989341340}
   - component: {fileID: 33689116957550666}
   - component: {fileID: 23649477725438222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4551153185485526}
   - component: {fileID: 33262753741403864}
   - component: {fileID: 23985159499524794}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4788743779654174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 4375986449255308}
   - component: {fileID: 33814641439574762}
   - component: {fileID: 23805446156032904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_4 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 4801596580318494}
   - component: {fileID: 33842404976137904}
   - component: {fileID: 23462504759128470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ GameObject:
   - component: {fileID: 4917383232358086}
   - component: {fileID: 33776023955150220}
   - component: {fileID: 23333951005045190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 4420812584600024}
   - component: {fileID: 33206485989456064}
   - component: {fileID: 23907356891657504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_4 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 4622760366142866}
   - component: {fileID: 33523005898360814}
   - component: {fileID: 23716573930551974}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_6 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

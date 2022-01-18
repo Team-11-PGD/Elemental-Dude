@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8600321062039574618}
   - component: {fileID: 2995216002839523563}
   - component: {fileID: 6265910028565395859}
-  - component: {fileID: 4429497950037825722}
+  - component: {fileID: 5325402628291513037}
   m_Layer: 0
   m_Name: RPGBullet
   m_TagString: Bullet
@@ -127,7 +127,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4429497950037825722
+--- !u!114 &5325402628291513037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8600321062039574619}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9622f4f923e655241a88a4c5a36c6ab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 26d7a3998a495d340b70c01f686a3516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
@@ -145,4 +145,5 @@ MonoBehaviour:
   - Boss
   - BossShield
   - Ground
-  destroyTime: 30
+  destroyTime: 10
+  RPGExplosion: {fileID: 6139566515302486060, guid: 20d23007a33413347ab6031c5ae2039a, type: 3}
