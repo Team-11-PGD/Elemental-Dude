@@ -34,8 +34,15 @@ public class Health : MonoBehaviour
         damageTaken = damageAmt;
         currentHp -= damageAmt;
         Debug.Log($"{gameObject.name} has {currentHp} hp and had {currentHp + damageAmt}");
-        
+
         Hitted?.Invoke();
-        if (currentHp <= 0) Died?.Invoke();
+        if (currentHp <= 0)
+        {
+            if (currentHp + damageAmt > 0)
+            {
+                Died?.Invoke();
+            }
+            currentHp = 0;
+        }
     }
 }

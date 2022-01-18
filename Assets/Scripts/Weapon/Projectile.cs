@@ -11,12 +11,8 @@ public class Projectile : MonoBehaviour
 
     private ElementMain.ElementType elementType;
 
-    private void Start()
-	{
-        Debug.Log(damageAmount);
-	}
 
-	protected void Collided(Collider other)
+    protected virtual void Collided(Collider other)
     {
         foreach (string tag in hitableTags)
         {
@@ -36,11 +32,11 @@ public class Projectile : MonoBehaviour
     }
 
     protected void DamageHandler(Health otherHealth, ElementMain otherElementMain)
-	{
+    {
         Debug.Log("projectile DAMAGAEHANDLER " + damageAmount);
         float dmgPercentage = otherElementMain.ElementDmgPercentage(elementType, otherElementMain.currentType);
         otherHealth.Hit(damageAmount * dmgPercentage);
-	}
+    }
 
     internal void SetElementType(ElementMain.ElementType type)
     {
@@ -51,4 +47,5 @@ public class Projectile : MonoBehaviour
     {
         damageAmount = DamageAmount;
     }
+}
 }

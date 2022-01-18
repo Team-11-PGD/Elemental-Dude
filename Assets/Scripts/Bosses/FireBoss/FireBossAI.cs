@@ -103,20 +103,9 @@ public class FireBossAI : BossAI
         SwitchToDefend();
     }
 
-    protected override void Died()
-    {
-        if (currentStage == 4)
-        {     
-            TransitionTo(StateOptions.Death);
-            //SOUND: Check (boss death sound)
-            AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject,"BossDeath");
-        }
-    }
-
     void ShieldDied()
     {
         TransitionTo(StateOptions.MoveToPlayer);
-        //SOUND: Check (Shield destroyed)
         AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossShieldDestroy");
         shield.SetActive(false);
         for (int i = 0; i < healthPickups.Count; i++)
@@ -133,6 +122,11 @@ public class FireBossAI : BossAI
         flameBreathAttack.size*= 1.5f;
         lavaStreamState.instantiateAmount++;
         fireBallState.percentageOfRoomFilled += 0.2f;
+        if (currentStage >= 4)
+        {
+            TransitionTo(StateOptions.Death);
+            AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject,"BossDeath");
+        }
     }
 
     public void NextAttackState()
@@ -145,6 +139,7 @@ public class FireBossAI : BossAI
         if (health.HpPercentage <= nextStatePercentage && currentStage < 4)
         {
             nextStatePercentage -= nextPercentageStep;
+            if (nextStatePercentage < 0) nextStatePercentage = 0;
             TransitionTo(StateOptions.MoveToCenter);
             health.enabled = false;
             shield.SetActive(true);

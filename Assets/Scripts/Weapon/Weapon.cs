@@ -17,7 +17,8 @@ public class Weapon : MonoBehaviour
     public int maxBullets;
     public float maxBulletSpread = 0.02f;
     public float bulletSpeed = 40;
-    public float bulletDamage = 1;
+    public float weaponDamage = 1;
+    public float extraDamage = 0, extraSpeed = 0;
 
     [Header("Timers")]
     public float reloadTime;
@@ -132,21 +133,19 @@ public class Weapon : MonoBehaviour
             for (int i = 0; i < 6; i++)
             {
                 bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
-                bullet.GetComponent<BulletProjectile>().SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
-                bullet.GetComponent<BulletProjectile>().SetElementType(elementMain.currentType);
-                bullet.GetComponent<BulletProjectile>().SetDamage(bulletDamage);
+                BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
+                bulletProjectile.SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
+                bulletProjectile.SetElementType(elementMain.currentType);
+                bulletProjectile.SetDamage(weaponDamage + extraDamage);
             }
         }
         else
         {
             bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
-            bullet.GetComponent<BulletProjectile>().SetVelocity(bullet.forward * bulletSpeed);
-            bullet.GetComponent<BulletProjectile>().SetElementType(elementMain.currentType);
-            bullet.GetComponent<BulletProjectile>().SetDamage(bulletDamage);
-        }
-        ShootSound();
-    }
-
+            BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
+            bulletProjectile.SetVelocity(bullet.forward * bulletSpeed);
+            bulletProjectile.SetElementType(elementMain.currentType);
+            bulletProjectile.SetDamage(weaponDamage + extraDamage);
     private void ShootSound()
     {
         switch (weaponType)
@@ -154,43 +153,42 @@ public class Weapon : MonoBehaviour
             case WeaponTypes.Rifle:
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RifleShoot");
                 break;
+            default:
+                break;
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RPGReload");
+            case WeaponTypes.RPG:
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ShotgunReload");
+                break;
+            case WeaponTypes.Shotgun:
+                break;
+            case WeaponTypes.Rifle:
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RifleReload");
+        {
+                break;
             case WeaponTypes.Shotgun:
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ShotgunShoot");
                 break;
             case WeaponTypes.RPG:
-                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RPGShoot");
                 break;
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RPGShoot");
             default:
                 break;
         }
-    }
 
     private void ReloadSound()
+    }
     {
         switch (weaponType)
-        {
-            case WeaponTypes.Rifle:
-                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RifleReload");
-                break;
-            case WeaponTypes.Shotgun:
-                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ShotgunReload");
-                break;
-            case WeaponTypes.RPG:
-                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RPGReload");
-                break;
-            default:
-                break;
         }
     }
 
     public virtual void Reload()
     {
-        //SOUND: Check (reload)
         ReloadSound();
-        {
             isReloading = true;
             canFire = false;
             reloadEndTime = Time.time + reloadTime;
         }
+        {
     }
 }

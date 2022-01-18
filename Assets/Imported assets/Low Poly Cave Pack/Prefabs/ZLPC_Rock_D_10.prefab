@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4004496511248586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 4070048480879574}
   - component: {fileID: 33982398243402772}
   - component: {fileID: 23636272183399972}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_2 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 4036824810396504}
   - component: {fileID: 33750530302814670}
   - component: {fileID: 23984805083648248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_4 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 4859025065680280}
   - component: {fileID: 33442196540431264}
   - component: {fileID: 23964206609933454}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_3 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 4947115899829984}
   - component: {fileID: 33420618711616282}
   - component: {fileID: 23906849742812804}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_D_6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

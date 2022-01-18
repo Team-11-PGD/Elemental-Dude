@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4134573655847244}
   - component: {fileID: 33212114336534934}
   - component: {fileID: 23145021572339550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rope_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4606911319911216}
   - component: {fileID: 33407678257070370}
   - component: {fileID: 23919212763892388}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLP_Halo_A_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4884501307536488}
   - component: {fileID: 33952211845479140}
   - component: {fileID: 23149836640304994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Lamp_03_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

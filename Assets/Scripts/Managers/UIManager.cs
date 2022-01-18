@@ -20,7 +20,6 @@ public class UIManager : MonoBehaviour
     bool startWithoutMouseOverride = false;
     [SerializeField]
     UIScore iScore;
-    public Camera playerCam;
     [SerializeField]
     GameObject enemyBarSee;
 

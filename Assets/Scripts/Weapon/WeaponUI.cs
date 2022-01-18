@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,6 +33,11 @@ public class WeaponUI : MonoBehaviour
     private Text ShotgunMod;
     [SerializeField]
     private Text RpgMod;
+
+    [SerializeField]
+    private TextMeshProUGUI extraDamgage;
+    [SerializeField]
+    private TextMeshProUGUI extraSpeed;
 
     public Sprite Fe;
     public Sprite We;
@@ -94,5 +100,8 @@ public class WeaponUI : MonoBehaviour
             if (elementRPG.currentType == ElementMain.ElementType.Air){ SelectorRPG.color = ElementColors.AirColor; rgpEffective.sprite = We; rpgCurrent.sprite = Ae; allowShowRpg = true; }
             if (elementRPG.currentType == ElementMain.ElementType.Fire){ SelectorRPG.color = ElementColors.FireColor; rgpEffective.sprite = Ae; rpgCurrent.sprite = Fe; allowShowRpg = true; }
         }
+
+        extraDamgage.text = $"{(weaponSwitcher.ExtraDamage > 0 ? "+" : "")}{weaponSwitcher.ExtraDamage.ToString("0")}";
+        extraSpeed.text = $"{(weaponSwitcher.ExtraSpeed > 0 ? "+" : "")}{(weaponSwitcher.ExtraSpeed.ToString())}";
     }
 }
