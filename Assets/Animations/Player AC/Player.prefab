@@ -4520,6 +4520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerModel: {fileID: 0}
+  dmgText: {fileID: 0}
   maxHp: 100
   currentHp: 0
   damageTaken: 0
@@ -14196,7 +14198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7797368175994593622}
   m_LocalRotation: {x: -0.15322568, y: -0.59289306, z: -0.7072452, w: 0.35327622}
-  m_LocalPosition: {x: -4.332, y: -0.562, z: -4.486}
+  m_LocalPosition: {x: -9.34, y: -1.39, z: -5.46}
   m_LocalScale: {x: 2, y: 4.6999984, z: 11.899999}
   m_Children: []
   m_Father: {fileID: 8147555847137441238}
@@ -14564,7 +14566,7 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1149239803
   spawnBulletPos: {fileID: 7797368175994593621}
   bulletPrefab: {fileID: 5845613157251687612, guid: fd8ef299978c67046aeaa933d54affbb, type: 3}
   curBulletAmount: 0
@@ -14680,7 +14682,7 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1149239803
   spawnBulletPos: {fileID: 7797368175873208660}
   bulletPrefab: {fileID: 5845613157251687612, guid: 7208629aa735cf747ac6e4a1ae8f2071, type: 3}
   curBulletAmount: 0
@@ -14797,7 +14799,7 @@ MonoBehaviour:
   playerCam: {fileID: 0}
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1149239803
   spawnBulletPos: {fileID: 7797368175459595501}
   bulletPrefab: {fileID: 5845613157251687612, guid: fd8ef299978c67046aeaa933d54affbb, type: 3}
   curBulletAmount: 0

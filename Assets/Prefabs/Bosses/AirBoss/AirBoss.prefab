@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1257715856439006549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6245715640306665889}
+  m_Layer: 0
+  m_Name: Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6245715640306665889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257715856439006549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7004715947265456733}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4694188262014120562
 GameObject:
   m_ObjectHideFlags: 0
@@ -5007,6 +5037,7 @@ Transform:
   m_Children:
   - {fileID: 5139044141691077717}
   - {fileID: 3043346960891097147}
+  - {fileID: 6245715640306665889}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5050,6 +5081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerModel: {fileID: 0}
+  dmgText: {fileID: 0}
   maxHp: 50
   currentHp: 0
   damageTaken: 0
@@ -5078,6 +5111,7 @@ MonoBehaviour:
   damage: 15
   attackRange: 3
   dashSpeed: 30
+  move: 1
 --- !u!114 &7004715947265456735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5108,6 +5142,7 @@ MonoBehaviour:
   spike: {fileID: 946991139712362439, guid: 10b10ecd134585d40a3f5657d9cb378e, type: 3}
   spikeSize: 1
   spawningTime: 2
+  spikeCount: 5
 --- !u!114 &6963123388500567959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5126,6 +5161,7 @@ MonoBehaviour:
   spike: {fileID: 946991139712362439, guid: 10b10ecd134585d40a3f5657d9cb378e, type: 3}
   spikeSize: 1
   spawningTime: 2
+  spikeCount: 5
 --- !u!114 &2748594981072418810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5139,8 +5175,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombSpawnArea: {fileID: 0}
-  tornadoPrefab: {fileID: 0}
-  bombPrefab: {fileID: 0}
+  tornadoPrefab: {fileID: 5659874526905601942, guid: 05e44fab67da98a47a08d5d8cff94eb3, type: 3}
+  bombPrefab: {fileID: 6743774650559784787, guid: 255fc70cb395a704591942cf0f24419a, type: 3}
   tornadoCenter: {fileID: 0}
   tornadoTime: 10
   spawnTime: 2

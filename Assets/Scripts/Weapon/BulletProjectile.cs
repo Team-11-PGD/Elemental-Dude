@@ -49,6 +49,6 @@ public class BulletProjectile : Projectile
     {
         Debug.Log(other.name);
         base.Collided(other);
-        if (gameObject != null && !other.CompareTag("Bullet")) Destroy(gameObject);
+        if (gameObject != null && !other.CompareTag("Bullet") && !other.CompareTag("IgnoreBullet")) Destroy(gameObject);
     }
 }

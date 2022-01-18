@@ -16,6 +16,7 @@ TagManager:
   - UnhittableShield
   - Animal
   - Water
+  - IgnoreBullet
   layers:
   - Default
   - TransparentFX
