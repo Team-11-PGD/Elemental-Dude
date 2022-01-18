@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3945736549364230891}
   - component: {fileID: 2344609459074545224}
   - component: {fileID: 6908269918602937793}
+  - component: {fileID: 7437731916009359182}
+  - component: {fileID: 4385436898975811089}
   m_Layer: 0
   m_Name: DmgText
   m_TagString: Untagged
@@ -88,10 +90,43 @@ TextMesh:
   m_Anchor: 1
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 50
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4288457492
+--- !u!114 &7437731916009359182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017141568281160523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16f787b222d51d44bd62967e4136e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RemoveText: 3
+  offset: {x: 0, y: 2, z: 0}
+--- !u!95 &4385436898975811089
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017141568281160523}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed2146349f8abbd489d77129931f5d16, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

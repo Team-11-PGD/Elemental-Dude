@@ -7,6 +7,8 @@ using System;
 public class Health : MonoBehaviour
 {
     [SerializeField]
+    GameObject playerModel;
+    [SerializeField]
     public GameObject dmgText;
     public float maxHp;
     // [HideInInspector]
@@ -33,8 +35,9 @@ public class Health : MonoBehaviour
 
     public void Hit(float damageAmt)
     {
-        if(dmgText != null)
+        if (dmgText != null && currentHp > 0)
         {
+            Debug.Log("piew");
             ShowDmgText();
         }
         damageTaken = damageAmt;
@@ -54,6 +57,7 @@ public class Health : MonoBehaviour
 
     void ShowDmgText()
     {
-        Instantiate(dmgText, transform.position, Quaternion.identity, transform);
+        var dmg = Instantiate(dmgText, transform.position, playerModel.transform.rotation, transform);
+        dmg.GetComponent<TextMesh>().text = damageTaken.ToString();
     }
 }
