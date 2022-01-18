@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2027263062389955218}
   - component: {fileID: 6647409431429295299}
   - component: {fileID: 8501503216398913686}
+  - component: {fileID: 8152401818292734558}
   m_Layer: 0
   m_Name: FireCenter
   m_TagString: Untagged
@@ -4053,21 +4054,15 @@ ParticleSystem:
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 2
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
     colliderQueryMode: 0
     radiusScale: 1
-    primitives:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    primitives: []
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -5072,6 +5067,23 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &8152401818292734558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716465278980533479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c479fb38b30e749ac2aec1ba836b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  playerHealth: {fileID: 0}
+  triggerType: 2
+  isTrigger: 1
+  particleSystem: {fileID: 6647409431429295299}
 --- !u!1 &2057338158297757169
 GameObject:
   m_ObjectHideFlags: 0
@@ -39323,7 +39335,6 @@ GameObject:
   - component: {fileID: 2188550451924566193}
   - component: {fileID: 6229802492779196072}
   - component: {fileID: 2982117197941408207}
-  - component: {fileID: 498473978890650646}
   m_Layer: 0
   m_Name: OrbitalBeamRed
   m_TagString: Untagged
@@ -44195,20 +44206,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &498473978890650646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6468135881437671960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48c479fb38b30e749ac2aec1ba836b53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 15
-  playerHealth: {fileID: 0}
-  triggerType: 2
-  isTrigger: 1
-  particleSystem: {fileID: 6229802492779196072}

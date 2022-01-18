@@ -9,15 +9,8 @@ public class BossDefendingFireBallState : FireBossState
 
     [SerializeField]
     BoxCollider spawnArea;
-
-    [Header("Indication")]
-    [SerializeField]
-    float shockWaveSize = 13f;
     [SerializeField]
     LayerMask groundLayer;
-    [SerializeField]
-    GameObject shockWaveIndicator;
-    float indicationTime = 2;
 
     [Header("Attacking")]
     [SerializeField]
@@ -34,7 +27,7 @@ public class BossDefendingFireBallState : FireBossState
 
     public override void Enter(int previousStateId)
     {
-        StartCoroutine(AnounceFireballs());
+        StartCoroutine(SpawnAttack());
         float sizeSpawnArea = spawnArea.bounds.size.x * spawnArea.bounds.size.z;
         amountOFireballs = (sizeSpawnArea / sizeFireball) * percentageOfRoomFilled;
         Debug.Log(amountOFireballs);
@@ -49,9 +42,9 @@ public class BossDefendingFireBallState : FireBossState
         context.transform.Rotate(Vector3.up, 2);
     }
 
-    IEnumerator AnounceFireballs()
+    IEnumerator SpawnAttack()
     {
-        spawningPositions = new Vector3[fireballAmount];//new Vector3[(int)bossAI.amountOFireballs];
+        spawningPositions = new Vector3[fireballAmount];
         for (int i = 0; i < spawningPositions.Length; i++)
         {
             spawningPositions[i] = new Vector3(
@@ -61,24 +54,13 @@ public class BossDefendingFireBallState : FireBossState
 
             if (Physics.Raycast(new Ray(spawningPositions[i], Vector3.down), out RaycastHit hit, float.MaxValue, groundLayer))
             {
-                GameObject instance = Instantiate(shockWaveIndicator, hit.point, Quaternion.identity);
-                instance.GetComponent<GameObjectRemover>().ShutDown(indicationTime);
-                instance.transform.localScale *= shockWaveSize;
+                spawningPositions[i] = hit.point;
             }
+
+            GameObject instance = Instantiate(fireball, spawningPositions[i], Quaternion.Euler(-90, 0, 0));
+            instance.GetComponentInChildren<PlayerDamagingParticle>().damage = damage;
         }
 
-        yield return new WaitForSecondsRealtime(indicationTime);
-
-        StartCoroutine(SpawnFireballs());
-    }
-
-    IEnumerator SpawnFireballs()
-    {
-        for (int i = 0; i < spawningPositions.Length; i++)
-        {
-            GameObject instance = Instantiate(fireball, spawningPositions[i], Quaternion.identity);
-            instance.GetComponent<Fireball>().SetupParticleDamage(bossAI.playerHealth, bossAI.playerModel.GetComponent<Collider>(), damage);
-        }
         yield return new WaitForSecondsRealtime(spawningTime);
         bossAI.NextDefendState();
     }

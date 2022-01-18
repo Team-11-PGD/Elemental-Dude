@@ -16966,7 +16966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c724675bf5f712444ad8a8775262e9f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopRange: 5
+  stopRange: 1
   target: {fileID: 0}
 --- !u!114 &5067504519082224743
 MonoBehaviour:
@@ -37146,8 +37146,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c44e7e8d6840aa243b6c33ec85052763, type: 2}
   - {fileID: 11400000, guid: 9ae07cd2f8f4c054687fecf634f8e5b3, type: 2}
   UpdateAI: 0.2
-  stoppingDistance: 20
-  PointStoppingDistance: 20
+  stoppingDistance: 2
+  PointStoppingDistance: 2
   slowingDistance: 0
   OffMeshAlignment: 0.15
   TurnAngle: 90
@@ -37189,7 +37189,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 20
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
