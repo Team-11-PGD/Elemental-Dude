@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07522bb85435574c8aaa4af6298dac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 2
+  damageAmount: 0.2
   hitableTags: []
   firePoint: {fileID: 0}
   startPoint: {fileID: 0}
