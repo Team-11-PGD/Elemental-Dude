@@ -24,6 +24,7 @@ public class AirBossAI : BossAI
     Vector3 dashStartPosition;
     Vector3 dashDirection;
     Vector3 dashPosition;
+    public bool move = true;
 
     public enum StateOptions
     {
@@ -81,6 +82,10 @@ public class AirBossAI : BossAI
 
     private void Update()
     {
+        if (!move)
+        {
+            return;
+        }
         transform.position += dashDirection * Time.deltaTime * dashSpeed;
 
         if (Vector3.Dot(transform.position - dashPosition, dashStartPosition - dashPosition) < 0)
