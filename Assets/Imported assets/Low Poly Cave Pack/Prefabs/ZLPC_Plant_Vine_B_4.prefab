@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4211800520906436}
   - component: {fileID: 33035652721052622}
   - component: {fileID: 23153270288324428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Plant_Vine_B_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}

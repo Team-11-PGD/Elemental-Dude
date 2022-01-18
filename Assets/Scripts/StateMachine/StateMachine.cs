@@ -49,7 +49,6 @@ public class StateMachine : MonoBehaviour
             state.enabled = false;
         }
         TransitionTo(startState);
-        Debug.Log(startState);
     }
 
     /// <summary>

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4527040747779092}
   - component: {fileID: 33005369665621206}
   - component: {fileID: 23978521488201854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Rock_C_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4226402012134568}
   - component: {fileID: 33905092443256866}
   - component: {fileID: 23447354077729442}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Torch_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}

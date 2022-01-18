@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4968885631487072}
   - component: {fileID: 33285066498623074}
   - component: {fileID: 23981439144627342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Dragon_A_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

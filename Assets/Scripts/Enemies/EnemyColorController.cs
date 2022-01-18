@@ -6,32 +6,35 @@ public class EnemyColorController : MonoBehaviour
 {
     [SerializeField]
     ElementMain elementMain;
-    private Renderer rend;
+    [SerializeField]
+    MeshFilter meshFilter;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    Mesh water, fire, air, earth;
+
     void Start()
     {
-        rend = GetComponent<Renderer>();
-        rend.enabled = true;
-        //Fire element
-        if (elementMain.currentType == ElementMain.ElementType.Fire)
-        {
-            rend.material = ElementColors.instance.FireMaterial;
-        }
+        elementMain.currentType = RoomGeneration.CurrentElements[Random.Range(0, RoomGeneration.CurrentElements.Count)];
+
         //Water element
         if (elementMain.currentType == ElementMain.ElementType.Water)
         {
-            rend.material = ElementColors.instance.WaterMaterial;
+            meshFilter.mesh = water;
         }
-        //Earth element
-        if (elementMain.currentType == ElementMain.ElementType.Earth)
+        //Fire element
+        if (elementMain.currentType == ElementMain.ElementType.Fire)
         {
-            rend.material = ElementColors.instance.EarthMaterial;
+            meshFilter.mesh = fire;
         }
         //Air element
         if (elementMain.currentType == ElementMain.ElementType.Air)
         {
-            rend.material = ElementColors.instance.AirMaterial;
+            meshFilter.mesh = air;
         }
+        //Earth element
+        //if (elementMain.currentType == ElementMain.ElementType.Earth)
+        //{
+        //   meshFilter.mesh = earth;
+        //}
     }
 }
