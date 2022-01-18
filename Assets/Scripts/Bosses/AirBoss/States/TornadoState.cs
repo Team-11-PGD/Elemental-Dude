@@ -75,7 +75,7 @@ public class TornadoState : AirBossState
 
     IEnumerator ThrowBombs()
     {
-        for (int i = bombs.Count - 1; i <= 0; i--)
+        for (int i = bombs.Count - 1; i >= 0; i--)
         {
             GameObject bomb = bombs[i];
           
