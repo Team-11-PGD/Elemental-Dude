@@ -103,15 +103,6 @@ public class FireBossAI : BossAI
         SwitchToDefend();
     }
 
-    protected override void Died()
-    {
-        if (currentStage == 4)
-        {     
-            TransitionTo(StateOptions.Death);
-            //SOUND: (boss death sound)
-        }
-    }
-
     void ShieldDied()
     {
         TransitionTo(StateOptions.MoveToPlayer);
@@ -131,6 +122,11 @@ public class FireBossAI : BossAI
         flameBreathAttack.size*= 1.5f;
         lavaStreamState.instantiateAmount++;
         fireBallState.percentageOfRoomFilled += 0.2f;
+        if (currentStage >= 4)
+        {
+            TransitionTo(StateOptions.Death);
+            //SOUND: (boss death sound)
+        }
     }
 
     public void NextAttackState()
@@ -146,6 +142,7 @@ public class FireBossAI : BossAI
             bossTargeting.HasArrived = true;
 
             nextStatePercentage -= nextPercentageStep;
+            if (nextStatePercentage < 0) nextStatePercentage = 0;
             TransitionTo(StateOptions.MoveToCenter);
             health.enabled = false;
             shield.SetActive(true);

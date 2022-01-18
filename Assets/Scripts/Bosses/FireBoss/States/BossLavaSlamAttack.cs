@@ -29,7 +29,7 @@ public class BossLavaSlamAttack : FireBossState
         yield return new WaitForSecondsRealtime(chargeTime);
         //SOUND: (bubble bubble lava)
         GameObject lavaInstance = Instantiate(lavaPrefab, slamPosition.position, context.transform.rotation);
-        DamagingParticle damagingParticle = lavaInstance.GetComponentInChildren<DamagingParticle>();
+        PlayerDamagingParticle damagingParticle = lavaInstance.GetComponentInChildren<PlayerDamagingParticle>();
         damagingParticle.damage = damage;
         damagingParticle.playerHealth = bossAI.playerHealth;
         damagingParticle.transform.localScale *= lavaSize;

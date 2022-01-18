@@ -4,9 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Stair
-  - Climb
-  - Fly
   - Bullet
   - UICurrentWeapon
   - Enemy
@@ -14,8 +11,8 @@ TagManager:
   - Boss
   - Ground
   - UnhittableShield
-  - Animal
-  - Water
+  - Rifle
+  - Shotgun
   layers:
   - Default
   - TransparentFX
@@ -24,6 +21,8 @@ TagManager:
   - Water
   - UI
   - Player
+  - BulletCollision
+  - Cave
   - 
   - 
   - 
@@ -37,17 +36,15 @@ TagManager:
   - 
   - 
   - 
-  - Animal
-  - 
-  - 
-  - Enemy
   - 
   - 
   - 
   - 
   - 
   - 
-  - Item
+  - 
+  - 
+  - 
   - 
   m_SortingLayers:
   - name: Default

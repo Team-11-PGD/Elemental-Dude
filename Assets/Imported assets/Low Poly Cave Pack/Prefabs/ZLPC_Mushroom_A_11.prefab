@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4670595603164906}
   - component: {fileID: 33292386543377502}
   - component: {fileID: 23627788961467618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ZLPC_Mushroom_A_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
