@@ -17,6 +17,7 @@ public class BossLavaSlamAttack : FireBossState
 
     public override void Enter(int previousStateId)
     {
+        bossAI.animal.Mode_Activate(1,2);
         StartCoroutine(ChargeTime());
     }
     public override void Exit(int nextStateId) { }

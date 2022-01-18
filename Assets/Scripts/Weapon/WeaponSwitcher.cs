@@ -43,7 +43,11 @@ public class WeaponSwitcher : MonoBehaviour
 
     void Start()
     {
-        SwitchWeapon(startWeapon);
+		GetWeapon(Weapon.WeaponTypes.Rifle).gameObject.SetActive(false);
+		GetWeapon(Weapon.WeaponTypes.Shotgun).gameObject.SetActive(false);
+		GetWeapon(Weapon.WeaponTypes.RPG).gameObject.SetActive(false);
+
+		SwitchWeapon(startWeapon);
     }
 
     private void Update()
