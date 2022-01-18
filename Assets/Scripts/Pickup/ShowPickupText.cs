@@ -13,7 +13,7 @@ public class ShowPickupText : MonoBehaviour
     public string powerupText;
 
     [SerializeField]
-    private float showTextDuration = 4;
+    private float showTextDuration = 1.5f;
 
     private void Start()
     {

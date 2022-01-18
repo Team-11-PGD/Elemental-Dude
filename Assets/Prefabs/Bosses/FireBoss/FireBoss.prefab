@@ -12863,6 +12863,7 @@ GameObject:
   - component: {fileID: 5067504519082224742}
   - component: {fileID: 5067504519082224741}
   - component: {fileID: 5067504519082224740}
+  - component: {fileID: 3761508903902042909}
   m_Layer: 20
   m_Name: FireBoss
   m_TagString: Boss
@@ -17041,6 +17042,26 @@ MonoBehaviour:
   maxHp: 200
   currentHp: 0
   damageTaken: 0
+--- !u!114 &3761508903902042909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5067504519082224747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2dfb0878736c274189204325dd9d96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {fileID: 5064150457125050641}
+  health: {fileID: 5067504519082224740}
+  pickups:
+  - {fileID: 6441976009600591308, guid: 5feafbed71601974a85f06ca9c0b455d, type: 3}
+  - {fileID: 2582557479933823023, guid: 86c570772be98514790f0257278a3b31, type: 3}
+  - {fileID: 782339303857982997, guid: 3a86539a5e686f0419b479a051bfed41, type: 3}
+  uiObject: {fileID: 0}
+  element: {fileID: 5067504519082224741}
 --- !u!1 &5329866788934077499
 GameObject:
   m_ObjectHideFlags: 0

@@ -4986,6 +4986,7 @@ GameObject:
   - component: {fileID: 7568265492181491691}
   - component: {fileID: 7111900124205609264}
   - component: {fileID: 7638383843997521955}
+  - component: {fileID: -1741227025268724606}
   m_Layer: 0
   m_Name: AirBoss
   m_TagString: Boss
@@ -5190,6 +5191,26 @@ MonoBehaviour:
   smallTornado: {fileID: 8962306787583007163, guid: 5263858d66ea20c44b2c6aa10bbec99f, type: 3}
   spawnArea: {fileID: 0}
   smallTornadoAmount: 5
+--- !u!114 &-1741227025268724606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7004715947265456729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2dfb0878736c274189204325dd9d96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {fileID: 7004715947265456733}
+  health: {fileID: 7004715947265456704}
+  pickups:
+  - {fileID: 6441976009600591308, guid: 5feafbed71601974a85f06ca9c0b455d, type: 3}
+  - {fileID: 2582557479933823023, guid: 86c570772be98514790f0257278a3b31, type: 3}
+  - {fileID: 782339303857982997, guid: 3a86539a5e686f0419b479a051bfed41, type: 3}
+  uiObject: {fileID: 0}
+  element: {fileID: 7004715947265456705}
 --- !u!1 &7306010718921044460
 GameObject:
   m_ObjectHideFlags: 0

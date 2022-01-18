@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 7728377318561197121}
   - component: {fileID: 4150230067159578903}
   - component: {fileID: 693258748762996703}
+  - component: {fileID: 8490604784821361166}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -656,6 +657,27 @@ MonoBehaviour:
   fire: {fileID: 162402106941819099, guid: 5e02d06f6f56f7a40b3e9f0baa0ad55a, type: 3}
   air: {fileID: 2879550149419537939, guid: 5e02d06f6f56f7a40b3e9f0baa0ad55a, type: 3}
   earth: {fileID: -6701981171827496212, guid: 5e02d06f6f56f7a40b3e9f0baa0ad55a, type: 3}
+--- !u!114 &8490604784821361166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4718170521264756171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce53dcb260c79740bed0eda0e76acb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  location: {fileID: 4718170521264756274}
+  health: {fileID: 1637230264210459066}
+  pickups:
+  - {fileID: 1443526004702831040, guid: 780f18b9103928246b314ec51ff65714, type: 3}
+  - {fileID: 2308884053414729001, guid: 7febb85f14a19014dafd45fed93c7b85, type: 3}
+  - {fileID: 5410870779248579542, guid: b3541ef6bb78c11468599c68023bea81, type: 3}
+  uiObject: {fileID: 0}
+  lowestRandom: 1
+  highestRandom: 8
 --- !u!1001 &6905452329510927355
 PrefabInstance:
   m_ObjectHideFlags: 0

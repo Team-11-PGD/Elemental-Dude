@@ -39,6 +39,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     GameObject airboss;
 
+    public GameObject gemPickup;
+    public GameObject otherPickup;
+
+
     private bool checkOnce = false;
     private int range = 100;
 
@@ -209,6 +213,24 @@ public class UIManager : MonoBehaviour
     {
         enemyHpBar.maxValue = AirHealth.maxHp;
         enemyHpBar.value = AirHealth.currentHp;
+    }
+    public void PickUps() 
+    {
+        if (gemPickup == null) 
+        {
+            gemPickup = GameObject.Find("FireGemPickup(Clone)");
+            gemPickup = GameObject.Find("AirGemPickup(Clone)");
+            gemPickup = GameObject.Find("WaterGemPickup(Clone)");
+        }
+        gemPickup.SetActive(false);
+
+        if (otherPickup == null)
+        {
+            otherPickup = GameObject.Find("DamagePickup(Clone)");
+            otherPickup = GameObject.Find("HealthPickup(Clone)");
+            otherPickup = GameObject.Find("ShootingSpeedPickup(Clone)");
+        }
+        otherPickup.SetActive(false);
     }
 }
 

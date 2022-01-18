@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyItemDrop : MonoBehaviour
+public class BossItemDrop : MonoBehaviour
 {
     [SerializeField]
     public Transform location;
@@ -12,30 +12,26 @@ public class EnemyItemDrop : MonoBehaviour
     [SerializeField]
     private GameObject[] pickups;
     [SerializeField] GameObject uiObject;
-
-    public int lowestRandom = 1;
-    public int highestRandom = 8;
-    private int randomValue;
+    [SerializeField] ElementMain element;
 
     private void Start()
     {
         health.Died += ItemDrop;
-        randomValue = UnityEngine.Random.Range(lowestRandom, highestRandom);
     }
 
     private void ItemDrop()
     {
-        if (randomValue == 1)//damage
+        if (element.currentType == ElementMain.ElementType.Fire)//Fire
         {
             ShowPickupText showPickupText = Instantiate(pickups[0], location.position, location.rotation).GetComponent<ShowPickupText>();
             showPickupText.uiObject = uiObject;
         }
-        if (randomValue == 2 || randomValue == 3)//health
+        if (element.currentType == ElementMain.ElementType.Water)//Water
         {
             ShowPickupText showPickupText = Instantiate(pickups[1], location.position, location.rotation).GetComponent<ShowPickupText>();
             showPickupText.uiObject = uiObject;
         }
-        if (randomValue == 4)//speed
+        if (element.currentType == ElementMain.ElementType.Air)//Air
         {
             ShowPickupText showPickupText = Instantiate(pickups[2], location.position, location.rotation).GetComponent<ShowPickupText>();
             showPickupText.uiObject = uiObject;
