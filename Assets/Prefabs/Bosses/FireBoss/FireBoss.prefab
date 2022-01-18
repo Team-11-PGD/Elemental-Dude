@@ -12869,7 +12869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5064150457125050641
 Transform:
   m_ObjectHideFlags: 0
@@ -16981,7 +16981,9 @@ MonoBehaviour:
   fracturedModel: {fileID: 3891040115948383337, guid: 51fe1349e29ec8b41a0171cd8023f990, type: 3}
   renderer: {fileID: 2854651827909250142}
   explosionForce: 1
-  portals: []
+  portals:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &5067504519082224742
 MonoBehaviour:
   m_ObjectHideFlags: 0
