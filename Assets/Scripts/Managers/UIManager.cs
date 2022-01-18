@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -19,7 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     UIScore iScore;
     //Damage Overlay
-    public Image dmgOverlay;
+    public Volume dmgOverlay;
+    Vignette damageOverlay;
     public float overlayTime = 0.5f;
     Color alphaColor;
     public float overLaydecayRate = 0.01f;
@@ -52,7 +55,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        alphaColor = dmgOverlay.color;
+        dmgOverlay.profile.TryGet(out damageOverlay);
         if (startWithoutMouseOverride) SetMouseState(false);
         else SetMouseState(SceneManager.GetActiveScene().name != "InBetweenLevel1");
 
@@ -151,14 +154,16 @@ public class UIManager : MonoBehaviour
         //Damage Overlay
         if (player.hit)
         {
-            alphaColor.a = 0.5f;
-            StartCoroutine(dmgOverlayOff());
+            if(damageOverlay.intensity.value <= 0.2f)
+            {
+                damageOverlay.intensity.value = 0.5f;
+                StartCoroutine(dmgOverlayOff());
+            }
         }
         if (!player.hit)
         {
-            alphaColor.a -= overLaydecayRate;
+            damageOverlay.intensity.value -= overLaydecayRate;
         }
-        dmgOverlay.color = alphaColor;
         //Hp Bar functionality
         // TODO: put this in its own script on the slider
         if (playerHpBar != null)

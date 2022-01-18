@@ -2021,6 +2021,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21723345631b6e540999929d30f9d329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &505288547 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9058098444820245514, guid: 11b26d23437bc294981afb6bd0d9556a, type: 3}
+  m_PrefabInstance: {fileID: 1379163822}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &520831955
 GameObject:
   m_ObjectHideFlags: 0
@@ -4492,7 +4503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1124905507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6108,7 +6119,7 @@ MonoBehaviour:
   playerHpBar: {fileID: 315917387}
   startWithoutMouseOverride: 1
   iScore: {fileID: 497010142}
-  dmgOverlay: {fileID: 112047972}
+  dmgOverlay: {fileID: 505288547}
   overlayTime: 0.5
   overLaydecayRate: 0.01
 --- !u!4 &1379178187
