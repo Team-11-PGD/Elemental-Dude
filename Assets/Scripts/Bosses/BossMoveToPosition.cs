@@ -13,12 +13,18 @@ public class BossMoveToPosition : State
     public override void Enter(int previousStateId)
     {
         bossAI = context as BossAI;
-        bossAI.agent.SetDestination(target.position);
+        //bossAI.agent.SetDestination(target.position);
+        bossAI.animator.speed = 1.25f;
+
+        bossAI.bossTargeting.SetTarget(target);
     }
 
     public override void Exit(int nextStateId)
     {
-        bossAI.agent.SetDestination(transform.position);
+        //bossAI.agent.SetDestination(transform.position);
+        bossAI.bossTargeting.ClearTarget();
+        bossAI.bossTargeting.HasArrived = true;
+        bossAI.animator.speed = 1f;
     }
 
     public void Update()
