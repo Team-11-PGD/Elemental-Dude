@@ -82,11 +82,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   spawnBulletPos: {fileID: 5727898192000166864}
-  bulletPrefab: {fileID: 8600321062039574617, guid: b393fb1618d48a74591c0313bd6ae983, type: 3}
+  bulletPrefab: {fileID: 9120840456855349936, guid: f9b391b4c56669d4099511d356d007be, type: 3}
   curBulletAmount: 0
   maxBullets: 1
   maxBulletSpread: 0.2
-  bulletSpeed: 40
+  bulletSpeed: 50
   weaponDamage: 1
   extraDamage: 0
   extraSpeed: 0

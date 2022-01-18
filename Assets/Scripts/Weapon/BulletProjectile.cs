@@ -48,6 +48,6 @@ public class BulletProjectile : Projectile
     protected override void Collided(Collider other)
     {
         base.Collided(other);
-        if (gameObject != null) Destroy(gameObject);
+        if (gameObject != null && !other.CompareTag("Bullet")) Destroy(gameObject);
     }
 }
