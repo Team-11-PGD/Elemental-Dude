@@ -12,6 +12,7 @@ public class AimingScript : MonoBehaviour
 
     public Cinemachine.AxisState xAxis;
     public Cinemachine.AxisState yAxis;
+    public Cinemachine.AxisState maxSpeed;
 
     [SerializeField]
     Camera mainCamera;
@@ -28,6 +29,7 @@ public class AimingScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         //camera movement
         xAxis.Update(Time.fixedDeltaTime);
         yAxis.Update(Time.fixedDeltaTime);

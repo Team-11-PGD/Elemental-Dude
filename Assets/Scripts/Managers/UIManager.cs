@@ -42,6 +42,13 @@ public class UIManager : MonoBehaviour
     private bool checkOnce = false;
     private int range = 100;
 
+    [SerializeField]
+    Slider sensitivityX, sensitivityY;
+    [SerializeField]
+    Text currentX, currentY;
+    [SerializeField]
+    AimingScript aimingScript;
+
     void Awake()
     {
         instance = this;
@@ -161,6 +168,15 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        #region sensitivity
+
+        aimingScript.xAxis.m_MaxSpeed = (int)(sensitivityX.value);
+        currentX.text = sensitivityX.value.ToString();
+        
+        aimingScript.yAxis.m_MaxSpeed = (int)(sensitivityY.value);
+        currentY.text = sensitivityY.value.ToString();
+        #endregion
+
         if (Input.GetKeyDown(KeyCode.Escape) && (SceneManager.GetActiveScene().name == "InBetweenLevel1" || SceneManager.GetActiveScene().name == "InBetweenLevel2" || SceneManager.GetActiveScene().name == "InBetweenLevel3"))
         {
             SwitchPause();
