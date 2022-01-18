@@ -33,8 +33,8 @@ public class SmallTornadoState : AirBossState
         for (int i = 0; i < smallTornadoAmount; i++)
         {
             GameObject instance = Instantiate(smallTornado, GetPointInCollider(), Quaternion.identity);
-            SmallTornado smallTornadoInstance = instance.GetComponent<SmallTornado>();
-            smallTornadoInstance.player = bossAI.playerModel.GetComponent<MovementScript>();
+            SmallTornado smallTornadoInstance = instance.GetComponentInChildren<SmallTornado>();
+            smallTornadoInstance.player = bossAI.playerModel.GetComponent<Rigidbody>();
             smallTornadoInstance.normalGravityMultiplier = normalGravityMultiplier.Value;
             SmallTornados.Add(instance);
         }
