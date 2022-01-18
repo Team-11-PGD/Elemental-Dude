@@ -16,7 +16,10 @@ public class BossMoveToPosition : State
         //bossAI.agent.SetDestination(target.position);
         bossAI.animator.speed = 1.25f;
 
-        bossAI.bossTargeting.SetTarget(target);
+            bossAI.bossTargeting.SetTarget(target);
+        if (Physics.Raycast(target.position, Vector3.down, out RaycastHit hit, 100))
+        {
+        }
     }
 
     public override void Exit(int nextStateId)

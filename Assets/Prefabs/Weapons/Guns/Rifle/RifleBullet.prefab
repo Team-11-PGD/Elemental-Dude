@@ -4915,7 +4915,7 @@ Transform:
   m_GameObject: {fileID: 5839394467153425048}
   m_LocalRotation: {x: -0.5, y: -0.49999994, z: 0.50000006, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5845164608629920842}
   - {fileID: 5837200214476481154}
@@ -9837,7 +9837,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 2
 --- !u!1 &5839475729532475392
 GameObject:
   m_ObjectHideFlags: 0
@@ -14842,7 +14842,7 @@ TrailRenderer:
   m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.4
+    widthMultiplier: 0.16
     widthCurve:
       serializedVersion: 2
       m_Curve:

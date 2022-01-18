@@ -580,9 +580,11 @@ GameObject:
   - component: {fileID: 4962165335241453122}
   - component: {fileID: 377335759174711307}
   - component: {fileID: 6454346169454830127}
+  - component: {fileID: 5528943933879373864}
+  - component: {fileID: 2629294665493911981}
   m_Layer: 20
   m_Name: Player
-  m_TagString: Animal
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -596,7 +598,7 @@ Transform:
   m_GameObject: {fileID: 377335759174711301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -160.66345, y: 46.498302, z: 11.64182}
-  m_LocalScale: {x: 2.1481729, y: 2.1481729, z: 2.1481729}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 7794921850602507152}
   - {fileID: 5069548900370006306}
@@ -3119,7 +3121,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
   m_gravityPower:
     UseConstant: 1
-    ConstantValue: 9.8
+    ConstantValue: 12
     Variable: {fileID: 0}
   m_gravityTime:
     UseConstant: 1
@@ -3241,7 +3243,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377335759174711301}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b6db78c48b0b6342937f21d4681fba7, type: 3}
   m_Name: 
@@ -3615,7 +3617,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377335759174711301}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 775c3050f78eb2049a4d8d38b3fa5d42, type: 3}
   m_Name: 
@@ -4436,8 +4438,8 @@ MonoBehaviour:
   - {fileID: 8147555847137441243}
   - {fileID: 8147555847519482910}
   - {fileID: 8147555847149623910}
-  startWeapon: 1
-  curWeapon: 1
+  startWeapon: 0
+  curWeapon: 0
 --- !u!114 &6454346169454830127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4491,6 +4493,36 @@ MonoBehaviour:
       m_LegacyHeadingDefinition: 0
       m_LegacyVelocityFilterStrength: 0
   mainCamera: {fileID: 0}
+--- !u!114 &5528943933879373864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377335759174711301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec63d62cba19714683f397e86d7c05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  advantageElemPercentage: 1.5
+  disadvantageElemPercentage: 0.5
+  currentType: 0
+--- !u!114 &2629294665493911981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377335759174711301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  currentHp: 0
+  damageTaken: 0
 --- !u!1 &443743840568841907
 GameObject:
   m_ObjectHideFlags: 0
@@ -14539,10 +14571,10 @@ MonoBehaviour:
   maxBullets: 30
   maxBulletSpread: 0.02
   bulletSpeed: 80
-  weaponDamage: 1
+  weaponDamage: 2
   extraDamage: 0
   extraSpeed: 0
-  reloadTime: 3
+  reloadTime: 0
   fireInterval: 0.4
   currentTarget: {fileID: 0}
   elementMain: {fileID: 0}
@@ -14655,7 +14687,7 @@ MonoBehaviour:
   maxBullets: 1
   maxBulletSpread: 0.02
   bulletSpeed: 40
-  weaponDamage: 1
+  weaponDamage: 3
   extraDamage: 0
   extraSpeed: 0
   reloadTime: 3
@@ -14775,7 +14807,7 @@ MonoBehaviour:
   weaponDamage: 1
   extraDamage: 0
   extraSpeed: 0
-  reloadTime: 1
+  reloadTime: 0
   fireInterval: 1
   currentTarget: {fileID: 0}
   elementMain: {fileID: 0}

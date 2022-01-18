@@ -12870,7 +12870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5064150457125050641
 Transform:
   m_ObjectHideFlags: 0
@@ -13661,7 +13661,7 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 9
     Variable: {fileID: 0}
   height: 1.48
   center: {x: 0, y: 0, z: 0}
@@ -16912,7 +16912,7 @@ MonoBehaviour:
   flamePrefab: {fileID: 1634767862067424, guid: 0d7e715fcdadd9e48b8e6b18b99af29c, type: 3}
   smokeTime: 0.5
   attackTime: 2
-  damage: 0.01
+  damage: 0.5
 --- !u!114 &5067504519082224738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16928,15 +16928,13 @@ MonoBehaviour:
   sizeFireball: 1
   percentageOfRoomFilled: 0.1
   spawnArea: {fileID: 0}
-  shockWaveSize: 13
   groundLayer:
     serializedVersion: 2
     m_Bits: 9
-  shockWaveIndicator: {fileID: 2477050797949518447, guid: fa491447c845ab1429e1543d9e3d4eb3, type: 3}
-  fireball: {fileID: 4245124032347512106, guid: ed391c199de8b4049bbb85a0ff70afcc, type: 3}
+  fireball: {fileID: 6468135881437671960, guid: 9a4c00ec440e24d4599c4ba940ae7580, type: 3}
   fireballAmount: 10
   spawningTime: 2
-  damage: 1
+  damage: 15
 --- !u!114 &5067504519082224737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16967,7 +16965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c724675bf5f712444ad8a8775262e9f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stopRange: 5
+  stopRange: 1
   target: {fileID: 0}
 --- !u!114 &5067504519082224743
 MonoBehaviour:
@@ -16984,7 +16982,9 @@ MonoBehaviour:
   fracturedModel: {fileID: 3891040115948383337, guid: 51fe1349e29ec8b41a0171cd8023f990, type: 3}
   renderer: {fileID: 2854651827909250142}
   explosionForce: 1
-  portals: []
+  portals:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &5067504519082224742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37167,8 +37167,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c44e7e8d6840aa243b6c33ec85052763, type: 2}
   - {fileID: 11400000, guid: 9ae07cd2f8f4c054687fecf634f8e5b3, type: 2}
   UpdateAI: 0.2
-  stoppingDistance: 20
-  PointStoppingDistance: 20
+  stoppingDistance: 2
+  PointStoppingDistance: 2
   slowingDistance: 0
   OffMeshAlignment: 0.15
   TurnAngle: 90
@@ -37210,7 +37210,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 20
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
