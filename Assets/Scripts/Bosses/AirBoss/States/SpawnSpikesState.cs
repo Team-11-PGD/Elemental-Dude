@@ -18,6 +18,8 @@ public class SpawnSpikesState : AirBossState
     float spikeSize = 1;
     [SerializeField]
     float spawningTime = 2f;
+    [SerializeField]
+    int spikeCount = 5;
 
 
     public override void Enter(int previousStateId)
@@ -27,9 +29,9 @@ public class SpawnSpikesState : AirBossState
 
     IEnumerator Spawning()
     {
-        float area = spawnArea.bounds.size.x * spawnArea.bounds.size.z;
+        /*float area = spawnArea.bounds.size.x * spawnArea.bounds.size.z;
         float maxSpikes = area / spikeSize;
-        int spikeCount = (int)(maxSpikes * spikePercentage);
+        int spikeCount = (int)(maxSpikes * spikePercentage);*/
         Spike[] spikes = new Spike[spikeCount];
         for (int i = 0; i < spikeCount; i++)
         {            
