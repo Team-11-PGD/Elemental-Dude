@@ -4688,6 +4688,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4211846382981132429, guid: 0c19be2088b898b4d8a9e2cd4e7a85ab, type: 3}
+      propertyPath: Editor_Tabs1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211846382981132429, guid: 0c19be2088b898b4d8a9e2cd4e7a85ab, type: 3}
+      propertyPath: maxAngleSlope
+      value: 82.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5646957338578238615, guid: 0c19be2088b898b4d8a9e2cd4e7a85ab, type: 3}
       propertyPath: playerCam
       value: 
