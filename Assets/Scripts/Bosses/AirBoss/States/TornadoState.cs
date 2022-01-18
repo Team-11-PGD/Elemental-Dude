@@ -42,7 +42,7 @@ public class TornadoState : AirBossState
         //context.transform.Rotate(Vector3.up, rotateSpeed);
         foreach (GameObject bomb in bombs)
         {
-            if (throwAtPlayer == false && bomb != null)
+            if (throwAtPlayer == false)
             {
                 direction = tornadoCenter.position - bomb.transform.position;
             }
@@ -52,7 +52,7 @@ public class TornadoState : AirBossState
 
     IEnumerator CreateRocks()
     {
-        Instantiate(tornadoPrefab, tornadoCenter.position, context.transform.rotation);
+        //Instantiate(tornadoPrefab, tornadoCenter.position, context.transform.rotation);
         for (int i = 0; i < bombAmount; i++)
         {
             Vector3 randomPosition = new Vector3(
@@ -75,15 +75,14 @@ public class TornadoState : AirBossState
 
     IEnumerator ThrowBombs()
     {
-        for (int i = bombs.Count - 1; i >= 0; i--)
+        for (int i = bombs.Count - 1; i <= 0; i--)
         {
             GameObject bomb = bombs[i];
-            if (bomb != null)
-            {
+          
                 direction = bossAI.playerModel.position - bomb.transform.position;
                 bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForcePlayer);
                 Debug.Log("ROCK");
-            }
+            
             yield return new WaitForSecondsRealtime(spawnTime);
         }
         throwAtPlayer = false;
