@@ -16931,7 +16931,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 9
-  fireball: {fileID: 6468135881437671960, guid: 71c25e2ccdfb75a47bef6259d216c978, type: 3}
+  fireball: {fileID: 6468135881437671960, guid: 9a4c00ec440e24d4599c4ba940ae7580, type: 3}
   fireballAmount: 10
   spawningTime: 2
   damage: 15

@@ -45434,7 +45434,7 @@ PrefabInstance:
       objectReference: {fileID: 1822663660}
     - target: {fileID: 5067504519082224740, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
       propertyPath: maxHp
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5067504519082224740, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
       propertyPath: playerModel
@@ -45487,10 +45487,6 @@ PrefabInstance:
     - target: {fileID: 5067504519082224747, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5329866789200108195, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
@@ -47743,6 +47739,10 @@ PrefabInstance:
     - target: {fileID: 8598323723134432007, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8598323723788957640, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
