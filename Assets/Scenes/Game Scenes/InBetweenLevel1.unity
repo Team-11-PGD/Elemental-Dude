@@ -47565,18 +47565,6 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 651287900861557034, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
-      propertyPath: Ae
-      value: 
-      objectReference: {fileID: 21300000, guid: 4b3a198460310be4ca26c91650ecc7e0, type: 3}
-    - target: {fileID: 651287900861557034, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
-      propertyPath: Fe
-      value: 
-      objectReference: {fileID: 21300000, guid: 3071f6e8caa11fa429e2c81dc1c22bd0, type: 3}
-    - target: {fileID: 651287900861557034, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
-      propertyPath: We
-      value: 
-      objectReference: {fileID: 21300000, guid: 619818dd91d4a8d43915436112b05406, type: 3}
-    - target: {fileID: 651287900861557034, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
       propertyPath: elementRPG
       value: 
       objectReference: {fileID: 1810944339}
@@ -47739,10 +47727,6 @@ PrefabInstance:
     - target: {fileID: 8598323723134432007, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8598323723788957640, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
