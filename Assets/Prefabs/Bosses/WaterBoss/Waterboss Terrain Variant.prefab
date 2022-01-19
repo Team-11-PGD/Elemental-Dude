@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Waterboss Terrain Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 543574365837001028, guid: 218c02e23115c9b40b25df36263d2daa, type: 3}
+      propertyPath: m_TagString
+      value: IgnoreBullet
+      objectReference: {fileID: 0}
     - target: {fileID: 3271498560535666306, guid: 218c02e23115c9b40b25df36263d2daa, type: 3}
       propertyPath: m_TagString
       value: Water

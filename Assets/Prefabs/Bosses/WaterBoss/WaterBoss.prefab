@@ -454,5 +454,5 @@ MonoBehaviour:
   renderer: {fileID: 4940457610322526986}
   explosionForce: 1
   portals:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2069135488475591639, guid: 59ece0ea1e643054192ee72778a851bf, type: 3}
+  - {fileID: 2069135488475591639, guid: 59ece0ea1e643054192ee72778a851bf, type: 3}

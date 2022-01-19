@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1945669496268959097}
   - component: {fileID: 1945669496268959102}
   - component: {fileID: 1945669496268959103}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BubbleAttack
   m_TagString: IgnoreBullet
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98e4084f978b78442920c06ebe21e16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 10
+  damageAmount: 20
   hitableTags:
   - Player
   - Ground

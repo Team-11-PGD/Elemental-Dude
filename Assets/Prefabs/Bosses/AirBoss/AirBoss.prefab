@@ -5140,7 +5140,7 @@ MonoBehaviour:
   spikePercentage: 0.0625
   isGroundSpike: 1
   spawnArea: {fileID: 0}
-  spike: {fileID: 946991139712362439, guid: 10b10ecd134585d40a3f5657d9cb378e, type: 3}
+  spike: {fileID: 1330345204884278, guid: 29e64cb072154df458a86dcf64b6ca53, type: 3}
   spikeSize: 1
   spawningTime: 2
   spikeCount: 5
@@ -5159,7 +5159,7 @@ MonoBehaviour:
   spikePercentage: 0.0625
   isGroundSpike: 0
   spawnArea: {fileID: 0}
-  spike: {fileID: 946991139712362439, guid: 10b10ecd134585d40a3f5657d9cb378e, type: 3}
+  spike: {fileID: 1330345204884278, guid: 29e64cb072154df458a86dcf64b6ca53, type: 3}
   spikeSize: 1
   spawningTime: 2
   spikeCount: 5
@@ -5176,16 +5176,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombSpawnArea: {fileID: 0}
-  tornadoPrefab: {fileID: 5659874526905601942, guid: 05e44fab67da98a47a08d5d8cff94eb3, type: 3}
-  bombPrefab: {fileID: 6743774650559784787, guid: 255fc70cb395a704591942cf0f24419a, type: 3}
+  tornadoPrefab: {fileID: 0}
+  bombPrefab: {fileID: 1914660049025354, guid: 80d003de56ce3244783ede842715d26d, type: 3}
   tornadoCenter: {fileID: 6245715640306665889}
   tornadoTime: 10
   spawnTime: 2
   bombAmount: 5
   pullForce: 10
-  pullForcePlayer: 500
+  pullForcePlayer: 5000
   rotateSpeed: 1
-  damage: 1
+  damage: 5
 --- !u!114 &7568265492181491691
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8568339252055603627}
   - component: {fileID: 8568339252055603628}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaterBeam
-  m_TagString: Untagged
+  m_TagString: IgnoreBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8568339252459551857}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AimPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8568339252560972324}
   - component: {fileID: 8568339252560972323}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
