@@ -37,7 +37,8 @@ public class BossDeath : FireBossState
             portal.SetActive(true);
         }
 
-        bossAI.animal.State_Activate(8);
+        bossAI.enabled = false;
+        //bossAI.animal.State_Activate(8);
     }
 
     public override void Exit(int nextStateId)
