@@ -27384,21 +27384,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2748594981072418810, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
+      propertyPath: bombPrefab
+      value: 
+      objectReference: {fileID: 1914660049025354, guid: 4b3cafc7cb4ca8342ba0739622668b5b, type: 3}
+    - target: {fileID: 2748594981072418810, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: bombSpawnArea
       value: 
-      objectReference: {fileID: 1381571010}
-    - target: {fileID: 4568714983940714406, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
-      propertyPath: spike
-      value: 
-      objectReference: {fileID: 6517573089156151556, guid: 52d05a1abc9d4074fbf5d2ea1fa41d41, type: 3}
+      objectReference: {fileID: 1419350940}
     - target: {fileID: 4568714983940714406, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: spawnArea
       value: 
       objectReference: {fileID: 1420911328}
-    - target: {fileID: 6963123388500567959, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
-      propertyPath: spike
-      value: 
-      objectReference: {fileID: 6517573089156151556, guid: 52d05a1abc9d4074fbf5d2ea1fa41d41, type: 3}
     - target: {fileID: 6963123388500567959, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: spawnArea
       value: 
@@ -27507,6 +27503,10 @@ PrefabInstance:
       propertyPath: spawnArea
       value: 
       objectReference: {fileID: 1420911328}
+    - target: {fileID: 7638383843997521955, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
+      propertyPath: smallTornado
+      value: 
+      objectReference: {fileID: 1000010715882420, guid: a44e43e0173f01a468604fc45b47f42d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
 --- !u!1 &1103970961 stripped
@@ -36513,7 +36513,7 @@ GameObject:
   - component: {fileID: 1381571009}
   - component: {fileID: 1381571010}
   m_Layer: 0
-  m_Name: DashArea (1)
+  m_Name: FallPortection
   m_TagString: IgnoreBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37203,8 +37203,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419350938}
   m_LocalRotation: {x: -0, y: -0.2588186, z: -0, w: 0.965926}
-  m_LocalPosition: {x: 18.9, y: 45.6, z: 245.5}
-  m_LocalScale: {x: 48.14801, y: 31.439, z: 43.070168}
+  m_LocalPosition: {x: 21.4, y: 45.6, z: 252.3}
+  m_LocalScale: {x: 40, y: 20, z: 35}
   m_Children: []
   m_Father: {fileID: 292963331}
   m_RootOrder: 3

@@ -5081,7 +5081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerModel: {fileID: 0}
+  playerModel: {fileID: 377335759174711301, guid: 6628bfdb67bdcc04a9568aa8da2b8506, type: 3}
   dmgText: {fileID: 6017141568281160523, guid: eb554fede0107184c9b1bf96eec80ddf, type: 3}
   maxHp: 50
   currentHp: 0
@@ -5099,8 +5099,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df2004a1387a964a8068fc764d4d931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerModel: {fileID: 0}
-  playerHealth: {fileID: 0}
+  playerModel: {fileID: 371703508823313791, guid: 6628bfdb67bdcc04a9568aa8da2b8506, type: 3}
+  playerHealth: {fileID: 2629294665493911981, guid: 6628bfdb67bdcc04a9568aa8da2b8506, type: 3}
   bossTargeting: {fileID: 0}
   animator: {fileID: 0}
   animal: {fileID: 0}
@@ -5177,7 +5177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombSpawnArea: {fileID: 0}
   tornadoPrefab: {fileID: 0}
-  bombPrefab: {fileID: 1914660049025354, guid: 80d003de56ce3244783ede842715d26d, type: 3}
+  bombPrefab: {fileID: 1914660049025354, guid: 4b3cafc7cb4ca8342ba0739622668b5b, type: 3}
   tornadoCenter: {fileID: 6245715640306665889}
   tornadoTime: 10
   spawnTime: 2
@@ -5218,8 +5218,8 @@ MonoBehaviour:
   renderer: {fileID: 6443957326400524383}
   explosionForce: 1
   portals:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2069135488475591639, guid: 59ece0ea1e643054192ee72778a851bf, type: 3}
+  - {fileID: 2069135488475591639, guid: 59ece0ea1e643054192ee72778a851bf, type: 3}
 --- !u!114 &7638383843997521955
 MonoBehaviour:
   m_ObjectHideFlags: 0
