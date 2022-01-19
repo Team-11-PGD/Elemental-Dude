@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7823148459076064218}
   - component: {fileID: 7823148459076064222}
   - component: {fileID: 7823148459076064223}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Boss start trigger
-  m_TagString: Untagged
+  m_TagString: IgnoreBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -75,7 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd53851c6d916b3489e87bccacbfce35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 0}
+  waterBoss: {fileID: 0}
+  fireBoss: {fileID: 0}
+  airBoss: {fileID: 0}
   rocks: {fileID: 7823148460269367832}
   playerTag: Player
 --- !u!1 &7823148460269367832
