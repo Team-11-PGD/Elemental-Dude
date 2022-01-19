@@ -34,7 +34,6 @@ public class PickupMain : MonoBehaviour
 
         yield return new WaitUntil(() => !text.uiObject.activeInHierarchy);
 
-        Destroy(model);
         Destroy(gameObject);
     }
 }

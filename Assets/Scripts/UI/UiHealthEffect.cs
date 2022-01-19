@@ -20,19 +20,19 @@ public class UiHealthEffect : MonoBehaviour
             DamageUiEffect();
             StartCoroutine(Timer());
         }
-        IEnumerator Timer()
-        {
-            yield return new WaitForSeconds(0.6f);
-
-            healthDamageText.enabled = false;
-            health.damageTaken = 0;
-        }
     }
-    public void DamageUiEffect() 
+    IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(0.6f);
+
+        healthDamageText.enabled = false;
+        health.damageTaken = 0;
+    }
+    public void DamageUiEffect()
     {
         damageTaken = health.damageTaken;
         healthDamageText.enabled = true;
-        healthDamageText.text = ("-"+damageTaken.ToString());
+        healthDamageText.text = ("-" + damageTaken.ToString());
     }
 }
 

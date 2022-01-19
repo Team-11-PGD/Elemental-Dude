@@ -37,12 +37,6 @@ public class Health : MonoBehaviour
 
     public void Hit(float damageAmt)
     {
-        if (dmgText != null && currentHp > 0)
-        {
-            Debug.Log("piew");
-            ShowDmgText();
-        }
-        hit = true;
         damageTaken = damageAmt;
         currentHp -= damageAmt;
         Debug.Log($"{gameObject.name} has {currentHp} hp and had {currentHp + damageAmt}");
@@ -56,11 +50,18 @@ public class Health : MonoBehaviour
             }
             currentHp = 0;
         }
+
+        //if (dmgText != null && currentHp > 0)
+        //{
+        //    Debug.Log("piew");
+        //    ShowDmgText();
+        //}
+        //hit = true;
     }
 
-    void ShowDmgText()
-    {
-        var dmg = Instantiate(dmgText, transform.position, playerModel.transform.rotation, transform);
-        dmg.GetComponent<TextMesh>().text = damageTaken.ToString();
-    }
+    //void ShowDmgText()
+    //{
+    //    var dmg = Instantiate(dmgText, transform.position, playerModel.transform.rotation, transform);
+    //    dmg.GetComponent<TextMesh>().text = damageTaken.ToString();
+    //}
 }

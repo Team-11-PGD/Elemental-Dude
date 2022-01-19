@@ -95,8 +95,8 @@ public class UIManager : MonoBehaviour
             playerHpBar.value = player.currentHp;
         }
 
-        if(enemyBarSee != null)
-        enemyBarSee.SetActive(false);
+        if (enemyBarSee != null)
+            enemyBarSee.SetActive(false);
     }
 
     void FindPauseMenu()
@@ -139,7 +139,7 @@ public class UIManager : MonoBehaviour
         //iScore.UpdateTimeScore();
         SceneManager.LoadScene("MainMenu");
     }
-    
+
     public void GoToGameOver()
     {
         iScore.UpdateTimeScore();
@@ -190,18 +190,20 @@ public class UIManager : MonoBehaviour
             SwitchPause();
         }
         //Damage Overlay
-        if (player != null && damageOverlay != null) { 
-        if (player.hit)
+        if (player != null && damageOverlay != null)
         {
-            if (damageOverlay.intensity.value <= 0.2f)
+            if (player.hit)
             {
-                damageOverlay.intensity.value = 0.5f;
-                StartCoroutine(dmgOverlayOff());
+                if (damageOverlay.intensity.value <= 0.2f)
+                {
+                    damageOverlay.intensity.value = 0.5f;
+                    StartCoroutine(dmgOverlayOff());
+                }
             }
-        }
-        if (damageOverlay != null &&!player.hit)
-        {
-            damageOverlay.intensity.value -= overLaydecayRate;
+            if (damageOverlay != null && !player.hit)
+            {
+                damageOverlay.intensity.value -= overLaydecayRate;
+            }
         }
         //Hp Bar functionality
         // TODO: put this in its own script on the slider
@@ -210,7 +212,6 @@ public class UIManager : MonoBehaviour
             playerHpBar.value = player.currentHp;
 
         }
-    }
         if (enemyHpBar != null)
         {
             if (enemyHpBar.value <= 0)
