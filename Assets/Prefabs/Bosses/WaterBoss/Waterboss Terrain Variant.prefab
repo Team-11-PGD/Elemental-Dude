@@ -132,6 +132,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Waterboss Terrain Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3271498560535666306, guid: 218c02e23115c9b40b25df36263d2daa, type: 3}
+      propertyPath: m_TagString
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425062006065225928, guid: 218c02e23115c9b40b25df36263d2daa, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425062006065225928, guid: 218c02e23115c9b40b25df36263d2daa, type: 3}
+      propertyPath: m_TagString
+      value: IgnoreBullet
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 218c02e23115c9b40b25df36263d2daa, type: 3}
 --- !u!4 &2897461528461389345 stripped
