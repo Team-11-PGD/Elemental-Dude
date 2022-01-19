@@ -6,11 +6,11 @@ using UnityEngine.AI;
 public class EnemyMeleeAttackState : EnemyState
 {
     [SerializeField]
-    float meleeDistance = 2;
+    float meleeDistance;
     [SerializeField]
-    float attackChargeTime = 1.5f;
+    float attackChargeTime;
     [SerializeField]
-    float damage = 1f;
+    float damage;
 
     public override void Enter(int previousStateId)
     {
@@ -21,11 +21,11 @@ public class EnemyMeleeAttackState : EnemyState
     IEnumerator Attack()
     {
         // Play charge animation
-        // SOUND: (Atack)
         Debug.Log("start attack animation");
 
         if (Vector3.Distance(enemyAI.playerModel.position, transform.position) <= meleeDistance)
         {
+            AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "EnemyAttack");
             enemyAI.playerHealth.Hit(damage);
             yield return new WaitForSecondsRealtime(attackChargeTime);
             StartCoroutine(Attack());

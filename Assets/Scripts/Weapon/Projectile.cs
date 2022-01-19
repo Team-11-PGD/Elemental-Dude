@@ -48,3 +48,4 @@ public class Projectile : MonoBehaviour
         damageAmount = DamageAmount;
     }
 }
+

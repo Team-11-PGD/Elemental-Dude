@@ -27,12 +27,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 walkingMovement = Input.GetAxis("Vertical") * movementDirection.right + Input.GetAxis("Horizontal") * movementDirection.forward;
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            //SOUND: (footsteps)
             walkingMovement *= sprintSpeed * Time.deltaTime;
         }
         else
         {
-            //SOUND: (footsteps)
             walkingMovement *= speed * Time.deltaTime;
         }
         velocity = new Vector3(0, velocity.y, 0);
@@ -42,15 +40,11 @@ public class PlayerMovement : MonoBehaviour
         // Jumping
         if (controller.isGrounded && velocity.y < 0)
         {
-            //SOUND: (Landing on ground)
             velocity.y = 0;
         }
 
         if (Input.GetButton("Jump") && controller.isGrounded)
         {
-           
-
-            //SOUND: (Jumping)
             velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity) * Time.deltaTime;
         }
         velocity.y += gravity * Time.deltaTime * Time.deltaTime;

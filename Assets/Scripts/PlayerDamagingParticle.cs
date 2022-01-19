@@ -32,7 +32,6 @@ public class PlayerDamagingParticle : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerHealth.Hit(damage);
-            //SOUND: (hit sound)?
         }
     }
 }
