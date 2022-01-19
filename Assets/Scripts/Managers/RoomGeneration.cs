@@ -65,8 +65,6 @@ public class RoomGeneration : MonoBehaviour
         } while (instance.levels[randLevel].ScenePath == SceneManager.GetActiveScene().path);
         Debug.Log(instance.levels[randLevel].ScenePath);
         SceneManager.LoadScene(instance.levels[randLevel]);
-
-        AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.AmbianceSounds, "CaveAmbiant");
     }
 
     private static void UpdateElements(List<ElementMain.ElementType> elementTypes, int amountOfElementsNextRound)

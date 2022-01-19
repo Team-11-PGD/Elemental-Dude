@@ -4525,6 +4525,7 @@ MonoBehaviour:
   maxHp: 100
   currentHp: 0
   damageTaken: 0
+  hit: 0
 --- !u!1 &443743840568841907
 GameObject:
   m_ObjectHideFlags: 0
@@ -14576,7 +14577,7 @@ MonoBehaviour:
   weaponDamage: 2
   extraDamage: 0
   extraSpeed: 0
-  reloadTime: 0
+  reloadTime: 2.5
   fireInterval: 0.4
   currentTarget: {fileID: 0}
   elementMain: {fileID: 0}
@@ -14689,10 +14690,10 @@ MonoBehaviour:
   maxBullets: 1
   maxBulletSpread: 0.02
   bulletSpeed: 40
-  weaponDamage: 3
+  weaponDamage: 4
   extraDamage: 0
   extraSpeed: 0
-  reloadTime: 3
+  reloadTime: 3.5
   fireInterval: 0
   currentTarget: {fileID: 0}
   elementMain: {fileID: 0}
@@ -14803,13 +14804,13 @@ MonoBehaviour:
   spawnBulletPos: {fileID: 7797368175459595501}
   bulletPrefab: {fileID: 5845613157251687612, guid: fd8ef299978c67046aeaa933d54affbb, type: 3}
   curBulletAmount: 0
-  maxBullets: 1
+  maxBullets: 2
   maxBulletSpread: 0.2
   bulletSpeed: 80
   weaponDamage: 1
   extraDamage: 0
   extraSpeed: 0
-  reloadTime: 0
+  reloadTime: 2.3
   fireInterval: 1
   currentTarget: {fileID: 0}
   elementMain: {fileID: 0}

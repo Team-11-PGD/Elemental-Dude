@@ -190,7 +190,7 @@ public class UIManager : MonoBehaviour
             SwitchPause();
         }
         //Damage Overlay
-        if (player != null) { 
+        if (player != null && damageOverlay != null) { 
         if (player.hit)
         {
             if (damageOverlay.intensity.value <= 0.2f)
