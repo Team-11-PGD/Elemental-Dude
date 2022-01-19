@@ -23,11 +23,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     UIScore iScore;
     //Damage Overlay
-    public Volume dmgOverlay;
+    /*public Volume dmgOverlay;
     Vignette damageOverlay;
     public float overlayTime = 0.5f;
     Color alphaColor;
-    public float overLaydecayRate = 0.01f;
+    public float overLaydecayRate = 0.01f;*/
     [SerializeField]
     GameObject enemyBarSee;
 
@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        dmgOverlay.profile.TryGet(out damageOverlay);
+        //dmgOverlay.profile.TryGet(out damageOverlay);
         if (startWithoutMouseOverride) SetMouseState(false);
         else SetMouseState(SceneManager.GetActiveScene().name != "InBetweenLevel1");
 
@@ -176,7 +176,7 @@ public class UIManager : MonoBehaviour
             SwitchPause();
         }
         //Damage Overlay
-        if (player.hit)
+        /*if (player.hit)
         {
             if (damageOverlay.intensity.value <= 0.2f)
             {
@@ -187,7 +187,7 @@ public class UIManager : MonoBehaviour
         if (!player.hit)
         {
             damageOverlay.intensity.value -= overLaydecayRate;
-        }
+        }*/
         //Hp Bar functionality
         // TODO: put this in its own script on the slider
         if (playerHpBar != null)
@@ -230,11 +230,11 @@ public class UIManager : MonoBehaviour
         enemyHpBar.maxValue = AirHealth.maxHp;
         enemyHpBar.value = AirHealth.currentHp;
     }
-    IEnumerator dmgOverlayOff()
+    /*IEnumerator dmgOverlayOff()
     {
         yield return new WaitForSecondsRealtime(overlayTime);
         player.hit = false;
-    }
+    }*/
 
 }
 
