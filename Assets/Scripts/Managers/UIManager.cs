@@ -190,6 +190,7 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && (SceneManager.GetActiveScene().name == "InBetweenLevel1" || SceneManager.GetActiveScene().name == "InBetweenLevel2" || SceneManager.GetActiveScene().name == "InBetweenLevel3"))
         {
             //SwitchPause();
+            GoToMainMenu();
         }
         //Damage Overlay
         if (player != null && damageOverlay != null)
