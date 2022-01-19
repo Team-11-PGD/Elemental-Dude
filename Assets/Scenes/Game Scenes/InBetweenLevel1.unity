@@ -1710,6 +1710,9 @@ MonoBehaviour:
   enemyHpBar: {fileID: 1769687425}
   startWithoutMouseOverride: 1
   iScore: {fileID: 1769687426}
+  dmgOverlay: {fileID: 1762085915}
+  overlayTime: 0.5
+  overLaydecayRate: 0.01
   enemyBarSee: {fileID: 1769687424}
   FireHealth: {fileID: 188310063}
   WaterHealth: {fileID: 56167618}
@@ -46886,6 +46889,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03b26be4ec6a099449cb7213fd10ab07, type: 3}
+--- !u!114 &1762085915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7142022687773468950, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
+  m_PrefabInstance: {fileID: 1769687423}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1762477654
 PrefabInstance:
   m_ObjectHideFlags: 0

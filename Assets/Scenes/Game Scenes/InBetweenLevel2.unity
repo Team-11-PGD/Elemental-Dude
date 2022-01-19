@@ -2456,6 +2456,9 @@ MonoBehaviour:
   enemyHpBar: {fileID: 1771924588}
   startWithoutMouseOverride: 1
   iScore: {fileID: 1771924589}
+  dmgOverlay: {fileID: 1771924593}
+  overlayTime: 0.5
+  overLaydecayRate: 0.01
   enemyBarSee: {fileID: 1771924587}
   FireHealth: {fileID: 1845704085}
   WaterHealth: {fileID: 358805703}
@@ -64613,6 +64616,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2980782176661487051, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
   m_PrefabInstance: {fileID: 1771924586}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1771924593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7142022687773468950, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
+  m_PrefabInstance: {fileID: 1771924586}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1772719234 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1338554922242316, guid: 399c23847bd9e44468194bb60d7d64e1, type: 3}
