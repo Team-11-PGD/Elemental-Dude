@@ -71,19 +71,26 @@ public class FireBossAI : BossAI
     {
         switch (CurrentStateId)
         {
-            case (int)StateOptions.FireAttacking1:
-            case (int)StateOptions.FireAttacking2:
-                if (!SwitchToDefend()) TransitionTo(StateOptions.MoveToPlayer);
-                break;
+            //case (int)StateOptions.FireAttacking1:
+            //case (int)StateOptions.FireAttacking2:
+            //    if (!SwitchToDefend()) TransitionTo(StateOptions.MoveToPlayer);
+            //    break;
+            //case (int)StateOptions.MoveToPlayer:
+            //    NextAttackState();
+            //    break;
+            //case (int)StateOptions.Defending1:
+            //case (int)StateOptions.Defendig2:
+            //case (int)StateOptions.MoveToCenter:
+            //    health.enabled = true;
+            //    shieldHealth.enabled = true;
+            //    NextDefendState();
+            //    break
+
             case (int)StateOptions.MoveToPlayer:
-                NextAttackState();
+                NextRandomState(true, StateOptions.Death, StateOptions.MoveToCenter);
                 break;
-            case (int)StateOptions.Defending1:
-            case (int)StateOptions.Defendig2:
-            case (int)StateOptions.MoveToCenter:
-                health.enabled = true;
-                shieldHealth.enabled = true;
-                NextDefendState();
+            default:
+                TransitionTo(StateOptions.MoveToPlayer);
                 break;
         }
     }
@@ -92,12 +99,22 @@ public class FireBossAI : BossAI
     {
         base.OnEnable();
         shieldHealth.Died += ShieldDied;
+        health.Died += BossDeath;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
         shieldHealth.Died -= ShieldDied;
+        health.Died -= BossDeath;
+    }
+
+    void BossDeath()
+    {
+        TransitionTo(StateOptions.Death);
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossShieldDestroy");
+        shield.active = false;
+        animal.enabled = false;
     }
 
     protected override void Hitted()

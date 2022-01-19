@@ -21,7 +21,7 @@ public class RoomGeneration : MonoBehaviour
             DontDestroyOnLoad(instance);
             UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.None }, 1);
             UpdateElements(NextElements[0], 1);
-            //UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.Air }, 1);
+            UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.Water }, 1);
             print($"Starting with: {CurrentElements[0]}");
         }
     }
