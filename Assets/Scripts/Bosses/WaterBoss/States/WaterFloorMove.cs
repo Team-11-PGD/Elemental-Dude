@@ -7,6 +7,7 @@ public class WaterFloorMove : WaterWallMoveToCenter
 {
     [SerializeField]
     private WaterWallMoveToCenter waterWall;
+    private Collider waterfloor;
 
     protected override IEnumerator Appear()
     {
@@ -14,5 +15,10 @@ public class WaterFloorMove : WaterWallMoveToCenter
         moveToCenter = (roomCenter.position - transform.position).normalized * waveSpeed;
         rigidBody.velocity = Vector3.zero;
         StartStage(1);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
     }
 }

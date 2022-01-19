@@ -14,7 +14,7 @@ public class WaterController : MonoBehaviour
     private WaterFloorMove floor;
 
     [SerializeField]
-    public bool startAppear, start1, start2;
+    public bool startAppear, start1, start2, start3;
 
     void Start()
     {
@@ -42,6 +42,11 @@ public class WaterController : MonoBehaviour
         {
             StartStage(2);
             start2 = false;
+        }
+        if (start3)
+        {
+            StartStage(3);
+            start3 = false;
         }
     }
 

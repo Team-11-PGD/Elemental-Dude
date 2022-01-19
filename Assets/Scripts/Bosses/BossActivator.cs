@@ -22,7 +22,7 @@ public class BossActivator : MonoBehaviour
             switch (RoomGeneration.CurrentElements[0])
             {
                 case ElementMain.ElementType.Water:
-                    fireBoss?.SetActive(true);
+                    waterBoss?.SetActive(true);
                     break;
                 case ElementMain.ElementType.Fire:
                     fireBoss?.SetActive(true);

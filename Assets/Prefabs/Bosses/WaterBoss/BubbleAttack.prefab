@@ -132,7 +132,7 @@ MonoBehaviour:
   bubble: {fileID: 1945669496268959100}
   player: {fileID: 0}
   boss: {fileID: 0}
-  availableSplits: 3
+  availableSplits: 4
   splitAngle: 90
-  bubbleMovementSpeed: 150
-  bubbleBounceHeight: 300
+  bubbleMovementSpeed: 300
+  bubbleBounceHeight: 500

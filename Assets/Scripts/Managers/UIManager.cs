@@ -34,16 +34,16 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Health FireHealth;
     [SerializeField]
-    //Health WaterHealth;
-    //[SerializeField]
+    Health WaterHealth;
+    [SerializeField]
     Health AirHealth;
 
     [SerializeField]
     GameObject rocks;
     [SerializeField]
     GameObject fireboss;
-    //[SerializeField]
-    //GameObject waterboss;
+    [SerializeField]
+    GameObject waterboss;
     [SerializeField]
     GameObject airboss;
 
@@ -206,7 +206,7 @@ public class UIManager : MonoBehaviour
         if (rocks.active == true)
         {
             if (fireboss.active == true) FireBar();
-            //if (waterboss.active = true) WaterBar();
+            if (waterboss.active = true) WaterBar();
             if (airboss.active == true) AirBar();
             if (!checkOnce)
             {
@@ -222,8 +222,8 @@ public class UIManager : MonoBehaviour
     }
     private void WaterBar()
     {
-        //enemyHpBar.maxValue = WaterHealth.maxHp;
-        //enemyHpBar.value = WaterHealth.currentHp;
+        enemyHpBar.maxValue = WaterHealth.maxHp;
+        enemyHpBar.value = WaterHealth.currentHp;
     }
     private void AirBar()
     {

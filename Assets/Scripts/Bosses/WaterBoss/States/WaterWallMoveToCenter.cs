@@ -12,15 +12,21 @@ public class WaterWallMoveToCenter : WaterWaveScript
 
     protected bool stage1Moving, stage2Moving;
 
+    protected Vector3 startPosition;
+
     [SerializeField]
     private float stage1Distance, stage2Distance;
 
     protected override void Start()
     {
+        startPosition = gameObject.transform.position;
         rigidBody = GetComponent<Rigidbody>();
         canDamage = true;
     }
+    protected override void FixedUpdate()
+    {
 
+    }
     protected virtual void Update()
     {
         float centerAndWallDistance = (roomCenter.position - transform.position).magnitude;
@@ -38,12 +44,19 @@ public class WaterWallMoveToCenter : WaterWaveScript
         StartStage(1);
     }
 
+    protected virtual IEnumerator Disappear()
+    {
+        rigidBody.AddForce(Vector3.down * waveSpeed);
+        yield return new WaitUntil(() => transform.position.y - 6 >= startPosition.y);
+        rigidBody.velocity = Vector3.zero;
+    }
+
     public void StartStage(int stage)
     {
-        if (stage == 0) StartCoroutine(Appear());
-        if (stage == 1) stage1Moving = true;
-        if (stage == 2) stage2Moving = true;
-        rigidBody.AddForce(moveToCenter);
+        if (stage == 0) {StartCoroutine(Appear()); rigidBody.AddForce(moveToCenter); }
+        if (stage == 1) {stage1Moving = true; rigidBody.AddForce(moveToCenter); }
+        if (stage == 2) {stage2Moving = true; rigidBody.AddForce(moveToCenter); }
+        if (stage == 3) {StartCoroutine(Disappear()); rigidBody.AddForce(-moveToCenter);}
     }
 
     public void StopClosingIn(int stage)
