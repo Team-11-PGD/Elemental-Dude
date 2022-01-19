@@ -24,6 +24,8 @@ public class BossFlameBreathAttack : FireBossState
         facePlayer = true;
 
         StartCoroutine(SmokeTimer());
+        //SOUND: Check(Flamethrower)
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossFlamethrowerAttack");
     }
 
     public override void Exit(int nextStateId) 
@@ -42,8 +44,7 @@ public class BossFlameBreathAttack : FireBossState
 
     IEnumerator SmokeTimer()
     {
-        //SOUND: (smoky)
-        particleSystem = Instantiate(smokePrefab, FlamePosition.transform.position, FlamePosition.transform.rotation, context.transform);
+        particleSystem = Instantiate(smokePrefab, FlamePosition.transform.position, context.transform.rotation, context.transform);
         yield return new WaitForSecondsRealtime(smokeTime);
 
         facePlayer = false;
@@ -58,8 +59,7 @@ public class BossFlameBreathAttack : FireBossState
     }
 
     IEnumerator FlameTimer()
-    {
-        //SOUND: (flame)
+    { 
         yield return new WaitForSecondsRealtime(attackTime);
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
 

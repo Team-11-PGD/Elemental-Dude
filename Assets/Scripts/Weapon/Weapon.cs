@@ -54,14 +54,12 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetButton("Fire1") && Time.time >= timeToFire && canFire)
         {
-            //SOUND: (shoot)
             timeToFire = Time.time + fireInterval;
             Shoot();
         }
 
         if (Input.GetKeyDown(KeyCode.R) && !isReloading)
         {
-            //SOUND: (reload)
             Reload();
         }
 
@@ -71,7 +69,6 @@ public class Weapon : MonoBehaviour
             isReloading = false;
             curBulletAmount = maxBullets;
 
-            //SOUND: (done reloading sound)
             Debug.Log("Done reloading!");
         }
     }
@@ -83,58 +80,47 @@ public class Weapon : MonoBehaviour
             case ElementMain.ElementType.None:
                 elementMain.currentType = ElementMain.ElementType.None;
                 Debug.Log("I am a None element now");
-                //SOUND: (no element)
                 break;
 
             case ElementMain.ElementType.Water:
                 elementMain.currentType = ElementMain.ElementType.Water;
                 Debug.Log("I am a Water element now");
-                //SOUND: (Water element)
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementWater");
                 break;
 
             case ElementMain.ElementType.Fire:
                 elementMain.currentType = ElementMain.ElementType.Fire;
                 Debug.Log("I am a Fire element now");
-                //SOUND: (fire element)
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementFire");
                 break;
 
             case ElementMain.ElementType.Air:
                 elementMain.currentType = ElementMain.ElementType.Air;
                 Debug.Log("I am an Air element now");
-                //SOUND: (air element)
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementAir");
                 break;
 
-            //case ElementMain.ElementType.Earth:
-            //    elementMain.currentType = ElementMain.ElementType.Earth;
-            //    Debug.Log("I am an Earth element now");
-            //    //SOUND: (eart element)
-            //    break;
+                //case ElementMain.ElementType.Earth:
+                //    elementMain.currentType = ElementMain.ElementType.Earth;
+                //    Debug.Log("I am an Earth element now");
+                //    break;
         }
     }
 
     public void Shoot()
     {
-        //AudioManager.instance.PlaySoundEffect(this.gameObject, "PewPew");
-
         if (curBulletAmount <= 0)
         {
-            //SOUND: (reload)
+            canFire = false;
             Reload();
             return;
         }
         else
         {
             curBulletAmount -= 1;
-
-            if (curBulletAmount <= 0)
-            {
-                //SOUND: (reload)
-                Reload();
-                Debug.Log("Reloading...");
-                canFire = false;
-            }
         }
 
+        Transform bullet;
         RaycastHit hit;
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, float.MaxValue, layerMask))
         {
@@ -142,7 +128,6 @@ public class Weapon : MonoBehaviour
         }
         Vector3 aimDir = (aimPoint - spawnBulletPos.position).normalized;
 
-        Transform bullet;
         if (weaponType == WeaponTypes.Shotgun)
         {
             for (int i = 0; i < 6; i++)
@@ -163,11 +148,48 @@ public class Weapon : MonoBehaviour
             bulletProjectile.SetDamage(weaponDamage + extraDamage);
         }
     }
+    private void ShootSound()
+    {
+        switch (weaponType)
+        {
+            case WeaponTypes.Rifle:
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RifleShoot");
+                break;
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RPGReload");
+            case WeaponTypes.RPG:
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ShotgunReload");
+                break;
+            case WeaponTypes.Shotgun:
+                break;
+        }
+    }
+
+    private void ReloadSound()
+    {
+        switch (weaponType)
+        {
+            case WeaponTypes.Rifle:
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RifleReload");
+                break;
+            case WeaponTypes.Shotgun:
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ShotgunReload");
+                break;
+            case WeaponTypes.RPG:
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RPGReload");
+                break;
+            default:
+                break;
+        }
+    }
 
     public virtual void Reload()
     {
-        isReloading = true;
-        canFire = false;
-        reloadEndTime = Time.time + reloadTime - extraSpeed;
+        //SOUND: Check (reload)
+        ReloadSound();
+        {
+            isReloading = true;
+            canFire = false;
+            reloadEndTime = Time.time + reloadTime;
+        }
     }
 }

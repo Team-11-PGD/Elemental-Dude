@@ -42,7 +42,6 @@ public class BulletProjectile : Projectile
             DamageHandler(health, other.gameObject.GetComponent<ElementMain>());
         }
 
-        //SOUND: (inpact sound)?
     }
 
     protected override void Collided(Collider other)

@@ -20,12 +20,13 @@ public class ShootingSpeedPickup : PickupMain
 
     protected override void PickedUpPickup(Collider player)
     {
-        //SOUND: (pick up sound)
-        WeaponSwitcher weapon = player.GetComponent<WeaponSwitcher>();
+        WeaponSwitcher weapon = player.transform.parent.GetComponent<WeaponSwitcher>();
         weapon.ExtraSpeed += amount;
 
         text.powerupText = shootingSpeedPowerupText;
         IncreaseShootingSpeed();
+
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.SoundEffects, this.gameObject, "ShootSpeedPickup");
 
         StartCoroutine(RemovePickupOnTimer());
     }

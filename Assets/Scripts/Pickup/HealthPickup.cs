@@ -16,6 +16,8 @@ public class HealthPickup : PickupMain
         text.powerupText = healthPowerupText;
         userHealth.Heal(20);
 
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.SoundEffects, this.gameObject, "HealthPickup");
+
         StartCoroutine(RemovePickupOnTimer());
     }
 }

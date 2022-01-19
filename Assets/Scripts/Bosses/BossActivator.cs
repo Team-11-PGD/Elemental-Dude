@@ -35,6 +35,8 @@ public class BossActivator : MonoBehaviour
                     break;
             }
             rocks.SetActive(true);
+            AudioManager.instance.StopSoundFromWorld(AudioManager.instance.AmbianceSounds, "CaveAmbiant");
+            AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.AmbianceSounds, "BossMusic");
             GetComponent<Collider>().isTrigger = false;
         }
     }

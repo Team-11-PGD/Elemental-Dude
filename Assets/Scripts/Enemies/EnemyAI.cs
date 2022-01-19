@@ -70,11 +70,14 @@ public class EnemyAI : StateMachine
     }
 
     protected virtual void Died() {
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "EnemyDied");
         Destroy(gameObject);
     }
 
     protected virtual void Hitted()
     {
+        //SOUND: Check (EnemyHitted)
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "EnemyGotHit");
         if (health.HpPercentage <= fleeHealthPercentage && (CurrentStateId != (int)StateOptions.Flee && CurrentStateId != (int)StateOptions.Heal))
         {
             TransitionTo(StateOptions.Flee);
