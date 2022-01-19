@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossDeath : State
+public class BossDeath : FireBossState
 {
     [SerializeField]
     GameObject fracturedModel;
@@ -36,6 +36,8 @@ public class BossDeath : State
         {
             portal.SetActive(true);
         }
+
+        bossAI.animal.State_Activate(8);
     }
 
     public override void Exit(int nextStateId)
