@@ -4522,7 +4522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerModel: {fileID: 0}
   dmgText: {fileID: 0}
-  maxHp: 100
+  maxHp: 200
   currentHp: 0
   damageTaken: 0
   hit: 0
