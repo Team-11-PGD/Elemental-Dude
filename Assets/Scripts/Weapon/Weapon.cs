@@ -120,6 +120,8 @@ public class Weapon : MonoBehaviour
             curBulletAmount -= 1;
         }
 
+        ShootSound();
+
         Transform bullet;
         RaycastHit hit;
         if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, float.MaxValue, layerMask))
@@ -155,11 +157,11 @@ public class Weapon : MonoBehaviour
             case WeaponTypes.Rifle:
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RifleShoot");
                 break;
-                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RPGReload");
-            case WeaponTypes.RPG:
+            case WeaponTypes.Shotgun:
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ShotgunReload");
                 break;
-            case WeaponTypes.Shotgun:
+            case WeaponTypes.RPG:
+                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "RPGReload");
                 break;
         }
     }

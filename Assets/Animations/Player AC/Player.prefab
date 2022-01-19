@@ -14690,7 +14690,7 @@ MonoBehaviour:
   maxBullets: 1
   maxBulletSpread: 0.02
   bulletSpeed: 40
-  weaponDamage: 4
+  weaponDamage: 25
   extraDamage: 0
   extraSpeed: 0
   reloadTime: 3.5
