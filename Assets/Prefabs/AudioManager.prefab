@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7221854247973885680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7221854247973885694}
+  - component: {fileID: 7221854247973885695}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7221854247973885694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221854247973885680}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.2060204, y: 30.565691, z: -87.45655}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7221854247973885695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221854247973885680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bae127cadb290409abb175ae145e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundEffects:
+  - name: HealthPickup
+    clip: {fileID: 8300000, guid: c394eff14edc1bc46a090ad952a7e011, type: 3}
+    volume: 0.3
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShootSpeedPickup
+    clip: {fileID: 8300000, guid: 87140dfe0a71872498ccdc74df5cb069, type: 3}
+    volume: 0.3
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  PlayerSounds:
+  - name: PlayerDeath
+    clip: {fileID: 8300000, guid: cb7638a22e1213d4ebfb29b80f70ad6e, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  AmbianceSounds:
+  - name: BossMusic
+    clip: {fileID: 8300000, guid: ff2d5377964f6654d8919a8a1da66bd9, type: 3}
+    volume: 0.2
+    pitch: 1
+    randomPitch: 0
+    loop: 1
+    source: {fileID: 0}
+  - name: CaveAmbiant
+    clip: {fileID: 8300000, guid: de57b82b34e9e1f4ea765267d204dfca, type: 3}
+    volume: 0.2
+    pitch: 1
+    randomPitch: 0
+    loop: 1
+    source: {fileID: 0}
+  MonsterSounds:
+  - name: BossDeath
+    clip: {fileID: 8300000, guid: e4b1f1130ddd6e7409103346b58c2a10, type: 3}
+    volume: 0.3
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: BossFlamethrowerAttack
+    clip: {fileID: 8300000, guid: 296510155c6f29f4bb94d90511b11a18, type: 3}
+    volume: 0.4
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BossLavaStreamAttack
+    clip: {fileID: 8300000, guid: 2d900703a3836bd499e88880af26586a, type: 3}
+    volume: 0.3
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BossLavaAttack
+    clip: {fileID: 8300000, guid: 058ae46ad07f31e468a5537c3b984aee, type: 3}
+    volume: 0.2
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BossSlamAttack
+    clip: {fileID: 8300000, guid: d29d0c4698b30804c9cdfb0b24162856, type: 3}
+    volume: 0.6
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BossShieldDestroy
+    clip: {fileID: 8300000, guid: c849e9c7cbcd5e84fa29b304ea7204b9, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyAttack
+    clip: {fileID: 8300000, guid: f17344944d772c2468dadcbdbed9abe7, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyGotHit
+    clip: {fileID: 8300000, guid: 5faac0831aca9ac4db6c93e41ead4761, type: 3}
+    volume: 0.2
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDied
+    clip: {fileID: 8300000, guid: 1fdf9456a28d3e44295e400e29361c6a, type: 3}
+    volume: 0.3
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  GunSounds:
+  - name: RifleShoot
+    clip: {fileID: 8300000, guid: a91d0ca38084c064391330c38f33173b, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShotgunShoot
+    clip: {fileID: 8300000, guid: b4b68c56e9891344c9a1004566487092, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RPGShoot
+    clip: {fileID: 8300000, guid: 249a504fa38aff4449808ec046254af6, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: RifleReload
+    clip: {fileID: 8300000, guid: e7189d5494fb7664bab3d4738f7cf72f, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: ShotgunReload
+    clip: {fileID: 8300000, guid: 2d580c608f010d1499c744833d16c266, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: RPGReload
+    clip: {fileID: 8300000, guid: 28c7b60d8fe3a624da80532d3a4b0981, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: WeaponSwitch
+    clip: {fileID: 8300000, guid: 5f5bf58213952ff4e8fdb25740cc5f4b, type: 3}
+    volume: 0.5
+    pitch: 1
+    randomPitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ChangeElementFire
+    clip: {fileID: 8300000, guid: 257cbfdfd95e1de48a2a22b792ff1382, type: 3}
+    volume: 0.2
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: ChangeElementWater
+    clip: {fileID: 8300000, guid: af21ae5676e996047bcdcc4c078d9456, type: 3}
+    volume: 0.2
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: ChangeElementAir
+    clip: {fileID: 8300000, guid: 70c959659e81df6438f144e79ccd47fb, type: 3}
+    volume: 0.2
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}
+  UISounds:
+  - name: PauseToggle
+    clip: {fileID: 8300000, guid: d0bbc5cfc39c78a4799d456913c3e50f, type: 3}
+    volume: 1
+    pitch: 1
+    randomPitch: 0
+    loop: 0
+    source: {fileID: 0}

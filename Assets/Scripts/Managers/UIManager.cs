@@ -78,7 +78,11 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        dmgOverlay.profile.TryGet(out damageOverlay);
+        if (damageOverlay != null)
+        {
+            dmgOverlay.profile.TryGet(out damageOverlay);
+        }
+
         if (startWithoutMouseOverride) SetMouseState(false);
         else SetMouseState(SceneManager.GetActiveScene().name != "InBetweenLevel1");
 
@@ -90,6 +94,8 @@ public class UIManager : MonoBehaviour
             playerHpBar.maxValue = player.maxHp;
             playerHpBar.value = player.currentHp;
         }
+
+        if(enemyBarSee != null)
         enemyBarSee.SetActive(false);
     }
 
@@ -184,6 +190,7 @@ public class UIManager : MonoBehaviour
             SwitchPause();
         }
         //Damage Overlay
+        if (player != null) { 
         if (player.hit)
         {
             if (damageOverlay.intensity.value <= 0.2f)
@@ -192,7 +199,7 @@ public class UIManager : MonoBehaviour
                 StartCoroutine(dmgOverlayOff());
             }
         }
-        if (!player.hit)
+        if (damageOverlay != null &&!player.hit)
         {
             damageOverlay.intensity.value -= overLaydecayRate;
         }
@@ -201,22 +208,26 @@ public class UIManager : MonoBehaviour
         if (playerHpBar != null)
         {
             playerHpBar.value = player.currentHp;
-            
+
         }
-        if (enemyHpBar.value <= 0)
+    }
+        if (enemyHpBar != null)
         {
-            enemyBarSee.SetActive(false);
-        }
-        if (rocks.active == true)
-        {
-            if (fireboss.active == true) FireBar();
-            if (waterboss.active = true) WaterBar();
-            if (airboss.active == true) AirBar();
-            if (!checkOnce)
+            if (enemyHpBar.value <= 0)
             {
-                enemyBarSee.active = true;
+                enemyBarSee.SetActive(false);
             }
-            checkOnce = true;
+            if (rocks.active == true)
+            {
+                if (fireboss.active == true) FireBar();
+                if (waterboss.active = true) WaterBar();
+                if (airboss.active == true) AirBar();
+                if (!checkOnce)
+                {
+                    enemyBarSee.active = true;
+                }
+                checkOnce = true;
+            }
         }
     }
     private void FireBar()
