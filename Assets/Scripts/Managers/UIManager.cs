@@ -178,7 +178,7 @@ public class UIManager : MonoBehaviour
         //Damage Overlay
         if (player.hit)
         {
-            if(damageOverlay.intensity.value <= 0.2f)
+            if (damageOverlay.intensity.value <= 0.2f)
             {
                 damageOverlay.intensity.value = 0.5f;
                 StartCoroutine(dmgOverlayOff());
@@ -230,12 +230,12 @@ public class UIManager : MonoBehaviour
         enemyHpBar.maxValue = AirHealth.maxHp;
         enemyHpBar.value = AirHealth.currentHp;
     }
-}
-    }
-
     IEnumerator dmgOverlayOff()
     {
         yield return new WaitForSecondsRealtime(overlayTime);
         player.hit = false;
     }
+
+}
+
 
