@@ -134,12 +134,4 @@ public class StateMachine : MonoBehaviour
         // Transition to a random option
         TransitionTo((Enum)enums.GetValue(UnityEngine.Random.Range(0, enums.Length)));
     }
-
-    /// <summary>
-    /// Disables the current state (does not call Exit)
-    /// </summary>
-    public void DisableStates()
-    {
-        CurrentState.enabled = false;
-    }
 }
