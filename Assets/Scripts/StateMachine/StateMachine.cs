@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 // Joshua Knaven
+// https://refactoring.guru/design-patterns/state/csharp/example
 public class StateMachine : MonoBehaviour
 {
     public int CurrentStateId { get; private set; } = -1;
