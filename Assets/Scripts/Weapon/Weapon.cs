@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Weapon : MonoBehaviour
 {
@@ -132,6 +133,35 @@ public class Weapon : MonoBehaviour
 
         if (weaponType == WeaponTypes.Shotgun)
         {
+            int oneUnitRange = 0;
+            int twoUnitRange = 0;
+            int outsideUnitRange = 0;
+            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distance <= 1)
+                {
+                    oneUnitRange++;
+                }
+                else if (distance <= 2)
+                {
+                    twoUnitRange++;
+                }
+                else
+                {
+                    outsideUnitRange++;
+                }
+            }
+            Analytics.CustomEvent(
+                "ShotShotgun",
+                new Dictionary<string, object>() 
+                {
+                    { "EnemiesWithinOneUnit", oneUnitRange },
+                    { "EnemiesWithinTwoUnits", twoUnitRange },
+                    { "EnemiesOutsideTwoUnits", outsideUnitRange }
+                });
+
+
             for (int i = 0; i < 6; i++)
             {
                 bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
@@ -143,6 +173,23 @@ public class Weapon : MonoBehaviour
         }
         else
         {
+            if (weaponType == WeaponTypes.Rifle)
+            {
+                List<float> distances = new List<float>();
+                foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+                {
+                    distances.Add(Vector3.Distance(transform.position, enemy.transform.position));
+                }
+
+                Analytics.CustomEvent(
+                    "ShotRifle",
+                    new Dictionary<string, object>()
+                    {
+                        { "AimedEnemyDistance", hit.transform.CompareTag("Enemy") ? Vector3.Distance(transform.position, aimPoint) : -1 },
+                        { "AllEnemyDistances", distances }
+                    });
+            }
+
             bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
             BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
             bulletProjectile.SetVelocity(bullet.forward * bulletSpeed);
