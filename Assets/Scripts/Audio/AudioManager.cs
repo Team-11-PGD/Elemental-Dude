@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
 		if (instance == null)
 		{
 			instance = this;
+			instance.transform.parent = null;
 		}
 		else if (instance != this)
 		{

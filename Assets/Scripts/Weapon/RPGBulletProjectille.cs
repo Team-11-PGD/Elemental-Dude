@@ -8,7 +8,8 @@ public class RPGBulletProjectille : BulletProjectile
 
     protected override void Collided(Collider other)
     {
-        Instantiate(RPGExplosion, transform.position, Quaternion.identity, null).GetComponentInChildren<RPGDamagingParticle>().damage = damageAmount;
+        if (!other.CompareTag("IgnoreBullet"))
+            Instantiate(RPGExplosion, transform.position, Quaternion.identity, null).GetComponentInChildren<RPGDamagingParticle>().damage = damageAmount;
 
         base.Collided(other);
     }

@@ -142,6 +142,8 @@ public class UIManager : MonoBehaviour
 
     public void GoToGameOver()
     {
+        AudioManager.instance.StopSoundFromWorld(AudioManager.instance.AmbianceSounds, "BossMusic");
+        AudioManager.instance.StopSoundFromWorld(AudioManager.instance.AmbianceSounds, "CaveAmbiant");
         iScore.UpdateTimeScore();
         //updates the best play time.
         //iScore.UpdateTimeScore();
@@ -187,7 +189,8 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && (SceneManager.GetActiveScene().name == "InBetweenLevel1" || SceneManager.GetActiveScene().name == "InBetweenLevel2" || SceneManager.GetActiveScene().name == "InBetweenLevel3"))
         {
-            SwitchPause();
+            //SwitchPause();
+            GoToMainMenu();
         }
         //Damage Overlay
         if (player != null && damageOverlay != null)
@@ -221,7 +224,7 @@ public class UIManager : MonoBehaviour
             if (rocks.active == true)
             {
                 if (fireboss.active == true) FireBar();
-                if (waterboss.active = true) WaterBar();
+                if (waterboss.active == true) WaterBar();
                 if (airboss.active == true) AirBar();
                 if (!checkOnce)
                 {

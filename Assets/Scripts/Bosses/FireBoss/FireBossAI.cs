@@ -84,16 +84,13 @@ public class FireBossAI : BossAI
             //    health.enabled = true;
             //    shieldHealth.enabled = true;
             //    NextDefendState();
-            //    break;
-            case (int)StateOptions.FireAttacking1:
-            case (int)StateOptions.FireAttacking2:
-            case (int)StateOptions.Defending1:
-            case (int)StateOptions.Defendig2:
-                TransitionTo(StateOptions.MoveToPlayer);
-                break;
+            //    break
+
             case (int)StateOptions.MoveToPlayer:
-                //NextAttackState();
                 NextRandomState(true, StateOptions.Death, StateOptions.MoveToCenter);
+                break;
+            default:
+                TransitionTo(StateOptions.MoveToPlayer);
                 break;
         }
     }
@@ -115,7 +112,7 @@ public class FireBossAI : BossAI
     void BossDeath()
     {
         TransitionTo(StateOptions.Death);
-        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossDeath");
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossShieldDestroy");
         shield.active = false;
         animal.enabled = false;
     }

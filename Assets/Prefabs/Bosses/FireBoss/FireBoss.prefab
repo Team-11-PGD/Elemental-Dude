@@ -12932,7 +12932,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5067504519082224747}
   m_Material: {fileID: 13400000, guid: 54174b87a6301064ea8788686f85bda8, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.55
   m_Height: 3
@@ -21994,7 +21994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerModel: {fileID: 0}
   dmgText: {fileID: 0}
-  maxHp: 40
+  maxHp: 10
   currentHp: 0
   damageTaken: 0
   hit: 0

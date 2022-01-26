@@ -37239,8 +37239,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419350938}
   m_LocalRotation: {x: -0, y: -0.2588186, z: -0, w: 0.965926}
-  m_LocalPosition: {x: 21.4, y: 45.6, z: 252.3}
-  m_LocalScale: {x: 40, y: 20, z: 35}
+  m_LocalPosition: {x: 21.4, y: 44.3, z: 252.3}
+  m_LocalScale: {x: 40, y: 12.9722, z: 35}
   m_Children: []
   m_Father: {fileID: 292963331}
   m_RootOrder: 3
@@ -45433,17 +45433,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1822663660}
     - target: {fileID: 5067504519082224740, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
-      propertyPath: maxHp
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5067504519082224740, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
       propertyPath: playerModel
       value: 
       objectReference: {fileID: 2114329824}
-    - target: {fileID: 5067504519082224742, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
-      propertyPath: startState
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5067504519082224742, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
       propertyPath: playerModel
       value: 
@@ -45487,10 +45479,6 @@ PrefabInstance:
     - target: {fileID: 5067504519082224747, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5329866789200108195, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
@@ -47569,18 +47557,6 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 651287900861557034, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
-      propertyPath: Ae
-      value: 
-      objectReference: {fileID: 21300000, guid: 4b3a198460310be4ca26c91650ecc7e0, type: 3}
-    - target: {fileID: 651287900861557034, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
-      propertyPath: Fe
-      value: 
-      objectReference: {fileID: 21300000, guid: 3071f6e8caa11fa429e2c81dc1c22bd0, type: 3}
-    - target: {fileID: 651287900861557034, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
-      propertyPath: We
-      value: 
-      objectReference: {fileID: 21300000, guid: 619818dd91d4a8d43915436112b05406, type: 3}
-    - target: {fileID: 651287900861557034, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
       propertyPath: elementRPG
       value: 
       objectReference: {fileID: 1810944339}
@@ -47736,6 +47712,10 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 452401175}
+    - target: {fileID: 8598323722824405369, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8598323723134432007, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
