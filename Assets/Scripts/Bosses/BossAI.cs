@@ -23,6 +23,8 @@ public class BossAI : StateMachine
     [SerializeField]
     protected Health health;
 
+    protected int activeTime = 0;
+
     protected new void TransitionTo(Enum nextState)
     {
         if (CurrentState is BossState)
@@ -36,6 +38,17 @@ public class BossAI : StateMachine
             health.Hitted += (CurrentState as BossState).Hitted;
             health.Died += (CurrentState as BossState).Died;
         }
+    }
+
+    private void Update()
+    {
+        StartCoroutine(UpdateTimer());
+    }
+
+    private IEnumerator UpdateTimer()
+    {
+        yield return new WaitForSecondsRealtime(0);
+        activeTime++;
     }
 
     protected virtual void OnEnable()

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 [RequireComponent(typeof(WaterBossMoveState), typeof(WaterBossAttackingBouncingBubble), typeof(WaterBossAttackingSlam))]
 [RequireComponent(typeof(WaterBossAttackingWave))]
@@ -62,20 +63,37 @@ public class WaterBossAI : BossAI
         {
             case (int)StateOptions.WaterAttackSlam:
                 NextAttackState();
+                SendAnalystics();
                 break;
             case (int)StateOptions.WaterAttackWave:
                 NextAttackState();
+                SendAnalystics();
                 break;
             case (int)StateOptions.WaterAttackBubble:
                 TransitionTo(StateOptions.WaterTeleport);
+                SendAnalystics();
                 break;
             case (int)StateOptions.WaterAttackBeam:
                 TransitionTo(StateOptions.WaterTeleport);
+                SendAnalystics();
                 break;
             case (int)StateOptions.WaterTeleport:
                 NextAttackState();
+                SendAnalystics();
                 break;
         }
+    }
+
+    private void SendAnalystics()
+    {
+        AnalyticsResult analyticsResult = Analytics.CustomEvent(
+                        "Boss State Switch",
+                        new Dictionary<string, object>
+                        {
+                            {"StateID",  CurrentStateId},
+                            {"Player-Boss distance", Vector3.Distance(transform.position, playerModel.position) }
+                        }
+                    );
     }
 
 
