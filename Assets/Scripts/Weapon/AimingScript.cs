@@ -5,8 +5,8 @@ using UnityEngine;
 public class AimingScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float turnSpeed = 15;
-    public float aimDuration = 0.3f;
+    [SerializeField]
+    float turnSpeed = 15;
     public Transform focusPoint;
     public Transform player;
 
@@ -15,14 +15,11 @@ public class AimingScript : MonoBehaviour
 
     [SerializeField]
     Camera mainCamera;
-    Animator animator;
-    int isAimingParam = Animator.StringToHash("IsAiming");
 
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

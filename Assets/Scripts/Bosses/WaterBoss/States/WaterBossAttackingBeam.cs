@@ -14,9 +14,9 @@ public class WaterBossAttackingBeam : State
     [SerializeField]
     GameObject chargeEffect;
     [SerializeField]
-    float chargeTime = 1f;
+    float chargeTime = 2f;
     [SerializeField]
-    private float distanceFromBoss;
+    float beamduration = 3f;
 
     public override void Enter(int previousStateId)
     {
@@ -33,23 +33,24 @@ public class WaterBossAttackingBeam : State
     private IEnumerator FireBeam()
     {
         beamTarget.position = bossAI.playerModel.position;
+        //visual cue for player
         GameObject charge = Instantiate(chargeEffect, beamFirePoint.position, context.transform.rotation, context.transform);
         int direction = Random.Range(0, 2);
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(chargeTime);
         Destroy(charge);
         GameObject beamInstance = Instantiate(waterBeam, beamFirePoint.position, Quaternion.identity);
+        //beam travels to the left or right
         if (direction < 1)
         {
-            //GameObject beamInstance = Instantiate(waterBeam, beamFirePoint.position, Quaternion.identity);
             beamInstance.GetComponent<WaterBeam>().BeamTarget(beamFirePoint, beamTarget, beamEndPointLeft);
-            yield return new WaitForSecondsRealtime(3);
+            yield return new WaitForSecondsRealtime(beamduration);
             Destroy(beamInstance);
         }
         if(direction >= 1)
         {
             
             beamInstance.GetComponent<WaterBeam>().BeamTarget(beamFirePoint, beamTarget, beamEndPointRight);
-            yield return new WaitForSecondsRealtime(3);
+            yield return new WaitForSecondsRealtime(beamduration);
             Destroy(beamInstance);
         }
         bossAI.NextState();

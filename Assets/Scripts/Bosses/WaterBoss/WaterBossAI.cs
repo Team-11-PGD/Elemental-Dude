@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [RequireComponent(typeof(WaterBossMoveState), typeof(WaterBossAttackingBouncingBubble), typeof(WaterBossAttackingSlam))]
-[RequireComponent(typeof(WaterBossAttackingWave))]
+[RequireComponent(typeof(WaterBossAttackingWave), typeof(WaterBossAttackingBeam), typeof(BossDeath))] 
 
 public class WaterBossAI : BossAI
 {
@@ -91,7 +91,7 @@ public class WaterBossAI : BossAI
         }
     }
 
-    public bool SwitchToDefend()
+    public bool SummonWater()
     {
         if (health.HpPercentage <= waterRisePercentage && health.HpPercentage > defenceStatePercentage && stage1 == true)
         {
@@ -112,7 +112,7 @@ public class WaterBossAI : BossAI
 
     protected override void Hitted()
     {
-        SwitchToDefend();
+        SummonWater();
     }
 
     protected override void Died()
@@ -132,7 +132,6 @@ public class WaterBossAI : BossAI
         {
             Vector3 playerPosition = new Vector3(playerModel.transform.position.x, transform.position.y, playerModel.transform.position.z);
             transform.LookAt(playerPosition);
-            //TODO: (make boss turn slowly instead of snap to player)
         }
     }
 }

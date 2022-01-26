@@ -42,6 +42,7 @@ public class WaterWaveScript : Projectile
         {
             DamageHandler(other.gameObject.GetComponentInParent<Health>(), other.gameObject.GetComponentInParent<ElementMain>());
             MovementScript movement = other.gameObject.GetComponent<MovementScript>();
+            //stuns player and moves him back
             movement.stunDuration = waveStunDuration;
             movement.velocity = rigidBody.velocity * waveForce;
         }

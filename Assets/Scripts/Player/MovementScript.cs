@@ -13,7 +13,7 @@ public class MovementScript : MonoBehaviour
     [SerializeField]
     private float jumpSpeed;
     [SerializeField]
-    private float jumpGracePeroid;
+    private float jumpGracePeriod;
 
     public Vector3 velocity;
 
@@ -59,6 +59,7 @@ public class MovementScript : MonoBehaviour
         //moves character with camera
         float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
         //transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
+
         //makes character move in camera direction
         movementDirection = Quaternion.Euler(0f, targetAngle, 0f)* Vector3.forward;
         //jumping
@@ -71,10 +72,10 @@ public class MovementScript : MonoBehaviour
         {
             jumpButtonPressedTime = Time.time;
         }
-        if (Time.time - lastGroundedTime <= jumpGracePeroid) 
+        if (Time.time - lastGroundedTime <= jumpGracePeriod) // jump grace period so jumping feels smoother
         {
             ySpeed = -2f;
-            if (Time.time - jumpButtonPressedTime <= jumpGracePeroid && stunDuration <= 0)
+            if (Time.time - jumpButtonPressedTime <= jumpGracePeriod && stunDuration <= 0)
             {
                 ySpeed = jumpSpeed;
                 jumpButtonPressedTime = null;

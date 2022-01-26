@@ -35,16 +35,18 @@ public class WaterBeam : Projectile
 
         if (Physics.SphereCast(ray.origin, line.endWidth/2, ray.direction, out (hit), maxLength))
         {
-
+            //wont collide with boss
             if (hit.collider && hit.collider.gameObject.tag != "Boss")
             {
                 line.SetPosition(1, hit.point);
             }
+            // damamge to player
             if(hit.collider.gameObject.tag == "Player")
             {
                 DamageHandler(hit.collider.gameObject.GetComponentInParent<Health>(), hit.collider.gameObject.GetComponentInParent<ElementMain>());
                 Collided(hit.collider);
             }
+            //destroy if it reaches the end object
             if(hit.collider.gameObject.tag == "Finish")
             {
                 Destroy(gameObject);
