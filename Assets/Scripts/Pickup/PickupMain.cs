@@ -8,6 +8,7 @@ public class PickupMain : MonoBehaviour
 {
     [SerializeField]
     protected ShowPickupText text;
+
     [SerializeField]
     protected MeshRenderer model;
     protected Collider user;
@@ -20,12 +21,19 @@ public class PickupMain : MonoBehaviour
         {
             user = other;
             PickedUpPickup(other);
-            //SOUND: (pick up)
         }
     }
 
+    /// <summary>
+    /// Functionality for pickup.
+    /// </summary>
+    /// <param name="player"></param>
     protected virtual void PickedUpPickup( Collider player){}
 
+    /// <summary>
+    /// Remove pickup using ShowPickupText script's timer.
+    /// </summary>
+    /// <returns></returns>
     protected IEnumerator RemovePickupOnTimer()
     {
         allowPickup = false;

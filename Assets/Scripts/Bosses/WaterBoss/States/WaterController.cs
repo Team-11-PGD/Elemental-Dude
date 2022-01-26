@@ -8,26 +8,31 @@ public class WaterController : MonoBehaviour
     [SerializeField]
     private GameObject waterWall;
 
-    private WaterWallMoveToCenter[] arenaAssets = new WaterWallMoveToCenter[13];
-
     [SerializeField]
     private WaterFloorMove floor;
 
+    private WaterWallMoveToCenter[] arenaAssets = new WaterWallMoveToCenter[13];
+
+    #region Debug-Tool Variables
     [SerializeField]
     public bool startAppear, start1, start2, start3;
+    #endregion
 
     void Start()
     {
         WaterWallMoveToCenter[] walls = waterWall.GetComponentsInChildren<WaterWallMoveToCenter>();
+
         for (int i = 0; i < walls.Length; i++)
         {
-            arenaAssets[i] = walls[i];
+            arenaAssets[i] = walls[i];                      //Sets arenaAssets 0-11 as water walls.
         }
-        arenaAssets[12] = floor;
+        arenaAssets[12] = floor;                            //Sets arenaAsset 12 as water floor.
     }
 
     void Update()
     {
+        //Debug tool for starting water boss arena transformations.
+        #region Debug-Tool Functionality
         if (startAppear)
         {
             StartStage(0);
@@ -48,13 +53,18 @@ public class WaterController : MonoBehaviour
             StartStage(3);
             start3 = false;
         }
+        #endregion
     }
 
-    void StartStage(int stage)
+    /// <summary>
+    /// Start water boss arena transformation stage to given stageID.
+    /// </summary>
+    /// <param name="stageID"></param>
+    void StartStage(int stageID)
     {
         foreach (WaterWallMoveToCenter arenaAsset in arenaAssets)
         {
-            arenaAsset.StartStage(stage);
+            arenaAsset.StartStage(stageID);
         }
     }
 }
