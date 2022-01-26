@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Joshua Knaven
@@ -10,7 +8,6 @@ public class Fireball : Projectile
 
     Health playerHealth;
     Collider playerModel;
-
     bool hit = false;
 
     public void SetupParticleDamage(Health playerHealth, Collider playerModel, float damage)

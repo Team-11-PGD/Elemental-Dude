@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossLavaSlamAttack : FireBossState
@@ -17,30 +16,30 @@ public class BossLavaSlamAttack : FireBossState
 
     public override void Enter(int previousStateId)
     {
-        bossAI.animal.Mode_Activate(1,2);
-        StartCoroutine(ChargeTime());
+        BossAI.animal.Mode_Activate(1,2);
+        StartCoroutine(SlamCoroutine());
     }
-    public override void Exit(int nextStateId) { }
 
-    IEnumerator ChargeTime()
+    IEnumerator SlamCoroutine()
     {
+        // Attack indication
         Instantiate(slamPrefab, slamPosition.position, context.transform.rotation, context.transform);
-        //SOUND: Check(slam)
         AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossSlamAttack");
 
-        yield return new WaitForSecondsRealtime(chargeTime);
-        //SOUND: Check(bubble bubble lava)
+        yield return new WaitForSeconds(chargeTime);
         
+        // Spawn lava
         GameObject lavaInstance = Instantiate(lavaPrefab, slamPosition.position, context.transform.rotation);
         PlayerDamagingParticle damagingParticle = lavaInstance.GetComponentInChildren<PlayerDamagingParticle>();
         damagingParticle.damage = damage;
-        damagingParticle.playerHealth = bossAI.playerHealth;
+        damagingParticle.playerHealth = BossAI.playerHealth;
         damagingParticle.transform.localScale *= lavaSize;
         AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossLavaAttack");
 
         ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
-        Collider playerModel = bossAI.playerModel.GetComponent<Collider>();
+        Collider playerModel = BossAI.playerModel.GetComponent<Collider>();
         particleSystemtmp.trigger.AddCollider(playerModel);
-        bossAI.TransitionTo(FireBossAI.StateOptions.MoveToPlayer);
+
+        BossAI.NextState();
     }
 }

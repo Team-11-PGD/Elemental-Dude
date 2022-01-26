@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using MalbersAnimations.Controller.AI;
+using MalbersAnimations.Controller;
 
 // Joshua Knaven
 public class BossAI : StateMachine
 {
-    //public NavMeshAgent agent;
     public Transform playerModel;
     public Health playerHealth;
 
     [SerializeField]
-    public MalbersAnimations.Controller.AI.MAnimalAIControl bossTargeting;
-
+    protected MAnimalAIControl bossTargeting;
     [SerializeField]
-    public Animator animator;
-
+    protected Animator animator;
     [SerializeField]
-    public MalbersAnimations.Controller.MAnimal animal;
-
+    protected MAnimal animal;
     [SerializeField]
     protected Health health;
 

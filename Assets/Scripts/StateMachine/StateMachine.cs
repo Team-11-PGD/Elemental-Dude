@@ -38,7 +38,6 @@ public class StateMachine : MonoBehaviour
         states.Add(EnumToInt(stateEnum), stateComponent);
     }
 
-
     /// <summary>
     /// Set all states to inactive and activate first state
     /// </summary>
