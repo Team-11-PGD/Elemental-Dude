@@ -8,15 +8,10 @@ public class BossAI : StateMachine
 {
     public Transform playerModel;
     public Health playerHealth;
-
-    [SerializeField]
-    protected MAnimalAIControl bossTargeting;
-    [SerializeField]
-    protected Animator animator;
-    [SerializeField]
-    protected MAnimal animal;
-    [SerializeField]
-    protected Health health;
+    public MAnimalAIControl bossTargeting;
+    public Animator animator;
+    public MAnimal animal;
+    public Health health;
 
     protected new void TransitionTo(Enum nextState)
     {
