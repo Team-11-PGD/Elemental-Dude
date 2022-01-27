@@ -5,10 +5,10 @@ using UnityEngine;
 // Chris Huider
 public class WaterBossAttackingBouncingBubble : State
 {
-    WaterBossAI bossAI;
+    private WaterBossAI bossAI;
 
     [SerializeField]
-    GameObject bubble;
+    private GameObject bubble;
 
     [SerializeField]
     private float distanceFromBoss;
@@ -21,11 +21,12 @@ public class WaterBossAttackingBouncingBubble : State
         bossAI.NextState();
     }
 
-    public override void Exit(int nextStateId)
-    {
+    public override void Exit(int nextStateId) { }
 
-    }
-
+    /// <summary>
+    /// Spawn a bubble instance moving from boss to player.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SpawnBubble()
     {
         GameObject bubbleInstance = Instantiate(bubble, transform.position + Vector3.forward * distanceFromBoss, Quaternion.identity);

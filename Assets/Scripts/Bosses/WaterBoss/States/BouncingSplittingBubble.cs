@@ -5,13 +5,9 @@ using UnityEngine;
 // Chris Huider
 public class BouncingSplittingBubble : Projectile
 {
-    [SerializeField]
     public GameObject bubble;
 
-    [SerializeField]
-    public Transform player;
-    [SerializeField]
-    public Transform boss;
+    public Transform player, boss;
 
     public int availableSplits = 3;
 
@@ -37,6 +33,10 @@ public class BouncingSplittingBubble : Projectile
         Collided(collision.collider);
     }
 
+    /// <summary>
+    /// Checks if ground or player are hit and chooses functionality accordingly.
+    /// </summary>
+    /// <param name="other"></param>
     protected override void Hit(Collider other)
     {
         if (other.tag == "Player") DamageHandler(other.gameObject.GetComponentInParent<Health>(), other.gameObject.GetComponentInParent<ElementMain>());
@@ -44,11 +44,14 @@ public class BouncingSplittingBubble : Projectile
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Split bubble instance into two new bubble instances.
+    /// </summary>
     private void SplitBubble()
     {
         Vector3 movementDirection = (player.position - boss.position) * bubbleMovementSpeed;
-        Vector3 goLeft = Quaternion.AngleAxis(-splitAngle, Vector3.up) * movementDirection.normalized;
-        Vector3 goRight = Quaternion.AngleAxis(splitAngle, Vector3.up) * movementDirection.normalized;
+        Vector3 goLeft = Quaternion.AngleAxis(-splitAngle, Vector3.up) * movementDirection.normalized;              //Vector3 with defined angle to the left.
+        Vector3 goRight = Quaternion.AngleAxis(splitAngle, Vector3.up) * movementDirection.normalized;              //Vector3 with defined angle to the right.
 
         GameObject bubbleInstance1 = Instantiate(bubble, transform.position + Vector3.up * 2 + movementDirection.normalized + goLeft, Quaternion.identity);
         GameObject bubbleInstance2 = Instantiate(bubble, transform.position + Vector3.up * 2 + movementDirection.normalized + goRight, Quaternion.identity);
@@ -56,8 +59,8 @@ public class BouncingSplittingBubble : Projectile
         BouncingSplittingBubble bubbleInstance1Script = bubbleInstance1.GetComponent<BouncingSplittingBubble>();
         BouncingSplittingBubble bubbleInstance2Script = bubbleInstance2.GetComponent<BouncingSplittingBubble>();
 
-        bubbleInstance1.GetComponent<Rigidbody>().AddForce(goLeft * bubbleMovementSpeed);
-        bubbleInstance2.GetComponent<Rigidbody>().AddForce(goRight * bubbleMovementSpeed);
+        bubbleInstance1.GetComponent<Rigidbody>().AddForce(goLeft * bubbleMovementSpeed);                           //Make bubble go left using Vector3 goLeft.
+        bubbleInstance2.GetComponent<Rigidbody>().AddForce(goRight * bubbleMovementSpeed);                          //Make bubble go right using Vector3 goRight.
 
         bubbleInstance1Script.availableSplits = availableSplits - 1;
         bubbleInstance2Script.availableSplits = availableSplits - 1;
@@ -66,6 +69,12 @@ public class BouncingSplittingBubble : Projectile
         GiveTarget(boss, player, bubbleInstance2Script);
     }
 
+    /// <summary>
+    /// Give a target to bubble instance which it moves towards.
+    /// </summary>
+    /// <param name="boss"></param>
+    /// <param name="player"></param>
+    /// <param name="instance"></param>
     public void GiveTarget(Transform boss, Transform player, BouncingSplittingBubble instance = null)
     {
         if(instance != null)

@@ -5,11 +5,12 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float damageAmount;
+
     [SerializeField]
     [TagSelector]
-    private string[] hitableTags;
+    string[] hitableTags;
 
-    private ElementMain.ElementType elementType;
+    ElementMain.ElementType elementType;
 
 
     protected virtual void Collided(Collider other)
@@ -33,7 +34,6 @@ public class Projectile : MonoBehaviour
 
     protected void DamageHandler(Health otherHealth, ElementMain otherElementMain)
     {
-        Debug.Log("projectile DAMAGAEHANDLER " + damageAmount);
         float dmgPercentage = otherElementMain.ElementDmgPercentage(elementType, otherElementMain.currentType);
         otherHealth.Hit(damageAmount * dmgPercentage);
     }

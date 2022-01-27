@@ -2,10 +2,9 @@ using System.Collections;
 using UnityEngine;
 
 // Joshua Knaven
-public class BossDefendingFireBallState : FireBossState
+public class BossOrbitalBeamAttack : FireBossState
 {
-    public int sizeFireball = 1;
-    public float percentageOfRoomFilled = 0.1f;
+    public int orbitalBeamAmount = 10;
 
     [SerializeField]
     BoxCollider spawnArea;
@@ -14,37 +13,28 @@ public class BossDefendingFireBallState : FireBossState
 
     [Header("Attacking")]
     [SerializeField]
-    GameObject fireball;
-    [SerializeField]
-    int fireballAmount = 10;
+    GameObject prefab;
     [SerializeField]
     float spawningTime = 2;
     [SerializeField]
     float damage = 1;
 
-    private float amountOFireballs;
     Vector3[] spawningPositions;
 
     public override void Enter(int previousStateId)
     {
-        StartCoroutine(SpawnAttack());
-        float sizeSpawnArea = spawnArea.bounds.size.x * spawnArea.bounds.size.z;
-        amountOFireballs = (sizeSpawnArea / sizeFireball) * percentageOfRoomFilled;
-        Debug.Log(amountOFireballs);
-        Debug.Log(sizeSpawnArea + "area");
-        Debug.Log(percentageOfRoomFilled + "prec");
+        StartCoroutine(BeamCoroutine());
     }
-
-    public override void Exit(int nextStateId) { }
 
     public void Update()
     {
         context.transform.Rotate(Vector3.up, 2);
     }
 
-    IEnumerator SpawnAttack()
+    IEnumerator BeamCoroutine()
     {
-        spawningPositions = new Vector3[fireballAmount];
+        spawningPositions = new Vector3[orbitalBeamAmount];
+
         for (int i = 0; i < spawningPositions.Length; i++)
         {
             spawningPositions[i] = new Vector3(
@@ -57,14 +47,14 @@ public class BossDefendingFireBallState : FireBossState
                 spawningPositions[i] = hit.point;
             }
 
-            GameObject instance = Instantiate(fireball, spawningPositions[i], Quaternion.Euler(-90, 0, 0));
+            GameObject instance = Instantiate(prefab, spawningPositions[i], Quaternion.Euler(-90, 0, 0));
             PlayerDamagingParticle playerDamagingParticle = instance.GetComponentInChildren<PlayerDamagingParticle>();
             playerDamagingParticle.damage = damage;
-            playerDamagingParticle.playerHealth = bossAI.playerHealth;
-            playerDamagingParticle.GetComponent<ParticleSystem>().trigger.AddCollider(bossAI.playerModel.GetComponent<Collider>());
+            playerDamagingParticle.playerHealth = BossAI.playerHealth;
+            playerDamagingParticle.GetComponent<ParticleSystem>().trigger.AddCollider(BossAI.playerModel.GetComponent<Collider>());
         }
 
-        yield return new WaitForSecondsRealtime(spawningTime);
-        bossAI.NextDefendState();
+        yield return new WaitForSeconds(spawningTime);
+        BossAI.NextState();
     }
 }

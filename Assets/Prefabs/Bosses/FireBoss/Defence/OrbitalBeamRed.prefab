@@ -39335,6 +39335,7 @@ GameObject:
   - component: {fileID: 2188550451924566193}
   - component: {fileID: 6229802492779196072}
   - component: {fileID: 2982117197941408207}
+  - component: {fileID: 7181548805928437199}
   m_Layer: 0
   m_Name: OrbitalBeamRed
   m_TagString: Untagged
@@ -44206,3 +44207,17 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &7181548805928437199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6468135881437671960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59da5247360a58439c507d94d456df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoShutDown: 1
+  time: 0

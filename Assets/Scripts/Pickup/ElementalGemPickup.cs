@@ -46,45 +46,56 @@ public class ElementalGemPickup : PickupMain
         text.uiObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Show gem type text on UI.
+    /// </summary>
     private void ShowGemText()
     {
-        if (element.currentType == ElementMain.ElementType.Fire) fireElement.enabled = true; else fireElement.enabled = false;
-        if (element.currentType == ElementMain.ElementType.Water) waterElement.enabled = true; else waterElement.enabled = false;
-        if (element.currentType == ElementMain.ElementType.Air) airElement.enabled = true; else airElement.enabled = false;
-        PickupText = $"Press E to use {element.currentType} gem.";
-        text.powerupText = PickupText;
-        text.StartText(false);
+        if (element.currentType == ElementMain.ElementType.Fire) fireElement.enabled = true; else fireElement.enabled = false;      //<-
+        if (element.currentType == ElementMain.ElementType.Water) waterElement.enabled = true; else waterElement.enabled = false;   //Check elemental type.
+        if (element.currentType == ElementMain.ElementType.Air) airElement.enabled = true; else airElement.enabled = false;         //<-
+
+        PickupText = $"Press E to use {element.currentType} gem.";                                                                  //<-
+        text.powerupText = PickupText;                                                                                              //Changing and showing text.
+        text.StartText(false);                                                                                                      //<-
     }
 
+    /// <summary>
+    /// Open confirmation menu on UI.
+    /// </summary>
     private void OpenConfirmationMenu()
     {
         allowPickup = false;
         confirmMenuOpen = true;
 
         userWeapon = user.GetComponentInParent<WeaponSwitcher>();
-        PickupText = $"Are you sure you want to equip {element.currentType} to your {userWeapon.curWeapon} ? Press F to equip.";
-        text.powerupText = PickupText;
 
-        text.StartText(false);
+        PickupText = $"Are you sure you want to equip {element.currentType} to your {userWeapon.curWeapon} ? Press F to equip.";    //<-
+        text.powerupText = PickupText;                                                                                              //Changing and showing text.
+        text.StartText(false);                                                                                                      //<-
     }
 
+    /// <summary>
+    /// Equip element to current weapon and remove pickup GameObject.
+    /// </summary>
     private void EquipAndRemove()
     {
         confirmMenuOpen = false;
 
         if (userWeapon.GetWeapon(userWeapon.curWeapon).elementMain.currentType == ElementMain.ElementType.None) //do switch
         {
-            userWeapon.GetWeapon(userWeapon.curWeapon).SetWeaponElement(element.currentType);
-            PickupText = $"You equiped {element.currentType} to your {userWeapon.curWeapon}.";
-            text.powerupText = PickupText;
+            userWeapon.GetWeapon(userWeapon.curWeapon).SetWeaponElement(element.currentType);                                       //Setting new element to current weapon.
+
+            PickupText = $"You equiped {element.currentType} to your {userWeapon.curWeapon}.";                                      //Changing and showing text.
+            text.powerupText = PickupText;                                                                                          //<-
 
             StartCoroutine(RemovePickupOnTimer());
         }
         else //dont switch
         {
-            PickupText = $"You already have {userWeapon.GetWeapon(userWeapon.curWeapon).elementMain.currentType} on your {userWeapon.curWeapon}.";
-            text.powerupText = PickupText;
-            text.StartText();
+            PickupText = $"You already have {userWeapon.GetWeapon(userWeapon.curWeapon).elementMain.currentType} on your {userWeapon.curWeapon}.";      //<-
+            text.powerupText = PickupText;                                                                                                              //Changing and showing text.
+            text.StartText();                                                                                                                           //<-
         }
     }
 }

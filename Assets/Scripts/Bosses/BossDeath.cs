@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossDeath : FireBossState
@@ -13,14 +11,12 @@ public class BossDeath : FireBossState
     [SerializeField]
     GameObject[] portals;
 
-    int stateId;
-
     public override void Enter(int previousStateId)
     {
         AudioManager.instance.StopSoundFromWorld(AudioManager.instance.AmbianceSounds, "BossMusic");
+        AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, gameObject, "BossDeath");
 
-        context.GetComponent<Collider>().enabled = false;
-        stateId = context.CurrentStateId;
+        // Spawn death model
         renderer.enabled = false;
         GameObject instance = Instantiate(fracturedModel, context.transform.position, context.transform.rotation, context.transform);
         foreach (Rigidbody rigidbody in instance.GetComponentsInChildren<Rigidbody>())
@@ -31,22 +27,11 @@ public class BossDeath : FireBossState
         {
             childRenderer.material = renderer.material;
         }
-        context.enabled = false;
+
+        // Activate portals
         foreach (GameObject portal in portals)
         {
             portal.SetActive(true);
         }
-
-        bossAI.enabled = false;
-        //bossAI.animal.State_Activate(8);
     }
-
-    public override void Exit(int nextStateId)
-    {
-        // lock this state
-        if (context.CurrentStateId != stateId)
-            context.TransitionTo((FireBossAI.StateOptions)context.CurrentStateId);
-    }
-
-
 }

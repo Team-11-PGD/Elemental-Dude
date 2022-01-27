@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 // Joshua Knaven
+// https://refactoring.guru/design-patterns/state/csharp/example
 public class StateMachine : MonoBehaviour
 {
     public int CurrentStateId { get; private set; } = -1;
@@ -36,7 +37,6 @@ public class StateMachine : MonoBehaviour
     {
         states.Add(EnumToInt(stateEnum), stateComponent);
     }
-
 
     /// <summary>
     /// Set all states to inactive and activate first state
@@ -132,13 +132,5 @@ public class StateMachine : MonoBehaviour
 
         // Transition to a random option
         TransitionTo((Enum)enums.GetValue(UnityEngine.Random.Range(0, enums.Length)));
-    }
-
-    /// <summary>
-    /// Disables the current state (does not call Exit)
-    /// </summary>
-    public void DisableStates()
-    {
-        CurrentState.enabled = false;
     }
 }

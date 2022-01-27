@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossFlameBreathAttack : FireBossState
@@ -8,7 +7,7 @@ public class BossFlameBreathAttack : FireBossState
 
     new GameObject particleSystem;
     [SerializeField]
-    Transform FlamePosition;
+    Transform flamePosition;
 
     [SerializeField]
     GameObject smokePrefab, flamePrefab;
@@ -23,8 +22,7 @@ public class BossFlameBreathAttack : FireBossState
     {
         facePlayer = true;
 
-        StartCoroutine(SmokeTimer());
-        //SOUND: Check(Flamethrower)
+        StartCoroutine(SmokeCoroutine());
         AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossFlamethrowerAttack");
     }
 
@@ -38,31 +36,34 @@ public class BossFlameBreathAttack : FireBossState
     {
         if (!facePlayer) return;
 
-        Vector3 playerPosition = new Vector3(bossAI.playerModel.transform.position.x, transform.position.y, bossAI.playerModel.transform.position.z);
+        Vector3 playerPosition = BossAI.playerModel.transform.position;
+        playerPosition.y = transform.position.y;
         transform.LookAt(playerPosition);
     }
 
-    IEnumerator SmokeTimer()
+    IEnumerator SmokeCoroutine()
     {
-        particleSystem = Instantiate(smokePrefab, FlamePosition.transform.position, context.transform.rotation, context.transform);
-        yield return new WaitForSecondsRealtime(smokeTime);
+        particleSystem = Instantiate(smokePrefab, flamePosition.transform.position, context.transform.rotation, context.transform);
+
+        yield return new WaitForSeconds(smokeTime);
 
         facePlayer = false;
-
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
 
-        particleSystem = Instantiate(flamePrefab, FlamePosition.transform.position, FlamePosition.transform.rotation, context.transform);
-        particleSystem.GetComponent<PlayerDamagingParticle>().playerHealth = bossAI.playerHealth;
-        particleSystem.GetComponent<PlayerDamagingParticle>().damage = this.damage;
-        particleSystem.transform.localScale *= size;
-        StartCoroutine(FlameTimer());
+        StartCoroutine(FlameCoroutine());
     }
 
-    IEnumerator FlameTimer()
-    { 
-        yield return new WaitForSecondsRealtime(attackTime);
+    IEnumerator FlameCoroutine()
+    {
+        particleSystem = Instantiate(flamePrefab, flamePosition.transform.position, flamePosition.transform.rotation, context.transform);
+        particleSystem.GetComponent<PlayerDamagingParticle>().playerHealth = BossAI.playerHealth;
+        particleSystem.GetComponent<PlayerDamagingParticle>().damage = damage;
+        particleSystem.transform.localScale *= size;
+
+        yield return new WaitForSeconds(attackTime);
+
         particleSystem.GetComponent<ParticleRemover>().ShutDown();
 
-        bossAI.TransitionTo(FireBossAI.StateOptions.MoveToPlayer);
+        BossAI.NextState();
     }
 }

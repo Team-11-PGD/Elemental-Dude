@@ -8,8 +8,6 @@ using System;
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    GameObject playerModel;
-    [SerializeField]
     public GameObject dmgText;
     public float maxHp;
     // [HideInInspector]

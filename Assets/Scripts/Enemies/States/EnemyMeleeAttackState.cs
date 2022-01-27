@@ -21,8 +21,6 @@ public class EnemyMeleeAttackState : EnemyState
     IEnumerator Attack()
     {
         // Play charge animation
-        Debug.Log("start attack animation");
-
         if (Vector3.Distance(enemyAI.playerModel.position, transform.position) <= meleeDistance)
         {
             AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "EnemyAttack");

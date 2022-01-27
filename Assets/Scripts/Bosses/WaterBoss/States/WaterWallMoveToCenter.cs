@@ -23,27 +23,32 @@ public class WaterWallMoveToCenter : WaterWaveScript
         rigidBody = GetComponent<Rigidbody>();
         canDamage = true;
     }
-    protected override void FixedUpdate()
-    {
-
-    }
+ 
     protected virtual void Update()
     {
         float centerAndWallDistance = (roomCenter.position - transform.position).magnitude;
 
-        if (stage1Moving && centerAndWallDistance <= stage1Distance) StopClosingIn(1);
-        if (stage2Moving && centerAndWallDistance <= stage2Distance) StopClosingIn(2);
+        if (stage1Moving && centerAndWallDistance <= stage1Distance) StopClosingIn(1);          //Stops transformation once complete.
+        if (stage2Moving && centerAndWallDistance <= stage2Distance) StopClosingIn(2);          //<-
     }
 
+    /// <summary>
+    /// Start first stage of water boss arena transformation.
+    /// </summary>
+    /// <returns></returns>
     protected virtual IEnumerator Appear()
     {
         rigidBody.AddForce(Vector3.up * waveSpeed);
-        yield return new WaitUntil(() => transform.position.y -6 >= roomCenter.position.y); //The -6 is so it lines up with the bottom and not the middle
+        yield return new WaitUntil(() => transform.position.y -6 >= roomCenter.position.y);     //The -6 is so it lines up with the bottom and not the middle
         moveToCenter = (roomCenter.position - transform.position).normalized * waveSpeed;
         rigidBody.velocity = Vector3.zero;
         StartStage(1);
     }
 
+    /// <summary>
+    /// Make water boss arena transformation slowly disappear into the ground.
+    /// </summary>
+    /// <returns></returns>
     protected virtual IEnumerator Disappear()
     {
         rigidBody.AddForce(Vector3.down * waveSpeed);
@@ -51,18 +56,26 @@ public class WaterWallMoveToCenter : WaterWaveScript
         rigidBody.velocity = Vector3.zero;
     }
 
-    public void StartStage(int stage)
+    /// <summary>
+    /// Start given stage.
+    /// </summary>
+    /// <param name="stageID"></param>
+    public void StartStage(int stageID)
     {
-        if (stage == 0) {StartCoroutine(Appear()); rigidBody.AddForce(moveToCenter); }
-        if (stage == 1) {stage1Moving = true; rigidBody.AddForce(moveToCenter); }
-        if (stage == 2) {stage2Moving = true; rigidBody.AddForce(moveToCenter); }
-        if (stage == 3) {StartCoroutine(Disappear()); rigidBody.AddForce(-moveToCenter);}
+        if (stageID == 0) {StartCoroutine(Appear()); rigidBody.AddForce(moveToCenter); }
+        if (stageID == 1) {stage1Moving = true; rigidBody.AddForce(moveToCenter); }
+        if (stageID == 2) {stage2Moving = true; rigidBody.AddForce(moveToCenter); }
+        if (stageID == 3) {StartCoroutine(Disappear()); rigidBody.AddForce(-moveToCenter);}
     }
 
-    public void StopClosingIn(int stage)
+    /// <summary>
+    /// Stops arena assets' movements when stage is complete.
+    /// </summary>
+    /// <param name="stageID"></param>
+    public void StopClosingIn(int stageID)
     {
-        if (stage == 1) stage1Moving = false;
-        if (stage == 2) stage2Moving = false;
+        if (stageID == 1) stage1Moving = false;
+        if (stageID == 2) stage2Moving = false;
         rigidBody.velocity = Vector3.zero;
     }
 }
