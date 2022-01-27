@@ -45372,6 +45372,10 @@ PrefabInstance:
       value: 54.072
       objectReference: {fileID: 0}
     - target: {fileID: 7823148459076064223, guid: 0b063f5709deefd4aaa163e34285cdb0, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 7151602971839694127}
+    - target: {fileID: 7823148459076064223, guid: 0b063f5709deefd4aaa163e34285cdb0, type: 3}
       propertyPath: airBoss
       value: 
       objectReference: {fileID: 1369431210}

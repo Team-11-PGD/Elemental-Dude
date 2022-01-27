@@ -57625,6 +57625,10 @@ PrefabInstance:
       value: IgnoreBullet
       objectReference: {fileID: 0}
     - target: {fileID: 7823148459076064223, guid: 0b063f5709deefd4aaa163e34285cdb0, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 961328614}
+    - target: {fileID: 7823148459076064223, guid: 0b063f5709deefd4aaa163e34285cdb0, type: 3}
       propertyPath: airBoss
       value: 
       objectReference: {fileID: 1103970961}
