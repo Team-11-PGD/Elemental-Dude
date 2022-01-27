@@ -24,7 +24,7 @@ public class JumpTesting : MonoBehaviour
             }
             else jumpText = "No jump";
             Analytics.CustomEvent(
-                "Jump : ",
+                "On jump",
                  new Dictionary<string, object>() { { "JumpSpeed", jumpText } }
                  );
         }

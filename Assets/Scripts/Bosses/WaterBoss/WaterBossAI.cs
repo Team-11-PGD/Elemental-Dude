@@ -137,6 +137,13 @@ public class WaterBossAI : BossAI
     {
         controller.start3 = true;
         TransitionTo(StateOptions.Death);
+        AnalyticsResult analyticsResult = Analytics.CustomEvent(
+            "Boss Kill Time",
+            new Dictionary<string, object>
+            {
+                {"Time",  activeTime}
+            }
+        );
         //SOUND: (boss death sound)
     }
 
