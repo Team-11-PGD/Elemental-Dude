@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Weapon : MonoBehaviour
 {
@@ -68,42 +69,35 @@ public class Weapon : MonoBehaviour
             canFire = true;
             isReloading = false;
             curBulletAmount = maxBullets;
-
-            Debug.Log("Done reloading!");
         }
     }
 
+    /// <summary>
+    /// Set the element of a weapon
+    /// </summary>
+    /// <param name="elementType">The weapon you want to change the element on</param>
     public void SetWeaponElement(ElementMain.ElementType elementType)
     {
         switch (elementType)
         {
             case ElementMain.ElementType.None:
                 elementMain.currentType = ElementMain.ElementType.None;
-                Debug.Log("I am a None element now");
                 break;
 
             case ElementMain.ElementType.Water:
                 elementMain.currentType = ElementMain.ElementType.Water;
-                Debug.Log("I am a Water element now");
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementWater");
                 break;
 
             case ElementMain.ElementType.Fire:
                 elementMain.currentType = ElementMain.ElementType.Fire;
-                Debug.Log("I am a Fire element now");
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementFire");
                 break;
 
             case ElementMain.ElementType.Air:
                 elementMain.currentType = ElementMain.ElementType.Air;
-                Debug.Log("I am an Air element now");
                 AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementAir");
                 break;
-
-                //case ElementMain.ElementType.Earth:
-                //    elementMain.currentType = ElementMain.ElementType.Earth;
-                //    Debug.Log("I am an Earth element now");
-                //    break;
         }
     }
 
@@ -141,7 +135,7 @@ public class Weapon : MonoBehaviour
                 bulletProjectile.SetDamage(weaponDamage + extraDamage);
             }
         }
-        else
+        if(weaponType == WeaponTypes.Shotgun)
         {
             bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
             BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
@@ -149,6 +143,16 @@ public class Weapon : MonoBehaviour
             bulletProjectile.SetElementType(elementMain.currentType);
             bulletProjectile.SetDamage(weaponDamage + extraDamage);
         }
+		
+        if (weaponType == WeaponTypes.RPG)
+		{
+            Analytics.CustomEvent(
+            "RPGShotPlayerPos",
+            new Dictionary<string, object>()
+            {
+                { "Player position", transform.position}
+            });
+		}
     }
     private void ShootSound()
     {
@@ -186,7 +190,6 @@ public class Weapon : MonoBehaviour
 
     public virtual void Reload()
     {
-        //SOUND: Check (reload)
         ReloadSound();
         {
             isReloading = true;

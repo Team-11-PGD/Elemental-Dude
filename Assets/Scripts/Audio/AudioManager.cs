@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+//Mees
 public class AudioManager : MonoBehaviour
 {
 	public static AudioManager instance;
@@ -25,32 +26,14 @@ public class AudioManager : MonoBehaviour
 		}
 		DontDestroyOnLoad(this.gameObject);
 
-		InitWorldAudioSources();
+		InitWorldAudioSources(AmbianceSounds);
+		InitWorldAudioSources(GunSounds);
+		InitWorldAudioSources(UISounds);
 	}
 
-	private void InitWorldAudioSources()
+	private void InitWorldAudioSources(Sound[] soundArray)
 	{
-		foreach (Sound s in AmbianceSounds)
-		{
-			s.source = gameObject.AddComponent<AudioSource>();
-			s.source.clip = s.clip;
-
-			s.source.volume = s.volume;
-			s.source.pitch = s.pitch;
-			s.source.loop = s.loop;
-		}
-
-		foreach (Sound s in GunSounds)
-		{
-			s.source = gameObject.AddComponent<AudioSource>();
-			s.source.clip = s.clip;
-
-			s.source.volume = s.volume;
-			s.source.pitch = s.pitch;
-			s.source.loop = s.loop;
-		}
-
-		foreach (Sound s in UISounds)
+		foreach (Sound s in soundArray)
 		{
 			s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
@@ -61,12 +44,18 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Play sound on the position of a Gameobject.
+	/// </summary>
+	/// <param name="SoundArray">Array the sound you want to play is stored in</param>
+	/// <param name="gameobj">Gameobject the sound is played from</param>
+	/// <param name="name">Name of the sound you want to play</param>
 	public void PlaySoundFromObject(Sound[] SoundArray, GameObject gameobj, string name)
 	{
 		Sound s = Array.Find(SoundArray, sound => sound.name == name);
 		if (s == null)
 		{
-			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
+			Debug.LogError("Oopsie! The sound: " + name + " does not exist!");
 			return;
 		}
 
@@ -84,14 +73,24 @@ public class AudioManager : MonoBehaviour
 		Destroy(s.source, s.source.clip.length);
 	}
 
+	/// <summary>
+	/// Play sound from the Audio Manager object.
+	/// </summary>
+	/// <param name="SoundArray">Array the sound you want to play is stored in</param>
+	/// <param name="name">Name of the sound you want to play</param>
 	public void PlaySoundFromWorld(Sound[] SoundArray, string name)
 	{
 		Sound s = Array.Find(SoundArray, sound => sound.name == name);
 		if (s == null)
 		{
-			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
+			Debug.LogError("Oopsie! The sound: " + name + " does not exist!");
 			return;
 		}
+		s.source.clip = s.clip;
+
+		s.source.volume = s.volume;
+		s.source.pitch = s.pitch;
+		s.source.loop = s.loop;
 
 		if (s.randomPitch)
 			s.source.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
@@ -99,12 +98,17 @@ public class AudioManager : MonoBehaviour
 		s.source.Play();
 	}
 
+	/// <summary>
+	/// Stop the sound from the Audio Manager object.
+	/// </summary>
+	/// <param name="SoundArray">Array the sound you want to stop is stored in</param>
+	/// <param name="name">Name of the sound you want to stop</param>
 	public void StopSoundFromWorld(Sound[] SoundArray, string name)
 	{
 		Sound s = Array.Find(SoundArray, sound => sound.name == name);
 		if (s == null)
 		{
-			Debug.LogError("Oopsie woopsie, the sound: " + name + " does not exist!");
+			Debug.LogError("Oopsie! The sound: " + name + " does not exist!");
 			return;
 		}
 		s.source.Stop();

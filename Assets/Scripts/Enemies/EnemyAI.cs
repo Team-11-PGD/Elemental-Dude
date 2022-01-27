@@ -76,7 +76,6 @@ public class EnemyAI : StateMachine
 
     protected virtual void Hitted()
     {
-        //SOUND: Check (EnemyHitted)
         AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "EnemyGotHit");
         if (health.HpPercentage <= fleeHealthPercentage && (CurrentStateId != (int)StateOptions.Flee && CurrentStateId != (int)StateOptions.Heal))
         {
