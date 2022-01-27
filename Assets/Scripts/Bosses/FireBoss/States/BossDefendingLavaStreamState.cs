@@ -44,9 +44,9 @@ public class BossDefendingLavaStreamState : FireBossState
             damagingParticle.damage = groundbreakDamage;
 
             //the particles from groundbrakeinstance become damageing particles and make them collide with the player wich results in a trigger
-            //ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
+            ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
             Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
-            damagingParticle.GetComponent<ParticleSystem>().trigger.AddCollider(collidertmp);
+            particleSystemtmp.trigger.AddCollider(collidertmp);
             yield return new WaitForSecondsRealtime(groundbreakDuration);
             
         }
