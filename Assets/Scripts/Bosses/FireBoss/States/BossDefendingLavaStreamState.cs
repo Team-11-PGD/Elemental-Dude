@@ -11,7 +11,7 @@ public class BossDefendingLavaStreamState : FireBossState
     Transform groundbreakStartPosition;
 
     [SerializeField]
-    float groundbreakTime = 3f;
+    float groundbreakDuration = 3f;
     [SerializeField]
     float lookAtTime = 1f;
     [SerializeField]
@@ -45,7 +45,7 @@ public class BossDefendingLavaStreamState : FireBossState
             ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
             Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
             particleSystemtmp.trigger.AddCollider(collidertmp);         
-            yield return new WaitForSecondsRealtime(groundbreakTime);
+            yield return new WaitForSecondsRealtime(groundbreakDuration);
         }
         bossAI.NextDefendState();
     }

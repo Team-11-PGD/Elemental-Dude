@@ -5,11 +5,9 @@ using UnityEngine;
 public class TornadoState : AirBossState
 {
     [SerializeField]
-    BoxCollider bombSpawnArea;
+    BoxCollider rockSpawnArea;
     [SerializeField]
-    GameObject tornadoPrefab;
-    [SerializeField]
-    GameObject bombPrefab;
+    GameObject rockPrefab;
     [SerializeField]
     Transform tornadoCenter;
     [SerializeField]
@@ -17,16 +15,12 @@ public class TornadoState : AirBossState
     [SerializeField]
     float spawnTime = 2;
     [SerializeField]
-    int bombAmount = 5;
+    int rockAmount = 5;
     [SerializeField]
-    float pullForce;
+    float pullForceRock;
     [SerializeField]
     float pullForcePlayer;
-    [SerializeField]
-    float rotateSpeed = 500;
-    [SerializeField]
-    float damage = 1f;
-    List<GameObject> bombs = new List<GameObject>();
+    List<GameObject> rocks = new List<GameObject>();
     Vector3 direction;
     bool throwAtPlayer;
 
@@ -40,49 +34,46 @@ public class TornadoState : AirBossState
     public void Update()
     {
         //context.transform.Rotate(Vector3.up, rotateSpeed);
-        foreach (GameObject bomb in bombs)
+        foreach (GameObject rock in rocks)
         {
             if (throwAtPlayer == false)
             {
-                direction = tornadoCenter.position - bomb.transform.position;
+                direction = tornadoCenter.position - rock.transform.position;
             }
-            bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForce);
+            rock.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForceRock);
         }
     }
 
     IEnumerator CreateRocks()
     {
-        //Instantiate(tornadoPrefab, tornadoCenter.position, context.transform.rotation);
-        for (int i = 0; i < bombAmount; i++)
+        for (int i = 0; i < rockAmount; i++)
         {
             Vector3 randomPosition = new Vector3(
-                      Random.Range(bombSpawnArea.bounds.min.x, bombSpawnArea.bounds.max.x),
-                      Random.Range(bombSpawnArea.bounds.min.y, bombSpawnArea.bounds.max.y),
-                      Random.Range(bombSpawnArea.bounds.min.z, bombSpawnArea.bounds.max.z));
-            GameObject bomb = Instantiate(bombPrefab, randomPosition, Quaternion.identity);
-            bomb.GetComponent<Health>().Died += () =>
-            {               
-                bombs.Remove(bomb);
-                Destroy(bomb);
+                      Random.Range(rockSpawnArea.bounds.min.x, rockSpawnArea.bounds.max.x),
+                      Random.Range(rockSpawnArea.bounds.min.y, rockSpawnArea.bounds.max.y),
+                      Random.Range(rockSpawnArea.bounds.min.z, rockSpawnArea.bounds.max.z));
+            GameObject rock = Instantiate(rockPrefab, randomPosition, Quaternion.identity);
+            rocks.Add(rock);
+            rock.GetComponent<Health>().Died += () =>
+            {
+                rocks.Remove(rock);
+                Destroy(rock);
 
             };
-            bombs.Add(bomb);
             yield return new WaitForSecondsRealtime(spawnTime);
         }
-        StartCoroutine(ThrowBombs());
-        //yield return new WaitForSecondsRealtime(tornadoTime);
+        StartCoroutine(ThrowBombs());        
     }
 
     IEnumerator ThrowBombs()
     {
-        for (int i = bombs.Count - 1; i >= 0; i--)
+        for (int i = rocks.Count - 1; i >= 0; i--)
         {
-            GameObject bomb = bombs[i];
-          
-                direction = bossAI.playerModel.position - bomb.transform.position;
-                bomb.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForcePlayer);
-                Debug.Log("ROCK");
-            
+            GameObject rock = rocks[i];
+
+            direction = bossAI.playerModel.position - rock.transform.position;
+            rock.GetComponent<Rigidbody>().AddForce(direction.normalized * pullForcePlayer);
+
             yield return new WaitForSecondsRealtime(spawnTime);
         }
         throwAtPlayer = false;
