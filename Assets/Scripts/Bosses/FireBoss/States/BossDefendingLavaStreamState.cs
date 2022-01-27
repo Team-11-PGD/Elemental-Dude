@@ -26,7 +26,8 @@ public class BossDefendingLavaStreamState : FireBossState
 
     public void Update()
     {
-        Vector3 playerPosition = new Vector3(bossAI.playerModel.transform.position.x, transform.position.y, bossAI.playerModel.transform.position.z);
+        //make the boss look at the player
+        Vector3 playerPosition = new Vector3(bossAI.playerModel.position.x, transform.position.y, bossAI.playerModel.position.z);
         transform.LookAt(playerPosition);
     }
 
@@ -37,15 +38,17 @@ public class BossDefendingLavaStreamState : FireBossState
         {
             AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossLavaStreamAttack");
 
-            GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation, null);
+            //instantiate groundbrake prefab and set the damaging particles from this prefab to do damage equal to groundbreakdamage
+            GameObject groundbreakInstance = Instantiate(groundbreakPrefab, groundbreakStartPosition.position, context.transform.rotation);
             PlayerDamagingParticle damagingParticle = groundbreakInstance.GetComponentInChildren<PlayerDamagingParticle>();
             damagingParticle.damage = groundbreakDamage;
-            damagingParticle.playerHealth = bossAI.playerHealth;
 
-            ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
+            //the particles from groundbrakeinstance become damageing particles and make them collide with the player wich results in a trigger
+            //ParticleSystem particleSystemtmp = damagingParticle.GetComponent<ParticleSystem>();
             Collider collidertmp = bossAI.playerModel.GetComponent<Collider>();
-            particleSystemtmp.trigger.AddCollider(collidertmp);         
+            damagingParticle.GetComponent<ParticleSystem>().trigger.AddCollider(collidertmp);
             yield return new WaitForSecondsRealtime(groundbreakDuration);
+            
         }
         bossAI.NextDefendState();
     }

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Rock : Projectile
 {
-    Health playerHealth;
-    Collider playerModel;
-
     bool hit = false;    
 
     void OnCollisionEnter(Collision collision)

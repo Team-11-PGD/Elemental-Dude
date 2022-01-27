@@ -12,6 +12,7 @@ public class DmgText : MonoBehaviour
 
     void Start()
     {
+        //destroy gameobject after RemoveText amount of seconds
         Destroy(gameObject, RemoveText);
 
         transform.localPosition += offset;
@@ -19,11 +20,5 @@ public class DmgText : MonoBehaviour
             Random.Range(-RandomOffset.x, RandomOffset.x),
             Random.Range(-RandomOffset.y, RandomOffset.y), 
             Random.Range(-RandomOffset.z, RandomOffset.z));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

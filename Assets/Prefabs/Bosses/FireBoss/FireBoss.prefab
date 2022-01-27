@@ -16934,7 +16934,7 @@ MonoBehaviour:
   fireball: {fileID: 6468135881437671960, guid: 71c25e2ccdfb75a47bef6259d216c978, type: 3}
   fireballAmount: 10
   spawningTime: 2
-  damage: 15
+  damage: 0.1
 --- !u!114 &5067504519082224737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16950,7 +16950,7 @@ MonoBehaviour:
   instantiateAmount: 1
   groundbreakPrefab: {fileID: 1314945738539566, guid: 459abe6629949d9468c64fe72d39deb4, type: 3}
   groundbreakStartPosition: {fileID: 5329866789554517304}
-  groundbreakTime: 3
+  groundbreakDuration: 3
   lookAtTime: 1
   groundbreakDamage: 0.01
 --- !u!114 &5067504519082224736
