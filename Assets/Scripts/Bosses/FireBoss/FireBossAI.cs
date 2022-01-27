@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 [RequireComponent(typeof(BossMoveToPlayerState), typeof(BossLavaSlamAttack), typeof(BossFlameBreathAttack))]
 [RequireComponent(typeof(BossDefendingFireBallState), typeof(BossDefendingLavaStreamState), typeof(BossMoveToPosition))]
@@ -88,6 +89,14 @@ public class FireBossAI : BossAI
 
             case (int)StateOptions.MoveToPlayer:
                 NextRandomState(true, StateOptions.Death, StateOptions.MoveToCenter);
+                AnalyticsResult analyticsResult = Analytics.CustomEvent(
+                        "Boss State Switch",
+                        new Dictionary<string, object>
+                        {
+                            {"StateID",  CurrentStateId},
+                            {"Player-Boss distance", Vector3.Distance(transform.position, playerModel.position) }
+                        }
+                    );
                 break;
             default:
                 TransitionTo(StateOptions.MoveToPlayer);
@@ -115,6 +124,14 @@ public class FireBossAI : BossAI
         AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "BossShieldDestroy");
         shield.active = false;
         animal.enabled = false;
+
+        AnalyticsResult analyticsResult = Analytics.CustomEvent(
+                        "Boss Kill Time",
+                        new Dictionary<string, object>
+                        {
+                            {"Time",  activeTime}
+                        }
+                    );
     }
 
     protected override void Hitted()
