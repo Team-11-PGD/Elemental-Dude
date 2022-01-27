@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 public class UIScore : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class UIScore : MonoBehaviour
     public Text TimerText;
     private float CurrentSecTime;
     private float lastSecTime;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,6 @@ public class UIScore : MonoBehaviour
         int seconds = Mathf.FloorToInt(scoreTime % 60F);
         int milliseconds = Mathf.FloorToInt((scoreTime * 100F) % 100F);
         TimerText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + milliseconds.ToString("00");
-
         // begin of test button
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
@@ -43,5 +44,13 @@ public class UIScore : MonoBehaviour
             {
                 PlayerPrefs.SetString("Highscore", TimerText.text);
             }
+    }
+
+    public void TimeToBoss()
+    {
+        Analytics.CustomEvent(
+        "Time to boss",
+        new Dictionary<string, object>() { { "Time", TimerText.text } }
+     );
     }
 }

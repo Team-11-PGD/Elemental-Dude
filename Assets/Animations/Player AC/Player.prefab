@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 6454346169454830127}
   - component: {fileID: 5528943933879373864}
   - component: {fileID: 2629294665493911981}
+  - component: {fileID: 5660452866157300680}
   m_Layer: 20
   m_Name: Player
   m_TagString: Player
@@ -4526,6 +4527,18 @@ MonoBehaviour:
   currentHp: 0
   damageTaken: 0
   hit: 0
+--- !u!114 &5660452866157300680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377335759174711301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7449939057fff794692d3a639d23204b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &443743840568841907
 GameObject:
   m_ObjectHideFlags: 0

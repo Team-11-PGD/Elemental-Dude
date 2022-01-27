@@ -12,6 +12,8 @@ public class BossActivator : MonoBehaviour
     [SerializeField]
     [TagSelector]
     string playerTag;
+    [SerializeField]
+    UIScore timer;
 
     void OnTriggerExit(Collider other)
     {
@@ -38,6 +40,7 @@ public class BossActivator : MonoBehaviour
             AudioManager.instance.StopSoundFromWorld(AudioManager.instance.AmbianceSounds, "CaveAmbiant");
             AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.AmbianceSounds, "BossMusic");
             GetComponent<Collider>().isTrigger = false;
+            timer.TimeToBoss();
         }
     }
 }
