@@ -11,11 +11,11 @@ public class BossDefendingLavaStreamState : FireBossState
     Transform groundbreakStartPosition;
 
     [SerializeField]
-    float groundbreakDuration = 3f;
+    float groundbreakDuration = 3;
     [SerializeField]
-    float lookAtTime = 1f;
+    float lookAtTime = 1;
     [SerializeField]
-    float groundbreakDamage = 0.01f;
+    float groundbreakDamage = 1;
 
     public override void Enter(int previousStateId)
     {

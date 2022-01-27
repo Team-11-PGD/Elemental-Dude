@@ -15,7 +15,10 @@ public class DmgText : MonoBehaviour
         Destroy(gameObject, RemoveText);
 
         transform.localPosition += offset;
-        transform.localPosition += new Vector3(Random.Range(-RandomOffset.x, RandomOffset.x), Random.Range(-RandomOffset.y, RandomOffset.y), Random.Range(-RandomOffset.z, RandomOffset.z));
+        transform.localPosition += new Vector3(
+            Random.Range(-RandomOffset.x, RandomOffset.x),
+            Random.Range(-RandomOffset.y, RandomOffset.y), 
+            Random.Range(-RandomOffset.z, RandomOffset.z));
     }
 
     // Update is called once per frame

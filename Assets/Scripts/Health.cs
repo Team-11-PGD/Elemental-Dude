@@ -52,8 +52,7 @@ public class Health : MonoBehaviour
         }
 
         if (dmgText != null && currentHp > 0)
-        {
-            Debug.Log("piew");
+        {            
             var dmg = Instantiate(dmgText, transform.position, playerModel.transform.rotation, transform);
             dmg.GetComponent<TextMesh>().text = damageAmt.ToString();
         }
