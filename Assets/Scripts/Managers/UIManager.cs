@@ -123,7 +123,15 @@ public class UIManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("InBetweenLevel1");
+        //if (RoomGeneration.NextElements[0] == null)
+        //{
+        //    RoomGeneration.UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.None }, 1);
+        //    RoomGeneration.UpdateElements(RoomGeneration.NextElements[0], 1);
+        //}
+        //else
+        //{
+            RoomGeneration.LoadNextLevel(RoomGeneration.NextElements[0], 1);
+        //}
     }
     public void QuitGame()
     {

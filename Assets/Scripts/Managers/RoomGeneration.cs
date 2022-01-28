@@ -21,7 +21,6 @@ public class RoomGeneration : MonoBehaviour
             DontDestroyOnLoad(instance);
             UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.None }, 1);
             UpdateElements(NextElements[0], 1);
-            UpdateElements(new List<ElementMain.ElementType> { ElementMain.ElementType.Fire }, 1);
             print($"Starting with: {CurrentElements[0]}");
         }
     }
@@ -68,7 +67,7 @@ public class RoomGeneration : MonoBehaviour
         SceneManager.LoadScene(instance.levels[randLevel]);
     }
 
-    private static void UpdateElements(List<ElementMain.ElementType> elementTypes, int amountOfElementsNextRound)
+    public static void UpdateElements(List<ElementMain.ElementType> elementTypes, int amountOfElementsNextRound)
     {
         CurrentElements = elementTypes;
 

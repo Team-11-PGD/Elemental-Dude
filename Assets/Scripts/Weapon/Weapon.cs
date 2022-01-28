@@ -165,6 +165,15 @@ public class Weapon : MonoBehaviour
                 bulletProjectile.SetDamage(weaponDamage + extraDamage);
             }
         }
+        else
+        {
+            bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
+            bulletProjectile.SetVelocity(bullet.forward * bulletSpeed);
+            bulletProjectile.SetElementType(elementMain.currentType);
+            bulletProjectile.SetDamage(weaponDamage + extraDamage);
+        }
+
         if (weaponType == WeaponTypes.Rifle)
         {
             List<float> distances = new List<float>();
@@ -182,12 +191,6 @@ public class Weapon : MonoBehaviour
                         { "AllEnemyDistances", distances }
                     }
             });
-
-            bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
-            BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
-            bulletProjectile.SetVelocity(bullet.forward * bulletSpeed);
-            bulletProjectile.SetElementType(elementMain.currentType);
-            bulletProjectile.SetDamage(weaponDamage + extraDamage);
         }
 
         if (weaponType == WeaponTypes.RPG)

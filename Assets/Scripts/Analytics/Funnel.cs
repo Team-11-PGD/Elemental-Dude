@@ -40,9 +40,16 @@ public class Funnel
         {
             await Task.Delay(120_000);
 
-            foreach (FunnelEvent funnelEvent in funnelEvents)
+            try
             {
-                Analytics.CustomEvent(funnelEvent.name, funnelEvent.data);
+                foreach (FunnelEvent funnelEvent in funnelEvents)
+                {
+                    Analytics.CustomEvent(funnelEvent.name, funnelEvent.data);
+                }
+            }
+            catch
+            {
+                break;
             }
 
             funnelEvents.Clear();

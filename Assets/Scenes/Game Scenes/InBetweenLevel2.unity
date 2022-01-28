@@ -64817,6 +64817,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
+--- !u!1 &1771924587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8598323723209079994, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
+  m_PrefabInstance: {fileID: 1771924586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1772719234 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1338554922242316, guid: 399c23847bd9e44468194bb60d7d64e1, type: 3}
@@ -65909,7 +65914,7 @@ PrefabInstance:
     - target: {fileID: -1741227025268724606, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: uiObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1771924587}
     - target: {fileID: 2748594981072418810, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: bombSpawnArea
       value: 
@@ -65975,6 +65980,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7004715947265456734, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
+      propertyPath: dashArea
+      value: 
+      objectReference: {fileID: 1419350940}
+    - target: {fileID: 7004715947265456734, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: playerModel
       value: 
       objectReference: {fileID: 1223826114}
@@ -66001,7 +66010,7 @@ PrefabInstance:
     - target: {fileID: 7568265492181491691, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: uiObjectHealthPickup
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2127006018}
     - target: {fileID: 7638383843997521955, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: spawnArea
       value: 

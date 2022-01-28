@@ -5081,7 +5081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerModel: {fileID: 377335759174711301, guid: 6628bfdb67bdcc04a9568aa8da2b8506, type: 3}
   dmgText: {fileID: 6017141568281160523, guid: eb554fede0107184c9b1bf96eec80ddf, type: 3}
   maxHp: 100
   currentHp: 0
@@ -5199,7 +5198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPickupAmount: 3
-  fallingHealthPickup: {fileID: 8618477386730529060, guid: ee3641178926be441a472a0c1e89ca1a, type: 3}
+  fallingHealthPickup: {fileID: 7542206177665196830, guid: ee3641178926be441a472a0c1e89ca1a, type: 3}
   healthSpawnArea: {fileID: 0}
   uiObjectHealthPickup: {fileID: 0}
 --- !u!114 &7111900124205609264

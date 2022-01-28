@@ -30400,7 +30400,7 @@ PrefabInstance:
     - target: {fileID: -1741227025268724606, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: uiObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7151602971839694130}
     - target: {fileID: 2748594981072418810, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: bombSpawnArea
       value: 
@@ -30500,7 +30500,7 @@ PrefabInstance:
     - target: {fileID: 7568265492181491691, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: uiObjectHealthPickup
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7151602971839694131}
     - target: {fileID: 7638383843997521955, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: spawnArea
       value: 
@@ -58649,6 +58649,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7151602971839694130 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8598323723209079994, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
+  m_PrefabInstance: {fileID: 7151602971839694124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7151602971839694131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8598323723788957640, guid: c0a768ec616acc94a8339dde535f9ab4, type: 3}
+  m_PrefabInstance: {fileID: 7151602971839694124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &7155909992586828771
 MeshRenderer:
   m_ObjectHideFlags: 0

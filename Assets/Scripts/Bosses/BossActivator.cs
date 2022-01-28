@@ -48,7 +48,7 @@ public class BossActivator : MonoBehaviour
                 data = new Dictionary<string, object>()
                 {
                     { "Player position", other.transform.position},
-                    { "BossType", RoomGeneration.CurrentElements[1] }
+                    { "BossType", RoomGeneration.CurrentElements[0] }
                 }
             });
 
