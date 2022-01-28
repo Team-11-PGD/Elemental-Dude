@@ -38,7 +38,7 @@ public class BossAI : StateMachine
 
     private IEnumerator UpdateTimer()
     {
-        yield return new WaitForSecondsRealtime(0);
+        yield return new WaitForSecondsRealtime(1);
         activeTime++;
     }
 

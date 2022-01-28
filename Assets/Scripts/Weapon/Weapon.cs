@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 public class Weapon : MonoBehaviour
 {
@@ -145,15 +144,17 @@ public class Weapon : MonoBehaviour
                     outsideUnitRange++;
                 }
             }
-            Analytics.CustomEvent(
-                "ShotShotgun",
-                new Dictionary<string, object>() 
+
+            Funnel.Instance.funnelEvents.Add(new Funnel.FunnelEvent
+            {
+                name = "ShotShotgun",
+                data = new Dictionary<string, object>()
                 {
                     { "EnemiesWithinOneUnit", oneUnitRange },
                     { "EnemiesWithinTwoUnits", twoUnitRange },
                     { "EnemiesOutsideTwoUnits", outsideUnitRange }
-                });
-
+                }
+            });
 
             for (int i = 0; i < 6; i++)
             {
@@ -164,24 +165,23 @@ public class Weapon : MonoBehaviour
                 bulletProjectile.SetDamage(weaponDamage + extraDamage);
             }
         }
-        if(weaponType == WeaponTypes.Shotgun)
+        if (weaponType == WeaponTypes.Rifle)
         {
-            if (weaponType == WeaponTypes.Rifle)
+            List<float> distances = new List<float>();
+            foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
             {
-                List<float> distances = new List<float>();
-                foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-                {
-                    distances.Add(Vector3.Distance(transform.position, enemy.transform.position));
-                }
+                distances.Add(Vector3.Distance(transform.position, enemy.transform.position));
+            }
 
-                Analytics.CustomEvent(
-                    "ShotRifle",
-                    new Dictionary<string, object>()
+            Funnel.Instance.funnelEvents.Add(new Funnel.FunnelEvent
+            {
+                name = "ShotRifle",
+                data = new Dictionary<string, object>()
                     {
                         { "AimedEnemyDistance", hit.transform.CompareTag("Enemy") ? Vector3.Distance(transform.position, aimPoint) : -1 },
                         { "AllEnemyDistances", distances }
-                    });
-            }
+                    }
+            });
 
             bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
             BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
@@ -189,17 +189,20 @@ public class Weapon : MonoBehaviour
             bulletProjectile.SetElementType(elementMain.currentType);
             bulletProjectile.SetDamage(weaponDamage + extraDamage);
         }
-		
+
         if (weaponType == WeaponTypes.RPG)
-		{
-            Analytics.CustomEvent(
-            "RPGShotPlayerPos",
-            new Dictionary<string, object>()
+        {
+            Funnel.Instance.funnelEvents.Add(new Funnel.FunnelEvent
             {
-                { "Player position", transform.position}
+                name = "RPGShotPlayerPos",
+                data = new Dictionary<string, object>()
+                    {
+                        {"Player position", transform.position}
+                    }
             });
-		}
+        }
     }
+
     private void ShootSound()
     {
         switch (weaponType)

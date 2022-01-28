@@ -48,9 +48,13 @@ public class UIScore : MonoBehaviour
 
     public void TimeToBoss()
     {
-        Analytics.CustomEvent(
-        "Time to boss",
-        new Dictionary<string, object>() { { "Time", TimerText.text } }
-     );
+        Funnel.Instance.funnelEvents.Add(new Funnel.FunnelEvent
+        {
+            name = "TimeToBoss",
+            data = new Dictionary<string, object>()
+            {
+                { "Time", TimerText.text }
+            }
+        });
     }
 }

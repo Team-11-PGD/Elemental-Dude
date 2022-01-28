@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 public class JumpTesting : MonoBehaviour
 {
@@ -17,16 +16,14 @@ public class JumpTesting : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            string jumpText;
-            if (player.velocity.y > 0)
+            Funnel.Instance.funnelEvents.Add(new Funnel.FunnelEvent
             {
-                jumpText = "Jumped";
-            }
-            else jumpText = "No jump";
-            Analytics.CustomEvent(
-                "On jump",
-                 new Dictionary<string, object>() { { "JumpSpeed", jumpText } }
-                 );
+                name = "OnJump",
+                data = new Dictionary<string, object>()
+                {
+                    { "Jumped", player.velocity.y > 0 }
+                }
+            });
         }
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.Analytics;
 using UnityEngine;
 
 // Joshua Knaven
@@ -41,15 +40,18 @@ public class BossActivator : MonoBehaviour
             AudioManager.instance.StopSoundFromWorld(AudioManager.instance.AmbianceSounds, "CaveAmbiant");
             AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.AmbianceSounds, "BossMusic");
             GetComponent<Collider>().isTrigger = false;
- 			timer.TimeToBoss();
- 			
-            Analytics.CustomEvent(
-            "PlayerEntersBossRoom",
-            new Dictionary<string, object>()
+            timer.TimeToBoss();
+
+            Funnel.Instance.funnelEvents.Add(new Funnel.FunnelEvent
             {
-                { "Player position", other.transform.position},
-                { "BossType", RoomGeneration.CurrentElements[1] }
+                name = "PlayerEntersBossRoom",
+                data = new Dictionary<string, object>()
+                {
+                    { "Player position", other.transform.position},
+                    { "BossType", RoomGeneration.CurrentElements[1] }
+                }
             });
+
         }
     }
 }

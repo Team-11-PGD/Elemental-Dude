@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -60,6 +61,17 @@ public class AirBossAI : BossAI
     {
         await Task.Delay(nextStateDelay);
         base.TransitionTo(nextState);
+
+        Funnel.Instance.funnelEvents.Add(new Funnel.FunnelEvent
+        {
+            name = "BossStateSwitch",
+            data = new Dictionary<string, object>()
+            {
+                {"BossType", "Air" },
+                { "StateID", CurrentStateId},
+                { "Player-Boss distance", Vector3.Distance(transform.position, playerModel.position) }
+            }
+        });
     }
 
     protected void Start()
@@ -133,6 +145,15 @@ public class AirBossAI : BossAI
     protected override void Died()
     {
         base.TransitionTo(StateOptions.Death);
+        Funnel.Instance.funnelEvents.Add(new Funnel.FunnelEvent
+        {
+            name = "BossKillTime",
+            data = new Dictionary<string, object>
+            {
+                {"BossType", "Air" },
+                {"Seconds",  activeTime}
+            }
+        });
     }
 
     private void UpdateState()

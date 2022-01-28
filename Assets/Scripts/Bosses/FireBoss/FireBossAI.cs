@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 
 [RequireComponent(typeof(BossMoveToPlayerState), typeof(BossLavaSlamAttack), typeof(BossFlameBreathAttack))]
 [RequireComponent(typeof(BossOrbitalBeamAttack), typeof(BossLavaStreamAttack), typeof(BossDeath))]
@@ -60,14 +60,6 @@ public class FireBossAI : BossAI
         {
             case StateOptions.MoveToPlayer:
                 NextRandomState(true, StateOptions.Death);
-                AnalyticsResult analyticsResult = Analytics.CustomEvent(
-                    "Boss State Switch",
-                    new Dictionary<string, object>
-                    {
-                        {"StateID",  CurrentStateId},
-                        {"Player-Boss distance", Vector3.Distance(transform.position, playerModel.position) }
-                    }
-                );
                 break;
             default:
                 if (health.HpPercentage < nextPhasePercentage) NextPhase();
@@ -76,17 +68,34 @@ public class FireBossAI : BossAI
         }
     }
 
+    public new void TransitionTo(Enum nextState)
+    {
+        base.TransitionTo(nextState);
+        Funnel.Instance.funnelEvents.Add(new Funnel.FunnelEvent
+        {
+            name = "BossStateSwitch",
+            data = new Dictionary<string, object>()
+            {
+                {"BossType", "Fire" },
+                { "StateID", CurrentStateId},
+                { "Player-Boss distance", Vector3.Distance(transform.position, playerModel.position) }
+            }
+        });
+    }
+
     protected override void Died()
     {
         TransitionTo(StateOptions.Death);
         enabled = false;
-        AnalyticsResult analyticsResult = Analytics.CustomEvent(
-            "Boss Kill Time",
-            new Dictionary<string, object>
+        Funnel.Instance.funnelEvents.Add(new Funnel.FunnelEvent
+        {
+            name = "BossKillTime",
+            data = new Dictionary<string, object>
             {
-                {"Time",  activeTime}
+                {"BossType", "Fire" },
+                {"Seconds", activeTime}
             }
-        );
+        });
     }
 
     void NextPhase()
@@ -103,9 +112,9 @@ public class FireBossAI : BossAI
         for (int i = 0; i < healthPickupAmount; i++)
         {
             Vector3 spawningPosition = new Vector3(
-                Random.Range(healthSpawnArea.bounds.min.x, healthSpawnArea.bounds.max.x),
-                Random.Range(healthSpawnArea.bounds.min.y, healthSpawnArea.bounds.max.y),
-                Random.Range(healthSpawnArea.bounds.min.z, healthSpawnArea.bounds.max.z));
+                UnityEngine.Random.Range(healthSpawnArea.bounds.min.x, healthSpawnArea.bounds.max.x),
+                UnityEngine.Random.Range(healthSpawnArea.bounds.min.y, healthSpawnArea.bounds.max.y),
+                UnityEngine.Random.Range(healthSpawnArea.bounds.min.z, healthSpawnArea.bounds.max.z));
 
             spawningPosition = healthSpawnArea.ClosestPoint(spawningPosition);
 
