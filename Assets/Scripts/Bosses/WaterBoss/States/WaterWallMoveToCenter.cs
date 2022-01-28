@@ -62,10 +62,10 @@ public class WaterWallMoveToCenter : WaterWaveScript
     /// <param name="stageID"></param>
     public void StartStage(int stageID)
     {
-        if (stageID == 0) {StartCoroutine(Appear()); rigidBody.AddForce(moveToCenter); }
-        if (stageID == 1) {stage1Moving = true; rigidBody.AddForce(moveToCenter); }
-        if (stageID == 2) {stage2Moving = true; rigidBody.AddForce(moveToCenter); }
-        if (stageID == 3) {StartCoroutine(Disappear()); rigidBody.AddForce(-moveToCenter);}
+        if (stageID == 0) {StartCoroutine(Appear()); /*rigidBody.AddForce(moveToCenter);*/ }
+        if (stageID == 1) {stage1Moving = true; /*rigidBody.AddForce(moveToCenter); */}
+        if (stageID == 2) {stage2Moving = true; /*rigidBody.AddForce(moveToCenter); */}
+        if (stageID == 3) {StartCoroutine(Disappear()); /*rigidBody.AddForce(-moveToCenter);*/}
     }
 
     /// <summary>

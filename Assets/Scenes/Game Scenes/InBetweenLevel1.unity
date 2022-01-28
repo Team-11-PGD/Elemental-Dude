@@ -1583,6 +1583,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292963331}
     m_Modifications:
+    - target: {fileID: 204985741958642879, guid: dc35e19bd08bd4b45952842e36b9504e, type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 56167629}
+    - target: {fileID: 204985741958642879, guid: dc35e19bd08bd4b45952842e36b9504e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 452401189}
     - target: {fileID: 641033800734123835, guid: dc35e19bd08bd4b45952842e36b9504e, type: 3}
       propertyPath: m_TagString
       value: IgnoreBullet
@@ -1654,10 +1662,6 @@ PrefabInstance:
     - target: {fileID: 2897461528461389346, guid: dc35e19bd08bd4b45952842e36b9504e, type: 3}
       propertyPath: m_Name
       value: Waterboss Terrain Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 2897461528461389346, guid: dc35e19bd08bd4b45952842e36b9504e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3282081142107465577, guid: dc35e19bd08bd4b45952842e36b9504e, type: 3}
       propertyPath: m_TagString
@@ -1735,6 +1739,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f11a93e5046264845a8318ccc16cbc39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &56167629 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5341798711087188031, guid: dc35e19bd08bd4b45952842e36b9504e, type: 3}
+  m_PrefabInstance: {fileID: 56167614}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &57713523
 GameObject:
   m_ObjectHideFlags: 0
