@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Weapon : MonoBehaviour
 {
@@ -72,7 +73,11 @@ public class Weapon : MonoBehaviour
             Debug.Log("Done reloading!");
         }
     }
-
+    void SwitchElement(ElementMain.ElementType elementType)
+    {
+        AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementWater");
+        elementMain.currentType = elementType;
+    }
     public void SetWeaponElement(ElementMain.ElementType elementType)
     {
         switch (elementType)
@@ -83,21 +88,15 @@ public class Weapon : MonoBehaviour
                 break;
 
             case ElementMain.ElementType.Water:
-                elementMain.currentType = ElementMain.ElementType.Water;
-                Debug.Log("I am a Water element now");
-                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementWater");
+                SwitchElement(ElementMain.ElementType.Water);
                 break;
 
             case ElementMain.ElementType.Fire:
-                elementMain.currentType = ElementMain.ElementType.Fire;
-                Debug.Log("I am a Fire element now");
-                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementFire");
+                SwitchElement(ElementMain.ElementType.Fire);
                 break;
 
             case ElementMain.ElementType.Air:
-                elementMain.currentType = ElementMain.ElementType.Air;
-                Debug.Log("I am an Air element now");
-                AudioManager.instance.PlaySoundFromWorld(AudioManager.instance.GunSounds, "ChangeElementAir");
+                SwitchElement(ElementMain.ElementType.Air);
                 break;
 
                 //case ElementMain.ElementType.Earth:
@@ -136,7 +135,7 @@ public class Weapon : MonoBehaviour
             {
                 bullet = Instantiate(bulletPrefab, spawnBulletPos.position, Quaternion.LookRotation(aimDir, Vector3.up));
                 BulletProjectile bulletProjectile = bullet.GetComponent<BulletProjectile>();
-                bulletProjectile.SetVelocity((bullet.forward + new Vector3(Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread), Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
+                bulletProjectile.SetVelocity((bullet.forward + new Vector3(UnityEngine.Random.Range(-maxBulletSpread, maxBulletSpread), UnityEngine.Random.Range(-maxBulletSpread, maxBulletSpread), UnityEngine.Random.Range(-maxBulletSpread, maxBulletSpread))) * bulletSpeed);
                 bulletProjectile.SetElementType(elementMain.currentType);
                 bulletProjectile.SetDamage(weaponDamage + extraDamage);
             }
