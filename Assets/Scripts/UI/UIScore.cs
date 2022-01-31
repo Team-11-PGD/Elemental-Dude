@@ -27,13 +27,6 @@ public class UIScore : MonoBehaviour
         int seconds = Mathf.FloorToInt(scoreTime % 60F);
         int milliseconds = Mathf.FloorToInt((scoreTime * 100F) % 100F);
         TimerText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + milliseconds.ToString("00");
-
-        // begin of test button
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            UpdateTimeScore();
-        }
-        // end of test button
     }
     public void UpdateTimeScore()
     {

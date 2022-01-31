@@ -13,31 +13,26 @@ public class EnemyItemDrop : MonoBehaviour
     private GameObject[] pickups;
     [SerializeField] GameObject uiObject;
 
-    public int lowestRandom = 1;
-    public int highestRandom = 8;
+    public int lowestRandom = 1, highestRandom = 8;//values for the randomValue
     private int randomValue;
 
     private void Start()
     {
         health.Died += ItemDrop;
-        randomValue = UnityEngine.Random.Range(lowestRandom, highestRandom);
+        randomValue = UnityEngine.Random.Range(lowestRandom, highestRandom);//generates a random number for the spawnrate
     }
 
     private void ItemDrop()
     {
-        if (randomValue == 1)//damage
+        ItemSelect(1,0);
+        ItemSelect(2,1,3);
+        ItemSelect(4, 2);
+    }
+    private void ItemSelect(int randomValue,int pickupIndex,int randomValue1 = 0) 
+    {
+        if (this.randomValue == randomValue || this.randomValue == randomValue1)
         {
-            ShowPickupText showPickupText = Instantiate(pickups[0], location.position, location.rotation).GetComponent<ShowPickupText>();
-            showPickupText.uiObject = uiObject;
-        }
-        if (randomValue == 2 || randomValue == 3)//health
-        {
-            ShowPickupText showPickupText = Instantiate(pickups[1], location.position, location.rotation).GetComponent<ShowPickupText>();
-            showPickupText.uiObject = uiObject;
-        }
-        if (randomValue == 4)//speed
-        {
-            ShowPickupText showPickupText = Instantiate(pickups[2], location.position, location.rotation).GetComponent<ShowPickupText>();
+            ShowPickupText showPickupText = Instantiate(pickups[pickupIndex], location.position, location.rotation).GetComponent<ShowPickupText>();
             showPickupText.uiObject = uiObject;
         }
     }

@@ -17867,6 +17867,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8598323722781036752}
     - target: {fileID: 2582557479933823020, guid: 86c570772be98514790f0257278a3b31, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 1991685390}
+    - target: {fileID: 2582557479933823020, guid: 86c570772be98514790f0257278a3b31, type: 3}
+      propertyPath: model
+      value: 
+      objectReference: {fileID: 1991685392}
+    - target: {fileID: 2582557479933823020, guid: 86c570772be98514790f0257278a3b31, type: 3}
+      propertyPath: element
+      value: 
+      objectReference: {fileID: 1991685389}
+    - target: {fileID: 2582557479933823020, guid: 86c570772be98514790f0257278a3b31, type: 3}
       propertyPath: airElement
       value: 
       objectReference: {fileID: 6501494986581735015}
@@ -21758,7 +21770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 782339303857983022, guid: 3a86539a5e686f0419b479a051bfed41, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 52.98
+      value: 52.92
       objectReference: {fileID: 0}
     - target: {fileID: 782339303857983022, guid: 3a86539a5e686f0419b479a051bfed41, type: 3}
       propertyPath: m_LocalPosition.z
@@ -65917,7 +65929,7 @@ PrefabInstance:
     - target: {fileID: -1741227025268724606, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: uiObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8598323722781036752}
     - target: {fileID: 2748594981072418810, guid: 7678bfb6caa56f349a59c657b4f9ce8d, type: 3}
       propertyPath: bombSpawnArea
       value: 
@@ -71171,6 +71183,33 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 158a940d0618b554b83e0f1f34615616, type: 3}
+--- !u!114 &1991685389 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2582557479933823021, guid: 86c570772be98514790f0257278a3b31, type: 3}
+  m_PrefabInstance: {fileID: 449011997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec63d62cba19714683f397e86d7c05c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1991685390 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2582557479933823018, guid: 86c570772be98514790f0257278a3b31, type: 3}
+  m_PrefabInstance: {fileID: 449011997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bddc18234d867341811e7ae2a120b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!23 &1991685392 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2582557479933823016, guid: 86c570772be98514790f0257278a3b31, type: 3}
+  m_PrefabInstance: {fileID: 449011997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1992805159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73217,7 +73256,7 @@ PrefabInstance:
     - target: {fileID: 3761508903902042909, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
       propertyPath: uiObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8598323722781036752}
     - target: {fileID: 5064150457125050641, guid: 051514a7d5c8b404389e0f38c3f2ada5, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -76386,8 +76425,8 @@ MonoBehaviour:
   rifleImage: {fileID: 1455731141573004989}
   shotgunImage: {fileID: 1455731142292540007}
   rpgImage: {fileID: 1455731141626495503}
-  extraDamgage: {fileID: 4152331660239356269}
   extraSpeed: {fileID: 3465147674200835625}
+  extraDamage: {fileID: 4152331660239356269}
   fireSprite: {fileID: 21300000, guid: 7094dce7d5f84154e8c726590c088730, type: 3}
   waterSprite: {fileID: 21300000, guid: 5f885871be5a21d499ac101aa5ef6b07, type: 3}
   airSprite: {fileID: 21300000, guid: 5d22a7ecc862f344787ae8c3f09d2861, type: 3}
@@ -79292,8 +79331,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000016809, y: 0.000002265}
-  m_SizeDelta: {x: 370.0933, y: 84.5895}
+  m_AnchoredPosition: {x: -0.00096321, y: 0.000002265}
+  m_SizeDelta: {x: 448.58, y: 84.5895}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6501494986475118263
 CanvasRenderer:

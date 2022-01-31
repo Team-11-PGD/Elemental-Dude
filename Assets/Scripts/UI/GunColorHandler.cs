@@ -14,35 +14,34 @@ public class GunColorHandler : MonoBehaviour
     [SerializeField]
     WeaponUI weapon;
 
-    public void SetColor() 
+    public void SetColor()
     {
-        switch (element.currentType)
+        switch (element.currentType)//switch case for the color of the weapon selector.
         {
-            case ElementMain.ElementType.None:
-                Selector.color = Color.white;
-                GunElement.enabled = false;
+            case ElementMain.ElementType.None://no element is applied
+                SwapColor(ElementColors.NoneColor, elementEnabled: false);
                 break;
-            case ElementMain.ElementType.Water:
-                Selector.color = ElementColors.WaterColor;
-                ElementEnable();
-                GunElement.sprite = weapon.waterSprite;
+
+            case ElementMain.ElementType.Water://water element is applied
+                SwapColor(ElementColors.WaterColor, weapon.waterSprite);
                 break;
-            case ElementMain.ElementType.Fire:
-                Selector.color = ElementColors.FireColor;
-                ElementEnable();
-                GunElement.sprite = weapon.fireSprite;
+
+            case ElementMain.ElementType.Fire://fire element is applied
+                SwapColor(ElementColors.FireColor, weapon.fireSprite);
                 break;
-            case ElementMain.ElementType.Air:
-                Selector.color = ElementColors.AirColor;
-                ElementEnable();
-                GunElement.sprite = weapon.airSprite;
+
+            case ElementMain.ElementType.Air://air element is applied
+                SwapColor(ElementColors.AirColor, weapon.airSprite);
                 break;
+
             default:
                 break;
         }
     }
-    private void ElementEnable() 
+    private void SwapColor(Color color, Sprite sprite = null, bool elementEnabled = true)
     {
-        GunElement.enabled = true;
+        Selector.color = color;
+        GunElement.enabled = elementEnabled;
+        if (sprite != null) GunElement.sprite = sprite;
     }
 }
