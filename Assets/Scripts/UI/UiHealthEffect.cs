@@ -12,27 +12,21 @@ public class UiHealthEffect : MonoBehaviour
 
     private float damageTaken;
 
+    [SerializeField] private Transform damageEffect, playerhealth;
+
     // Update is called once per frame
     void Update()
     {
-        if (health.damageTaken > 0)
-        {
-            DamageUiEffect();
-            StartCoroutine(Timer());
-        }
-    }
-    IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(0.6f);
-
-        healthDamageText.enabled = false;
-        health.damageTaken = 0;
+        damageTaken = health.damageTaken;
+        if (health.damageTaken > 0) DamageUiEffect();//checks if the player has taken damage
     }
     public void DamageUiEffect()
     {
-        damageTaken = health.damageTaken;
-        healthDamageText.enabled = true;
-        healthDamageText.text = ("-" + damageTaken.ToString());
+        Transform damagePopUpTransform = Instantiate(damageEffect, playerhealth.position, Quaternion.identity);
+        damagePopUpTransform.SetParent(playerhealth);//important if parent is not set correctly the effect will not show
+        DamagePopUp damagePopUp = damagePopUpTransform.GetComponent<DamagePopUp>();
+        damagePopUp.Setup(damageTaken);//sets up the effect, imput is the damage taken
+        health.damageTaken = 0;
     }
 }
 
