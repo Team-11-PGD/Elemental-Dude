@@ -8,28 +8,28 @@ public class ElementColors : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
         {
-            Destroy(gameObject);
+            instance = this;
         }
         else
         {
-            transform.parent = null;
-            instance = this;
-            DontDestroyOnLoad(instance);
+            Destroy(gameObject);
         }
     }
+    [SerializeField]
+    public Mesh waterMesh, fireMesh, airMesh;
 
     public static readonly Color NoneColor = Color.white;
     public static readonly Color WaterColor = new Color(4f / 256, 254f / 256, 239f / 256);
     public static readonly Color FireColor = new Color(248f / 256, 49f / 256, 86f / 256);
     public static readonly Color AirColor = new Color(254f / 256, 226f / 256, 82f / 256);
-    public static readonly Color EarthColor = new Color(59f / 256, 254f / 256, 90f / 256);
+
+    public Material FireSlime, WaterSlime, AirSlime;
 
     public Material FireMaterial;
     public Material WaterMaterial;
     public Material AirMaterial;
-    public Material EarthMaterial;
 
     public static Material GetElement(ElementMain.ElementType elementType) => elementType switch
     {

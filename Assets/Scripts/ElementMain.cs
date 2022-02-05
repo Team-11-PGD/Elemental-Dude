@@ -10,6 +10,7 @@ public class ElementMain : MonoBehaviour
     [HideInInspector]
     public float disadvantageElemPercentage = 0.5f;
     public ElementType currentType = ElementType.None;
+    public EnemyType enemyType = EnemyType.Spiker;
 
     public enum ElementType
     {
@@ -17,6 +18,11 @@ public class ElementMain : MonoBehaviour
         Water,
         Fire,
         Air
+    }
+
+    public enum EnemyType 
+    {
+        Spiker,Slime
     }
 
     public float ElementDmgPercentage(ElementType thisElement, ElementType otherElement)
