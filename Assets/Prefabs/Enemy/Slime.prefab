@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 9185852318774736585}
-  stopRange: 1.5
+  stopRange: 2
 --- !u!114 &8206525713738214985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeDistance: 3
-  attackChargeTime: 0.5
-  damage: 5
+  attackChargeTime: 1
+  damage: 2
 --- !u!114 &1659114101789268370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +197,7 @@ MonoBehaviour:
   playerModel: {fileID: 0}
   playerHealth: {fileID: 0}
   health: {fileID: 9185852318774736587}
+  scaleSize: -0.33
   startState: 2
   inspectorStates:
   - item1: 0
@@ -379,7 +380,7 @@ GameObject:
   - component: {fileID: 2658571425112011340}
   - component: {fileID: 878778055339543302}
   - component: {fileID: 4402182724971868050}
-  - component: {fileID: 6508558936706130294}
+  - component: {fileID: 7920887687823270708}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -452,7 +453,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6508558936706130294
+--- !u!114 &7920887687823270708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

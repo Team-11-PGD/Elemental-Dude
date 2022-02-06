@@ -6,7 +6,7 @@ public class SlimeMove : SlimeState
     [SerializeField]
     NavMeshAgent agent;
     [SerializeField]
-    float stopRange = 1.5f;
+    float stopRange = 2f;
 
     public override void Enter(int previousStateId)
     {

@@ -11,10 +11,12 @@ public class EnemyColorController : MonoBehaviour
     MeshFilter meshFilter;
     Renderer slimeRender;
 
+    private int randomValue;
     void Start()
     {
+        randomValue = Random.Range(0, 3);
         elementMain.currentType = RoomGeneration.CurrentElements[Random.Range(0, RoomGeneration.CurrentElements.Count)];
-        if (elementMain.enemyType == EnemyType.Slime) slimeRender = GetComponent<Renderer>();
+        if (elementMain.enemyType == EnemyType.Slime) SlimeRandom();
         EnemyColor();
     }
 
@@ -22,7 +24,7 @@ public class EnemyColorController : MonoBehaviour
         => elementMain.enemyType == enemyType && elementMain.currentType == elementType;
 
 
-    private void EnemyColor()
+    public void EnemyColor()
     {
         if (TypeRequirement(EnemyType.Spiker, ElementType.Water))
             meshFilter.mesh = ElementColors.instance.waterMesh;
@@ -41,5 +43,12 @@ public class EnemyColorController : MonoBehaviour
 
         if (TypeRequirement(EnemyType.Slime, ElementType.Air))
             slimeRender.material = ElementColors.instance.AirSlime;
+    }
+    public void SlimeRandom()
+    {
+        slimeRender = GetComponent<Renderer>();
+        if (randomValue == 0) elementMain.currentType = ElementType.Air;
+        if (randomValue == 1) elementMain.currentType = ElementType.Water;
+        if (randomValue == 2) elementMain.currentType = ElementType.Fire;
     }
 }

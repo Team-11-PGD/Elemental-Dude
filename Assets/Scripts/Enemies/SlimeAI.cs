@@ -13,6 +13,7 @@ public class SlimeAI : StateMachine
 
     private int randomValue;
     private Vector3 scaleCheck = new Vector3(0.3399999f, 0.3399999f, 0.3399999f);
+    public float scaleSize = -0.33f;//negative makes it smaller & positive makes it bigger
 
     #region State Setup
     public enum StateOptions
@@ -76,15 +77,10 @@ public class SlimeAI : StateMachine
     protected virtual void Died()
     {
         AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "EnemyDied");
-        for (int i = 0; i < randomValue; i++)
+        for (int i = 0; i < randomValue; i++)//checks for the random value to spawn in that amount of slimes
         {
-            if (transform.localScale != scaleCheck)
-            {
-                SplitSlime();
-            }
-
+            if (transform.localScale != scaleCheck) SplitSlime();
         }
-
         Destroy(gameObject);
     }
 
@@ -94,11 +90,11 @@ public class SlimeAI : StateMachine
         AudioManager.instance.PlaySoundFromObject(AudioManager.instance.MonsterSounds, this.gameObject, "EnemyGotHit");
     }
 
-    private void SplitSlime()
+    private void SplitSlime()//spawns in new slime and sets the new scale
     {
         Quaternion quaternion = Quaternion.LookRotation(playerModel.transform.position);
         GameObject babySlime = Instantiate(slime, transform.position, quaternion);
         babySlime.GetComponentInChildren<ElementColors>();
-        babySlime.transform.Scale(-0.33f, true);
+        babySlime.transform.Scale(scaleSize, true);//uses extensionMethodes to change the scale.
     }
 }
